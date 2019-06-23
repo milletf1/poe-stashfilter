@@ -1,0 +1,28 @@
+@import "../../sass/colors.scss";
+
+.item-header {
+  font-size: 17px;
+
+  .name {
+    display: none;
+    width: 100%;
+    text-align: center;
+  }
+  &.double {
+    .name { display: inline-block; }
+  }
+
+  .type-line {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+  }
+
+  &.currency { color: $currency-color; }
+  &.magic { color: $magic-color; }
+  &.rare { color: $rare-color; }
+  &.unique { color: $unique-color; }
+  &.relic { color: $relic-color; }
+  &.prophecy { color: $prophecy-color; }
+  &.gem { color: $gem-color; }
+}

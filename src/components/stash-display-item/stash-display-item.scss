@@ -1,0 +1,27 @@
+.stash-display-item {
+  position: absolute;
+
+  .item-details,
+  .card-wrapper,
+  .vaal-gem-container {
+    visibility: hidden;
+    position: fixed;
+    max-width: 500px;
+  }
+
+  .vaal-gem-container .item-details {
+    position: relative;
+  }
+
+  &.hover {
+
+    .item-image { background-color: #111331; }
+
+    .item-tooltip {
+      .item-details,
+      .card-wrapper {
+        visibility: visible;
+      }
+    }
+  }
+}
