@@ -6,9 +6,9 @@ import * as ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { HashRouter } from 'react-router-dom';
 import { Store } from 'redux';
-import AppContainer from './containers/app-container/AppContainer';
 import './sass/styles.scss';
 import { buildStore } from './store/util/storeBuilder';
+import App from './views/app/App';
 
 const theme: Theme = createMuiTheme({
   palette: {
@@ -35,7 +35,7 @@ buildStore().then((store: Store) => {
       <MuiThemeProvider theme={theme}>
         <CssBaseline />
         <HashRouter>
-          <AppContainer store={store} />
+          <App store={store} />
         </HashRouter>
       </MuiThemeProvider >
     </Provider >

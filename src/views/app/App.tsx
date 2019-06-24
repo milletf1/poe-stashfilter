@@ -2,15 +2,19 @@ import { ipcRenderer } from 'electron';
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { HashRouter, Route, withRouter } from 'react-router-dom';
+import { bindActionCreators, Dispatch } from 'redux';
 import * as ipcChannels from '../../../ipc-channels';
 import NavigationBar from '../../components/navigation-bar/NavigationBar';
+import { accountActions } from '../../store/account/accountActions';
 import { IAccountState, initialState } from '../../store/account/accountState';
 import { IAppState } from '../../store/app/appState';
+import { authDetailsActions } from '../../store/auth-details/AuthDetailsActions';
 import InventoryBrowser from '../inventory-browser/InventoryBrowser';
 import LoginForm from '../login-form/LoginForm';
 import SearchForm from '../search-form/SearchForm';
 import SplashPage from '../splash-page/SplashPage';
-import './app-container.scss';
+import './app.scss';
+import { IAppProps } from './IAppProps';
 
 const mapStateToProps = (state: IAppState, props: any) => ({
   activeAccount: state.activeAccount,
@@ -26,12 +30,8 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators({
   setSearches: accountActions.setSearches,
   setUiState: accountActions.setUiState,
 }, dispatch);
-import { bindActionCreators, Dispatch } from 'redux';
-import { accountActions } from '../../store/account/accountActions';
-import { authDetailsActions } from '../../store/auth-details/AuthDetailsActions';
-import { IAppContainerProps } from './IAppContainerProps';
 
-class AppContainer extends React.Component<IAppContainerProps, {}> {
+class App extends React.Component<IAppProps, {}> {
   constructor(props) {
     super(props);
   }
@@ -75,4 +75,4 @@ class AppContainer extends React.Component<IAppContainerProps, {}> {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(AppContainer));
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(App));

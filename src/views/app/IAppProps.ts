@@ -3,10 +3,10 @@ import { Store } from 'redux';
 import { ILeague } from '../../models/ILeague';
 import { ISearchParameters } from '../../models/search/ISearchParameters';
 import { IUiState } from '../../models/ui-state/IUiState';
+import { IAccountState } from '../../store/account/accountState';
 import { IAuthDetailsState } from '../../store/auth-details/authDetailsState';
-import { IAccountState } from './../../store/account/accountState';
 
-export interface IAppContainerProps {
+export interface IAppProps {
   authCredentials: IAuthDetailsState;
   activeAccount: IAccountState;
   isAuthorized: boolean;
