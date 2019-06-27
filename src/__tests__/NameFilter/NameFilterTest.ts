@@ -2,24 +2,87 @@ import { IBaseItem } from '../../models/items/IBaseItem';
 import NameFilter from '../../services/filter/filter-modules/name-filter/NameFilter';
 import json from './name-filter-test-items.json';
 
+function getItems(): IBaseItem[] {
+  return (json as IBaseItem[]);
+}
+
 test('should return item when searched by full name', () => {
-  throw new Error('not implemented');
+  const items: IBaseItem[] = getItems();
+  const itemName: string = 'Scold\'s Bridle';
+  const condition: string = `${itemName} Mind Cage`;
+  const filter: NameFilter = new NameFilter();
+  const expected: IBaseItem = items.find((item: IBaseItem) => item.name === itemName);
+
+  if (!expected) {
+    throw new Error('Failed to find expected item "Scold\'s Bridle" in test data');
+  }
+
+  const actual: IBaseItem[] = filter.filter(items, condition);
+  expect(actual.length).toBe(1);
+  expect(actual[0].id).toBe(expected.id);
 });
 
 test('should return item when searched by partial name', () => {
-  throw new Error('not implemented');
+  const items: IBaseItem[] = getItems();
+  const itemName: string = 'Scold\'s Bridle';
+  const condition: string = 'Bridle Mind';
+  const filter: NameFilter = new NameFilter();
+  const expected: IBaseItem = items.find((item: IBaseItem) => item.name === itemName);
+
+  if (!expected) {
+    throw new Error('Failed to find expected item "Scold\'s Bridle" in test data');
+  }
+
+  const actual: IBaseItem[] = filter.filter(items, condition);
+  expect(actual.length).toBe(1);
+  expect(actual[0].id).toBe(expected.id);
 });
 
 test('should ignore case when filtering items', () => {
-  throw new Error('not implemented');
+  const items: IBaseItem[] = getItems();
+  const itemName: string = 'Scold\'s Bridle';
+  const condition: string = 'SCOLD\'S BRIDLE MIND CAGE';
+  const filter: NameFilter = new NameFilter();
+  const expected: IBaseItem = items.find((item: IBaseItem) => item.name === itemName);
+
+  if (!expected) {
+    throw new Error('Failed to find expected item "Scold\'s Bridle" in test data');
+  }
+
+  const actual: IBaseItem[] = filter.filter(items, condition);
+  expect(actual.length).toBe(1);
+  expect(actual[0].id).toBe(expected.id);
 });
 
 test('should return item when searched by the name', () => {
-  throw new Error('not implemented');
+  const items: IBaseItem[] = getItems();
+  const itemName: string = 'Scold\'s Bridle';
+  const filter: NameFilter = new NameFilter();
+  const expected: IBaseItem = items.find((item: IBaseItem) => item.name === itemName);
+
+  if (!expected) {
+    throw new Error('Failed to find expected item "Scold\'s Bridle" in test data');
+  }
+
+  const actual: IBaseItem[] = filter.filter(items, itemName);
+  expect(actual.length).toBe(1);
+  expect(actual[0].id).toBe(expected.id);
 });
 
 test('should return item when searched by typeline', () => {
-  throw new Error('not implemented');
+  const items: IBaseItem[] = getItems();
+  const itemName: string = 'Scold\'s Bridle';
+  const condition: string = 'Mind Cage';
+  const filter: NameFilter = new NameFilter();
+  const expected: IBaseItem = items.find((item: IBaseItem) => item.name === itemName);
+
+  if (!expected) {
+    throw new Error('Failed to find expected item "Scold\'s Bridle" in test data');
+  }
+
+  const actual: IBaseItem[] = filter.filter(items, condition);
+  expect(actual.length).toBe(1);
+  expect(actual[0].id).toBe(expected.id);
 });
 
 test('should return currency', () => {
