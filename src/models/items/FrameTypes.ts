@@ -1,4 +1,4 @@
-export enum FrameTypes {
+export const enum FrameTypes {
   MAGIC = 1,
   RARE = 2,
   UNIQUE = 3,

@@ -1,4 +1,4 @@
-export enum ItemModThemeTypes {
+export const enum ItemModThemeTypes {
   DESCRIPTION_TEXT,
   FLAVOUR_TEXT,
   RED_TEXT,

@@ -1,5 +1,5 @@
 /** Item property value types (see Value property of IItemProperty) */
-export enum ItemPropertyValueTypes {
+export const enum ItemPropertyValueTypes {
   AUGMENTED = 1,
   FIRE = 4,
   COLD = 5,

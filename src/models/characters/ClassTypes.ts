@@ -1,4 +1,4 @@
-export enum ClassTypes {
+export const enum ClassTypes {
   SCION = 'Scion',
   ASCENDANT = 'Ascendant',
   MARAUDER = 'Marauder',

@@ -1,4 +1,4 @@
-export enum StashTypes {
+export const enum StashTypes {
   QUAD,
   CURRENCY,
   DIVINATION_CARD,

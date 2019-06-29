@@ -1,4 +1,4 @@
-export enum ItemRarity {
+export const enum ItemRarity {
   ANY,
   WHITE,
   MAGIC,

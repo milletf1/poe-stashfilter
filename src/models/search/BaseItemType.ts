@@ -1,4 +1,4 @@
-export enum BaseItemType {
+export const enum BaseItemType {
   ANY,
   WEAPON,
   CHEST_PIECE,

@@ -1,4 +1,4 @@
-export enum ClassIds {
+export const enum ClassIds {
   SCION = 0,
   MARAUDER = 1,
   RANGER = 2,
