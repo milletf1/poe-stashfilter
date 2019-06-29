@@ -17,8 +17,8 @@ class ItemFilter {
     for (const instruction of instructions) {
       if (filteredItems.length === 0) { break; }
 
-      const filterModule: IFilterModule<any> = this.modules.find((fm: IFilterModule<any>) =>
-        fm.type === instruction.filterModuleType);
+      const filterModule: IFilterModule<any> = this.modules
+        .find((fm: IFilterModule<any>) => fm.type === instruction.filterModuleType);
 
       if (!!filterModule) {
         filteredItems = filterModule.filter(filteredItems, instruction.conditions);

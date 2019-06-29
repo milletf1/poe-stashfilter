@@ -152,30 +152,29 @@ test('should return a gem that is socketed into an item', () => {
   const actual: IBaseItem[] = filter.filter(items, condition);
   expect(actual.length).toBe(1);
   expect(actual[0].id).toBe(expected.id);
-  // Check that returned item has position coordinates of socket item
+  // Check that returned item has position coordinates and inventory id of socket item
   expect(actual[0].x).toBe(socketItem.x);
   expect(actual[0].y).toBe(socketItem.y);
+  expect(actual[0].inventoryId).toBe(socketItem.inventoryId);
 });
 
 test('should return 2 items that have been searched for', () => {
   const items: IBaseItem[] = getItems();
-  const condition: string[] = ['Her Mask', 'Strand Map'];
+  const conditions: string[] = ['Her Mask', 'Strand Map'];
   const filter: NameFilter = new NameFilter();
   const expected: IBaseItem[] = items
-    .filter((item: IBaseItem) => item.typeLine === condition[0] || item.typeLine === condition[1]);
+    .filter((item: IBaseItem) => {
+      return item.typeLine === conditions[0] || item.typeLine === conditions[1];
+    });
 
-  if (!expected.find((item: IBaseItem) => item.typeLine === condition[0])) {
-    throw new Error(`Failed to find expected item ${condition[0]} in test data`);
+  if (!expected.find((item: IBaseItem) => item.typeLine === conditions[0])) {
+    throw new Error(`Failed to find expected item ${conditions[0]} in test data`);
   }
-  if (!expected.find((item: IBaseItem) => item.typeLine === condition[1])) {
-    throw new Error(`Failed to find expected item ${condition[1]} in test data`);
-  }
-
-  if (!expected) {
-    throw new Error('Failed to find expected item "Her Mask" in test data');
+  if (!expected.find((item: IBaseItem) => item.typeLine === conditions[1])) {
+    throw new Error(`Failed to find expected item ${conditions[1]} in test data`);
   }
 
-  const actual: IBaseItem[] = filter.filter(items, condition);
+  const actual: IBaseItem[] = filter.filter(items, conditions);
   expect(actual.length).toBe(2);
   // check both items were found
   expect(actual[0].id === expected[0].id || actual[0].id === expected[1].id).toBeTruthy();
@@ -195,6 +194,26 @@ test('should return an empty array when condition is null', () => {
 test('should return an empty array when condition is undefined', () => {
   const items: IBaseItem[] = getItems();
   const condition: string = undefined;
+  const filter: NameFilter = new NameFilter();
+
+  const actual: IBaseItem[] = filter.filter(items, condition);
+  expect(Array.isArray(actual)).toBeTruthy();
+  expect(actual.length).toBe(0);
+});
+
+test('should return an empty array when items is null', () => {
+  const items: IBaseItem[] = null;
+  const condition: string = `Goldwyrm`;
+  const filter: NameFilter = new NameFilter();
+
+  const actual: IBaseItem[] = filter.filter(items, condition);
+  expect(Array.isArray(actual)).toBeTruthy();
+  expect(actual.length).toBe(0);
+});
+
+test('should return an empty array when items is undefined', () => {
+  const items: IBaseItem[] = undefined;
+  const condition: string = `Goldwyrm`;
   const filter: NameFilter = new NameFilter();
 
   const actual: IBaseItem[] = filter.filter(items, condition);

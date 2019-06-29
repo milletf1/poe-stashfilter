@@ -22,13 +22,13 @@ export interface IBaseItem {
   /** Frame type */
   frameType: number;
   /** Inventory id */
-  inventoryId: string;
+  inventoryId?: string;
   /** X coordinate of item (starts at 1) */
-  x: number;
+  x?: number;
   /** Y coordinate of item (starts at 1) */
-  y: number;
+  y?: number;
   /** Item note */
-  note: string;
+  note?: string;
 }
 
 /** IBaseItem type guard */

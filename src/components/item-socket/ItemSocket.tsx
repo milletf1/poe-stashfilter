@@ -144,9 +144,7 @@ class ItemSocket extends React.Component<IItemSocketProps, IItemSocketState> {
     this.setState({isHovered: false});
   }
 
-  /**
-   * Gets inline style attributes for an item socket
-   */
+  /** Gets inline style attributes for an item socket */
   private getSocketPositionStyle(): React.CSSProperties {
     switch (this.props.socketIndex) {
       case 0:
