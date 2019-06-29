@@ -1,0 +1,808 @@
+[
+  {
+    "verified": false,
+    "w": 2,
+    "h": 2,
+    "ilvl": 76,
+    "icon": "https:\/\/web.poecdn.com\/image\/Art\/2DItems\/Armours\/Helmets\/ScoldsBridle.png?scale=1&w=2&h=2&v=b05ae7a678cf319ee7e8ecb14199ea0c",
+    "league": "Standard",
+    "id": "9a424ac237b6a7dc7b758cc0c9669a7b8c5c1a780c7cd299afb99b2e1690d20d",
+    "sockets": [
+      {
+        "group": 0,
+        "attr": "I",
+        "sColour": "B"
+      },
+      {
+        "group": 1,
+        "attr": "I",
+        "sColour": "B"
+      },
+      {
+        "group": 2,
+        "attr": "I",
+        "sColour": "B"
+      }
+    ],
+    "name": "Scold's Bridle",
+    "typeLine": "Mind Cage",
+    "identified": true,
+    "properties": [
+      {
+        "name": "Energy Shield",
+        "values": [
+          [
+            "69",
+            0
+          ]
+        ],
+        "displayMode": 0,
+        "type": 18
+      }
+    ],
+    "requirements": [
+      {
+        "name": "Level",
+        "values": [
+          [
+            "65",
+            0
+          ]
+        ],
+        "displayMode": 0
+      },
+      {
+        "name": "Int",
+        "values": [
+          [
+            "138",
+            0
+          ]
+        ],
+        "displayMode": 1
+      }
+    ],
+    "explicitMods": [
+      "88% increased Spell Damage",
+      "15% reduced Cast Speed",
+      "+47 to maximum Mana",
+      "Your Skills deal you 400% of Mana Spent on Skill Mana Costs as Physical Damage"
+    ],
+    "flavourText": [
+      "\"The sharper the pain, the sharper the mind. \r",
+      "A curious paradox.\"\t\r",
+      "- Shavronne of Umbra"
+    ],
+    "frameType": 3,
+    "category": {
+      "armour": [
+        "helmet"
+      ]
+    },
+    "x": 10,
+    "y": 7,
+    "inventoryId": "Stash1",
+    "socketedItems": []
+  },
+  {
+    "verified": false,
+    "w": 1,
+    "h": 1,
+    "ilvl": 0,
+    "icon": "https:\/\/web.poecdn.com\/image\/Art\/2DItems\/Currency\/CurrencyRerollSocketColours.png?scale=1&w=1&h=1&v=9d377f2cf04a16a39aac7b14abc9d7c3",
+    "league": "Standard",
+    "id": "cc73e2a2610c7d7228822d40b6c982ea552afc8c7df6a09cb2a107f257cebd9e",
+    "name": "",
+    "typeLine": "Chromatic Orb",
+    "identified": true,
+    "properties": [
+      {
+        "name": "Stack Size",
+        "values": [
+          [
+            "20\/20",
+            0
+          ]
+        ],
+        "displayMode": 0
+      }
+    ],
+    "explicitMods": [
+      "Reforges the colour of sockets on an item"
+    ],
+    "descrText": "Right click this item then left click a socketed item to apply it.",
+    "frameType": 5,
+    "stackSize": 20,
+    "maxStackSize": 20,
+    "category": {
+      "currency": []
+    },
+    "x": 8,
+    "y": 23,
+    "inventoryId": "Stash1"
+  },
+  {
+    "verified": false,
+    "w": 1,
+    "h": 1,
+    "ilvl": 0,
+    "icon": "https:\/\/web.poecdn.com\/image\/Art\/2DItems\/Divination\/InventoryIcon.png?scale=1&w=1&h=1&v=a8ae131b97fad3c64de0e6d9f250d743",
+    "league": "Standard",
+    "id": "08bba85666e6a97b26572d50f02244851f7863cbb46295e4c28086acaf9718ba",
+    "name": "",
+    "typeLine": "Her Mask",
+    "identified": true,
+    "properties": [
+      {
+        "name": "Stack Size",
+        "values": [
+          [
+            "1\/4",
+            0
+          ]
+        ],
+        "displayMode": 0
+      }
+    ],
+    "explicitMods": [
+      "<whiteitem>{Sacrifice Fragment}"
+    ],
+    "flavourText": [
+      "To her beauty you submit,\r",
+      "lest your neck the great Queen slit."
+    ],
+    "frameType": 6,
+    "stackSize": 1,
+    "maxStackSize": 4,
+    "artFilename": "HerMask",
+    "category": {
+      "cards": []
+    },
+    "x": 1,
+    "y": 14,
+    "inventoryId": "Stash1"
+  },
+  {
+    "verified": false,
+    "w": 1,
+    "h": 1,
+    "ilvl": 70,
+    "icon": "https:\/\/web.poecdn.com\/image\/Art\/2DItems\/Maps\/AtlasMaps\/Strand2.png?scale=1&w=1&h=1&v=64bf7bd568a8cac43b9266ddc30ba8d3",
+    "league": "Standard",
+    "id": "dd6bc4e3b887cca4ccf4b7e5a10102b37a94977a0ac084cd124669cee251e9eb",
+    "name": "",
+    "typeLine": "Strand Map",
+    "identified": true,
+    "properties": [
+      {
+        "name": "Map Tier",
+        "values": [
+          [
+            "6",
+            0
+          ]
+        ],
+        "displayMode": 0,
+        "type": 1
+      }
+    ],
+    "descrText": "Travel to this Map by using it in the Templar Laboratory or a personal Map Device. Maps can only be used once.",
+    "frameType": 0,
+    "category": {
+      "maps": []
+    },
+    "x": 17,
+    "y": 9,
+    "inventoryId": "Stash1"
+  },
+  {
+    "verified": false,
+    "w": 2,
+    "h": 2,
+    "ilvl": 71,
+    "icon": "https:\/\/web.poecdn.com\/image\/Art\/2DItems\/Armours\/Boots\/BootsDexUnique2.png?scale=1&w=2&h=2&v=9d45a0089985ac1339e3322d5b5b657f",
+    "league": "Standard",
+    "id": "65fe4440f879f975619ab9783a279e980f3b6a1483160d224d88f7b42c2c21dc",
+    "sockets": [
+      {
+        "group": 0,
+        "attr": "S",
+        "sColour": "R"
+      },
+      {
+        "group": 0,
+        "attr": "I",
+        "sColour": "B"
+      },
+      {
+        "group": 0,
+        "attr": "S",
+        "sColour": "R"
+      },
+      {
+        "group": 1,
+        "attr": "I",
+        "sColour": "B"
+      }
+    ],
+    "name": "Goldwyrm",
+    "typeLine": "Nubuck Boots",
+    "identified": true,
+    "properties": [
+      {
+        "name": "Quality",
+        "values": [
+          [
+            "+20%",
+            1
+          ]
+        ],
+        "displayMode": 0,
+        "type": 6
+      },
+      {
+        "name": "Evasion Rating",
+        "values": [
+          [
+            "136",
+            1
+          ]
+        ],
+        "displayMode": 0,
+        "type": 17
+      }
+    ],
+    "requirements": [
+      {
+        "name": "Level",
+        "values": [
+          [
+            "56",
+            0
+          ]
+        ],
+        "displayMode": 0
+      },
+      {
+        "name": "Str",
+        "values": [
+          [
+            "79",
+            0
+          ]
+        ],
+        "displayMode": 1
+      },
+      {
+        "name": "Dex",
+        "values": [
+          [
+            "62",
+            0
+          ]
+        ],
+        "displayMode": 1
+      },
+      {
+        "name": "Int",
+        "values": [
+          [
+            "125",
+            0
+          ]
+        ],
+        "displayMode": 1
+      }
+    ],
+    "explicitMods": [
+      "60% increased Mana Regeneration Rate",
+      "18% increased Quantity of Items found",
+      "+44% to Fire Resistance",
+      "10% increased Movement Speed"
+    ],
+    "flavourText": [
+      "The wyrm draws warmth from the fires of desire."
+    ],
+    "frameType": 3,
+    "category": {
+      "armour": [
+        "boots"
+      ]
+    },
+    "x": 22,
+    "y": 17,
+    "inventoryId": "Stash1",
+    "socketedItems": [
+      {
+        "verified": false,
+        "w": 1,
+        "h": 1,
+        "ilvl": 0,
+        "icon": "https:\/\/web.poecdn.com\/image\/Art\/2DItems\/Gems\/Support\/CastOnDmgTaken.png?scale=1&w=1&h=1&v=e03ceb1a31e457dbfe30e968c76fb0d6",
+        "support": true,
+        "id": "091223f9902145c829365052c5bf041fbcd9b336ecff9c576e2cbcd1706db42c",
+        "name": "",
+        "typeLine": "Cast when Damage Taken Support",
+        "identified": true,
+        "properties": [
+          {
+            "name": "Support, Spell, Trigger",
+            "values": [],
+            "displayMode": 0
+          },
+          {
+            "name": "Level",
+            "values": [
+              [
+                "10",
+                0
+              ]
+            ],
+            "displayMode": 0,
+            "type": 5
+          },
+          {
+            "name": "Cooldown Time",
+            "values": [
+              [
+                "0.25 sec",
+                0
+              ]
+            ],
+            "displayMode": 0
+          }
+        ],
+        "additionalProperties": [
+          {
+            "name": "Experience",
+            "values": [
+              [
+                "3655184\/3655184",
+                0
+              ]
+            ],
+            "displayMode": 2,
+            "progress": 1,
+            "type": 20
+          }
+        ],
+        "requirements": [
+          {
+            "name": "Level",
+            "values": [
+              [
+                "56",
+                0
+              ]
+            ],
+            "displayMode": 0
+          },
+          {
+            "name": "Str",
+            "values": [
+              [
+                "57",
+                0
+              ]
+            ],
+            "displayMode": 1
+          },
+          {
+            "name": "Int",
+            "values": [
+              [
+                "39",
+                0
+              ]
+            ],
+            "displayMode": 1
+          }
+        ],
+        "nextLevelRequirements": [
+          {
+            "name": "Level",
+            "values": [
+              [
+                "58",
+                0
+              ]
+            ],
+            "displayMode": 0
+          },
+          {
+            "name": "Str",
+            "values": [
+              [
+                "58",
+                0
+              ]
+            ],
+            "displayMode": 1
+          },
+          {
+            "name": "Int",
+            "values": [
+              [
+                "41",
+                0
+              ]
+            ],
+            "displayMode": 1
+          }
+        ],
+        "secDescrText": "Each supported spell skill will track damage you take, and be triggered when the total damage taken reaches a threshold. Cannot support skills used by totems, traps, or mines. Vaal skills, channelling skills, and skills that reserve mana cannot be triggered.",
+        "explicitMods": [
+          "This Gem can only Support Skill Gems requiring Level 56 or lower",
+          "Supported Skills deal 34% less Damage",
+          "You cannot Cast Supported Triggerable Spells directly",
+          "Trigger Supported Spells when you take a total of 1354 Damage"
+        ],
+        "descrText": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Active Skill Gem you wish to augment. Right click to remove from a socket.",
+        "frameType": 4,
+        "category": {
+          "gems": [
+            "supportgem"
+          ]
+        },
+        "socket": 0,
+        "colour": "S"
+      },
+      {
+        "verified": false,
+        "w": 1,
+        "h": 1,
+        "ilvl": 0,
+        "icon": "https:\/\/web.poecdn.com\/image\/Art\/2DItems\/Gems\/Enfeeble.png?scale=1&w=1&h=1&v=81f64b48ea1133f1ff9c46cb65f4a492",
+        "support": false,
+        "id": "9aea72210ca421855ff8569831981082f2a89742c26768d49864c6af0b568c20",
+        "name": "",
+        "typeLine": "Enfeeble",
+        "identified": true,
+        "properties": [
+          {
+            "name": "Spell, AoE, Duration, Curse",
+            "values": [],
+            "displayMode": 0
+          },
+          {
+            "name": "Level",
+            "values": [
+              [
+                "13",
+                0
+              ]
+            ],
+            "displayMode": 0,
+            "type": 5
+          },
+          {
+            "name": "Mana Cost",
+            "values": [
+              [
+                "28",
+                0
+              ]
+            ],
+            "displayMode": 0
+          },
+          {
+            "name": "Cast Time",
+            "values": [
+              [
+                "0.50 sec",
+                0
+              ]
+            ],
+            "displayMode": 0
+          }
+        ],
+        "additionalProperties": [
+          {
+            "name": "Experience",
+            "values": [
+              [
+                "3655184\/3655184",
+                0
+              ]
+            ],
+            "displayMode": 2,
+            "progress": 1,
+            "type": 20
+          }
+        ],
+        "requirements": [
+          {
+            "name": "Level",
+            "values": [
+              [
+                "56",
+                0
+              ]
+            ],
+            "displayMode": 0
+          },
+          {
+            "name": "Int",
+            "values": [
+              [
+                "125",
+                0
+              ]
+            ],
+            "displayMode": 1
+          }
+        ],
+        "nextLevelRequirements": [
+          {
+            "name": "Level",
+            "values": [
+              [
+                "58",
+                0
+              ]
+            ],
+            "displayMode": 0
+          },
+          {
+            "name": "Int",
+            "values": [
+              [
+                "130",
+                0
+              ]
+            ],
+            "displayMode": 1
+          }
+        ],
+        "secDescrText": "Curses all targets in an area, making their attacks and spells less effective.",
+        "explicitMods": [
+          "Base duration is 10.20 seconds",
+          "+4 to radius",
+          "Cursed enemies have 16% reduced Accuracy Rating",
+          "Cursed enemies have -27% to Critical Strike Multiplier",
+          "Cursed enemies have 25% reduced Critical Strike Chance",
+          "Cursed Normal or Magic enemies deal 27% less Damage",
+          "Cursed Rare or Unique enemies deal 13% less Damage"
+        ],
+        "descrText": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+        "frameType": 4,
+        "category": {
+          "gems": [
+            "activegem"
+          ]
+        },
+        "socket": 1,
+        "colour": "I"
+      },
+      {
+        "verified": false,
+        "w": 1,
+        "h": 1,
+        "ilvl": 0,
+        "icon": "https:\/\/web.poecdn.com\/image\/Art\/2DItems\/Gems\/FireElementalSummon.png?scale=1&w=1&h=1&v=5a95784cc4eb6067c15e1a8bca602f87",
+        "support": false,
+        "id": "f9b1ab882afa735fca16a00989365d54c045ac0c08a32606f22babc4f1e8e1b8",
+        "name": "",
+        "typeLine": "Summon Flame Golem",
+        "identified": true,
+        "properties": [
+          {
+            "name": "Fire, Minion, Spell, Golem",
+            "values": [],
+            "displayMode": 0
+          },
+          {
+            "name": "Level",
+            "values": [
+              [
+                "12",
+                0
+              ]
+            ],
+            "displayMode": 0,
+            "type": 5
+          },
+          {
+            "name": "Mana Cost",
+            "values": [
+              [
+                "48",
+                0
+              ]
+            ],
+            "displayMode": 0
+          },
+          {
+            "name": "Cooldown Time",
+            "values": [
+              [
+                "6.00 sec",
+                0
+              ]
+            ],
+            "displayMode": 0
+          },
+          {
+            "name": "Cast Time",
+            "values": [
+              [
+                "1.00 sec",
+                0
+              ]
+            ],
+            "displayMode": 0
+          }
+        ],
+        "additionalProperties": [
+          {
+            "name": "Experience",
+            "values": [
+              [
+                "3655184\/3655184",
+                0
+              ]
+            ],
+            "displayMode": 2,
+            "progress": 1,
+            "type": 20
+          }
+        ],
+        "requirements": [
+          {
+            "name": "Level",
+            "values": [
+              [
+                "56",
+                0
+              ]
+            ],
+            "displayMode": 0
+          },
+          {
+            "name": "Str",
+            "values": [
+              [
+                "79",
+                0
+              ]
+            ],
+            "displayMode": 1
+          },
+          {
+            "name": "Int",
+            "values": [
+              [
+                "55",
+                0
+              ]
+            ],
+            "displayMode": 1
+          }
+        ],
+        "nextLevelRequirements": [
+          {
+            "name": "Level",
+            "values": [
+              [
+                "58",
+                0
+              ]
+            ],
+            "displayMode": 0
+          },
+          {
+            "name": "Str",
+            "values": [
+              [
+                "82",
+                0
+              ]
+            ],
+            "displayMode": 1
+          },
+          {
+            "name": "Int",
+            "values": [
+              [
+                "57",
+                0
+              ]
+            ],
+            "displayMode": 1
+          }
+        ],
+        "secDescrText": "Summons a Flame Golem that grants you increased Damage. The Flame Golem can use a fire spray, a wave of fire damage, and an explosive arcing projectile.",
+        "explicitMods": [
+          "Can Summon up to 1 Golem at a time",
+          "52% increased Minion Maximum Life",
+          "Golems Grant 18% increased Damage"
+        ],
+        "descrText": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+        "frameType": 4,
+        "category": {
+          "gems": [
+            "activegem"
+          ]
+        },
+        "socket": 2,
+        "colour": "S"
+      },
+      {
+        "verified": false,
+        "w": 1,
+        "h": 1,
+        "ilvl": 0,
+        "icon": "https:\/\/web.poecdn.com\/image\/Art\/2DItems\/Gems\/Portal.png?scale=1&w=1&h=1&v=fd6ee627290a2740288252707d190b67",
+        "support": false,
+        "id": "57266c4f11ce73d80ab224f3c556c22273b5c8a2a856d2667811d9183a3ecded",
+        "name": "",
+        "typeLine": "Portal",
+        "identified": true,
+        "properties": [
+          {
+            "name": "Spell",
+            "values": [],
+            "displayMode": 0
+          },
+          {
+            "name": "Level",
+            "values": [
+              [
+                "1 (Max)",
+                0
+              ]
+            ],
+            "displayMode": 0,
+            "type": 5
+          },
+          {
+            "name": "Cast Time",
+            "values": [
+              [
+                "2.50 sec",
+                0
+              ]
+            ],
+            "displayMode": 0
+          },
+          {
+            "name": "Quality",
+            "values": [
+              [
+                "+12%",
+                1
+              ]
+            ],
+            "displayMode": 0,
+            "type": 6
+          }
+        ],
+        "requirements": [
+          {
+            "name": "Level",
+            "values": [
+              [
+                "10",
+                0
+              ]
+            ],
+            "displayMode": 0
+          }
+        ],
+        "secDescrText": "Creates a portal to the current area's town.",
+        "explicitMods": [
+          "36% increased Cast Speed"
+        ],
+        "descrText": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+        "frameType": 4,
+        "category": {
+          "gems": [
+            "activegem"
+          ]
+        },
+        "socket": 3,
+        "colour": "G"
+      }
+    ]
+  }
+]
