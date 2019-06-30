@@ -14,6 +14,7 @@ import { isIMap } from '../../models/items/IMap';
 import { isIProphecy } from '../../models/items/IProphecy';
 import { isIResonator } from '../../models/items/IResonator';
 import { isISocketableItem } from '../../models/items/ISocketableItem';
+import { isIStackableItem } from '../../models/items/IStackableItem';
 import { isIVaalGem } from '../../models/items/IVaalGem';
 import { StashTypes } from '../../models/stash-tabs/StashTypes';
 import Card from '../card/Card';
@@ -91,6 +92,9 @@ class StashDisplayItem extends React.Component<IStashDisplayItemProps, IStashDis
             tooltipLeft={tooltipLeft}
             quadStash={this.props.quadStash}
             item={item} />
+        }
+        {
+          isIStackableItem(item) && <span className='stack-size'>{item.stackSize}</span>
         }
         <div className='item-tooltip'>{this.createItemTooltipElement()}</div>
       </div>

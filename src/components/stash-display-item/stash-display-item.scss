@@ -13,6 +13,13 @@
     position: relative;
   }
 
+  .stack-size {
+    color: white;
+    font-size: 11px;
+    position: absolute;
+    pointer-events: none;
+  }
+
   &.hover {
 
     .item-image { background-color: #111331; }
