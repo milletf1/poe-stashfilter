@@ -40,11 +40,13 @@ class NameFilter implements IFilterModule<string | string[]> {
           .filterOnName((item as ISocketableItem).socketedItems, name);
 
         for (const socketItem of filteredSocketItems) {
-          socketItem.x = item.x;
-          socketItem.y = item.y;
-          socketItem.inventoryId = item.inventoryId;
+          filteredItems.push({
+            ...socketItem,
+            inventoryId: item.inventoryId,
+            x: item.x,
+            y: item.y,
+          });
         }
-        filteredItems.push(...filteredSocketItems);
       }
     }
     return filteredItems;
