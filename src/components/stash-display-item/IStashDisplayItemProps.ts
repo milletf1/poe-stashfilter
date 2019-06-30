@@ -10,5 +10,8 @@ export interface IStashDisplayItemProps {
   style: IStashDisplayItemPositionStyle;
   /** The type of stash tab the item will be displayed in */
   stashTabContext: StashTypes;
+  /** Flag to indicate if the item is in a quad stash */
   quadStash?: boolean;
+  /** Size of stash cell */
+  cellSize: number;
 }

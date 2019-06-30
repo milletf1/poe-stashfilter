@@ -1,6 +1,6 @@
 import { MenuItem, Paper, TextField } from '@material-ui/core';
 import * as React from 'react';
-import * as AutoSuggest from 'react-autosuggest';
+import AutoSuggest from 'react-autosuggest';
 import './autocomplete-textbox.scss';
 import { IAutocompleteTextboxProps } from './IAutocompleteTextboxProps';
 import { IAutocompleteTextboxState } from './IAutocompleteTextboxState';

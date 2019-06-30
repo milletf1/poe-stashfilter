@@ -5,6 +5,7 @@ import { ICard, isICard } from '../../models/items/ICard';
 import { isICurrency } from '../../models/items/ICurrency';
 import { isIFlask } from '../../models/items/IFlask';
 import { isIFossil } from '../../models/items/IFossil';
+import { isIFractured } from '../../models/items/IFractured';
 import { isIGear } from '../../models/items/IGear';
 import { isIGem } from '../../models/items/IGem';
 import { isIJewel } from '../../models/items/IJewel';
@@ -20,26 +21,21 @@ import BeastItemDetails from '../item-details/beast-item-details/BeastItemDetail
 import CurrencyItemDetails from '../item-details/currency-item-details/CurrencyItemDetails';
 import FlaskItemDetails from '../item-details/flask-item-details/FlaskItemDetails';
 import FossilItemDetails from '../item-details/fossil-item-details/FossilItemDetails';
+import FracturedItemDetails from '../item-details/fractured-item-details/FracturedItemDetails';
 import GearItemDetails from '../item-details/gear-item-details/GearItemDetails';
 import GemItemDetails from '../item-details/gem-item-details/GemItemDetails';
 import ItemDetails from '../item-details/ItemDetails';
 import JewelItemDetails from '../item-details/jewel-item-details/JewelItemDetails';
 import LeaguestoneItemDetails from '../item-details/leaguestone-item-details/LeaguestoneItemDetails';
 import MapItemDetails from '../item-details/map-item-details/MapItemDetails';
-import ItemSockets from '../item-sockets/ItemSockets';
-
-import { isIFractured } from '../../models/items/IFractured';
-import FracturedItemDetails from '../item-details/fractured-item-details/FracturedItemDetails';
 import ProphecyItemDetails from '../item-details/prophecy-item-details/ProphecyItemDetails';
 import ResonatorItemDetails from '../item-details/resonator-item-details/ResonatorItemDetails';
+import ItemSockets from '../item-sockets/ItemSockets';
 import VaalGemItem from '../vaal-gem-item/VaalGemItem';
 import { IStashDisplayItemProps } from './IStashDisplayItemProps';
 import { IStashDisplayItemState } from './IStashDisplayItemState';
 import './stash-display-item.scss';
 
-const CELL_SIZE: number = 47;
-const QUAD_CELL_SIZE: number = 23.5;
-// TODO: remove cell size constants.  these values should be included in props
 class StashDisplayItem extends React.Component<IStashDisplayItemProps, IStashDisplayItemState> {
   private imageRef: React.RefObject<HTMLImageElement> = React.createRef();
 
@@ -67,7 +63,7 @@ class StashDisplayItem extends React.Component<IStashDisplayItemProps, IStashDis
       top: this.props.style.top,
     };
     const stashType: StashTypes = this.props.stashTabContext;
-    const cellSize: number = this.props.quadStash ? QUAD_CELL_SIZE : CELL_SIZE;
+    const cellSize: number = this.props.cellSize;
     const tooltipTop: number = this.tooltipPositionStyle.top + this.state.tooltipHeight;
     const tooltipLeft: number = this.state.imageLeft + (item.w * cellSize);
     const itemWidth: number = cellSize * item.w;
@@ -130,8 +126,8 @@ class StashDisplayItem extends React.Component<IStashDisplayItemProps, IStashDis
 
     const imageLeft: number = this.state.imageLeft;
     const imageTop: number = this.state.imageTop;
-    const imageRight: number =  imageLeft + (this.props.item.w * CELL_SIZE);
-    const imageBottom: number = imageTop + (this.props.item.h * CELL_SIZE);
+    const imageRight: number =  imageLeft + (this.props.item.w * this.props.cellSize);
+    const imageBottom: number = imageTop + (this.props.item.h * this.props.cellSize);
     // perform a bounds check to make sure the mouse pointer is over the item image
     const isHovered: boolean = mouseX >= imageLeft && mouseX <= imageRight && mouseY >= imageTop
       && mouseY <= imageBottom;
@@ -154,7 +150,7 @@ class StashDisplayItem extends React.Component<IStashDisplayItemProps, IStashDis
     const tooltipHeight: number = this.state.tooltipHeight;
     const itemLeft: number = this.state.imageLeft;
     const itemTop: number = this.state.imageTop;
-    const itemWidth: number = this.props.item.w * CELL_SIZE;
+    const itemWidth: number = this.props.item.w * this.props.cellSize;
     let left: number = 0;
     let top: number = 0;
 

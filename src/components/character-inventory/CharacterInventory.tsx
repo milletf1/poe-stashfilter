@@ -42,6 +42,8 @@ const ARMOUR_POSITION: IStashDisplayItemPositionStyle = { left: 251, top: 205 };
 const RING_1_POSITION: IStashDisplayItemPositionStyle = { left: 182, top: 252 };
 /** Position to display character's second ring */
 const RING_2_POSITION: IStashDisplayItemPositionStyle = { left: 368, top: 252 };
+/** Size of stash cell */
+const CELL_SIZE: number = 47;
 
 class CharacterInventory extends
   React.Component<ICharacterInventoryProps, ICharacterInventoryState> {
@@ -78,6 +80,7 @@ class CharacterInventory extends
         <StashDisplayItem
           style={position}
           item={item}
+          cellSize={CELL_SIZE}
           stashTabContext={StashTypes.CHARACTER}/>
       </div>
     );

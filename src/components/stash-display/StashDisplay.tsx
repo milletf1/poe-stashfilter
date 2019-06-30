@@ -15,8 +15,16 @@ import CharacterInventory from '../character-inventory/CharacterInventory';
 import { IStashDisplayItemPositionStyle } from '../stash-display-item/IStashDisplayItemPositionStyle';
 import StashDisplayItem from '../stash-display-item/StashDisplayItem';
 import { IStashDisplayProps } from './IStashDisplayProps';
-
 import './stash-display.scss';
+
+const CELL_SIZE: number = 47;
+const QUAD_CELL_SIZE: number = 23.5;
+const FRAG_CELL_SIZE: number = 30;
+const OTHER_TAB_SIZE: number = 38;
+const NORMAL_STASH_ITEM_SIZE: number = 45;
+const NORMAL_STASH_DIVIDER_SIZE: number = 2.5;
+const QUAD_STASH_ITEM_SIZE: number = 22;
+const QUAD_STASH_DIVIDER_SIZE: number = 1.7;
 
 const mapStateToProps = (state: IAppState, props: any) => ({
   browseCategory: state.activeAccount.uiState.browseCategory,
@@ -25,11 +33,6 @@ const mapStateToProps = (state: IAppState, props: any) => ({
   leagues: state.activeAccount.leagues,
 });
 
-const NORMAL_STASH_ITEM_SIZE: number = 45;
-const NORMAL_STASH_DIVIDER_SIZE: number = 2.5;
-const QUAD_STASH_ITEM_SIZE: number = 22;
-const QUAD_STASH_DIVIDER_SIZE: number = 1.7;
-// TODO: pass cell size as props to stash display items
 class StashDisplay extends React.Component<IStashDisplayProps, {}> {
   public render(): JSX.Element {
     if (this.stashType === StashTypes.CHARACTER) {
@@ -47,12 +50,13 @@ class StashDisplay extends React.Component<IStashDisplayProps, {}> {
    */
   private createItemElement(item: IBaseItem): JSX.Element {
     const style: IStashDisplayItemPositionStyle = this.getItemElementPositionStyling(item);
-
+    const cellSize: number = this.getStashCellSize();
     return (
       <StashDisplayItem
         key={item.id}
         style={style}
         item={item}
+        cellSize={cellSize}
         quadStash={this.stashType === StashTypes.QUAD}
         stashTabContext={this.stashType}/>
     );
@@ -88,6 +92,23 @@ class StashDisplay extends React.Component<IStashDisplayProps, {}> {
         return {};
     }
     return { left, top };
+  }
+
+  /** Gets and returns the width and height of a stashtab cell */
+  private getStashCellSize(): number {
+    switch (this.stashType) {
+
+      case StashTypes.QUAD:
+        return QUAD_CELL_SIZE;
+      case StashTypes.FRAGMENT:
+        return FRAG_CELL_SIZE;
+      case StashTypes.ESSENCE:
+      case StashTypes.CURRENCY:
+        return OTHER_TAB_SIZE;
+      case StashTypes.NORMAL:
+      default:
+        return CELL_SIZE;
+    }
   }
 
   /** Gets stash tab layout for stash types that have a layout */
