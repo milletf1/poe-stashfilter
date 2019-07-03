@@ -1,4 +1,4 @@
-import { BaseItemTypes } from '../../services/filter/filter-modules/item-type-filter/BaseItemTypes';
+import { ItemType } from '../../services/filter/filter-modules/item-type-filter/ItemType';
 import { IBaseItem } from '../items/IBaseItem';
 import { ItemRarity } from './ItemRarity';
 
@@ -6,7 +6,7 @@ import { ItemRarity } from './ItemRarity';
 export interface ISearchParameters {
   searchTitle: string;
   rarity: ItemRarity[];
-  type: BaseItemTypes[];
+  type: ItemType[];
 
   results: { [league: string]: IBaseItem[] };
 }
