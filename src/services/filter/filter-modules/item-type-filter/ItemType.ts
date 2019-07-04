@@ -38,4 +38,7 @@ export const enum ItemType {
   SCARAB,
   MAP_FRAGMENT,
   SPLINTER, // TODO: reevaluate decision to include splinters
+  RESONATOR,
+  FOSSIL,
+  DIVINE_VESSEL,
 }
