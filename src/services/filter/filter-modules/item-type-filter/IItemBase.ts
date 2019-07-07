@@ -6,3 +6,9 @@ export interface IItemBase {
   /** Item base */
   base: string;
 }
+
+/** IItemBase type guard */
+export function isIItemBase(o: any): o is IItemBase {
+  return (o as IItemBase).type !== undefined
+    && (o as IItemBase).base !== undefined;
+}

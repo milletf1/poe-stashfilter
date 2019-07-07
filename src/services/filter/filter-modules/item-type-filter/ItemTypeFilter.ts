@@ -1,12 +1,23 @@
+import { RegexLiteral } from '@babel/types';
 import { IBaseItem } from '../../../../models/items/IBaseItem';
 import { IFilterModule } from './../IFilterModule';
-import { IItemBase } from './IItemBase';
+import { IItemBase, isIItemBase } from './IItemBase';
 import { ItemType as ItemType } from './ItemType';
+import { IItemFilterParams } from './ItemTypeFilter';
 
 export interface IItemFilterParams {
   type?: ItemType[];
   base?: IItemBase[];
 }
+
+/** IItemFilterParams type guard */
+export function isIItemFilterParams(o: any): o is IItemFilterParams {
+  return (o as IItemFilterParams).base !== undefined
+    || (o as IItemFilterParams).type !== undefined;
+}
+
+/** Regex for checking one handed weapon items */
+const ONE_HAND_WEAPON_TEST_REGEX: RegExp = /.*\/2DItems\/Weapons\/OneHandWeapons\//;
 
 class ItemTypeFilter implements IFilterModule<ItemType[] | IItemBase[] | IItemFilterParams[]> {
   public type: string = 'ItemTypeFilter';
@@ -15,7 +26,44 @@ class ItemTypeFilter implements IFilterModule<ItemType[] | IItemBase[] | IItemFi
     items: IBaseItem[],
     conditions: ItemType[] | IItemBase[] | IItemFilterParams[],
   ): IBaseItem[] {
-    throw new Error('Not implemented');
+    if (isIItemFilterParams(conditions)) {
+      // TODO ...
+    } else if (isIItemBase(conditions)) {
+      // TODO ...
+    }
+    // array of ItemType
+    return this.filterItemTypes(items, conditions as ItemType[]);
+  }
+
+  /**
+   * Filters an array of base items based on their item type
+   * @param items The items to filter
+   * @param itemTypes The item types to filter against
+   */
+  private filterItemTypes(items: IBaseItem[], itemTypes: ItemType[]): IBaseItem[] {
+    const foundItems: IBaseItem[] = [];
+
+    for (const item of items) {
+      for (const itemType of itemTypes) {
+        if (this.checkItemTypeMatch(item, itemType)) {
+          foundItems.push(item);
+          break;
+        }
+      }
+    }
+    return foundItems;
+  }
+
+  /**
+   * Checks if an item belongs to an item type
+   * @param item The item to check
+   * @param itemType The item type to check against
+   */
+  private checkItemTypeMatch(item: IBaseItem, itemType: ItemType): boolean {
+    switch (itemType) {
+      case ItemType.ONE_HAND_WEAPON: return ONE_HAND_WEAPON_TEST_REGEX.test(item.icon);
+      default: return false;
+    }
   }
 }
 export default ItemTypeFilter;
