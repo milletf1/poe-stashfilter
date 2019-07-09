@@ -1,7 +1,7 @@
 import { IBaseItem } from '../../models/items/IBaseItem';
 import { ItemType } from '../../services/filter/filter-modules/item-type-filter/ItemType';
 import ItemTypeFilter from '../../services/filter/filter-modules/item-type-filter/ItemTypeFilter';
-import { getTestItem } from '../utils';
+import { assertItemsFound, getTestItem } from '../utils';
 import json from './item-filter-test-items.json';
 
 describe('Item Type Filter tests', () => {
@@ -45,14 +45,41 @@ describe('Item Type Filter tests', () => {
     const filter: ItemTypeFilter = new ItemTypeFilter();
     const actual: IBaseItem[] = filter.filter(items, [ItemType.ONE_HAND_WEAPON]);
 
-    expect(actual.length).toBe(testItems.length);
-    for (const testItem of testItems) {
-      const foundItem: IBaseItem = actual.find((i: IBaseItem) => i.id === testItem.id);
-      expect(foundItem).toBeTruthy();
-    }
+    assertItemsFound(testItems, actual);
   });
 
-  // test('should return two handed weapons', () => {throw new Error('Not implemented'); });
+  test('should return two handed weapons', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, 'Reaper\'s Pursuit', 'Shadow Axe'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "Reaper\'s Pursuit Shadow Axe" in test data');
+    }
+    testItems.push(getTestItem(items, null, 'Imperial Staff'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "Imperial Staff" in test data');
+    }
+    testItems.push(getTestItem(items, 'The Tempest', 'Long Bow'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "The Tempest Long Bow" in test data');
+    }
+    testItems.push(getTestItem(items, 'Woe Star', 'Colossus Mallet'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "Woe Star Colossus Mallet" in test data');
+    }
+    testItems.push(getTestItem(items, null, 'Corroded Blade'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "Corroded Blade" in test data');
+    }
+    testItems.push(getTestItem(items, 'Miracle Chum', 'Fishing Rod'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "Miracle Chum Fishing Rod" in test data');
+    }
+    const filter: ItemTypeFilter = new ItemTypeFilter();
+    const actual: IBaseItem[] = filter.filter(items, [ItemType.TWO_HAND_WEAPON]);
+
+    assertItemsFound(testItems, actual);
+  });
+
   // test('should return bows', () => {throw new Error('Not implemented'); });
   // test('should return claws', () => {throw new Error('Not implemented'); });
   // test('should return daggers', () => {throw new Error('Not implemented'); });
@@ -92,7 +119,8 @@ describe('Item Type Filter tests', () => {
   // test('should return map resonators', () => {throw new Error('Not implemented'); });
   // test('should return map fossils', () => {throw new Error('Not implemented'); });
   // test('should return map divine vessels', () => {throw new Error('Not implemented'); });
-  // test('should return breach and timeless splinters', () => {throw new Error('Not implemented'); });
+  // test('should return breach and timeless splinters', () =>
+  // {throw new Error('Not implemented'); });
   // test('should return multiple item types',  () => {throw new Error('Not implemented'); });
 
   // test('should return one handed weapon bases', () => {throw new Error('Not implemented'); });
@@ -135,7 +163,8 @@ describe('Item Type Filter tests', () => {
   // test('should return map fragment bases', () => {throw new Error('Not implemented'); });
   // test('should return map resonator bases', () => {throw new Error('Not implemented'); });
   // test('should return map fossil bases', () => {throw new Error('Not implemented'); });
-  // test('should return breach and timeless splinter bases', () => {throw new Error('Not implemented'); });
+  // test('should return breach and timeless splinter bases', () =>
+  // {throw new Error('Not implemented'); });
   // test('should return multiple item bases', () => {throw new Error('Not implemented'); });
 
   // test('should be able to return item types and item bases in a single search', () => {

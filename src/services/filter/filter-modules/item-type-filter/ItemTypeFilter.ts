@@ -18,6 +18,8 @@ export function isIItemFilterParams(o: any): o is IItemFilterParams {
 
 /** Regex for checking one handed weapon items */
 const ONE_HAND_WEAPON_TEST_REGEX: RegExp = /.*\/2DItems\/Weapons\/OneHandWeapons\//;
+/** Regex for checking two handed weapon items */
+const TWO_HAND_WEAPON_TEST_REGEX: RegExp = /.*\/2DItems\/Weapons\/TwoHandWeapons\//;
 
 class ItemTypeFilter implements IFilterModule<ItemType[] | IItemBase[] | IItemFilterParams[]> {
   public type: string = 'ItemTypeFilter';
@@ -62,6 +64,7 @@ class ItemTypeFilter implements IFilterModule<ItemType[] | IItemBase[] | IItemFi
   private checkItemTypeMatch(item: IBaseItem, itemType: ItemType): boolean {
     switch (itemType) {
       case ItemType.ONE_HAND_WEAPON: return ONE_HAND_WEAPON_TEST_REGEX.test(item.icon);
+      case ItemType.TWO_HAND_WEAPON: return TWO_HAND_WEAPON_TEST_REGEX.test(item.icon);
       default: return false;
     }
   }
