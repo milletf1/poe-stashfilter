@@ -80,9 +80,43 @@ describe('Item Type Filter tests', () => {
     assertItemsFound(testItems, actual);
   });
 
-  // test('should return bows', () => {throw new Error('Not implemented'); });
-  // test('should return claws', () => {throw new Error('Not implemented'); });
-  // test('should return daggers', () => {throw new Error('Not implemented'); });
+  test('should return bows', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, 'The Tempest', 'Long Bow'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "The Tempest Long Bow" in test data');
+    }
+    const filter: ItemTypeFilter = new ItemTypeFilter();
+    const actual: IBaseItem[] = filter.filter(items, [ItemType.BOW]);
+
+    assertItemsFound(testItems, actual);
+  });
+
+  test('should return claws', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, 'Mortem Morsu', 'Fright Claw'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "Mortem Morsu" in test data');
+    }
+    const filter: ItemTypeFilter = new ItemTypeFilter();
+    const actual: IBaseItem[] = filter.filter(items, [ItemType.CLAW]);
+
+    assertItemsFound(testItems, actual);
+  });
+
+  test('should return daggers', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, 'Maelstr\u00f6m Stinger', 'Golden Kris'));
+    if (!testItems[testItems.length - 1]) {
+      const errorMessage: string =
+        'failed to find expected item "Maelstr\u00f6m Stinger Golden Kris" in test data';
+      throw new Error(errorMessage);
+    }
+    const filter: ItemTypeFilter = new ItemTypeFilter();
+    const actual: IBaseItem[] = filter.filter(items, [ItemType.DAGGER]);
+
+    assertItemsFound(testItems, actual);
+  });
   // test('should return one handed axes', () => {throw new Error('Not implemented'); });
   // test('should return one handed maces', () => {throw new Error('Not implemented'); });
   // test('should return one handed swords', () => {throw new Error('Not implemented'); });

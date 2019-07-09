@@ -20,6 +20,12 @@ export function isIItemFilterParams(o: any): o is IItemFilterParams {
 const ONE_HAND_WEAPON_TEST_REGEX: RegExp = /.*\/2DItems\/Weapons\/OneHandWeapons\//;
 /** Regex for checking two handed weapon items */
 const TWO_HAND_WEAPON_TEST_REGEX: RegExp = /.*\/2DItems\/Weapons\/TwoHandWeapons\//;
+/** Regex for checking bows */
+const BOW_TEST_REGEX: RegExp = /.*\/2DItems\/Weapons\/TwoHandWeapons\/Bows\//;
+/** Regex for checking claws */
+const CLAW_TEST_REGEX: RegExp = /.*\/2DItems\/Weapons\/OneHandWeapons\/Claws\//;
+/** Regex for checking daggers */
+const DAGGER_TEST_REGEX: RegExp = /.*\/2DItems\/Weapons\/OneHandWeapons\/Daggers\//;
 
 class ItemTypeFilter implements IFilterModule<ItemType[] | IItemBase[] | IItemFilterParams[]> {
   public type: string = 'ItemTypeFilter';
@@ -65,6 +71,9 @@ class ItemTypeFilter implements IFilterModule<ItemType[] | IItemBase[] | IItemFi
     switch (itemType) {
       case ItemType.ONE_HAND_WEAPON: return ONE_HAND_WEAPON_TEST_REGEX.test(item.icon);
       case ItemType.TWO_HAND_WEAPON: return TWO_HAND_WEAPON_TEST_REGEX.test(item.icon);
+      case ItemType.BOW: return BOW_TEST_REGEX.test(item.icon);
+      case ItemType.CLAW: return CLAW_TEST_REGEX.test(item.icon);
+      case ItemType.DAGGER: return DAGGER_TEST_REGEX.test(item.icon);
       default: return false;
     }
   }

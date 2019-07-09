@@ -21,7 +21,7 @@ export function getTestItem(items: IBaseItem[], name?: string, typeLine?: string
 }
 
 /**
- * Checks if the items in expectedItems match those in actualItems.
+ * Checks if the items in expectedItems match those in actualItems
  * @param expectedItems The items that we expect to be found
  * @param actualItems The items that were found
  */
