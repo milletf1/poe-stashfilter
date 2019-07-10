@@ -117,15 +117,123 @@ describe('Item Type Filter tests', () => {
 
     assertItemsFound(testItems, actual);
   });
-  // test('should return one handed axes', () => {throw new Error('Not implemented'); });
-  // test('should return one handed maces', () => {throw new Error('Not implemented'); });
-  // test('should return one handed swords', () => {throw new Error('Not implemented'); });
-  // test('should return sceptres', () => {throw new Error('Not implemented'); });
-  // test('should return staffs', () => {throw new Error('Not implemented'); });
-  // test('should return two handed axes', () => {throw new Error('Not implemented'); });
-  // test('should return two handed maces', () => {throw new Error('Not implemented'); });
-  // test('should return two handed swords', () => {throw new Error('Not implemented'); });
-  // test('should return wands', () => {throw new Error('Not implemented'); });
+
+  test('should return one handed axes', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, null, 'Siege Axe'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "Siege Axe" in test data');
+    }
+    const filter: ItemTypeFilter = new ItemTypeFilter();
+    const actual: IBaseItem[] = filter.filter(items, [ItemType.ONE_HAND_AXE]);
+
+    assertItemsFound(testItems, actual);
+  });
+
+  test('should return one handed maces', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, 'Doon Cuebiyari', 'Vaal Sceptre'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "Doon Cuebiyari" in test data');
+    }
+    testItems.push(getTestItem(items, null, 'Tribal Club'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "Tribal Club" in test data');
+    }
+    const filter: ItemTypeFilter = new ItemTypeFilter();
+    const actual: IBaseItem[] = filter.filter(items, [ItemType.ONE_HAND_MACE]);
+
+    assertItemsFound(testItems, actual);
+  });
+
+  test('should return one handed swords', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, 'Severed in Sleep', 'Cutlass'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "Severed in Sleep Cutlass" in test data');
+    }
+    testItems.push(getTestItem(items, 'Third Piece of the Arcane', 'Legion Sword Piece'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "Third Piece of the Arcane" in test data');
+    }
+    const filter: ItemTypeFilter = new ItemTypeFilter();
+    const actual: IBaseItem[] = filter.filter(items, [ItemType.ONE_HAND_SWORD]);
+
+    assertItemsFound(testItems, actual);
+  });
+
+  test('should return sceptres', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, 'Doon Cuebiyari', 'Vaal Sceptre'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "Doon Cuebiyari" in test data');
+    }
+    const filter: ItemTypeFilter = new ItemTypeFilter();
+    const actual: IBaseItem[] = filter.filter(items, [ItemType.SCEPTRE]);
+
+    assertItemsFound(testItems, actual);
+  });
+
+  test('should return staves', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, null, 'Imperial Staff'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "Imperial Staff" in test data');
+    }
+    const filter: ItemTypeFilter = new ItemTypeFilter();
+    const actual: IBaseItem[] = filter.filter(items, [ItemType.STAFF]);
+
+    assertItemsFound(testItems, actual);
+  });
+
+  test('should return two handed axes', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, 'Reaper\'s Pursuit', 'Shadow Axe'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "Reaper\'s Pursuit Shadow Axe" in test data');
+    }
+    const filter: ItemTypeFilter = new ItemTypeFilter();
+    const actual: IBaseItem[] = filter.filter(items, [ItemType.TWO_HAND_AXE]);
+
+    assertItemsFound(testItems, actual);
+  });
+
+  test('should return two handed maces', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, 'Woe Star', 'Colossus Mallet'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "Woe Star Colossus Mallet" in test data');
+    }
+    const filter: ItemTypeFilter = new ItemTypeFilter();
+    const actual: IBaseItem[] = filter.filter(items, [ItemType.TWO_HAND_MACE]);
+
+    assertItemsFound(testItems, actual);
+  });
+
+  test('should return two handed swords', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, null, 'Corroded Blade'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "Corroded Blade" in test data');
+    }
+    const filter: ItemTypeFilter = new ItemTypeFilter();
+    const actual: IBaseItem[] = filter.filter(items, [ItemType.TWO_HAND_SWORD]);
+
+    assertItemsFound(testItems, actual);
+  });
+
+  test('should return wands', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, 'Pain Spire', 'Imbued Wand'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "Pain Spire Imbued Wand" in test data');
+    }
+    const filter: ItemTypeFilter = new ItemTypeFilter();
+    const actual: IBaseItem[] = filter.filter(items, [ItemType.WAND]);
+
+    assertItemsFound(testItems, actual);
+  });
+
   // test('should return body armours', () => {throw new Error('Not implemented'); });
   // test('should return boots', () => {throw new Error('Not implemented'); });
   // test('should return gloves', () => {throw new Error('Not implemented'); });
