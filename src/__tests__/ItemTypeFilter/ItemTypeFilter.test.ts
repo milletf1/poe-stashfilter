@@ -2,7 +2,7 @@ import { IBaseItem } from '../../models/items/IBaseItem';
 import { ItemType } from '../../services/filter/filter-modules/item-type-filter/ItemType';
 import ItemTypeFilter from '../../services/filter/filter-modules/item-type-filter/ItemTypeFilter';
 import { assertItemsFound, getTestItem } from '../utils';
-import json from './item-filter-test-items.json';
+import json from './item-type-filter-test-items.json';
 
 describe('Item Type Filter tests', () => {
 
@@ -234,17 +234,131 @@ describe('Item Type Filter tests', () => {
     assertItemsFound(testItems, actual);
   });
 
-  // test('should return body armours', () => {throw new Error('Not implemented'); });
-  // test('should return boots', () => {throw new Error('Not implemented'); });
-  // test('should return gloves', () => {throw new Error('Not implemented'); });
-  // test('should return helmets', () => {throw new Error('Not implemented'); });
-  // test('should return shields', () => {throw new Error('Not implemented'); });
-  // test('should return amulets', () => {throw new Error('Not implemented'); });
-  // test('should return beasts', () => {throw new Error('Not implemented'); });
-  // test('should return belts', () => {throw new Error('Not implemented'); });
-  // test('should return currency', () => {throw new Error('Not implemented'); });
-  // test('should return cards', () => {throw new Error('Not implemented'); });
-  // test('should return essences', () => {throw new Error('Not implemented'); });
+  test('should return body armours', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, 'Cloak of Defiance', 'Lacquered Garb'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "Cloak of Defiance" in test data');
+    }
+    const filter: ItemTypeFilter = new ItemTypeFilter();
+    const actual: IBaseItem[] = filter.filter(items, [ItemType.BODY_ARMOUR]);
+
+    assertItemsFound(testItems, actual);
+  });
+
+  test('should return boots', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, 'Entropy Sole', 'Ancient Greaves'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "Entropy Sole Ancient Greaves" in test data');
+    }
+    const filter: ItemTypeFilter = new ItemTypeFilter();
+    const actual: IBaseItem[] = filter.filter(items, [ItemType.BOOTS]);
+
+    assertItemsFound(testItems, actual);
+  });
+
+  test('should return gloves', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, 'Corruption Nails', 'Sorcerer Gloves'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error(
+        'failed to find expected item "Corruption Nails Sorcerer Gloves" in test data');
+    }
+    const filter: ItemTypeFilter = new ItemTypeFilter();
+    const actual: IBaseItem[] = filter.filter(items, [ItemType.GLOVES]);
+
+    assertItemsFound(testItems, actual);
+  });
+
+  test('should return helmets', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, 'Sol Shelter', 'Harlequin Mask'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "Sol Shelter Harlequin Mask" in test data');
+    }
+    const filter: ItemTypeFilter = new ItemTypeFilter();
+    const actual: IBaseItem[] = filter.filter(items, [ItemType.HELMET]);
+
+    assertItemsFound(testItems, actual);
+  });
+
+  test('should return shields', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, null, 'Archon Kite Shield'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "Archon Kite Shield" in test data');
+    }
+    const filter: ItemTypeFilter = new ItemTypeFilter();
+    const actual: IBaseItem[] = filter.filter(items, [ItemType.SHIELD]);
+
+    assertItemsFound(testItems, actual);
+  });
+
+  test('should return amulets', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, 'Hate Torc', 'Onyx Amulet'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "Hate Torc Onyx Amulet" in test data');
+    }
+    const filter: ItemTypeFilter = new ItemTypeFilter();
+    const actual: IBaseItem[] = filter.filter(items, [ItemType.AMULET]);
+
+    assertItemsFound(testItems, actual);
+  });
+
+  test('should return beasts', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, 'Grayclaw the Mangy', 'Farric Frost Hellion Alpha'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "Grayclaw the Mangy" in test data');
+    }
+    const filter: ItemTypeFilter = new ItemTypeFilter();
+    const actual: IBaseItem[] = filter.filter(items, [ItemType.BEAST]);
+
+    assertItemsFound(testItems, actual);
+  });
+
+  test('should return belts', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, 'Agony Lock', 'Rustic Sash'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "Agony Lock Rustic Sash" in test data');
+    }
+    testItems.push(getTestItem(items, 'Torment Twine', 'Stygian Vise'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "Torment Twine Stygian Vise" in test data');
+    }
+    const filter: ItemTypeFilter = new ItemTypeFilter();
+    const actual: IBaseItem[] = filter.filter(items, [ItemType.BELT]);
+
+    assertItemsFound(testItems, actual);
+  });
+
+  test('should return cards', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, null, 'Humility'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "Humility" in test data');
+    }
+    const filter: ItemTypeFilter = new ItemTypeFilter();
+    const actual: IBaseItem[] = filter.filter(items, [ItemType.CARD]);
+
+    assertItemsFound(testItems, actual);
+  });
+
+  test('should return essences', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, null, 'Shrieking Essence of Dread'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "Shrieking Essence of Dread" in test data');
+    }
+    const filter: ItemTypeFilter = new ItemTypeFilter();
+    const actual: IBaseItem[] = filter.filter(items, [ItemType.ESSENCE]);
+
+    assertItemsFound(testItems, actual);
+  });
+
   // test('should return fishing rods', () => {throw new Error('Not implemented'); });
   // test('should return flasks', () => {throw new Error('Not implemented'); });
   // test('should return gems', () => {throw new Error('Not implemented'); });
@@ -261,9 +375,10 @@ describe('Item Type Filter tests', () => {
   // test('should return map resonators', () => {throw new Error('Not implemented'); });
   // test('should return map fossils', () => {throw new Error('Not implemented'); });
   // test('should return map divine vessels', () => {throw new Error('Not implemented'); });
-  // test('should return breach and timeless splinters', () =>
-  // {throw new Error('Not implemented'); });
+  // test('should return splinters', () => {throw new Error('Not implemented'); });
   // test('should return multiple item types',  () => {throw new Error('Not implemented'); });
+  // TODO: currency one last so I have a better idea of how to exclude essences, beasts etc...
+  // test('should return currency', () => {throw new Error('Not implemented'); });
 
   // test('should return one handed weapon bases', () => {throw new Error('Not implemented'); });
   // test('should return two handed weapon bases', () => {throw new Error('Not implemented'); });

@@ -3337,5 +3337,67 @@
     "x": 9,
     "y": 6,
     "inventoryId": "Stash111"
+  },
+  {
+    "verified": false,
+    "w": 1,
+    "h": 1,
+    "ilvl": 71,
+    "icon": "https:\/\/web.poecdn.com\/image\/Art\/2DItems\/Currency\/Incubation\/IncubationLabyrinth.png?scale=1&w=1&h=1&v=d78e32bd7d589f5151934ca46fa1bec9",
+    "league": "Standard",
+    "id": "68acb87157b771d23ad82416d377b90d77d230754545f7569b8bd91d131d6e76",
+    "name": "",
+    "typeLine": "Enchanted Incubator",
+    "identified": true,
+    "explicitMods": [
+      "Adds an incubated Enchanted Helmet item to an equippable item\r\nItem drops after killing 4113 monsters"
+    ],
+    "descrText": "Right click this item then left click an item to apply it. The Incubated item drops after killing a specific number of monsters.",
+    "frameType": 0,
+    "category": {
+      "currency": [
+        "incubator"
+      ]
+    },
+    "x": 11,
+    "y": 0,
+    "inventoryId": "Stash111"
+  },
+  {
+    "verified": false,
+    "w": 1,
+    "h": 1,
+    "ilvl": 0,
+    "icon": "https:\/\/web.poecdn.com\/image\/Art\/2DItems\/Currency\/BestiaryOrbEmpty.png?scale=1&w=1&h=1&v=1e94ab199c10ad04197871406542f16e",
+    "league": "Standard",
+    "id": "ec1cc385ec81b29ce673850d31da3bf34217c6fb6f6a4164d1a9b0c49c11bb75",
+    "name": "",
+    "typeLine": "Bestiary Orb",
+    "identified": true,
+    "properties": [
+      {
+        "name": "Stack Size",
+        "values": [
+          [
+            "1\/10",
+            0
+          ]
+        ],
+        "displayMode": 0
+      }
+    ],
+    "explicitMods": [
+      "Stores a Beast in an item so it can be traded"
+    ],
+    "descrText": "Right click on this item then left click on a Beast in your Menagerie to turn it into a tradable item.",
+    "frameType": 5,
+    "stackSize": 1,
+    "maxStackSize": 10,
+    "category": {
+      "currency": []
+    },
+    "x": 11,
+    "y": 1,
+    "inventoryId": "Stash111"
   }
 ]

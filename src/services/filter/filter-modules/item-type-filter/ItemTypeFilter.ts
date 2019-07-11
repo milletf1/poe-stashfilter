@@ -44,6 +44,26 @@ const TWO_HAND_MACE_TEST_REGEX: RegExp = /.*\/2DItems\/Weapons\/TwoHandWeapons\/
 const TWO_HAND_SWORD_TEST_REGEX: RegExp = /.*\/2DItems\/Weapons\/TwoHandWeapons\/TwoHandSwords\//;
 /** Regex for checking wands */
 const WAND_TEST_REGEX: RegExp = /.*\/2DItems\/Weapons\/OneHandWeapons\/Wands\//;
+/** Regex for checking body armours */
+const BODY_ARMOUR_TEST_REGEX: RegExp = /.*\/2DItems\/Armours\/BodyArmours\//;
+/** Regex for checking boots */
+const BOOTS_TEST_REGEX: RegExp = /.*\/2DItems\/Armours\/Boots\//;
+/** Regex for checking gloves */
+const GLOVES_TEST_REGEX: RegExp = /.*\/2DItems\/Armours\/Gloves\//;
+/** Regex for checking helmets */
+const HELMET_TEST_REGEX: RegExp = /.*\/2DItems\/Armours\/Helmets\//;
+/** Regex for checking shields */
+const SHIELD_TEST_REGEX: RegExp = /.*\/2DItems\/Armours\/Shields\//;
+/** Regex for checking amulets */
+const AMULET_TEST_REGEX: RegExp = /.*\/2DItems\/Amulets\//;
+/** Regex for checking beasts */
+const BEAST_TEST_REGEX: RegExp = /.*\/2DItems\/Currency\/BestiaryOrbFull\.png/;
+/** Regex for checking belts */
+const BELT_TEST_REGEX: RegExp = /.*\/2DItems\/Belts\//;
+/** Regex for checking cards */
+const CARD_TEST_REGEX: RegExp = /.*\/2DItems\/Divination\//;
+/** Regex for checking essences */
+const ESSENCE_TEST_REGEX: RegExp = /.*\/2DItems\/Currency\/Essence\//;
 
 class ItemTypeFilter implements IFilterModule<ItemType[] | IItemBase[] | IItemFilterParams[]> {
   public type: string = 'ItemTypeFilter';
@@ -103,6 +123,16 @@ class ItemTypeFilter implements IFilterModule<ItemType[] | IItemBase[] | IItemFi
       case ItemType.TWO_HAND_MACE: return TWO_HAND_MACE_TEST_REGEX.test(item.icon);
       case ItemType.TWO_HAND_SWORD: return TWO_HAND_SWORD_TEST_REGEX.test(item.icon);
       case ItemType.WAND: return WAND_TEST_REGEX.test(item.icon);
+      case ItemType.BODY_ARMOUR: return BODY_ARMOUR_TEST_REGEX.test(item.icon);
+      case ItemType.BOOTS: return BOOTS_TEST_REGEX.test(item.icon);
+      case ItemType.GLOVES: return GLOVES_TEST_REGEX.test(item.icon);
+      case ItemType.HELMET: return HELMET_TEST_REGEX.test(item.icon);
+      case ItemType.SHIELD: return SHIELD_TEST_REGEX.test(item.icon);
+      case ItemType.AMULET: return AMULET_TEST_REGEX.test(item.icon);
+      case ItemType.BEAST: return BEAST_TEST_REGEX.test(item.icon);
+      case ItemType.BELT: return BELT_TEST_REGEX.test(item.icon);
+      case ItemType.CARD: return CARD_TEST_REGEX.test(item.icon);
+      case ItemType.ESSENCE: return ESSENCE_TEST_REGEX.test(item.icon);
       default: return false;
     }
   }
