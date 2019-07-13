@@ -359,16 +359,131 @@ describe('Item Type Filter tests', () => {
     assertItemsFound(testItems, actual);
   });
 
-  // test('should return fishing rods', () => {throw new Error('Not implemented'); });
-  // test('should return flasks', () => {throw new Error('Not implemented'); });
-  // test('should return gems', () => {throw new Error('Not implemented'); });
-  // test('should return incubators', () => {throw new Error('Not implemented'); });
-  // test('should return jewels', () => {throw new Error('Not implemented'); });
-  // test('should return leaguestones', () => {throw new Error('Not implemented'); });
-  // test('should return maps', () => {throw new Error('Not implemented'); });
-  // test('should return nets', () => {throw new Error('Not implemented'); });
-  // test('should return prophecies', () => {throw new Error('Not implemented'); });
-  // test('should return quivers', () => {throw new Error('Not implemented'); });
+  test('should return fishing rods', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, 'Miracle Chum', 'Fishing Rod'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "Miracle Chum Fishing Rod" in test data');
+    }
+    const filter: ItemTypeFilter = new ItemTypeFilter();
+    const actual: IBaseItem[] = filter.filter(items, [ItemType.FISHING_ROD]);
+
+    assertItemsFound(testItems, actual);
+  });
+
+  test('should return flasks', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, 'Lavianga\'s Spirit', 'Sanctified Mana Flask'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "Lavianga\'s Spirit" in test data');
+    }
+    const filter: ItemTypeFilter = new ItemTypeFilter();
+    const actual: IBaseItem[] = filter.filter(items, [ItemType.FLASK]);
+
+    assertItemsFound(testItems, actual);
+  });
+
+  test('should return gems', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, null, 'Minion Life Support'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "Minion Life Support" in test data');
+    }
+    const filter: ItemTypeFilter = new ItemTypeFilter();
+    const actual: IBaseItem[] = filter.filter(items, [ItemType.GEM]);
+
+    assertItemsFound(testItems, actual);
+  });
+
+  test('should return incubators', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, null, 'Enchanted Incubator'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "Enchanted Incubator" in test data');
+    }
+    const filter: ItemTypeFilter = new ItemTypeFilter();
+    const actual: IBaseItem[] = filter.filter(items, [ItemType.INCUBATOR]);
+
+    assertItemsFound(testItems, actual);
+  });
+
+  test('should return jewels', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, 'Damnation Glisten', 'Cobalt Jewel'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "Damnation Glisten Cobalt Jewel" in test data');
+    }
+    testItems.push(getTestItem(items, 'Foul Iridescence', 'Searching Eye Jewel'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "Enduring Breach Leaguestone" in test data');
+    }
+    const filter: ItemTypeFilter = new ItemTypeFilter();
+    const actual: IBaseItem[] = filter.filter(items, [ItemType.JEWEL]);
+
+    assertItemsFound(testItems, actual);
+  });
+
+  test('should return leaguestones', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, null, 'Enduring Breach Leaguestone'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "Enduring Breach Leaguestone" in test data');
+    }
+    const filter: ItemTypeFilter = new ItemTypeFilter();
+    const actual: IBaseItem[] = filter.filter(items, [ItemType.LEAGUESTONE]);
+
+    assertItemsFound(testItems, actual);
+  });
+
+  test('should return maps', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, null, 'Superior Shaped Spider Forest Map'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error(
+        'failed to find expected item "Superior Shaped Spider Forest Map" in test data');
+    }
+    const filter: ItemTypeFilter = new ItemTypeFilter();
+    const actual: IBaseItem[] = filter.filter(items, [ItemType.MAP]);
+
+    assertItemsFound(testItems, actual);
+  });
+
+  test('should return nets', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, null, 'Strong Steel Net'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "Strong Steel Net" in test data');
+    }
+    const filter: ItemTypeFilter = new ItemTypeFilter();
+    const actual: IBaseItem[] = filter.filter(items, [ItemType.NET]);
+
+    assertItemsFound(testItems, actual);
+  });
+
+  test('should return prophecies', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, null, 'The Last Watch'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "The Last Watch" in test data');
+    }
+    const filter: ItemTypeFilter = new ItemTypeFilter();
+    const actual: IBaseItem[] = filter.filter(items, [ItemType.PROPHECY]);
+
+    assertItemsFound(testItems, actual);
+  });
+
+  test('should return quivers', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, 'Armageddon Skewer', 'Penetrating Arrow Quiver'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "Armageddon Skewer" in test data');
+    }
+    const filter: ItemTypeFilter = new ItemTypeFilter();
+    const actual: IBaseItem[] = filter.filter(items, [ItemType.QUIVER]);
+
+    assertItemsFound(testItems, actual);
+  });
+
   // test('should return rings', () => {throw new Error('Not implemented'); });
   // test('should return scarabs', () => {throw new Error('Not implemented'); });
   // test('should return map fragments', () => {throw new Error('Not implemented'); });
@@ -376,8 +491,10 @@ describe('Item Type Filter tests', () => {
   // test('should return map fossils', () => {throw new Error('Not implemented'); });
   // test('should return map divine vessels', () => {throw new Error('Not implemented'); });
   // test('should return splinters', () => {throw new Error('Not implemented'); });
+  // test('should return breachstones', () => {throw new Error('Not implemented'); });
   // test('should return multiple item types',  () => {throw new Error('Not implemented'); });
-  // TODO: currency one last so I have a better idea of how to exclude essences, beasts etc...
+  // TODO: currency one last so I have a better idea of how to exclude
+  // TODO: essences, beasts, incubators, leaguestones, nets, prophecies
   // test('should return currency', () => {throw new Error('Not implemented'); });
 
   // test('should return one handed weapon bases', () => {throw new Error('Not implemented'); });

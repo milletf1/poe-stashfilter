@@ -64,6 +64,26 @@ const BELT_TEST_REGEX: RegExp = /.*\/2DItems\/Belts\//;
 const CARD_TEST_REGEX: RegExp = /.*\/2DItems\/Divination\//;
 /** Regex for checking essences */
 const ESSENCE_TEST_REGEX: RegExp = /.*\/2DItems\/Currency\/Essence\//;
+/** Regex for checking fishing rods */
+const FISHING_ROD_TEST_REGEX: RegExp = /.*\/2DItems\/Weapons\/TwoHandWeapons\/FishingRods\//;
+/** Regex for checking flasks */
+const FLASK_TEST_REGEX: RegExp = /https:\/\/web\.poecdn\.com\/gen\/image\/.*\/Item\.png/;
+/** Regex for checking gems */
+const GEM_TEST_REGEX: RegExp = /.*\/2DItems\/Gems\//;
+/** Regex for checking incubators */
+const INCUBATOR_TEST_REGEX: RegExp = /.*\/2DItems\/Currency\/Incubation\//;
+/** Regex for checking jewels */
+const JEWEL_TEST_REGEX: RegExp = /.*\/2DItems\/Jewels\//;
+/** Regex for checking leaguestones */
+const LEAGUESTONE_TEST_REGEX: RegExp = /.*\/2DItems\/Currency\/Classic\//;
+/** Regex for checking maps */
+const MAP_TEST_REGEX: RegExp = /.*\/2DItems\/Maps\/AtlasMaps\/(?!Fragment).*/;
+/** Regex for testing nets */
+const NET_TEST_REGEX: RegExp = /.*\/2DItems\/Currency\/BestiaryTrap/;
+/** Regex for prophecies */
+const PROPHECY_TEST_REGEX: RegExp = /.*\/2DItems\/Currency\/ProphecyOrb/;
+/** Regex for quivers */
+const QUIVER_TEST_REGEX: RegExp = /.*\/2DItems\/Quivers\//;
 
 class ItemTypeFilter implements IFilterModule<ItemType[] | IItemBase[] | IItemFilterParams[]> {
   public type: string = 'ItemTypeFilter';
@@ -133,6 +153,16 @@ class ItemTypeFilter implements IFilterModule<ItemType[] | IItemBase[] | IItemFi
       case ItemType.BELT: return BELT_TEST_REGEX.test(item.icon);
       case ItemType.CARD: return CARD_TEST_REGEX.test(item.icon);
       case ItemType.ESSENCE: return ESSENCE_TEST_REGEX.test(item.icon);
+      case ItemType.FISHING_ROD: return FISHING_ROD_TEST_REGEX.test(item.icon);
+      case ItemType.FLASK: return FLASK_TEST_REGEX.test(item.icon);
+      case ItemType.GEM: return GEM_TEST_REGEX.test(item.icon);
+      case ItemType.INCUBATOR: return INCUBATOR_TEST_REGEX.test(item.icon);
+      case ItemType.JEWEL: return JEWEL_TEST_REGEX.test(item.icon);
+      case ItemType.LEAGUESTONE: return LEAGUESTONE_TEST_REGEX.test(item.icon);
+      case ItemType.MAP: return MAP_TEST_REGEX.test(item.icon);
+      case ItemType.NET: return NET_TEST_REGEX.test(item.icon);
+      case ItemType.PROPHECY: return PROPHECY_TEST_REGEX.test(item.icon);
+      case ItemType.QUIVER: return QUIVER_TEST_REGEX.test(item.icon);
       default: return false;
     }
   }
