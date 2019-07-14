@@ -81,3 +81,9 @@ export const SCARAB_TEST_REGEX: RegExp = /.*\/2DItems\/Currency\/Scarabs/;
 /** Regex for checking map fragments */
 export const MAP_FRAGMENT_TEST_REGEX: RegExp =
   /.*\/2DItems\/Maps\/((Uber)?Vaal|.*Fragment)/;
+/** Regex for checking resonators */
+export const RESONATOR_TYPELINE_TEST_REGEX: RegExp = /.*\ Resonator$/;
+/** Regex for checking fossils */
+export const FOSSIL_TEST_REGEX: RegExp = /.*\/2DItems\/Currency\/Delve\/.*Fossil\.png/;
+/** Regex for checking divine vessels */
+export const DIVINE_VESSEL_TEST_REGEX: RegExp = /.*\/2DItems\/Maps\/SinFlask.*\.png/;

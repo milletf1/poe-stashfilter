@@ -532,14 +532,48 @@ describe('Item Type Filter tests', () => {
     assertItemsFound(testItems, actual);
   });
 
-  // test('should return resonators', () => {throw new Error('Not implemented'); });
-  // test('should return fossils', () => {throw new Error('Not implemented'); });
-  // test('should return divine vessels', () => {throw new Error('Not implemented'); });
+  test('should return resonators', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, null, 'Potent Chaotic Resonator'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "Potent Chaotic Resonator" in test data');
+    }
+    const filter: ItemTypeFilter = new ItemTypeFilter();
+    const actual: IBaseItem[] = filter.filter(items, [ItemType.RESONATOR]);
+
+    assertItemsFound(testItems, actual);
+  });
+
+  test('should return fossils', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, null, 'Dense Fossil'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "Dense Fossil" in test data');
+    }
+    const filter: ItemTypeFilter = new ItemTypeFilter();
+    const actual: IBaseItem[] = filter.filter(items, [ItemType.FOSSIL]);
+
+    assertItemsFound(testItems, actual);
+  });
+
+  test('should return divine vessels', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, null, 'Divine Vessel'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "Divine Vessel" in test data');
+    }
+    const filter: ItemTypeFilter = new ItemTypeFilter();
+    const actual: IBaseItem[] = filter.filter(items, [ItemType.DIVINE_VESSEL]);
+
+    assertItemsFound(testItems, actual);
+  });
+
   // test('should return splinters', () => {throw new Error('Not implemented'); });
   // test('should return breachstones', () => {throw new Error('Not implemented'); });
   // test('should return multiple item types',  () => {throw new Error('Not implemented'); });
   // TODO: currency one last so I have a better idea of how to exclude
   // TODO: essences, beasts, incubators, leaguestones, nets, prophecies, breachstones, scarabs
+  // delve
   // test('should return currency', () => {throw new Error('Not implemented'); });
 
   // test('should return one handed weapon bases', () => {throw new Error('Not implemented'); });

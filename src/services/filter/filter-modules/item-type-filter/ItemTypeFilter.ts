@@ -122,6 +122,12 @@ class ItemTypeFilter implements IFilterModule<ItemType[] | IItemBase[] | IItemFi
         return itemTypeTestRegExps.SCARAB_TEST_REGEX.test(item.icon);
       case ItemType.MAP_FRAGMENT:
         return itemTypeTestRegExps.MAP_FRAGMENT_TEST_REGEX.test(item.icon);
+      case ItemType.RESONATOR:
+        return itemTypeTestRegExps.RESONATOR_TYPELINE_TEST_REGEX.test(item.typeLine);
+      case ItemType.FOSSIL:
+        return itemTypeTestRegExps.FOSSIL_TEST_REGEX.test(item.icon);
+      case ItemType.DIVINE_VESSEL:
+        return itemTypeTestRegExps.DIVINE_VESSEL_TEST_REGEX.test(item.icon);
       default: return false;
     }
   }
