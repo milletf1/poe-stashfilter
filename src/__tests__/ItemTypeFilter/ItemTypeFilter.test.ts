@@ -484,17 +484,62 @@ describe('Item Type Filter tests', () => {
     assertItemsFound(testItems, actual);
   });
 
-  // test('should return rings', () => {throw new Error('Not implemented'); });
-  // test('should return scarabs', () => {throw new Error('Not implemented'); });
-  // test('should return map fragments', () => {throw new Error('Not implemented'); });
-  // test('should return map resonators', () => {throw new Error('Not implemented'); });
-  // test('should return map fossils', () => {throw new Error('Not implemented'); });
-  // test('should return map divine vessels', () => {throw new Error('Not implemented'); });
+  test('should return rings', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, 'Cataclysm Band', 'Coral Ring'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "Cataclysm Band Coral Ring" in test data');
+    }
+    const filter: ItemTypeFilter = new ItemTypeFilter();
+    const actual: IBaseItem[] = filter.filter(items, [ItemType.RING]);
+
+    assertItemsFound(testItems, actual);
+  });
+
+  test('should return scarabs', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, null, 'Rusted Perandus Scarab'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "Rusted Perandus Scarab" in test data');
+    }
+    const filter: ItemTypeFilter = new ItemTypeFilter();
+    const actual: IBaseItem[] = filter.filter(items, [ItemType.SCARAB]);
+
+    assertItemsFound(testItems, actual);
+  });
+
+  test('should return map fragments', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, null, 'Sacrifice at Midnight'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "Sacrifice at Midnight" in test data');
+    }
+    testItems.push(getTestItem(items, null, 'Mortal Rage'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "Mortal Rage" in test data');
+    }
+    testItems.push(getTestItem(items, null, 'Fragment of the Minotaur'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "Fragment of the Minotaur" in test data');
+    }
+    testItems.push(getTestItem(items, null, 'Timeless Karui Emblem'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "Timeless Karui Emblem" in test data');
+    }
+    const filter: ItemTypeFilter = new ItemTypeFilter();
+    const actual: IBaseItem[] = filter.filter(items, [ItemType.MAP_FRAGMENT]);
+
+    assertItemsFound(testItems, actual);
+  });
+
+  // test('should return resonators', () => {throw new Error('Not implemented'); });
+  // test('should return fossils', () => {throw new Error('Not implemented'); });
+  // test('should return divine vessels', () => {throw new Error('Not implemented'); });
   // test('should return splinters', () => {throw new Error('Not implemented'); });
   // test('should return breachstones', () => {throw new Error('Not implemented'); });
   // test('should return multiple item types',  () => {throw new Error('Not implemented'); });
   // TODO: currency one last so I have a better idea of how to exclude
-  // TODO: essences, beasts, incubators, leaguestones, nets, prophecies
+  // TODO: essences, beasts, incubators, leaguestones, nets, prophecies, breachstones, scarabs
   // test('should return currency', () => {throw new Error('Not implemented'); });
 
   // test('should return one handed weapon bases', () => {throw new Error('Not implemented'); });
@@ -537,6 +582,7 @@ describe('Item Type Filter tests', () => {
   // test('should return map fragment bases', () => {throw new Error('Not implemented'); });
   // test('should return map resonator bases', () => {throw new Error('Not implemented'); });
   // test('should return map fossil bases', () => {throw new Error('Not implemented'); });
+  // test('should return map breachstone bases', () => {throw new Error('Not implemented'); });
   // test('should return breach and timeless splinter bases', () =>
   // {throw new Error('Not implemented'); });
   // test('should return multiple item bases', () => {throw new Error('Not implemented'); });

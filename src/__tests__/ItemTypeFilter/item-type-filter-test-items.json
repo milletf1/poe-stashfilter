@@ -3399,5 +3399,61 @@
     "x": 11,
     "y": 1,
     "inventoryId": "Stash111"
+  },
+  {
+    "verified": false,
+    "w": 1,
+    "h": 1,
+    "ilvl": 0,
+    "icon": "https:\/\/web.poecdn.com\/image\/Art\/2DItems\/Maps\/KaruiFragment.png?scale=1&w=1&h=1&v=f7bfe0a32b0c064acb8255b457c40535",
+    "league": "Standard",
+    "id": "2431cd76e2105294d2c3eada7cbf6955c4a6441185533d50f27849e8f64dddb8",
+    "name": "",
+    "typeLine": "Timeless Karui Emblem",
+    "identified": true,
+    "descrText": "Place two or more different Emblems in a Map Device to access the Domain of Timeless Conflict. Can only be used once.",
+    "frameType": 0,
+    "category": {
+      "maps": [
+        "fragment"
+      ]
+    },
+    "x": 11,
+    "y": 2,
+    "inventoryId": "Stash111"
+  },
+  {
+    "verified": false,
+    "w": 1,
+    "h": 1,
+    "ilvl": 0,
+    "icon": "https:\/\/web.poecdn.com\/image\/Art\/2DItems\/Maps\/TemplarShard.png?scale=1&w=1&h=1&v=82d3d517ed1caa15a3dfad5f3a0a8fff",
+    "league": "Standard",
+    "id": "f6c76e8770463576b2e7346b6432bd67583e803f74203ab0bfb1a181a0f58450",
+    "name": "",
+    "typeLine": "Timeless Templar Splinter",
+    "identified": true,
+    "properties": [
+      {
+        "name": "Stack Size",
+        "values": [
+          [
+            "81/100",
+            0
+          ]
+        ],
+        "displayMode": 0
+      }
+    ],
+    "descrText": "Combine 100 Splinters to create a Timeless Templar Emblem.",
+    "frameType": 5,
+    "stackSize": 81,
+    "maxStackSize": 5000,
+    "category": {
+      "currency": []
+    },
+    "x": 11,
+    "y": 3,
+    "inventoryId": "Stash111"
   }
 ]
