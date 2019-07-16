@@ -568,13 +568,68 @@ describe('Item Type Filter tests', () => {
     assertItemsFound(testItems, actual);
   });
 
-  // test('should return splinters', () => {throw new Error('Not implemented'); });
-  // test('should return breachstones', () => {throw new Error('Not implemented'); });
-  // test('should return multiple item types',  () => {throw new Error('Not implemented'); });
-  // TODO: currency one last so I have a better idea of how to exclude
-  // TODO: essences, beasts, incubators, leaguestones, nets, prophecies, breachstones, scarabs
-  // delve
-  // test('should return currency', () => {throw new Error('Not implemented'); });
+  test('should return splinters', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, null, 'Splinter of Xoph'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "Splinter of Xoph" in test data');
+    }
+    testItems.push(getTestItem(items, null, 'Timeless Templar Splinter'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "Timeless Templar Splinter" in test data');
+    }
+    const filter: ItemTypeFilter = new ItemTypeFilter();
+    const actual: IBaseItem[] = filter.filter(items, [ItemType.SPLINTER]);
+
+    assertItemsFound(testItems, actual);
+   });
+
+  test('should return breachstones', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, null, 'Xoph\'s Breachstone'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "Xoph\'s Breachstone" in test data');
+    }
+    const filter: ItemTypeFilter = new ItemTypeFilter();
+    const actual: IBaseItem[] = filter.filter(items, [ItemType.BREACHSTONE]);
+
+    assertItemsFound(testItems, actual);
+  });
+
+  test('should return multiple item types',  () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, 'Cataclysm Band', 'Coral Ring'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "Cataclysm Band Coral Ring" in test data');
+    }
+    testItems.push(getTestItem(items, 'Hate Torc', 'Onyx Amulet'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "Hate Torc Onyx Amulet" in test data');
+    }
+    const filter: ItemTypeFilter = new ItemTypeFilter();
+    const actual: IBaseItem[] = filter.filter(items, [ItemType.RING, ItemType.AMULET]);
+
+    assertItemsFound(testItems, actual);
+  });
+
+  test('should return currency', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, null, 'Orb of Fusing'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "Orb of Fusing" in test data');
+    }
+    testItems.push(getTestItem(items, null, 'Annulment Shard'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "Annulment Shard" in test data');
+    }
+    testItems.push(getTestItem(items, null, 'Bestiary Orb'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "Bestiary Orb" in test data');
+    }
+    const filter: ItemTypeFilter = new ItemTypeFilter();
+    const actual: IBaseItem[] = filter.filter(items, [ItemType.CURRENCY]);
+    assertItemsFound(testItems, actual);
+  });
 
   // test('should return one handed weapon bases', () => {throw new Error('Not implemented'); });
   // test('should return two handed weapon bases', () => {throw new Error('Not implemented'); });

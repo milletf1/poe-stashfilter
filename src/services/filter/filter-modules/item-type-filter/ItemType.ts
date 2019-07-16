@@ -37,8 +37,9 @@ export const enum ItemType {
   RING,
   SCARAB,
   MAP_FRAGMENT,
-  SPLINTER, // TODO: reevaluate decision to include splinters
+  SPLINTER,
   RESONATOR,
   FOSSIL,
   DIVINE_VESSEL,
+  BREACHSTONE,
 }

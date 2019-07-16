@@ -87,3 +87,14 @@ export const RESONATOR_TYPELINE_TEST_REGEX: RegExp = /.*\ Resonator$/;
 export const FOSSIL_TEST_REGEX: RegExp = /.*\/2DItems\/Currency\/Delve\/.*Fossil\.png/;
 /** Regex for checking divine vessels */
 export const DIVINE_VESSEL_TEST_REGEX: RegExp = /.*\/2DItems\/Maps\/SinFlask.*\.png/;
+/** Regex for checking splinters */
+export const SPLINTER_TEST_REGEX: RegExp =
+  /.*\/2DItems\/(Maps\/.+Shard|Currency\/Breach\/BreachShard.+)\.png/;
+/** Regex for checking splinter typeline */
+export const SPLINTER_TYPELINE_TEST_REGEX: RegExp = /(^Splinter\ of|Splinter$)/;
+/** Regex for checking breachstones */
+export const BREACHSTONE_TEST_REGEX: RegExp =
+  /.*\/2DItems\/Currency\/Breach\/BreachFragments.+\.png/;
+/** Regex for checking currency */
+export const CURRENCY_TEST_REGEX: RegExp =
+/.*\/2DItems\/Currency\/(?!Bestiary(OrbFull|Trap\d)|ProphecyOrbRed|.+\/).+\.png/;
