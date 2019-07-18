@@ -1,4 +1,5 @@
 import { IBaseItem } from '../../models/items/IBaseItem';
+import { createIItemBase, IItemBase } from '../../services/filter/filter-modules/item-type-filter/IItemBase';
 import { ItemType } from '../../services/filter/filter-modules/item-type-filter/ItemType';
 import ItemTypeFilter from '../../services/filter/filter-modules/item-type-filter/ItemTypeFilter';
 import { assertItemsFound, getTestItem } from '../utils';
@@ -631,9 +632,46 @@ describe('Item Type Filter tests', () => {
     assertItemsFound(testItems, actual);
   });
 
-  // test('should return one handed weapon bases', () => {throw new Error('Not implemented'); });
-  // test('should return two handed weapon bases', () => {throw new Error('Not implemented'); });
-  // test('should return bow bases', () => {throw new Error('Not implemented'); });
+  test('should return one handed weapon bases', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, 'Maelstr\u00f6m Stinger', 'Golden Kris'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error(
+        'failed to find expected item "Maelstr\u00f6m Stinger Golden Kris" in test data',
+      );
+    }
+    const filter: ItemTypeFilter = new ItemTypeFilter();
+    const itemBase: IItemBase = createIItemBase(ItemType.ONE_HAND_WEAPON, 'Golden Kris');
+    const actual: IBaseItem[] = filter.filter(items, [itemBase]);
+
+    assertItemsFound(testItems, actual);
+  });
+
+  test('should return two handed weapon bases', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, 'Reaper\'s Pursuit', 'Shadow Axe'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "Reaper\'s Pursuit Shadow Axe" in test data');
+    }
+    const filter: ItemTypeFilter = new ItemTypeFilter();
+    const itemBase: IItemBase = createIItemBase(ItemType.TWO_HAND_WEAPON, 'Shadow Axe');
+    const actual: IBaseItem[] = filter.filter(items, [itemBase]);
+
+    assertItemsFound(testItems, actual);
+  });
+
+  test('should return bow bases', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, 'The Tempest', 'Long Bow'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "The Tempest Long Bow" in test data');
+    }
+    const filter: ItemTypeFilter = new ItemTypeFilter();
+    const itemBase: IItemBase = createIItemBase(ItemType.BOW, 'Long Bow');
+    const actual: IBaseItem[] = filter.filter(items, [itemBase]);
+
+    assertItemsFound(testItems, actual);
+  });
   // test('should return claw bases', () => {throw new Error('Not implemented'); });
   // test('should return dagger bases', () => {throw new Error('Not implemented'); });
   // test('should return one handed axe bases', () => {throw new Error('Not implemented'); });

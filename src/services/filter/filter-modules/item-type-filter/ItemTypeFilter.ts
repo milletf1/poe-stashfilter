@@ -12,13 +12,34 @@ class ItemTypeFilter implements IFilterModule<ItemType[] | IItemBase[] | IItemFi
     items: IBaseItem[],
     conditions: ItemType[] | IItemBase[] | IItemFilterParams[],
   ): IBaseItem[] {
+    if (!conditions || conditions.length === 0) {
+      return [];
+    }
     if (isIItemFilterParams(conditions)) {
       // TODO ...
-    } else if (isIItemBase(conditions)) {
-      // TODO ...
+    } else if (isIItemBase(conditions[0])) {
+      return this.filterItemBases(items, conditions as IItemBase[]);
     }
     // array of ItemType
     return this.filterItemTypes(items, conditions as ItemType[]);
+  }
+
+  /**
+   * Filters an array of base items based on their item base
+   * @param items Thie items to filter
+   * @param itemBases The item bases to filter against
+   */
+  private filterItemBases(items: IBaseItem[], itemBases: IItemBase[]): IBaseItem[] {
+    const foundItems: IBaseItem[] = [];
+
+    for (const item of items) {
+      for (const itemBase of itemBases) {
+        if (this.checkItemBaseMatch(item, itemBase)) {
+          foundItems.push(item);
+        }
+      }
+    }
+    return foundItems;
   }
 
   /**
@@ -38,6 +59,16 @@ class ItemTypeFilter implements IFilterModule<ItemType[] | IItemBase[] | IItemFi
       }
     }
     return foundItems;
+  }
+
+  /**
+   * Checks if an item belongs to an item base
+   * @param item The item to check
+   * @param itemBase The item base to check against
+   */
+  private checkItemBaseMatch(item: IBaseItem, itemBase: IItemBase): boolean {
+    return this.checkItemTypeMatch(item, itemBase.type)
+      && item.typeLine.indexOf(itemBase.base) !== -1;
   }
 
   /**
