@@ -672,8 +672,33 @@ describe('Item Type Filter tests', () => {
 
     assertItemsFound(testItems, actual);
   });
-  // test('should return claw bases', () => {throw new Error('Not implemented'); });
-  // test('should return dagger bases', () => {throw new Error('Not implemented'); });
+
+  test('should return claw bases', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, 'Mortem Morsu', 'Fright Claw'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "Mortem Morsu" in test data');
+    }
+    const filter: ItemTypeFilter = new ItemTypeFilter();
+    const itemBase: IItemBase = createIItemBase(ItemType.CLAW, 'Fright Claw');
+    const actual: IBaseItem[] = filter.filter(items, [itemBase]);
+
+    assertItemsFound(testItems, actual);
+  });
+
+  test('should return dagger bases', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, 'Maelstr\u00f6m Stinger', 'Golden Kris'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "Maelstr\u00f6m Stinger" in test data');
+    }
+    const filter: ItemTypeFilter = new ItemTypeFilter();
+    const itemBase: IItemBase = createIItemBase(ItemType.DAGGER, 'Golden Kris');
+    const actual: IBaseItem[] = filter.filter(items, [itemBase]);
+
+    assertItemsFound(testItems, actual);
+  });
+
   // test('should return one handed axe bases', () => {throw new Error('Not implemented'); });
   // test('should return one handed mace bases', () => {throw new Error('Not implemented'); });
   // test('should return one handed sword bases', () => {throw new Error('Not implemented'); });
