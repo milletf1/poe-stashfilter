@@ -699,28 +699,267 @@ describe('Item Type Filter tests', () => {
     assertItemsFound(testItems, actual);
   });
 
-  // test('should return one handed axe bases', () => {throw new Error('Not implemented'); });
-  // test('should return one handed mace bases', () => {throw new Error('Not implemented'); });
-  // test('should return one handed sword bases', () => {throw new Error('Not implemented'); });
-  // test('should return sceptre bases', () => {throw new Error('Not implemented'); });
-  // test('should return staff bases', () => {throw new Error('Not implemented'); });
-  // test('should return two handed axe bases', () => {throw new Error('Not implemented'); });
-  // test('should return two handed mace bases', () => {throw new Error('Not implemented'); });
-  // test('should return two handed sword bases', () => {throw new Error('Not implemented'); });
-  // test('should return wand bases', () => {throw new Error('Not implemented'); });
-  // test('should return body armour bases', () => {throw new Error('Not implemented'); });
-  // test('should return boot bases', () => {throw new Error('Not implemented'); });
-  // test('should return glove bases', () => {throw new Error('Not implemented'); });
-  // test('should return helmet bases', () => {throw new Error('Not implemented'); });
-  // test('should return shield bases', () => {throw new Error('Not implemented'); });
-  // test('should return amulet bases', () => {throw new Error('Not implemented'); });
-  // test('should return beast bases', () => {throw new Error('Not implemented'); });
-  // test('should return belt bases', () => {throw new Error('Not implemented'); });
-  // test('should return currency bases', () => {throw new Error('Not implemented'); });
-  // test('should return card bases', () => {throw new Error('Not implemented'); });
-  // test('should return essence bases', () => {throw new Error('Not implemented'); });
-  // test('should return fishing rod bases', () => {throw new Error('Not implemented'); });
-  // test('should return flask bases', () => {throw new Error('Not implemented'); });
+  test('should return one handed axe bases', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, null, 'Siege Axe'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "Siege Axe" in test data');
+    }
+    const filter: ItemTypeFilter = new ItemTypeFilter();
+    const itemBase: IItemBase = createIItemBase(ItemType.ONE_HAND_AXE, 'Siege Axe');
+    const actual: IBaseItem[] = filter.filter(items, [itemBase]);
+
+    assertItemsFound(testItems, actual);
+  });
+
+  test('should return one handed mace bases', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, null, 'Tribal Club'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "Tribal Club" in test data');
+    }
+    const filter: ItemTypeFilter = new ItemTypeFilter();
+    const itemBase: IItemBase = createIItemBase(ItemType.ONE_HAND_MACE, 'Tribal Club');
+    const actual: IBaseItem[] = filter.filter(items, [itemBase]);
+
+    assertItemsFound(testItems, actual);
+  });
+
+  test('should return one handed sword bases', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, 'Severed in Sleep', 'Cutlass'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "Severed in Sleep" in test data');
+    }
+    const filter: ItemTypeFilter = new ItemTypeFilter();
+    const itemBase: IItemBase = createIItemBase(ItemType.ONE_HAND_SWORD, 'Cutlass');
+    const actual: IBaseItem[] = filter.filter(items, [itemBase]);
+
+    assertItemsFound(testItems, actual);
+   });
+
+  test('should return sceptre bases', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, 'Doon Cuebiyari', 'Vaal Sceptre'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "Doon Cuebiyari" in test data');
+    }
+    const filter: ItemTypeFilter = new ItemTypeFilter();
+    const itemBase: IItemBase = createIItemBase(ItemType.SCEPTRE, 'Vaal Sceptre');
+    const actual: IBaseItem[] = filter.filter(items, [itemBase]);
+
+    assertItemsFound(testItems, actual);
+  });
+
+  test('should return staff bases', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, null, 'Imperial Staff'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "Imperial Staff" in test data');
+    }
+    const filter: ItemTypeFilter = new ItemTypeFilter();
+    const itemBase: IItemBase = createIItemBase(ItemType.STAFF, 'Imperial Staff');
+    const actual: IBaseItem[] = filter.filter(items, [itemBase]);
+
+    assertItemsFound(testItems, actual);
+  });
+
+  test('should return two handed axe bases', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, 'Reaper\'s Pursuit', 'Shadow Axe'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "Reaper\'s Pursuit Shadow Axe" in test data');
+    }
+    const filter: ItemTypeFilter = new ItemTypeFilter();
+    const itemBase: IItemBase = createIItemBase(ItemType.TWO_HAND_AXE, 'Shadow Axe');
+    const actual: IBaseItem[] = filter.filter(items, [itemBase]);
+
+    assertItemsFound(testItems, actual);
+  });
+
+  test('should return two handed mace bases', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, 'Woe Star', 'Colossus Mallet'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "Woe Star Colossus Mallet" in test data');
+    }
+    const filter: ItemTypeFilter = new ItemTypeFilter();
+    const itemBase: IItemBase = createIItemBase(ItemType.TWO_HAND_MACE, 'Colossus Mallet');
+    const actual: IBaseItem[] = filter.filter(items, [itemBase]);
+
+    assertItemsFound(testItems, actual);
+  });
+
+  test('should return two handed sword bases', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, null, 'Corroded Blade'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "Corroded Blade" in test data');
+    }
+    const filter: ItemTypeFilter = new ItemTypeFilter();
+    const itemBase: IItemBase = createIItemBase(ItemType.TWO_HAND_SWORD, 'Corroded Blade');
+    const actual: IBaseItem[] = filter.filter(items, [itemBase]);
+
+    assertItemsFound(testItems, actual);
+  });
+
+  test('should return wand bases', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, 'Pain Spire', 'Imbued Wand'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "Pain Spire Imbued Wand" in test data');
+    }
+    const filter: ItemTypeFilter = new ItemTypeFilter();
+    const itemBase: IItemBase = createIItemBase(ItemType.WAND, 'Imbued Wand');
+    const actual: IBaseItem[] = filter.filter(items, [itemBase]);
+
+    assertItemsFound(testItems, actual);
+  });
+
+  test('should return body armour bases', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, 'Cloak of Defiance', 'Lacquered Garb'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "Cloak of Defiance" in test data');
+    }
+    const filter: ItemTypeFilter = new ItemTypeFilter();
+    const itemBase: IItemBase = createIItemBase(ItemType.BODY_ARMOUR, 'Lacquered Garb');
+    const actual: IBaseItem[] = filter.filter(items, [itemBase]);
+
+    assertItemsFound(testItems, actual);
+  });
+
+  test('should return boot bases', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, 'Entropy Sole', 'Ancient Greaves'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "Entropy Sole Ancient Greaves" in test data');
+    }
+    const filter: ItemTypeFilter = new ItemTypeFilter();
+    const itemBase: IItemBase = createIItemBase(ItemType.BOOTS, 'Ancient Greaves');
+    const actual: IBaseItem[] = filter.filter(items, [itemBase]);
+
+    assertItemsFound(testItems, actual);
+  });
+
+  test('should return glove bases', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, 'Corruption Nails', 'Sorcerer Gloves'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error(
+        'failed to find expected item "Corruption Nails Sorcerer Gloves" in test data');
+    }
+    const filter: ItemTypeFilter = new ItemTypeFilter();
+    const itemBase: IItemBase = createIItemBase(ItemType.GLOVES, 'Sorcerer Gloves');
+    const actual: IBaseItem[] = filter.filter(items, [itemBase]);
+
+    assertItemsFound(testItems, actual);
+  });
+
+  test('should return helmet bases', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, 'Sol Shelter', 'Harlequin Mask'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "Sol Shelter Harlequin Mask" in test data');
+    }
+    const filter: ItemTypeFilter = new ItemTypeFilter();
+    const itemBase: IItemBase = createIItemBase(ItemType.HELMET, 'Harlequin Mask');
+    const actual: IBaseItem[] = filter.filter(items, [itemBase]);
+
+    assertItemsFound(testItems, actual);
+  });
+
+  test('should return shield bases', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, null, 'Archon Kite Shield'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "Archon Kite Shield" in test data');
+    }
+    const filter: ItemTypeFilter = new ItemTypeFilter();
+    const itemBase: IItemBase = createIItemBase(ItemType.SHIELD, 'Archon Kite Shield');
+    const actual: IBaseItem[] = filter.filter(items, [itemBase]);
+
+    assertItemsFound(testItems, actual);
+  });
+
+  test('should return amulet bases', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, 'Hate Torc', 'Onyx Amulet'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "Hate Torc Onyx Amulet" in test data');
+    }
+    const filter: ItemTypeFilter = new ItemTypeFilter();
+    const itemBase: IItemBase = createIItemBase(ItemType.AMULET, 'Onyx Amulet');
+    const actual: IBaseItem[] = filter.filter(items, [itemBase]);
+
+    assertItemsFound(testItems, actual);
+  });
+
+  test('should return belt bases', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, 'Torment Twine', 'Stygian Vise'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "Torment Twine Stygian Vise" in test data');
+    }
+    const filter: ItemTypeFilter = new ItemTypeFilter();
+    const itemBase: IItemBase = createIItemBase(ItemType.BELT, 'Stygian Vise');
+    const actual: IBaseItem[] = filter.filter(items, [itemBase]);
+
+    assertItemsFound(testItems, actual);
+  });
+
+  test('should return currency bases', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, null, 'Orb of Fusing'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "Orb of Fusing" in test data');
+    }
+    const filter: ItemTypeFilter = new ItemTypeFilter();
+    const itemBase: IItemBase = createIItemBase(ItemType.CURRENCY, 'Orb of Fusing');
+    const actual: IBaseItem[] = filter.filter(items, [itemBase]);
+
+    assertItemsFound(testItems, actual);
+  });
+
+  test('should return card bases', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, null, 'Humility'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "Humility" in test data');
+    }
+    const filter: ItemTypeFilter = new ItemTypeFilter();
+    const itemBase: IItemBase = createIItemBase(ItemType.CARD, 'Humility');
+    const actual: IBaseItem[] = filter.filter(items, [itemBase]);
+
+    assertItemsFound(testItems, actual);
+  });
+
+  test('should return essence bases', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, null, 'Shrieking Essence of Dread'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "Shrieking Essence of Dread" in test data');
+    }
+    const filter: ItemTypeFilter = new ItemTypeFilter();
+    const itemBase: IItemBase = createIItemBase(ItemType.ESSENCE, 'Essence of Dread');
+    const actual: IBaseItem[] = filter.filter(items, [itemBase]);
+
+    assertItemsFound(testItems, actual);
+  });
+
+  test('should return flask bases', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, 'Lavianga\'s Spirit', 'Sanctified Mana Flask'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "Lavianga\'s Spirit" in test data');
+    }
+    const filter: ItemTypeFilter = new ItemTypeFilter();
+    const itemBase: IItemBase = createIItemBase(ItemType.FLASK, 'Sanctified Mana Flask');
+    const actual: IBaseItem[] = filter.filter(items, [itemBase]);
+
+    assertItemsFound(testItems, actual);
+  });
+
   // test('should return gem bases', () => {throw new Error('Not implemented'); });
   // test('should return incubator bases', () => {throw new Error('Not implemented'); });
   // test('should return jewel bases', () => {throw new Error('Not implemented'); });
@@ -735,8 +974,7 @@ describe('Item Type Filter tests', () => {
   // test('should return map resonator bases', () => {throw new Error('Not implemented'); });
   // test('should return map fossil bases', () => {throw new Error('Not implemented'); });
   // test('should return map breachstone bases', () => {throw new Error('Not implemented'); });
-  // test('should return breach and timeless splinter bases', () =>
-  // {throw new Error('Not implemented'); });
+  // test('should return splinter bases', () => {throw new Error('Not implemented'); });
   // test('should return multiple item bases', () => {throw new Error('Not implemented'); });
 
   // test('should be able to return item types and item bases in a single search', () => {
