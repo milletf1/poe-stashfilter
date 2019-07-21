@@ -416,7 +416,9 @@ describe('Item Type Filter tests', () => {
     }
     testItems.push(getTestItem(items, 'Foul Iridescence', 'Searching Eye Jewel'));
     if (!testItems[testItems.length - 1]) {
-      throw new Error('failed to find expected item "Enduring Breach Leaguestone" in test data');
+      throw new Error(
+        'failed to find expected item "Foul Iridescence Searching Eye Jewel" in test data',
+      );
     }
     const filter: ItemTypeFilter = new ItemTypeFilter();
     const actual: IBaseItem[] = filter.filter(items, [ItemType.JEWEL]);
@@ -960,24 +962,254 @@ describe('Item Type Filter tests', () => {
     assertItemsFound(testItems, actual);
   });
 
-  // test('should return gem bases', () => {throw new Error('Not implemented'); });
-  // test('should return incubator bases', () => {throw new Error('Not implemented'); });
-  // test('should return jewel bases', () => {throw new Error('Not implemented'); });
-  // test('should return leaguestone bases', () => {throw new Error('Not implemented'); });
-  // test('should return map bases', () => {throw new Error('Not implemented'); });
-  // test('should return net bases', () => {throw new Error('Not implemented'); });
-  // test('should return prophecy bases', () => {throw new Error('Not implemented'); });
-  // test('should return quiver bases', () => {throw new Error('Not implemented'); });
-  // test('should return ring bases', () => {throw new Error('Not implemented'); });
-  // test('should return scarab bases', () => {throw new Error('Not implemented'); });
-  // test('should return map fragment bases', () => {throw new Error('Not implemented'); });
-  // test('should return map resonator bases', () => {throw new Error('Not implemented'); });
-  // test('should return map fossil bases', () => {throw new Error('Not implemented'); });
-  // test('should return map breachstone bases', () => {throw new Error('Not implemented'); });
-  // test('should return splinter bases', () => {throw new Error('Not implemented'); });
-  // test('should return multiple item bases', () => {throw new Error('Not implemented'); });
+  test('should return gem bases', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, null, 'Minion Life Support'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "Minion Life Support" in test data');
+    }
+    const filter: ItemTypeFilter = new ItemTypeFilter();
+    const itemBase: IItemBase = createIItemBase(ItemType.GEM, 'Minion Life');
+    const actual: IBaseItem[] = filter.filter(items, [itemBase]);
 
-  // test('should be able to return item types and item bases in a single search', () => {
-  //   throw new Error('Not implemented');
-  // });
+    assertItemsFound(testItems, actual);
+  });
+
+  test('should return incubator bases', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, null, 'Enchanted Incubator'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "Enchanted Incubator" in test data');
+    }
+    const filter: ItemTypeFilter = new ItemTypeFilter();
+    const itemBase: IItemBase = createIItemBase(ItemType.INCUBATOR, 'Enchanted Incubator');
+    const actual: IBaseItem[] = filter.filter(items, [itemBase]);
+
+    assertItemsFound(testItems, actual);
+  });
+
+  test('should return jewel bases', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, 'Foul Iridescence', 'Searching Eye Jewel'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error(
+        'failed to find expected item "Foul Iridescence Searching Eye Jewel" in test data',
+      );
+    }
+    const filter: ItemTypeFilter = new ItemTypeFilter();
+    const itemBase: IItemBase = createIItemBase(ItemType.JEWEL, 'Searching Eye Jewel');
+    const actual: IBaseItem[] = filter.filter(items, [itemBase]);
+
+    assertItemsFound(testItems, actual);
+  });
+
+  test('should return leaguestone bases', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, null, 'Enduring Breach Leaguestone'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "Enduring Breach Leaguestone" in test data');
+    }
+    const filter: ItemTypeFilter = new ItemTypeFilter();
+    const itemBase: IItemBase = createIItemBase(ItemType.LEAGUESTONE, 'Breach Leaguestone');
+    const actual: IBaseItem[] = filter.filter(items, [itemBase]);
+
+    assertItemsFound(testItems, actual);
+  });
+
+  test('should return map bases', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, null, 'Superior Shaped Spider Forest Map'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error(
+        'failed to find expected item "Superior Shaped Spider Forest Map" in test data');
+    }
+    const filter: ItemTypeFilter = new ItemTypeFilter();
+    const itemBase: IItemBase = createIItemBase(ItemType.MAP, 'Shaped Spider Forest Map');
+    const actual: IBaseItem[] = filter.filter(items, [itemBase]);
+
+    assertItemsFound(testItems, actual);
+  });
+
+  test('should return net bases', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, null, 'Strong Steel Net'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "Strong Steel Net" in test data');
+    }
+    const filter: ItemTypeFilter = new ItemTypeFilter();
+    const itemBase: IItemBase = createIItemBase(ItemType.NET, 'Strong Steel Net');
+    const actual: IBaseItem[] = filter.filter(items, [itemBase]);
+
+    assertItemsFound(testItems, actual);
+  });
+
+  test('should return prophecy bases', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, null, 'The Last Watch'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "The Last Watch" in test data');
+    }
+    const filter: ItemTypeFilter = new ItemTypeFilter();
+    const itemBase: IItemBase = createIItemBase(ItemType.PROPHECY, 'The Last Watch');
+    const actual: IBaseItem[] = filter.filter(items, [itemBase]);
+
+    assertItemsFound(testItems, actual);
+  });
+
+  test('should return quiver bases', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, 'Armageddon Skewer', 'Penetrating Arrow Quiver'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "Armageddon Skewer" in test data');
+    }
+    const filter: ItemTypeFilter = new ItemTypeFilter();
+    const itemBase: IItemBase = createIItemBase(ItemType.QUIVER, 'Penetrating Arrow Quiver');
+    const actual: IBaseItem[] = filter.filter(items, [itemBase]);
+
+    assertItemsFound(testItems, actual);
+  });
+
+  test('should return ring bases', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, 'Cataclysm Band', 'Coral Ring'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "Cataclysm Band Coral Ring" in test data');
+    }
+    const filter: ItemTypeFilter = new ItemTypeFilter();
+    const itemBase: IItemBase = createIItemBase(ItemType.RING, 'Coral Ring');
+    const actual: IBaseItem[] = filter.filter(items, [itemBase]);
+
+    assertItemsFound(testItems, actual);
+  });
+
+  test('should return scarab bases', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, null, 'Rusted Perandus Scarab'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "Rusted Perandus Scarab" in test data');
+    }
+    const filter: ItemTypeFilter = new ItemTypeFilter();
+    const itemBase: IItemBase = createIItemBase(ItemType.SCARAB, 'Rusted Perandus Scarab');
+    const actual: IBaseItem[] = filter.filter(items, [itemBase]);
+
+    assertItemsFound(testItems, actual);
+  });
+
+  test('should return map fragment bases', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, null, 'Sacrifice at Midnight'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "Sacrifice at Midnight" in test data');
+    }
+    const filter: ItemTypeFilter = new ItemTypeFilter();
+    const itemBase: IItemBase = createIItemBase(ItemType.MAP_FRAGMENT, 'Sacrifice at Midnight');
+    const actual: IBaseItem[] = filter.filter(items, [itemBase]);
+
+    assertItemsFound(testItems, actual);
+  });
+
+  test('should return resonator bases', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, null, 'Potent Chaotic Resonator'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "Potent Chaotic Resonator" in test data');
+    }
+    const filter: ItemTypeFilter = new ItemTypeFilter();
+    const itemBase: IItemBase = createIItemBase(ItemType.RESONATOR, 'Potent Chaotic Resonator');
+    const actual: IBaseItem[] = filter.filter(items, [itemBase]);
+
+    assertItemsFound(testItems, actual);
+  });
+
+  test('should return fossil bases', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, null, 'Dense Fossil'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "Dense Fossil" in test data');
+    }
+    const filter: ItemTypeFilter = new ItemTypeFilter();
+    const itemBase: IItemBase = createIItemBase(ItemType.FOSSIL, 'Dense Fossil');
+    const actual: IBaseItem[] = filter.filter(items, [itemBase]);
+
+    assertItemsFound(testItems, actual);
+  });
+
+  test('should return breachstone bases', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, null, 'Xoph\'s Breachstone'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "Xoph\'s Breachstone" in test data');
+    }
+    const filter: ItemTypeFilter = new ItemTypeFilter();
+    const itemBase: IItemBase = createIItemBase(ItemType.BREACHSTONE, 'Xoph\'s Breachstone');
+    const actual: IBaseItem[] = filter.filter(items, [itemBase]);
+
+    assertItemsFound(testItems, actual);
+  });
+
+  test('should return splinter bases', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, null, 'Timeless Templar Splinter'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "Timeless Templar Splinter" in test data');
+    }
+    const filter: ItemTypeFilter = new ItemTypeFilter();
+    const itemBase: IItemBase = createIItemBase(ItemType.SPLINTER, 'Timeless Templar Splinter');
+    const actual: IBaseItem[] = filter.filter(items, [itemBase]);
+
+    assertItemsFound(testItems, actual);
+  });
+
+  test('should return multiple item bases', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, null, 'Sacrifice at Midnight'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "Sacrifice at Midnight" in test data');
+    }
+    testItems.push(getTestItem(items, null, 'Timeless Karui Emblem'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "Timeless Karui Emblem" in test data');
+    }
+    const filter: ItemTypeFilter = new ItemTypeFilter();
+    const itemBase: IItemBase = createIItemBase(ItemType.MAP_FRAGMENT, 'Sacrifice at Midnight');
+    const secondItemBase: IItemBase = createIItemBase(
+      ItemType.MAP_FRAGMENT,
+      'Timeless Karui Emblem',
+    );
+    const actual: IBaseItem[] = filter.filter(items, [itemBase, secondItemBase]);
+
+    assertItemsFound(testItems, actual);
+  });
+
+  test('should be able to return item types and item bases in a single search', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, 'Cataclysm Band', 'Coral Ring'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "Cataclysm Band Coral Ring" in test data');
+    }
+    testItems.push(getTestItem(items, null, 'Orb of Fusing'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "Orb of Fusing" in test data');
+    }
+    testItems.push(getTestItem(items, null, 'Annulment Shard'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "Annulment Shard" in test data');
+    }
+    testItems.push(getTestItem(items, null, 'Bestiary Orb'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "Bestiary Orb" in test data');
+    }
+    testItems.push(getTestItem(items, null, 'Sacrifice at Midnight'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "Sacrifice at Midnight" in test data');
+    }
+    const types: ItemType[] = [ItemType.RING, ItemType.CURRENCY];
+    const bases: IItemBase[] = [
+      createIItemBase(ItemType.CURRENCY, 'Orb of Fusing'),
+      createIItemBase(ItemType.MAP_FRAGMENT, 'Sacrifice at Midnight'),
+    ];
+    const filter: ItemTypeFilter = new ItemTypeFilter();
+    const actual: IBaseItem[] = filter.filter(items, { types, bases });
+    assertItemsFound(testItems, actual);
+  });
 });

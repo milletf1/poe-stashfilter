@@ -5,23 +5,43 @@ import { IItemFilterParams, isIItemFilterParams } from './IItemTypeFilterParams'
 import * as itemTypeTestRegExps from './item-type-test-regexps';
 import { ItemType } from './ItemType';
 
-class ItemTypeFilter implements IFilterModule<ItemType[] | IItemBase[] | IItemFilterParams[]> {
+class ItemTypeFilter implements IFilterModule<ItemType[] | IItemBase[] | IItemFilterParams> {
   public type: string = 'ItemTypeFilter';
 
   public filter(
     items: IBaseItem[],
-    conditions: ItemType[] | IItemBase[] | IItemFilterParams[],
+    conditions: ItemType[] | IItemBase[] | IItemFilterParams,
   ): IBaseItem[] {
-    if (!conditions || conditions.length === 0) {
+    if (!conditions || (Array.isArray(conditions) && conditions.length === 0)) {
       return [];
     }
     if (isIItemFilterParams(conditions)) {
-      // TODO ...
+      return this.filterItemFilterParams(items, conditions);
     } else if (isIItemBase(conditions[0])) {
       return this.filterItemBases(items, conditions as IItemBase[]);
     }
     // array of ItemType
     return this.filterItemTypes(items, conditions as ItemType[]);
+  }
+
+  private filterItemFilterParams(items: IBaseItem[], params: IItemFilterParams): IBaseItem[] {
+    let foundItems: IBaseItem[] = [];
+    let itemBases: IItemBase[] = [...params.bases];
+    const itemTypes: ItemType[] = [...params.types];
+
+    if (itemTypes && itemTypes.length > 0) {
+      foundItems = this.filterItemTypes(items, itemTypes);
+    }
+    if (itemBases && itemBases.length > 0) {
+      if (itemTypes && itemTypes.length > 0) {
+        // remove item bases that have an item type in item types
+        for (const itemType of itemTypes) {
+          itemBases = itemBases.filter((val: IItemBase) => val.type !== itemType);
+        }
+      }
+      foundItems = [ ...foundItems, ...this.filterItemBases(items, itemBases)];
+    }
+    return foundItems;
   }
 
   /**

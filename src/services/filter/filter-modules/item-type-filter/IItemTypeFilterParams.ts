@@ -3,12 +3,12 @@ import { ItemType } from './ItemType';
 
 /** ItemTypeFilter parameter for querying item type and base at same time  */
 export interface IItemFilterParams {
-  type: ItemType[];
-  base: IItemBase[];
+  types: ItemType[];
+  bases: IItemBase[];
 }
 
 /** IItemFilterParams type guard */
 export function isIItemFilterParams(o: any): o is IItemFilterParams {
-  return (o as IItemFilterParams).base !== undefined
-    && (o as IItemFilterParams).type !== undefined;
+  return (o as IItemFilterParams).bases !== undefined
+    && (o as IItemFilterParams).types !== undefined;
 }
