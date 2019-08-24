@@ -1,0 +1,115 @@
+{
+  "numTabs": 41,
+  "items": [
+    {
+      "verified": false,
+      "w": 1,
+      "h": 1,
+      "ilvl": 71,
+      "icon": "https:\/\/web.poecdn.com\/image\/Art\/2DItems\/Currency\/Incubation\/IncubationLabyrinth.png?scale=1&w=1&h=1&v=d78e32bd7d589f5151934ca46fa1bec9",
+      "league": "Legion",
+      "id": "68acb87157b771d23ad82416d377b90d77d230754545f7569b8bd91d131d6e76",
+      "name": "",
+      "typeLine": "Enchanted Incubator",
+      "identified": true,
+      "explicitMods": [
+        "Adds an incubated Enchanted Helmet item to an equippable item\r\nItem drops after killing 4113 monsters"
+      ],
+      "descrText": "Right click this item then left click an item to apply it. The Incubated item drops after killing a specific number of monsters.",
+      "frameType": 0,
+      "category": {
+        "currency": [
+          "incubator"
+        ]
+      },
+      "x": 7,
+      "y": 3,
+      "inventoryId": "Stash11"
+    },
+    {
+      "verified": false,
+      "w": 2,
+      "h": 1,
+      "ilvl": 73,
+      "icon": "https:\/\/web.poecdn.com\/image\/Art\/2DItems\/Belts\/Belt1.png?scale=1&w=2&h=1&v=a40ff49a65beb9e722af0f85159432f1",
+      "league": "Legion",
+      "id": "af9b71aab7c9f31295a393450c1e894e421e51476020dc1fea1e307afb3c8698",
+      "name": "Dread Clasp",
+      "typeLine": "Rustic Sash",
+      "identified": true,
+      "requirements": [
+        {
+          "name": "Level",
+          "values": [
+            [
+              "48",
+              0
+            ]
+          ],
+          "displayMode": 0
+        }
+      ],
+      "implicitMods": [
+        "23% increased Global Physical Damage"
+      ],
+      "explicitMods": [
+        "+10 to Strength",
+        "+39% to Fire Resistance",
+        "+30% to Cold Resistance",
+        "Reflects 4 Physical Damage to Melee Attackers"
+      ],
+      "frameType": 2,
+      "category": {
+        "accessories": [
+          "belt"
+        ]
+      },
+      "x": 6,
+      "y": 2,
+      "inventoryId": "Stash11",
+      "incubatedItem": {
+        "name": "Fragment Item",
+        "level": 63,
+        "progress": 0,
+        "total": 7898
+      }
+    },
+    {
+      "verified": false,
+      "w": 1,
+      "h": 1,
+      "ilvl": 0,
+      "icon": "https:\/\/web.poecdn.com\/image\/Art\/2DItems\/Currency\/BestiaryOrbEmpty.png?scale=1&w=1&h=1&v=1e94ab199c10ad04197871406542f16e",
+      "league": "Legion",
+      "id": "ec1cc385ec81b29ce673850d31da3bf34217c6fb6f6a4164d1a9b0c49c11bb75",
+      "name": "",
+      "typeLine": "Bestiary Orb",
+      "identified": true,
+      "properties": [
+        {
+          "name": "Stack Size",
+          "values": [
+            [
+              "1\/10",
+              0
+            ]
+          ],
+          "displayMode": 0
+        }
+      ],
+      "explicitMods": [
+        "Stores a Beast in an item so it can be traded"
+      ],
+      "descrText": "Right click on this item then left click on a Beast in your Menagerie to turn it into a tradable item.",
+      "frameType": 5,
+      "stackSize": 1,
+      "maxStackSize": 10,
+      "category": {
+        "currency": []
+      },
+      "x": 6,
+      "y": 3,
+      "inventoryId": "Stash11"
+    }
+  ]
+}

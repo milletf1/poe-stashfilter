@@ -1,0 +1,45 @@
+$link-images: "../../assets/images/sockets.png";
+$link-length: 37.7px;
+$link-width: 15.2px;
+$background-size: 136.7px 136.7px;
+$quad-link-length: 18.9px;
+$quad-link-width: 7.6px;
+$quad-background-size: 68.53px 68.53px;
+
+.sockets-container {
+  position: absolute;
+
+  .link {
+    position: absolute;
+
+    &.horizontal {
+      width: $link-length;
+      height: $link-width;
+      background-image: url($link-images);
+      background-size: $background-size;
+      background-position: -1px 15px;
+
+      &.quad-stash {
+        width: $quad-link-length;
+        height: $quad-link-width;
+        background-size: $quad-background-size;
+        background-position: 0 6px;
+      }
+    }
+
+    &.vertical {
+      width: $link-width;
+      height: $link-length;
+      background-image: url($link-images);
+      background-size: $background-size;
+      background-position: 15px -1px;
+
+      &.quad-stash {
+        width: $quad-link-width;
+        height: $quad-link-length;
+        background-size: $quad-background-size;
+        background-position: 6px 0;
+      }
+    }
+  }
+}

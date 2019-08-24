@@ -1,0 +1,28 @@
+@import "../../sass/colors.scss";
+
+.item-mods {
+  margin: 8px 0 0;
+  font-size: 13px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  color: $augmented-mod-color;
+
+  &.flavour {
+    font-style: italic;
+    color: $unique-color;
+  }
+
+  &.description {
+    font-style: italic;
+    color: $default-color;
+  }
+
+  &.red { color: $corrupted-color; }
+  &.note { color: $currency-color; }
+  &.green { color: $gem-color; }
+  &.craft { color: $craft-color; }
+  &.fractured { color: $fractured-color; }
+}

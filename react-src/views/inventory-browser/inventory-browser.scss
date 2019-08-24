@@ -1,0 +1,19 @@
+.inventory-browser {
+    .inventory-browser-list {
+      overflow-x: hidden;
+      overflow-y: scroll;
+      height: calc(100vh - 97px);
+  
+      .list-subheader {
+        position: relative !important;
+      }
+  
+      .browse-list-item {
+        display: inline-block;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        color: white;
+      }
+    }
+}

@@ -4,7 +4,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const devMode = process.env.NODE_ENV !== "prod";
 
 module.exports = {
-  entry: "./src/index.tsx",
+  entry: "./react-src/index.tsx",
   output: {
     path: path.join(__dirname, "/dist"),
     filename: "index_bundle.js",
@@ -59,7 +59,7 @@ module.exports = {
   devtool: "source-map",
   plugins: [
     new HtmlWebpackPlugin({
-      template: "./src/index.html"
+      template: "./react-src/index.html"
     }),
     new MiniCssExtractPlugin({
       filename: devMode ? '[name].css' : '[name].[hash].css',

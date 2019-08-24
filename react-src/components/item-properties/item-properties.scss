@@ -1,0 +1,22 @@
+@import "../../sass/colors.scss";
+
+.item-properties {
+  margin: 8px 0 0;
+  font-size: 13px;
+
+  .property {
+    display: flex;
+    justify-content: center;
+    .name {
+      color: $default-color;
+    }
+    .value {
+      &.augmented { color: $augmented-mod-color; }
+      &.fire { color: $fire-mod-color; }
+      &.cold { color: $cold-mod-color; }
+      &.lightning { color: $lightning-mod-color; }
+      &.unmet { color: $corrupted-color; }
+      &.chaos { color: $chaos-mod-color; }
+    }
+  }
+}

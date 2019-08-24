@@ -1,4 +1,5 @@
 'use strict';
+const path = require("path");
 const { app, BrowserWindow } = require('electron');
 const Store = require('electron-store');
 const webApi = require('./web-api');
@@ -16,7 +17,7 @@ function createWindow() {
       win.loadURL('http://localhost:8080');
       store = new Store();
     } else {
-      win.loadFile('./dist/index.html');
+      win.loadFile(path.join(__dirname, "../dist/index.html"));
       store = new Store({ encryptionKey: 'Le toucan has arrived' });
     }
 

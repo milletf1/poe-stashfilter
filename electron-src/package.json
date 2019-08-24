@@ -9,9 +9,9 @@
     "start": "concurrently --kill-others \"cross-env NODE_ENV=dev webpack-dev-server --mode development --hot\" \"cross-env NODE_ENV=dev electron .\"",
     "start-react": "cross-env NODE_ENV=dev webpack-dev-server --mode development --hot",
     "start-electron": "cross-env NODE_ENV=dev electron ./electron-src/main.js",
-    "build": "webpack --mode production && electron-packager ./ PoeStash --platform=win32 --arch=x64 --overwrite=true --ignore=\"react-src|\\.vscode|.*\\.code-workspace|tslint\\.json|tsconfig\\.json|package-lock\\.json|.+\\.config|LICENSE|README|\\.git.*\"",
+    "build": "webpack --mode production && electron-packager ./ PoeStash --platform=win32 --arch=x64 --overwrite=true --ignore=\"src|\\.vscode|.*\\.code-workspace|tslint\\.json|tsconfig\\.json|package-lock\\.json|webpack\\.config\"",
     "build-react": "cross-env NODE_ENV=prod webpack --mode production",
-    "build-electron": "cross-env NODE_ENV=prod electron-packager ./ PoeStash --platform=win32 --arch=x64 --overwrite=true --ignore=\"react-src|\\.vscode|.*\\.code-workspace|tslint\\.json|tsconfig\\.json|package-lock\\.json|.+\\.config|LICENSE|README|\\.git.*\""
+    "build-electron": "cross-env NODE_ENV=prod electron-packager ./ PoeStash --platform=win32 --arch=x64 --overwrite=true --ignore=\"react-src|\\.vscode|.*\\.code-workspace|tslint\\.json|tsconfig\\.json|package.*\\.json|.+\\.config|\\.git.*|LICENSE|README\""
   },
   "keywords": [
     "Path of Exile",
