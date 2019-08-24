@@ -1,0 +1,12 @@
+
+@import "../../../sass/colors.scss";
+
+.incubated-details {
+  .progress-level-container {
+    display: flex;
+    justify-content: center;
+
+    .progress { margin-right: 4px; }
+    .level { color: $default-color; }
+  }
+}

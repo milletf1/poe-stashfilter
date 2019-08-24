@@ -6,4 +6,5 @@ export const enum ItemModThemeTypes {
   GREEN_TEXT,
   CRAFT_TEXT,
   FRACTURED_TEXT,
+  INCUBATED_TEXT,
 }

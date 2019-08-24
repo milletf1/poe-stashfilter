@@ -29,6 +29,7 @@ class ItemMods extends React.Component<IItemModsProps, {}> {
         case ItemModThemeTypes.GREEN_TEXT: return 'item-mods green';
         case ItemModThemeTypes.CRAFT_TEXT: return 'item-mods craft';
         case ItemModThemeTypes.FRACTURED_TEXT: return 'item-mods fractured';
+        case ItemModThemeTypes.INCUBATED_TEXT: return 'item-mods incubated';
       }
     }
     return 'item-mods';

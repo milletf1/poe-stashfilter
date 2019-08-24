@@ -4,6 +4,7 @@ import ItemMods from '../../item-mods/ItemMods';
 import { ItemModThemeTypes } from '../../item-mods/ItemModThemeTypes';
 import ItemProperties from '../../item-properties/ItemProperties';
 import ItemRequirements from '../../item-requirements/ItemRequirements';
+import IncubatedDetails from '../incubated-details/IncubatedDetails';
 import ItemDetails from '../ItemDetails';
 import { IGearItemDetailsProps } from './IGearItemDetailsProps';
 
@@ -45,6 +46,10 @@ class GearItemDetails extends React.Component<IGearItemDetailsProps, {}> {
         {
           item.flavourText !== undefined &&
           <ItemMods mods={item.flavourText} theme={ItemModThemeTypes.FLAVOUR_TEXT} />
+        }
+        {
+          item.incubatedItem !== undefined &&
+          <IncubatedDetails incubatedItem={item.incubatedItem} />
         }
       </ItemDetails>
     );
