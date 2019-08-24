@@ -1,9 +1,0 @@
-export const enum ItemModThemeTypes {
-  DESCRIPTION_TEXT,
-  FLAVOUR_TEXT,
-  RED_TEXT,
-  NOTE_TEXT,
-  GREEN_TEXT,
-  CRAFT_TEXT,
-  FRACTURED_TEXT,
-}
