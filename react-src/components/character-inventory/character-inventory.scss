@@ -5,6 +5,7 @@ $images-path: "../../assets/images/stash";
   background-image: url("#{$images-path}/MainInventory.png");
   width: 600px;
   height: 781px;
+  margin: auto;
 
   .weapon-switch {
     position: absolute;

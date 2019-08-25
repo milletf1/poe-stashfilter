@@ -29,7 +29,7 @@ class Card extends React.Component<ICardProps, {}> {
           <div className='card-name'>{card.typeLine}</div>
           <div className='stack'>{stack}</div>
           {this.createCardModsElement()}
-          {this.createFlavourTextElementForCard()}
+          { this.props.card.flavourText !== undefined && this.createFlavourTextElementForCard() }
         </div>
         {
           card.note !== undefined &&

@@ -8,5 +8,5 @@ export interface ICurrency extends IStackableItem {
 
 /** ICurrency type guard */
 export function isICurrency(o: any): o is ICurrency {
-  return isIStackableItem(o) && (o as ICurrency).category.currency !== undefined;
+  return (o as ICurrency).category.currency !== undefined;
 }

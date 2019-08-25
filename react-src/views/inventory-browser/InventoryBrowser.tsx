@@ -32,7 +32,7 @@ class InventoryBrowser extends React.Component<IInventoryBrowserProps, any> {
     return (
     <div className='page-container inventory-browser'>
       <Grid container spacing={16}>
-        <Grid item xs={2} style={{padding: '8px 0'}}>
+        <Grid item xs={3} md={2} style={{padding: '8px 0'}}>
           <List className='inventory-browser-list'>
             <ListSubheader className='list-subheader'>Characters</ListSubheader>
             {
@@ -76,7 +76,7 @@ class InventoryBrowser extends React.Component<IInventoryBrowserProps, any> {
             }
           </List>
         </Grid>
-        <Grid item xs={10}>
+        <Grid item xs={9} md={10}>
           <Grid
             container
             spacing={16}
