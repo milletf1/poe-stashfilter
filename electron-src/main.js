@@ -5,13 +5,14 @@ const Store = require('electron-store');
 const webApi = require('./web-api');
 const storeKeys = require('./electron-store-keys');
 const ipcChannelsListeners = require('./ipc-channel-listeners');
+const log = require('./logger');
 
 let appState = { clearSessionOnExit: false };
 let store; // instance of electron-store
 
 function createWindow() {
     let win = new BrowserWindow();
-    win.maximize();
+    win.setSize(1200, 860);
 
     if (process.env.NODE_ENV === 'dev') {
       win.loadURL('http://localhost:8080');
@@ -33,6 +34,7 @@ function createWindow() {
         }
     });
     ipcChannelsListeners.setupChannels(store, appState);
+    log.debug("app started");
 }
 
 app.on('ready', createWindow);
