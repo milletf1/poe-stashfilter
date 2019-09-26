@@ -7,9 +7,7 @@ class NameFilter implements IFilterModule<string | string[]> {
   public type: string = 'NameFilter';
 
   public filter(items: IBaseItem[], conditions: string | string[]): IBaseItem[] {
-    if (!items || !conditions) {
-      return [];
-    }
+    if (!items || !conditions) { return []; }
     const filteredItems: IBaseItem[] = [];
 
     if (Array.isArray(conditions)) {
@@ -24,9 +22,7 @@ class NameFilter implements IFilterModule<string | string[]> {
 
   /** Performs name filtering on a single string and returns the results */
   private filterOnName(items: IBaseItem[], name: string): IBaseItem[] {
-    if (!name || !name.trim()) {
-      return [];
-    }
+    if (!name || !name.trim()) { return []; }
     const nameFilter: string = name.trim().toLowerCase();
     const filteredItems: IBaseItem[] = [];
 

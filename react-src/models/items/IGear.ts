@@ -19,13 +19,13 @@ export interface IGear extends ISocketableItem {
   /** Flavour text */
   flavourText: string[];
   /** Explicit modifiers */
-  explicitMods: string[];
+  explicitMods?: string[];
   /** Implicit modifiers */
-  implicitMods: string[];
+  implicitMods?: string[];
   /** Crafted modifiers */
-  craftedMods: string[];
+  craftedMods?: string[];
   /** Enchanted modifiers */
-  enchantMods: string[];
+  enchantMods?: string[];
   /** Incubated item */
   incubatedItem?: IIncubatedItem;
 }

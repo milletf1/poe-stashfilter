@@ -9,10 +9,10 @@
         "moduleResolution": "node",
         "skipLibCheck": true,
         "resolveJsonModule": true,
-        "esModuleInterop": true,
+        "esModuleInterop": true
     },
     "include": [
-        "./react-src",
+        "./react-src"
     ],
     "exclude": [
         "node_modules"
