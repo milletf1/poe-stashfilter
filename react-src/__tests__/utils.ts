@@ -1,4 +1,7 @@
+import { IItemProperty } from './../models/items/IItemProperty';
+import { ReactWrapper } from 'enzyme';
 import { IBaseItem } from '../models/items/IBaseItem';
+import { isICurrency } from '../models/items/ICurrency';
 
 /**
  * Finds and returns the first item with a given name and typeline.
@@ -31,4 +34,18 @@ export function assertItemsFound(expectedItems: IBaseItem[], actualItems: IBaseI
     const foundItems: IBaseItem[] = actualItems.filter((i: IBaseItem) => i.id === expectedItem.id);
     expect(foundItems.length).toBe(1);
   }
+}
+
+/**
+ * Checks if a `ItemHeader` component renders an item correctly
+ * @param wrapper The react component to test
+ * @param item The item that the component has rendered
+ */
+export function assertComponentItemHeader(wrapper: ReactWrapper, item: IBaseItem): void {
+  if (!isICurrency(item) && item.name.length > 0) {
+    expect(wrapper.first().hasClass('name')).toBeTruthy();
+    expect(wrapper.first().text()).toBe(item.name);
+  }
+  const typeLine: ReactWrapper = wrapper.find('.type-line');
+  expect(typeLine.text()).toBe(item.typeLine);
 }

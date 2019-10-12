@@ -6,7 +6,7 @@ export interface IItemProperty {
   /** Display mode */
   displayMode: number;
   /** Type */
-  type: number;
+  type?: number;
 }
 
 export interface IAdditionalItemProperty extends IItemProperty {

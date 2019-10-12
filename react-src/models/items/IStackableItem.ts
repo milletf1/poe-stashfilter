@@ -16,7 +16,7 @@ export interface IStackableItem extends IBaseItem {
   /** Explicit modifiers */
   explicitMods: string[];
   /** Flavour text */
-  flavourText: string[];
+  flavourText?: string[];
 }
 
 /** IStackableItem type guard */

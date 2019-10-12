@@ -1,0 +1,34 @@
+{
+  "verified":false,
+  "w":1,
+  "h":1,
+  "ilvl":0,
+  "icon":"https:\/\/web.poecdn.com\/image\/Art\/2DItems\/Currency\/CurrencyDuplicate.png?scale=1&w=1&h=1&v=6fd68c1a5c4292c05b97770e83aa22bc",
+  "league":"Standard",
+  "id":"e09746be54972b2fc54ae23fa718ad4c55ce8cf91c8042344657a5bf40ab0967",
+  "name":"",
+  "typeLine":"Mirror of Kalandra",
+  "identified":true,
+  "properties":[
+  {
+  "name":"Stack Size",
+  "values":[
+  [
+  "1\/10",
+  0
+  ]
+  ],
+  "displayMode":0
+  }
+  ],
+  "explicitMods":[
+  "Creates a mirrored copy of an item"
+  ],
+  "descrText":"Right click this item then left click an equipable non-unique item to apply it. Mirrored copies cannot be modified.",
+  "frameType":5,
+  "stackSize":1,
+  "maxStackSize":5000,
+  "x":4,
+  "y":0,
+  "inventoryId":"Stash8"
+}
