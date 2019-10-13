@@ -1,0 +1,1579 @@
+[
+  {
+    "verified": false,
+    "w": 2,
+    "h": 2,
+    "ilvl": 41,
+    "icon": "https:\/\/web.poecdn.com\/image\/Art\/2DItems\/Armours\/Boots\/KaomsRoots.png?scale=1&w=2&h=2&v=81f27d3abd8a538e3f90eec1f8f17ff7",
+    "league": "Standard",
+    "id": "c7f3cdcd57bbbff46feb7782d97e8d21489df131bfdb741fd420f530797f2147",
+    "name": "Kaom's Roots",
+    "typeLine": "Titan Greaves",
+    "identified": true,
+    "properties": [
+      {
+        "name": "Armour",
+        "values": [
+          [
+            "241",
+            0
+          ]
+        ],
+        "displayMode": 0,
+        "type": 16
+      }
+    ],
+    "requirements": [
+      {
+        "name": "Level",
+        "values": [
+          [
+            "68",
+            0
+          ]
+        ],
+        "displayMode": 0
+      },
+      {
+        "name": "Str",
+        "values": [
+          [
+            "120",
+            0
+          ]
+        ],
+        "displayMode": 1
+      }
+    ],
+    "explicitMods": [
+      "Has no Sockets",
+      "Cannot be Knocked Back",
+      "+168 to maximum Life",
+      "Action Speed cannot be modified to below base value",
+      "Unwavering Stance"
+    ],
+    "flavourText": [
+      "Don't flinch. It's a waste of good hitting time."
+    ],
+    "frameType": 3,
+    "x": 6,
+    "y": 6,
+    "inventoryId": "Stash33"
+  },
+  {
+    "verified": false,
+    "w": 1,
+    "h": 1,
+    "ilvl": 79,
+    "icon": "https:\/\/web.poecdn.com\/image\/Art\/2DItems\/Rings\/Ring3.png?scale=1&w=1&h=1&v=bc351f5121b5d5d052733fa5be0f79ca",
+    "league": "Standard",
+    "id": "8ee910f87bac5cdcb0b05a9747861dbc258d04431cfa29caff8e16c43e1c0c9c",
+    "name": "Dragon Coil",
+    "typeLine": "Paua Ring",
+    "identified": true,
+    "requirements": [
+      {
+        "name": "Level",
+        "values": [
+          [
+            "59",
+            0
+          ]
+        ],
+        "displayMode": 0
+      }
+    ],
+    "implicitMods": [
+      "+20 to maximum Mana"
+    ],
+    "explicitMods": [
+      "+70 to Evasion Rating",
+      "+47 to maximum Energy Shield",
+      "+55 to maximum Life",
+      "+29% to Cold Resistance",
+      "+45% to Lightning Resistance"
+    ],
+    "frameType": 2,
+    "x": 1,
+    "y": 0,
+    "inventoryId": "Stash33"
+  },
+  {
+    "verified": false,
+    "w": 2,
+    "h": 3,
+    "ilvl": 77,
+    "icon": "https:\/\/web.poecdn.com\/image\/Art\/2DItems\/Armours\/BodyArmours\/CarcassJack.png?scale=1&w=2&h=3&v=feb00e7b3df57187622f80c1ed80219d",
+    "league": "Standard",
+    "id": "a93c380416a9ab2df0de7b52c1cc70d914ab2879da06dcd65b6b09bb1ce1c699",
+    "sockets": [
+      {
+        "group": 0,
+        "attr": "I",
+        "sColour": "B"
+      },
+      {
+        "group": 0,
+        "attr": "D",
+        "sColour": "G"
+      },
+      {
+        "group": 0,
+        "attr": "I",
+        "sColour": "B"
+      },
+      {
+        "group": 1,
+        "attr": "D",
+        "sColour": "G"
+      }
+    ],
+    "name": "Carcass Jack",
+    "typeLine": "Varnished Coat",
+    "identified": true,
+    "properties": [
+      {
+        "name": "Evasion Rating",
+        "values": [
+          [
+            "917",
+            1
+          ]
+        ],
+        "displayMode": 0,
+        "type": 17
+      },
+      {
+        "name": "Energy Shield",
+        "values": [
+          [
+            "178",
+            1
+          ]
+        ],
+        "displayMode": 0,
+        "type": 18
+      }
+    ],
+    "requirements": [
+      {
+        "name": "Level",
+        "values": [
+          [
+            "62",
+            0
+          ]
+        ],
+        "displayMode": 0
+      },
+      {
+        "name": "Dex",
+        "values": [
+          [
+            "96",
+            0
+          ]
+        ],
+        "displayMode": 1
+      },
+      {
+        "name": "Int",
+        "values": [
+          [
+            "96",
+            0
+          ]
+        ],
+        "displayMode": 1
+      }
+    ],
+    "explicitMods": [
+      "137% increased Evasion and Energy Shield",
+      "+59 to maximum Life",
+      "+12% to all Elemental Resistances",
+      "20% increased Area of Effect",
+      "48% increased Area Damage",
+      "Extra gore"
+    ],
+    "flavourText": [
+      "\"...The discomfort shown by the others is amusing, but none\r",
+      "can deny that my work has made quite the splash...\"\r",
+      "- Maligaro's Journal"
+    ],
+    "frameType": 3,
+    "x": 0,
+    "y": 4,
+    "inventoryId": "Stash36",
+    "socketedItems": []
+  },
+  {
+    "verified": false,
+    "w": 2,
+    "h": 4,
+    "ilvl": 70,
+    "icon": "https:\/\/web.poecdn.com\/image\/Art\/2DItems\/Weapons\/TwoHandWeapons\/Bows\/Eagle.png?scale=1&w=2&h=4&v=d6806afa3e458a76dd7832afd6ce8ec4",
+    "league": "Standard",
+    "id": "df7adf554ece55e3074411e88835560a05c04432781904f2dff1c758833394f6",
+    "sockets": [
+      {
+        "group": 0,
+        "attr": "D",
+        "sColour": "G"
+      },
+      {
+        "group": 0,
+        "attr": "I",
+        "sColour": "B"
+      },
+      {
+        "group": 0,
+        "attr": "S",
+        "sColour": "R"
+      },
+      {
+        "group": 0,
+        "attr": "S",
+        "sColour": "R"
+      },
+      {
+        "group": 0,
+        "attr": "D",
+        "sColour": "G"
+      },
+      {
+        "group": 0,
+        "attr": "D",
+        "sColour": "G"
+      }
+    ],
+    "name": "Windripper",
+    "typeLine": "Imperial Bow",
+    "identified": true,
+    "properties": [
+      {
+        "name": "Bow",
+        "values": [],
+        "displayMode": 0
+      },
+      {
+        "name": "Quality",
+        "values": [
+          [
+            "+20%",
+            1
+          ]
+        ],
+        "displayMode": 0,
+        "type": 6
+      },
+      {
+        "name": "Physical Damage",
+        "values": [
+          [
+            "23-94",
+            1
+          ]
+        ],
+        "displayMode": 0,
+        "type": 9
+      },
+      {
+        "name": "Elemental Damage",
+        "values": [
+          [
+            "40-53",
+            5
+          ],
+          [
+            "1-87",
+            6
+          ]
+        ],
+        "displayMode": 0,
+        "type": 10
+      },
+      {
+        "name": "Critical Strike Chance",
+        "values": [
+          [
+            "8.45%",
+            1
+          ]
+        ],
+        "displayMode": 0,
+        "type": 12
+      },
+      {
+        "name": "Attacks per Second",
+        "values": [
+          [
+            "1.64",
+            1
+          ]
+        ],
+        "displayMode": 0,
+        "type": 13
+      }
+    ],
+    "requirements": [
+      {
+        "name": "Level",
+        "values": [
+          [
+            "72",
+            0
+          ]
+        ],
+        "displayMode": 0
+      },
+      {
+        "name": "Str",
+        "values": [
+          [
+            "111",
+            0
+          ]
+        ],
+        "displayMode": 1
+      },
+      {
+        "name": "Dex",
+        "values": [
+          [
+            "212",
+            0
+          ]
+        ],
+        "displayMode": 1
+      },
+      {
+        "name": "Int",
+        "values": [
+          [
+            "111",
+            0
+          ]
+        ],
+        "displayMode": 1
+      }
+    ],
+    "implicitMods": [
+      "12% increased Elemental Damage with Attack Skills"
+    ],
+    "explicitMods": [
+      "Adds 40 to 53 Cold Damage",
+      "Adds 1 to 87 Lightning Damage",
+      "13% increased Attack Speed",
+      "69% increased Critical Strike Chance",
+      "15% increased Quantity of Items Dropped by Slain Frozen Enemies",
+      "30% increased Rarity of Items Dropped by Slain Shocked Enemies"
+    ],
+    "cosmeticMods": [
+      "Has Storm Cloud Skin. You can reclaim this by shift-clicking this item."
+    ],
+    "flavourText": [
+      "It hunts; as silent as falling snow, as deadly as the tempest."
+    ],
+    "frameType": 3,
+    "x": 2,
+    "y": 2,
+    "inventoryId": "Stash123",
+    "socketedItems": [
+      {
+        "verified": false,
+        "w": 1,
+        "h": 1,
+        "ilvl": 0,
+        "icon": "https:\/\/web.poecdn.com\/image\/Art\/2DItems\/Gems\/Support\/GreaterMultipleProjectiles.png?scale=1&w=1&h=1&v=e1b6fb26e5937957e08ce80e113f41e2",
+        "support": true,
+        "id": "199819b613ea6b3c97041e9179f22a22e2b45dcd30ea2108f8b28506ff4fe4b2",
+        "name": "",
+        "typeLine": "Greater Multiple Projectiles Support",
+        "identified": true,
+        "properties": [
+          {
+            "name": "Support, Projectile",
+            "values": [],
+            "displayMode": 0
+          },
+          {
+            "name": "Level",
+            "values": [
+              [
+                "20 (Max)",
+                0
+              ]
+            ],
+            "displayMode": 0,
+            "type": 5
+          },
+          {
+            "name": "Mana Multiplier",
+            "values": [
+              [
+                "165%",
+                0
+              ]
+            ],
+            "displayMode": 0
+          },
+          {
+            "name": "Quality",
+            "values": [
+              [
+                "+20%",
+                1
+              ]
+            ],
+            "displayMode": 0,
+            "type": 6
+          }
+        ],
+        "requirements": [
+          {
+            "name": "Level",
+            "values": [
+              [
+                "70",
+                0
+              ]
+            ],
+            "displayMode": 0
+          },
+          {
+            "name": "Dex",
+            "values": [
+              [
+                "111",
+                0
+              ]
+            ],
+            "displayMode": 1
+          }
+        ],
+        "secDescrText": "Supports projectile skills.",
+        "explicitMods": [
+          "Supported Skills deal 26% less Projectile Damage",
+          "Supported Skills have 10% increased Attack Speed",
+          "Supported Skills have 10% increased Cast Speed",
+          "Supported Skills fire 4 additional Projectiles"
+        ],
+        "descrText": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Active Skill Gem you wish to augment. Right click to remove from a socket.",
+        "frameType": 4,
+        "socket": 0,
+        "colour": "D"
+      },
+      {
+        "verified": false,
+        "w": 1,
+        "h": 1,
+        "ilvl": 0,
+        "icon": "https:\/\/web.poecdn.com\/image\/Art\/2DItems\/Gems\/Support\/AddedLightningDamage.png?scale=1&w=1&h=1&v=9228c011d886459c66e66caa1d3e6fb1",
+        "support": true,
+        "id": "1dae22bfed6ddc364a9059b36b7b1cb4adacdec92e39c0eb03fe835a1cd3e201",
+        "name": "",
+        "typeLine": "Added Lightning Damage Support",
+        "identified": true,
+        "properties": [
+          {
+            "name": "Lightning, Support",
+            "values": [],
+            "displayMode": 0
+          },
+          {
+            "name": "Level",
+            "values": [
+              [
+                "20 (Max)",
+                0
+              ]
+            ],
+            "displayMode": 0,
+            "type": 5
+          },
+          {
+            "name": "Mana Multiplier",
+            "values": [
+              [
+                "130%",
+                0
+              ]
+            ],
+            "displayMode": 0
+          },
+          {
+            "name": "Quality",
+            "values": [
+              [
+                "+20%",
+                1
+              ]
+            ],
+            "displayMode": 0,
+            "type": 6
+          }
+        ],
+        "requirements": [
+          {
+            "name": "Level",
+            "values": [
+              [
+                "70",
+                0
+              ]
+            ],
+            "displayMode": 0
+          },
+          {
+            "name": "Int",
+            "values": [
+              [
+                "111",
+                0
+              ]
+            ],
+            "displayMode": 1
+          }
+        ],
+        "secDescrText": "Supports any skill that hits enemies.",
+        "explicitMods": [
+          "Supported Skills have 21 to 402 added Lightning Damage",
+          "Supported Skills deal 10% increased Lightning Damage"
+        ],
+        "descrText": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Active Skill Gem you wish to augment. Right click to remove from a socket.",
+        "frameType": 4,
+        "socket": 1,
+        "colour": "I"
+      },
+      {
+        "verified": false,
+        "w": 1,
+        "h": 1,
+        "ilvl": 0,
+        "icon": "https:\/\/web.poecdn.com\/image\/Art\/2DItems\/Gems\/Support\/WeaponElementalDamage.png?scale=1&w=1&h=1&v=d4747417db3cc97e4cefa260fa65557f",
+        "support": true,
+        "id": "ae7f27ab817c2d0fa1238e72b51ea040e555dc568cb5de942122d65004a7ccbd",
+        "name": "",
+        "typeLine": "Elemental Damage with Attacks Support",
+        "identified": true,
+        "corrupted": true,
+        "properties": [
+          {
+            "name": "Attack, Support",
+            "values": [],
+            "displayMode": 0
+          },
+          {
+            "name": "Level",
+            "values": [
+              [
+                "21 (Max)",
+                0
+              ]
+            ],
+            "displayMode": 0,
+            "type": 5
+          },
+          {
+            "name": "Mana Multiplier",
+            "values": [
+              [
+                "140%",
+                0
+              ]
+            ],
+            "displayMode": 0
+          },
+          {
+            "name": "Quality",
+            "values": [
+              [
+                "+20%",
+                1
+              ]
+            ],
+            "displayMode": 0,
+            "type": 6
+          }
+        ],
+        "requirements": [
+          {
+            "name": "Level",
+            "values": [
+              [
+                "72",
+                0
+              ]
+            ],
+            "displayMode": 0
+          },
+          {
+            "name": "Str",
+            "values": [
+              [
+                "72",
+                0
+              ]
+            ],
+            "displayMode": 1
+          },
+          {
+            "name": "Int",
+            "values": [
+              [
+                "50",
+                0
+              ]
+            ],
+            "displayMode": 1
+          }
+        ],
+        "secDescrText": "Supports attack skills.",
+        "explicitMods": [
+          "10% increased Elemental Damage with Attack Skills",
+          "Supported Attack Skills deal 55% more Elemental Damage"
+        ],
+        "descrText": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Active Skill Gem you wish to augment. Right click to remove from a socket.",
+        "frameType": 4,
+        "socket": 2,
+        "colour": "S"
+      },
+      {
+        "verified": false,
+        "w": 1,
+        "h": 1,
+        "ilvl": 0,
+        "icon": "https:\/\/web.poecdn.com\/image\/Art\/2DItems\/Gems\/Support\/IncreasedQuantity.png?scale=1&w=1&h=1&v=b07c717ecf613d726e9edcbc0d66ff93",
+        "support": true,
+        "id": "f64e997cfe1bcfcfd05c0a614a08936dc3da4438a0fba439ded6858442fa2e72",
+        "name": "",
+        "typeLine": "Item Quantity Support",
+        "identified": true,
+        "properties": [
+          {
+            "name": "Support",
+            "values": [],
+            "displayMode": 0
+          },
+          {
+            "name": "Level",
+            "values": [
+              [
+                "20 (Max)",
+                0
+              ]
+            ],
+            "displayMode": 0,
+            "type": 5
+          },
+          {
+            "name": "Quality",
+            "values": [
+              [
+                "+20%",
+                1
+              ]
+            ],
+            "displayMode": 0,
+            "type": 6
+          }
+        ],
+        "requirements": [
+          {
+            "name": "Level",
+            "values": [
+              [
+                "70",
+                0
+              ]
+            ],
+            "displayMode": 0
+          },
+          {
+            "name": "Str",
+            "values": [
+              [
+                "111",
+                0
+              ]
+            ],
+            "displayMode": 1
+          }
+        ],
+        "secDescrText": "Supports any skill that can kill enemies.",
+        "explicitMods": [
+          "43% increased Quantity of Items Dropped by Enemies Slain from Supported Skills"
+        ],
+        "descrText": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Active Skill Gem you wish to augment. Right click to remove from a socket.",
+        "frameType": 4,
+        "socket": 3,
+        "colour": "S"
+      },
+      {
+        "verified": false,
+        "w": 1,
+        "h": 1,
+        "ilvl": 0,
+        "icon": "https:\/\/web.poecdn.com\/image\/Art\/2DItems\/Gems\/TornadoShot.png?scale=1&w=1&h=1&v=1524092d14b25f0fa0d494adc28811dd",
+        "support": false,
+        "id": "1f6131417dfbd381aad1d7de9558a36d001bb6cdd857917c39523d401c96089a",
+        "name": "",
+        "typeLine": "Tornado Shot",
+        "identified": true,
+        "properties": [
+          {
+            "name": "Attack, Projectile, Bow",
+            "values": [],
+            "displayMode": 0
+          },
+          {
+            "name": "Level",
+            "values": [
+              [
+                "19",
+                0
+              ]
+            ],
+            "displayMode": 0,
+            "type": 5
+          },
+          {
+            "name": "Mana Cost",
+            "values": [
+              [
+                "10",
+                0
+              ]
+            ],
+            "displayMode": 0
+          },
+          {
+            "name": "Effectiveness of Added Damage",
+            "values": [
+              [
+                "108%",
+                0
+              ]
+            ],
+            "displayMode": 0
+          },
+          {
+            "name": "Quality",
+            "values": [
+              [
+                "+20%",
+                1
+              ]
+            ],
+            "displayMode": 0,
+            "type": 6
+          }
+        ],
+        "additionalProperties": [
+          {
+            "name": "Experience",
+            "values": [
+              [
+                "199566625\/211708088",
+                0
+              ]
+            ],
+            "displayMode": 2,
+            "progress": 0.9426499605178833,
+            "type": 20
+          }
+        ],
+        "requirements": [
+          {
+            "name": "Level",
+            "values": [
+              [
+                "68",
+                0
+              ]
+            ],
+            "displayMode": 0
+          },
+          {
+            "name": "Dex",
+            "values": [
+              [
+                "151",
+                0
+              ]
+            ],
+            "displayMode": 1
+          }
+        ],
+        "secDescrText": "Fires a piercing shot that travels until it reaches the targeted location. It will then fire projectiles out in all directions from that point.",
+        "explicitMods": [
+          "Deals 108% of Base Damage",
+          "20% increased Projectile Damage",
+          "Fires 3 secondary Projectiles"
+        ],
+        "descrText": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+        "frameType": 4,
+        "socket": 4,
+        "colour": "D"
+      },
+      {
+        "verified": false,
+        "w": 1,
+        "h": 1,
+        "ilvl": 0,
+        "icon": "https:\/\/web.poecdn.com\/image\/Art\/2DItems\/Gems\/Support\/FasterAttacks.png?scale=1&w=1&h=1&v=c14203f7b19650861907a30a92e3b6fe",
+        "support": true,
+        "id": "c142833ce3781722af78c5ffaa67202292ac1f7d0c42978fd14d6feb37b665c3",
+        "name": "",
+        "typeLine": "Faster Attacks Support",
+        "identified": true,
+        "corrupted": true,
+        "properties": [
+          {
+            "name": "Attack, Support",
+            "values": [],
+            "displayMode": 0
+          },
+          {
+            "name": "Level",
+            "values": [
+              [
+                "20 (Max)",
+                0
+              ]
+            ],
+            "displayMode": 0,
+            "type": 5
+          },
+          {
+            "name": "Mana Multiplier",
+            "values": [
+              [
+                "115%",
+                0
+              ]
+            ],
+            "displayMode": 0
+          },
+          {
+            "name": "Quality",
+            "values": [
+              [
+                "+23%",
+                1
+              ]
+            ],
+            "displayMode": 0,
+            "type": 6
+          }
+        ],
+        "requirements": [
+          {
+            "name": "Level",
+            "values": [
+              [
+                "70",
+                0
+              ]
+            ],
+            "displayMode": 0
+          },
+          {
+            "name": "Dex",
+            "values": [
+              [
+                "111",
+                0
+              ]
+            ],
+            "displayMode": 1
+          }
+        ],
+        "secDescrText": "Supports attack skills.",
+        "explicitMods": [
+          "Supported Skills have 55% increased Attack Speed"
+        ],
+        "descrText": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Active Skill Gem you wish to augment. Right click to remove from a socket.",
+        "frameType": 4,
+        "socket": 5,
+        "colour": "D"
+      }
+    ]
+  },
+  {
+    "verified": false,
+    "w": 2,
+    "h": 4,
+    "ilvl": 72,
+    "icon": "https:\/\/web.poecdn.com\/image\/Art\/2DItems\/Weapons\/TwoHandWeapons\/Bows\/Bow5unique.png?scale=1&w=2&h=4&v=0a9562ced7a9b03c0574ff2b2fae2061",
+    "league": "Standard",
+    "id": "36990841e70b88ce060b088cf5428c6318d03b79ab0c3d34788ef338dd292cbc",
+    "sockets": [
+      {
+        "group": 0,
+        "attr": "D",
+        "sColour": "G"
+      },
+      {
+        "group": 0,
+        "attr": "D",
+        "sColour": "G"
+      },
+      {
+        "group": 0,
+        "attr": "D",
+        "sColour": "G"
+      },
+      {
+        "group": 1,
+        "attr": "D",
+        "sColour": "G"
+      }
+    ],
+    "name": "Chin Sol",
+    "typeLine": "Assassin Bow",
+    "identified": true,
+    "properties": [
+      {
+        "name": "Bow",
+        "values": [],
+        "displayMode": 0
+      },
+      {
+        "name": "Physical Damage",
+        "values": [
+          [
+            "80-238",
+            1
+          ]
+        ],
+        "displayMode": 0,
+        "type": 9
+      },
+      {
+        "name": "Elemental Damage",
+        "values": [
+          [
+            "25-50",
+            4
+          ]
+        ],
+        "displayMode": 0,
+        "type": 10
+      },
+      {
+        "name": "Critical Strike Chance",
+        "values": [
+          [
+            "6.50%",
+            0
+          ]
+        ],
+        "displayMode": 0,
+        "type": 12
+      },
+      {
+        "name": "Attacks per Second",
+        "values": [
+          [
+            "1.38",
+            1
+          ]
+        ],
+        "displayMode": 0,
+        "type": 13
+      }
+    ],
+    "requirements": [
+      {
+        "name": "Level",
+        "values": [
+          [
+            "62",
+            0
+          ]
+        ],
+        "displayMode": 0
+      },
+      {
+        "name": "Dex",
+        "values": [
+          [
+            "212",
+            0
+          ]
+        ],
+        "displayMode": 1
+      }
+    ],
+    "explicitMods": [
+      "+17 to Dexterity",
+      "167% increased Physical Damage",
+      "Adds 25 to 50 Fire Damage",
+      "10% increased Attack Speed",
+      "100% More Damage with Arrow Hits at Close Range",
+      "Bow Knockback at Close Range"
+    ],
+    "flavourText": [
+      "As a soldier you want to get close to enemy archers.\r",
+      "That is not the case when fighting the Maraketh."
+    ],
+    "frameType": 3,
+    "x": 10,
+    "y": 0,
+    "inventoryId": "Stash123",
+    "socketedItems": []
+  },
+  {
+    "verified": false,
+    "w": 2,
+    "h": 2,
+    "ilvl": 64,
+    "icon": "https:\/\/web.poecdn.com\/image\/Art\/2DItems\/Armours\/Boots\/BootsDexUnique2.png?scale=1&w=2&h=2&v=9d45a0089985ac1339e3322d5b5b657f",
+    "league": "Standard",
+    "id": "557976833ab3bcef143b15ae75adf73e5fdb73279468a2e1119f2cb19f77b6f8",
+    "sockets": [
+      {
+        "group": 0,
+        "attr": "D",
+        "sColour": "G"
+      },
+      {
+        "group": 0,
+        "attr": "I",
+        "sColour": "B"
+      },
+      {
+        "group": 0,
+        "attr": "I",
+        "sColour": "B"
+      },
+      {
+        "group": 0,
+        "attr": "D",
+        "sColour": "G"
+      }
+    ],
+    "name": "Goldwyrm",
+    "typeLine": "Nubuck Boots",
+    "identified": true,
+    "properties": [
+      {
+        "name": "Quality",
+        "values": [
+          [
+            "+20%",
+            1
+          ]
+        ],
+        "displayMode": 0,
+        "type": 6
+      },
+      {
+        "name": "Evasion Rating",
+        "values": [
+          [
+            "136",
+            1
+          ]
+        ],
+        "displayMode": 0,
+        "type": 17
+      }
+    ],
+    "requirements": [
+      {
+        "name": "Level",
+        "values": [
+          [
+            "70",
+            0
+          ]
+        ],
+        "displayMode": 0
+      },
+      {
+        "name": "Str",
+        "values": [
+          [
+            "48",
+            0
+          ]
+        ],
+        "displayMode": 1
+      },
+      {
+        "name": "Dex",
+        "values": [
+          [
+            "98",
+            0
+          ]
+        ],
+        "displayMode": 1
+      },
+      {
+        "name": "Int",
+        "values": [
+          [
+            "111",
+            0
+          ]
+        ],
+        "displayMode": 1
+      }
+    ],
+    "explicitMods": [
+      "60% increased Mana Regeneration Rate",
+      "23% increased Quantity of Items found",
+      "+41% to Fire Resistance",
+      "10% increased Movement Speed"
+    ],
+    "flavourText": [
+      "The wyrm draws warmth from the fires of desire."
+    ],
+    "frameType": 3,
+    "x": 6,
+    "y": 6,
+    "inventoryId": "Stash123",
+    "socketedItems": [
+      {
+        "verified": false,
+        "w": 1,
+        "h": 1,
+        "ilvl": 0,
+        "icon": "https:\/\/web.poecdn.com\/image\/Art\/2DItems\/Gems\/Support\/Onslaught.png?scale=1&w=1&h=1&v=0e01e630b00f61afc5d6efc42f0e4c0d",
+        "support": true,
+        "id": "7d351af1b126f5b39928fe4e86d49ee5904349a2d9f9efbbd5c8176a0ce006f5",
+        "name": "",
+        "typeLine": "Onslaught Support",
+        "identified": true,
+        "properties": [
+          {
+            "name": "Support",
+            "values": [],
+            "displayMode": 0
+          },
+          {
+            "name": "Level",
+            "values": [
+              [
+                "20 (Max)",
+                0
+              ]
+            ],
+            "displayMode": 0,
+            "type": 5
+          },
+          {
+            "name": "Mana Multiplier",
+            "values": [
+              [
+                "110%",
+                0
+              ]
+            ],
+            "displayMode": 0
+          },
+          {
+            "name": "Quality",
+            "values": [
+              [
+                "+20%",
+                1
+              ]
+            ],
+            "displayMode": 0,
+            "type": 6
+          }
+        ],
+        "requirements": [
+          {
+            "name": "Level",
+            "values": [
+              [
+                "70",
+                0
+              ]
+            ],
+            "displayMode": 0
+          },
+          {
+            "name": "Str",
+            "values": [
+              [
+                "48",
+                0
+              ]
+            ],
+            "displayMode": 1
+          },
+          {
+            "name": "Dex",
+            "values": [
+              [
+                "70",
+                0
+              ]
+            ],
+            "displayMode": 1
+          }
+        ],
+        "secDescrText": "Supports any skill that hits enemies.",
+        "explicitMods": [
+          "5% increased Attack and Cast Speed",
+          "Supported Skills have 10% chance to grant Onslaught for 3 seconds when you Hit a Unique Enemy",
+          "Supported Skills have 44% chance to grant Onslaught for 8 seconds on\ndealing a Killing Blow"
+        ],
+        "descrText": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Active Skill Gem you wish to augment. Right click to remove from a socket.",
+        "frameType": 4,
+        "socket": 0,
+        "colour": "D"
+      },
+      {
+        "verified": false,
+        "w": 1,
+        "h": 1,
+        "ilvl": 0,
+        "icon": "https:\/\/web.poecdn.com\/image\/Art\/2DItems\/Gems\/AssassinsMark.png?scale=1&w=1&h=1&v=8c4b5e92ec890630d572e4f48d930ca2",
+        "support": false,
+        "id": "bb6e75419f4fd946242fdc762e3919e0896c4d12e1d228a61185bf31a67d4ad5",
+        "name": "",
+        "typeLine": "Assassin's Mark",
+        "identified": true,
+        "properties": [
+          {
+            "name": "Spell, AoE, Duration, Curse",
+            "values": [],
+            "displayMode": 0
+          },
+          {
+            "name": "Level",
+            "values": [
+              [
+                "20 (Max)",
+                0
+              ]
+            ],
+            "displayMode": 0,
+            "type": 5
+          },
+          {
+            "name": "Mana Cost",
+            "values": [
+              [
+                "33",
+                0
+              ]
+            ],
+            "displayMode": 0
+          },
+          {
+            "name": "Cast Time",
+            "values": [
+              [
+                "0.50 sec",
+                0
+              ]
+            ],
+            "displayMode": 0
+          },
+          {
+            "name": "Quality",
+            "values": [
+              [
+                "+20%",
+                1
+              ]
+            ],
+            "displayMode": 0,
+            "type": 6
+          }
+        ],
+        "requirements": [
+          {
+            "name": "Level",
+            "values": [
+              [
+                "70",
+                0
+              ]
+            ],
+            "displayMode": 0
+          },
+          {
+            "name": "Dex",
+            "values": [
+              [
+                "68",
+                0
+              ]
+            ],
+            "displayMode": 1
+          },
+          {
+            "name": "Int",
+            "values": [
+              [
+                "98",
+                0
+              ]
+            ],
+            "displayMode": 1
+          }
+        ],
+        "secDescrText": "Curses all targets in an area, making them more vulnerable to Critical Strikes. Killing the cursed targets will grant life and mana, and a chance to gain a power charge.",
+        "explicitMods": [
+          "Base duration is 9.80 seconds",
+          "+10 to radius",
+          "Cursed enemies have a 40% chance to grant a Power Charge when slain",
+          "Cursed enemies take 20% increased Extra Damage from Critical Strikes",
+          "Hits against Cursed Enemies have +2.5% to Critical Strike Chance",
+          "Cursed enemies grant 25 Life when Killed",
+          "Cursed enemies grant 25 Mana when Killed"
+        ],
+        "descrText": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+        "frameType": 4,
+        "socket": 1,
+        "colour": "I"
+      },
+      {
+        "verified": false,
+        "w": 1,
+        "h": 1,
+        "ilvl": 0,
+        "icon": "https:\/\/web.poecdn.com\/image\/Art\/2DItems\/Gems\/Support\/CurseOnHit.png?scale=1&w=1&h=1&v=05db155f8ee3abfd38be282240134f57",
+        "support": true,
+        "id": "648a15af065694197183e5876df4c340b6d9c51b9b74e80a9e071821fde6c06f",
+        "name": "",
+        "typeLine": "Curse On Hit Support",
+        "identified": true,
+        "properties": [
+          {
+            "name": "Curse, Trigger, Support",
+            "values": [],
+            "displayMode": 0
+          },
+          {
+            "name": "Level",
+            "values": [
+              [
+                "20 (Max)",
+                0
+              ]
+            ],
+            "displayMode": 0,
+            "type": 5
+          }
+        ],
+        "requirements": [
+          {
+            "name": "Level",
+            "values": [
+              [
+                "70",
+                0
+              ]
+            ],
+            "displayMode": 0
+          },
+          {
+            "name": "Int",
+            "values": [
+              [
+                "111",
+                0
+              ]
+            ],
+            "displayMode": 1
+          }
+        ],
+        "secDescrText": "Must support both a skill that hits enemies, and a curse skill to work. The curse will be applied when enemies are hit by the other skill. Cannot support totems, traps, or mines. Minions cannot apply curses this way.",
+        "explicitMods": [
+          "Supported Skills apply supported Curses on Hit",
+          "You cannot Cast Supported Curses",
+          "Supported Skills have 12% reduced Curse Duration"
+        ],
+        "descrText": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Active Skill Gem you wish to augment. Right click to remove from a socket.",
+        "frameType": 4,
+        "socket": 2,
+        "colour": "I"
+      },
+      {
+        "verified": false,
+        "w": 1,
+        "h": 1,
+        "ilvl": 0,
+        "icon": "https:\/\/web.poecdn.com\/image\/Art\/2DItems\/Gems\/HeraldofIce.png?scale=1&w=1&h=1&v=098e32bf010edc365f1ec453f3477bc7",
+        "support": false,
+        "id": "a6759eec0ab6807cc86090eed45028d113799971a4b51089728b7bfaed436364",
+        "name": "",
+        "typeLine": "Herald of Ice",
+        "identified": true,
+        "properties": [
+          {
+            "name": "Spell, AoE, Cold, Herald",
+            "values": [],
+            "displayMode": 0
+          },
+          {
+            "name": "Level",
+            "values": [
+              [
+                "20 (Max)",
+                0
+              ]
+            ],
+            "displayMode": 0,
+            "type": 5
+          },
+          {
+            "name": "Mana Reserved",
+            "values": [
+              [
+                "25%",
+                0
+              ]
+            ],
+            "displayMode": 0
+          },
+          {
+            "name": "Cooldown Time",
+            "values": [
+              [
+                "1.00 sec",
+                0
+              ]
+            ],
+            "displayMode": 0
+          },
+          {
+            "name": "Cast Time",
+            "values": [
+              [
+                "Instant",
+                0
+              ]
+            ],
+            "displayMode": 0
+          },
+          {
+            "name": "Effectiveness of Added Damage",
+            "values": [
+              [
+                "80%",
+                0
+              ]
+            ],
+            "displayMode": 0
+          }
+        ],
+        "requirements": [
+          {
+            "name": "Level",
+            "values": [
+              [
+                "70",
+                0
+              ]
+            ],
+            "displayMode": 0
+          },
+          {
+            "name": "Dex",
+            "values": [
+              [
+                "98",
+                0
+              ]
+            ],
+            "displayMode": 1
+          },
+          {
+            "name": "Int",
+            "values": [
+              [
+                "68",
+                0
+              ]
+            ],
+            "displayMode": 1
+          }
+        ],
+        "secDescrText": "Channel ice through your hands, adding cold damage to spells and attacks. If you shatter an enemy, they explode and deal AoE cold damage to enemies near them. The AoE cold damage inflicted by this skill is not affected by modifiers to spell damage.",
+        "explicitMods": [
+          "Deals 308 to 462 Cold Damage",
+          "Damage cannot be Reflected",
+          "Adds 38 to 56 Cold Damage to Spells",
+          "Adds 38 to 56 Cold Damage to Attacks"
+        ],
+        "descrText": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+        "frameType": 4,
+        "socket": 3,
+        "colour": "D"
+      }
+    ]
+  },
+  {
+    "verified": false,
+    "w": 2,
+    "h": 2,
+    "ilvl": 72,
+    "icon": "https:\/\/web.poecdn.com\/image\/Art\/2DItems\/Armours\/Boots\/Wanderlust.png?scale=1&w=2&h=2&v=0ff39442b18a833e6f12db84fac2c28c",
+    "league": "Standard",
+    "id": "4bb1d0aa6b2ca1cb2aede17c387e0a816f044e5dc824c27c2bed1ab9a95bc7ff",
+    "sockets": [
+      {
+        "group": 0,
+        "attr": "S",
+        "sColour": "R"
+      },
+      {
+        "group": 0,
+        "attr": "I",
+        "sColour": "B"
+      },
+      {
+        "group": 0,
+        "attr": "D",
+        "sColour": "G"
+      },
+      {
+        "group": 1,
+        "attr": "I",
+        "sColour": "B"
+      }
+    ],
+    "name": "Wanderlust",
+    "typeLine": "Wool Shoes",
+    "identified": true,
+    "properties": [
+      {
+        "name": "Energy Shield",
+        "values": [
+          [
+            "18",
+            1
+          ]
+        ],
+        "displayMode": 0,
+        "type": 18
+      }
+    ],
+    "explicitMods": [
+      "+5 to Dexterity",
+      "+14 to maximum Energy Shield",
+      "28% increased Mana Regeneration Rate",
+      "20% increased Movement Speed",
+      "Cannot be Frozen"
+    ],
+    "flavourText": [
+      "All the world is my home."
+    ],
+    "frameType": 3,
+    "x": 8,
+    "y": 4,
+    "inventoryId": "Stash82",
+    "socketedItems": []
+  }
+]

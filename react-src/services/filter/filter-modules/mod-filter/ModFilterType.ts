@@ -1,0 +1,15 @@
+export const enum ModFilterType {
+  TOTAL,
+  PSEUDO,
+  EXPLICIT,
+  CRAFTED,
+  IMPLICIT,
+  ENCHANTMENT,
+  FRACTURED,
+  ABYSS,
+  UNIQUE,
+  BESTIARY,
+  MAP,
+  PROPHECY,
+  LEAGUESTONE,
+}
