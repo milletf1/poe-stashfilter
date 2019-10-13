@@ -1,0 +1,1126 @@
+[
+  {
+    "verified": false,
+    "w": 2,
+    "h": 2,
+    "ilvl": 75,
+    "icon": "https:\/\/web.poecdn.com\/image\/Art\/2DItems\/Armours\/Gloves\/GlovesDexInt3.png?scale=1&w=2&h=2&v=559c119664070970cfbdc8203425aa76",
+    "league": "Standard",
+    "id": "8785c121a65b914412169b7ae55a72505f322085776ece9bb86dbc4d589a56a9",
+    "shaper": true,
+    "sockets": [
+      {
+        "group": 0,
+        "attr": "D",
+        "sColour": "G"
+      },
+      {
+        "group": 0,
+        "attr": "I",
+        "sColour": "B"
+      }
+    ],
+    "name": "Dread Vise",
+    "typeLine": "Carnal Mitts",
+    "identified": true,
+    "note": "~price 40 chaos",
+    "properties": [
+      {
+        "name": "Evasion Rating",
+        "values": [
+          [
+            "117",
+            1
+          ]
+        ],
+        "displayMode": 0,
+        "type": 17
+      },
+      {
+        "name": "Energy Shield",
+        "values": [
+          [
+            "39",
+            1
+          ]
+        ],
+        "displayMode": 0,
+        "type": 18
+      }
+    ],
+    "requirements": [
+      {
+        "name": "Level",
+        "values": [
+          [
+            "60",
+            0
+          ]
+        ],
+        "displayMode": 0
+      },
+      {
+        "name": "Dex",
+        "values": [
+          [
+            "39",
+            0
+          ]
+        ],
+        "displayMode": 1
+      },
+      {
+        "name": "Int",
+        "values": [
+          [
+            "39",
+            0
+          ]
+        ],
+        "displayMode": 1
+      }
+    ],
+    "explicitMods": [
+      "Socketed Gems are Supported by Level 18 Trap",
+      "+27 to Evasion Rating",
+      "+21 to maximum Energy Shield",
+      "+22% to Fire Resistance",
+      "+2 Life gained for each Enemy hit by your Attacks",
+      "Skills which Throw Traps throw up to 1 additional Trap"
+    ],
+    "craftedMods": [
+      "+68 to maximum Life"
+    ],
+    "frameType": 2,
+    "x": 2,
+    "y": 10,
+    "inventoryId": "Stash13",
+    "socketedItems": []
+  },
+  {
+    "verified": false,
+    "w": 2,
+    "h": 2,
+    "ilvl": 76,
+    "icon": "https:\/\/web.poecdn.com\/image\/Art\/2DItems\/Armours\/Gloves\/GlovesStrInt3.png?scale=1&w=2&h=2&v=6121a1f24b6a6b016f4f62266feb4965",
+    "league": "Standard",
+    "id": "beb862ff97052044eb23134b4101f4fb1631e602ff838fa93451fe8a4402185c",
+    "shaper": true,
+    "sockets": [
+      {
+        "group": 0,
+        "attr": "D",
+        "sColour": "G"
+      },
+      {
+        "group": 0,
+        "attr": "I",
+        "sColour": "B"
+      },
+      {
+        "group": 0,
+        "attr": "I",
+        "sColour": "B"
+      },
+      {
+        "group": 0,
+        "attr": "D",
+        "sColour": "G"
+      }
+    ],
+    "name": "Onslaught Nails",
+    "typeLine": "Mesh Gloves",
+    "identified": true,
+    "properties": [
+      {
+        "name": "Quality",
+        "values": [
+          [
+            "+20%",
+            1
+          ]
+        ],
+        "displayMode": 0,
+        "type": 6
+      },
+      {
+        "name": "Armour",
+        "values": [
+          [
+            "85",
+            1
+          ]
+        ],
+        "displayMode": 0,
+        "type": 16
+      },
+      {
+        "name": "Energy Shield",
+        "values": [
+          [
+            "18",
+            1
+          ]
+        ],
+        "displayMode": 0,
+        "type": 18
+      }
+    ],
+    "requirements": [
+      {
+        "name": "Level",
+        "values": [
+          [
+            "70",
+            0
+          ]
+        ],
+        "displayMode": 0
+      },
+      {
+        "name": "Str",
+        "values": [
+          [
+            "26",
+            0
+          ]
+        ],
+        "displayMode": 1
+      },
+      {
+        "name": "Dex",
+        "values": [
+          [
+            "69",
+            0
+          ]
+        ],
+        "displayMode": 1
+      },
+      {
+        "name": "Int",
+        "values": [
+          [
+            "155",
+            0
+          ]
+        ],
+        "displayMode": 1
+      }
+    ],
+    "explicitMods": [
+      "Socketed Gems are Supported by Level 20 Trap",
+      "+43 to Strength",
+      "26% increased Armour and Energy Shield",
+      "11% increased Stun and Block Recovery",
+      "Skills which Throw Traps throw up to 1 additional Trap"
+    ],
+    "craftedMods": [
+      "+70 to maximum Life"
+    ],
+    "frameType": 2,
+    "x": 13,
+    "y": 13,
+    "inventoryId": "Stash14",
+    "socketedItems": [
+      {
+        "verified": false,
+        "w": 1,
+        "h": 1,
+        "ilvl": 0,
+        "icon": "https:\/\/web.poecdn.com\/image\/Art\/2DItems\/Gems\/Support\/ClusterTrap.png?scale=1&w=1&h=1&v=bdc843aa90aabe0ab98265455c3e82e6",
+        "support": true,
+        "id": "6a756df758f4b320bef0e8bd2b57bbc1f828c9dac4d5c35893dbc8a6b46df0e4",
+        "name": "",
+        "typeLine": "Cluster Traps Support",
+        "identified": true,
+        "properties": [
+          {
+            "name": "Trap, Support",
+            "values": [],
+            "displayMode": 0
+          },
+          {
+            "name": "Level",
+            "values": [
+              [
+                "19",
+                0
+              ]
+            ],
+            "displayMode": 0,
+            "type": 5
+          },
+          {
+            "name": "Mana Multiplier",
+            "values": [
+              [
+                "150%",
+                0
+              ]
+            ],
+            "displayMode": 0
+          },
+          {
+            "name": "Quality",
+            "values": [
+              [
+                "+20%",
+                1
+              ]
+            ],
+            "displayMode": 0,
+            "type": 6
+          }
+        ],
+        "additionalProperties": [
+          {
+            "name": "Experience",
+            "values": [
+              [
+                "3932016\/157405063",
+                0
+              ]
+            ],
+            "displayMode": 2,
+            "progress": 0.02498023957014084,
+            "type": 20
+          }
+        ],
+        "requirements": [
+          {
+            "name": "Level",
+            "values": [
+              [
+                "69",
+                0
+              ]
+            ],
+            "displayMode": 0
+          },
+          {
+            "name": "Dex",
+            "values": [
+              [
+                "69",
+                0
+              ]
+            ],
+            "displayMode": 1
+          },
+          {
+            "name": "Int",
+            "values": [
+              [
+                "48",
+                0
+              ]
+            ],
+            "displayMode": 1
+          }
+        ],
+        "secDescrText": "Supports traps skills, making them throw extra traps randomly around the targeted location.",
+        "explicitMods": [
+          "Supported Skills throw up to 2 additional Traps",
+          "Supported Skills can have up to 5 additional Traps placed at a time",
+          "Supported Skills deal 37% less Damage",
+          "Supported Skills deal 10% increased Trap Damage"
+        ],
+        "descrText": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Active Skill Gem you wish to augment. Right click to remove from a socket.",
+        "frameType": 4,
+        "socket": 0,
+        "colour": "D"
+      },
+      {
+        "verified": false,
+        "w": 1,
+        "h": 1,
+        "ilvl": 0,
+        "icon": "https:\/\/web.poecdn.com\/image\/Art\/2DItems\/Gems\/Arc.png?scale=1&w=1&h=1&v=f26af5a0e939a9fca4a511bad42ec895",
+        "support": false,
+        "id": "095b6e34af6573561203842fcd51a602ad0e2364fe459e745b24cd592e160d64",
+        "name": "",
+        "typeLine": "Arc",
+        "identified": true,
+        "properties": [
+          {
+            "name": "Spell, Chaining, Lightning",
+            "values": [],
+            "displayMode": 0
+          },
+          {
+            "name": "Level",
+            "values": [
+              [
+                "20 (Max)",
+                0
+              ]
+            ],
+            "displayMode": 0,
+            "type": 5
+          },
+          {
+            "name": "Mana Cost",
+            "values": [
+              [
+                "23",
+                0
+              ]
+            ],
+            "displayMode": 0
+          },
+          {
+            "name": "Cast Time",
+            "values": [
+              [
+                "0.70 sec",
+                0
+              ]
+            ],
+            "displayMode": 0
+          },
+          {
+            "name": "Critical Strike Chance",
+            "values": [
+              [
+                "5.00%",
+                0
+              ]
+            ],
+            "displayMode": 0
+          },
+          {
+            "name": "Effectiveness of Added Damage",
+            "values": [
+              [
+                "80%",
+                0
+              ]
+            ],
+            "displayMode": 0
+          },
+          {
+            "name": "Quality",
+            "values": [
+              [
+                "+20%",
+                1
+              ]
+            ],
+            "displayMode": 0,
+            "type": 6
+          }
+        ],
+        "requirements": [
+          {
+            "name": "Level",
+            "values": [
+              [
+                "70",
+                0
+              ]
+            ],
+            "displayMode": 0
+          },
+          {
+            "name": "Int",
+            "values": [
+              [
+                "155",
+                0
+              ]
+            ],
+            "displayMode": 1
+          }
+        ],
+        "secDescrText": "An arc of lightning stretches from the caster to a targeted enemy and chains on to other nearby enemies. Each time the main beam chains it will also chain to a second enemy, but that secondary arc cannot chain further.",
+        "explicitMods": [
+          "Deals 133 to 754 Lightning Damage",
+          "Chains +7 Times",
+          "20% chance to Shock enemies",
+          "15% more Damage for each remaining Chain",
+          "29% increased Effect of Shock"
+        ],
+        "descrText": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+        "frameType": 4,
+        "socket": 1,
+        "colour": "I"
+      },
+      {
+        "verified": false,
+        "w": 1,
+        "h": 1,
+        "ilvl": 0,
+        "icon": "https:\/\/web.poecdn.com\/image\/Art\/2DItems\/Gems\/Support\/IncreasedCriticalStrikes.png?scale=1&w=1&h=1&v=e7cd6767e53abba79f5ca4af6131c479",
+        "support": true,
+        "id": "2696a09c61971d00b59b6f4bf498d03733d86b0a178bae468f5b1007c1aed415",
+        "name": "",
+        "typeLine": "Increased Critical Strikes Support",
+        "identified": true,
+        "properties": [
+          {
+            "name": "Support",
+            "values": [],
+            "displayMode": 0
+          },
+          {
+            "name": "Level",
+            "values": [
+              [
+                "20 (Max)",
+                0
+              ]
+            ],
+            "displayMode": 0,
+            "type": 5
+          },
+          {
+            "name": "Mana Multiplier",
+            "values": [
+              [
+                "115%",
+                0
+              ]
+            ],
+            "displayMode": 0
+          }
+        ],
+        "requirements": [
+          {
+            "name": "Level",
+            "values": [
+              [
+                "70",
+                0
+              ]
+            ],
+            "displayMode": 0
+          },
+          {
+            "name": "Int",
+            "values": [
+              [
+                "111",
+                0
+              ]
+            ],
+            "displayMode": 1
+          }
+        ],
+        "secDescrText": "Supports any skill that hits enemies.",
+        "explicitMods": [
+          "Supported Skills have 88% increased Critical Strike Chance",
+          "Supported Skills have +1.9% to Critical Strike Chance"
+        ],
+        "descrText": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Active Skill Gem you wish to augment. Right click to remove from a socket.",
+        "frameType": 4,
+        "socket": 2,
+        "colour": "I"
+      },
+      {
+        "verified": false,
+        "w": 1,
+        "h": 1,
+        "ilvl": 0,
+        "icon": "https:\/\/web.poecdn.com\/image\/Art\/2DItems\/Gems\/Support\/TrapAndMineDamage.png?scale=1&w=1&h=1&v=aa1fd5a62b528839c08f0f19148d1541",
+        "support": true,
+        "id": "ac8649b2c66ed182843d3e8901a653f14f7d48c5a1c4af30c79c4accc2be2d92",
+        "name": "",
+        "typeLine": "Trap and Mine Damage Support",
+        "identified": true,
+        "properties": [
+          {
+            "name": "Support, Trap, Mine",
+            "values": [],
+            "displayMode": 0
+          },
+          {
+            "name": "Level",
+            "values": [
+              [
+                "19",
+                0
+              ]
+            ],
+            "displayMode": 0,
+            "type": 5
+          },
+          {
+            "name": "Mana Multiplier",
+            "values": [
+              [
+                "130%",
+                0
+              ]
+            ],
+            "displayMode": 0
+          },
+          {
+            "name": "Quality",
+            "values": [
+              [
+                "+20%",
+                1
+              ]
+            ],
+            "displayMode": 0,
+            "type": 6
+          }
+        ],
+        "additionalProperties": [
+          {
+            "name": "Experience",
+            "values": [
+              [
+                "54561349\/212002638",
+                0
+              ]
+            ],
+            "displayMode": 2,
+            "progress": 0.25736165046691895,
+            "type": 20
+          }
+        ],
+        "requirements": [
+          {
+            "name": "Level",
+            "values": [
+              [
+                "68",
+                0
+              ]
+            ],
+            "displayMode": 0
+          },
+          {
+            "name": "Dex",
+            "values": [
+              [
+                "68",
+                0
+              ]
+            ],
+            "displayMode": 1
+          },
+          {
+            "name": "Int",
+            "values": [
+              [
+                "47",
+                0
+              ]
+            ],
+            "displayMode": 1
+          }
+        ],
+        "secDescrText": "Supports skills which throw Traps or Mines.",
+        "explicitMods": [
+          "Supported Skills deal 10% increased Damage",
+          "Supported Skills have 10% reduced Mine Throwing Speed",
+          "Supported Skills deal 48% more Trap and Mine Damage",
+          "Supported Skills have 10% reduced Trap Throwing Speed"
+        ],
+        "descrText": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Active Skill Gem you wish to augment. Right click to remove from a socket.",
+        "frameType": 4,
+        "socket": 3,
+        "colour": "D"
+      }
+    ]
+  },
+  {
+    "verified": false,
+    "w": 2,
+    "h": 1,
+    "ilvl": 84,
+    "icon": "https:\/\/web.poecdn.com\/image\/Art\/2DItems\/Belts\/AbyssBelt.png?scale=1&w=2&h=1&v=cd7c25de181e6a77812020eb6e867971",
+    "league": "Standard",
+    "id": "9a667024dadfabf6e9899dba50ff59c595ddba9ae4f4432a900066ab061cb47e",
+    "sockets": [
+      {
+        "group": 0,
+        "attr": "A",
+        "sColour": "A"
+      }
+    ],
+    "name": "Plague Tether",
+    "typeLine": "Stygian Vise",
+    "identified": true,
+    "requirements": [
+      {
+        "name": "Level",
+        "values": [
+          [
+            "67",
+            0
+          ]
+        ],
+        "displayMode": 0
+      }
+    ],
+    "implicitMods": [
+      "Has 1 Abyssal Socket"
+    ],
+    "explicitMods": [
+      "+34 to Armour",
+      "+47% to Cold Resistance",
+      "+46% to Lightning Resistance",
+      "11% increased Stun and Block Recovery"
+    ],
+    "craftedMods": [
+      "+52 to maximum Life"
+    ],
+    "frameType": 2,
+    "x": 14,
+    "y": 18,
+    "inventoryId": "Stash14",
+    "socketedItems": [
+      {
+        "verified": false,
+        "w": 1,
+        "h": 1,
+        "ilvl": 81,
+        "icon": "https:\/\/web.poecdn.com\/image\/Art\/2DItems\/Jewels\/RivetedEye.png?scale=1&w=1&h=1&v=a0904494de195adde172f2d6dd329b05",
+        "id": "ed3ab112e86466bdef023e7211c0a45559e62af8012e1b94d1caafea99f30062",
+        "abyssJewel": true,
+        "name": "Foul Prism",
+        "typeLine": "Hypnotic Eye Jewel",
+        "identified": true,
+        "properties": [
+          {
+            "name": "Abyss",
+            "values": [],
+            "displayMode": 0
+          }
+        ],
+        "requirements": [
+          {
+            "name": "Level",
+            "values": [
+              [
+                "50",
+                0
+              ]
+            ],
+            "displayMode": 0
+          }
+        ],
+        "explicitMods": [
+          "Adds 17 to 20 Cold Damage to Spells",
+          "Adds 1 to 16 Lightning Damage to Spells",
+          "+26 to maximum Life",
+          "+30 to maximum Mana"
+        ],
+        "descrText": "Place into an Abyssal Socket on an Item or into an allocated Jewel Socket on the Passive Skill Tree. Right click to remove from the Socket.",
+        "frameType": 2,
+        "socket": 0,
+        "colour": null
+      }
+    ]
+  },
+  {
+    "verified": false,
+    "w": 1,
+    "h": 3,
+    "ilvl": 77,
+    "icon": "https:\/\/web.poecdn.com\/image\/Art\/2DItems\/Weapons\/OneHandWeapons\/Daggers\/Dagger4.png?scale=1&w=1&h=3&v=73f07b51d53c87085bc93c1eb8a23a28",
+    "league": "Standard",
+    "id": "a8010aaa50ddd852d2391cccf0e446b1f6f752d52c0c29503ddb1026a85392af",
+    "sockets": [
+      {
+        "group": 0,
+        "attr": "D",
+        "sColour": "G"
+      },
+      {
+        "group": 0,
+        "attr": "D",
+        "sColour": "G"
+      },
+      {
+        "group": 0,
+        "attr": "D",
+        "sColour": "G"
+      }
+    ],
+    "name": "Death Bane",
+    "typeLine": "Ambusher",
+    "identified": true,
+    "properties": [
+      {
+        "name": "Dagger",
+        "values": [],
+        "displayMode": 0
+      },
+      {
+        "name": "Quality",
+        "values": [
+          [
+            "+20%",
+            1
+          ]
+        ],
+        "displayMode": 0,
+        "type": 6
+      },
+      {
+        "name": "Physical Damage",
+        "values": [
+          [
+            "105-315",
+            1
+          ]
+        ],
+        "displayMode": 0,
+        "type": 9
+      },
+      {
+        "name": "Critical Strike Chance",
+        "values": [
+          [
+            "7.74%",
+            1
+          ]
+        ],
+        "displayMode": 0,
+        "type": 12
+      },
+      {
+        "name": "Attacks per Second",
+        "values": [
+          [
+            "1.71",
+            1
+          ]
+        ],
+        "displayMode": 0,
+        "type": 13
+      },
+      {
+        "name": "Weapon Range",
+        "values": [
+          [
+            "10",
+            0
+          ]
+        ],
+        "displayMode": 0,
+        "type": 14
+      }
+    ],
+    "requirements": [
+      {
+        "name": "Level",
+        "values": [
+          [
+            "70",
+            0
+          ]
+        ],
+        "displayMode": 0
+      },
+      {
+        "name": "Dex",
+        "values": [
+          [
+            "113",
+            0
+          ]
+        ],
+        "displayMode": 1
+      },
+      {
+        "name": "Int",
+        "values": [
+          [
+            "113",
+            0
+          ]
+        ],
+        "displayMode": 1
+      }
+    ],
+    "implicitMods": [
+      "30% increased Global Critical Strike Chance"
+    ],
+    "explicitMods": [
+      "103% increased Physical Damage",
+      "Adds 20 to 43 Physical Damage"
+    ],
+    "craftedMods": [
+      "Can have multiple Crafted Modifiers",
+      "46% increased Physical Damage",
+      "14% increased Attack Speed",
+      "27% increased Critical Strike Chance",
+      "+42 to Accuracy Rating"
+    ],
+    "frameType": 2,
+    "x": 2,
+    "y": 5,
+    "inventoryId": "Stash104",
+    "socketedItems": [
+      {
+        "verified": false,
+        "w": 1,
+        "h": 1,
+        "ilvl": 0,
+        "icon": "https:\/\/web.poecdn.com\/image\/Art\/2DItems\/Gems\/Support\/FasterAttacks.png?scale=1&w=1&h=1&v=c14203f7b19650861907a30a92e3b6fe",
+        "support": true,
+        "id": "cdb110534029a69d068d13b1498773bab2808c6bd94e39441e878adffb71a98d",
+        "name": "",
+        "typeLine": "Faster Attacks Support",
+        "identified": true,
+        "properties": [
+          {
+            "name": "Attack, Support",
+            "values": [],
+            "displayMode": 0
+          },
+          {
+            "name": "Level",
+            "values": [
+              [
+                "20 (Max)",
+                0
+              ]
+            ],
+            "displayMode": 0,
+            "type": 5
+          },
+          {
+            "name": "Mana Multiplier",
+            "values": [
+              [
+                "115%",
+                0
+              ]
+            ],
+            "displayMode": 0
+          },
+          {
+            "name": "Quality",
+            "values": [
+              [
+                "+20%",
+                1
+              ]
+            ],
+            "displayMode": 0,
+            "type": 6
+          }
+        ],
+        "requirements": [
+          {
+            "name": "Level",
+            "values": [
+              [
+                "70",
+                0
+              ]
+            ],
+            "displayMode": 0
+          },
+          {
+            "name": "Dex",
+            "values": [
+              [
+                "111",
+                0
+              ]
+            ],
+            "displayMode": 1
+          }
+        ],
+        "secDescrText": "Supports attack skills.",
+        "explicitMods": [
+          "Supported Skills have 54% increased Attack Speed"
+        ],
+        "descrText": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Active Skill Gem you wish to augment. Right click to remove from a socket.",
+        "frameType": 4,
+        "socket": 1,
+        "colour": "D"
+      }
+    ]
+  },
+  {
+    "verified": false,
+    "w": 1,
+    "h": 1,
+    "ilvl": 76,
+    "icon": "https:\/\/web.poecdn.com\/image\/Art\/2DItems\/Rings\/DiamondRing.png?scale=1&w=1&h=1&v=d53fabd123b7c64d59ffe8a6baf7d778",
+    "league": "Standard",
+    "id": "f03696863441b0da4a72106a102449f79d86b000987535a1a601dca5acada052",
+    "name": "Corruption Knot",
+    "typeLine": "Diamond Ring",
+    "identified": true,
+    "requirements": [
+      {
+        "name": "Level",
+        "values": [
+          [
+            "57",
+            0
+          ]
+        ],
+        "displayMode": 0
+      }
+    ],
+    "implicitMods": [
+      "22% increased Global Critical Strike Chance"
+    ],
+    "explicitMods": [
+      "18% increased Rarity of Items found",
+      "+16% to all Elemental Resistances",
+      "+44% to Lightning Resistance",
+      "25% increased Elemental Damage with Attack Skills"
+    ],
+    "craftedMods": [
+      "+38 to maximum Life"
+    ],
+    "frameType": 2,
+    "x": 11,
+    "y": 0,
+    "inventoryId": "Stash104"
+  },
+  {
+    "verified": false,
+    "w": 1,
+    "h": 4,
+    "ilvl": 83,
+    "icon": "https:\/\/web.poecdn.com\/image\/Art\/2DItems\/Weapons\/OneHandWeapons\/Rapiers\/Rapier9.png?scale=1&w=1&h=4&v=8545ae716901cb1ea3c518d5e5630ba6",
+    "league": "Standard",
+    "id": "d0108398a5ae1cd3751f593c6afc38ec14fda9677e1fb51d09403d5c185d39a6",
+    "sockets": [
+      {
+        "group": 0,
+        "attr": "D",
+        "sColour": "G"
+      },
+      {
+        "group": 0,
+        "attr": "S",
+        "sColour": "R"
+      },
+      {
+        "group": 1,
+        "attr": "D",
+        "sColour": "G"
+      }
+    ],
+    "name": "Hate Sever",
+    "typeLine": "Dragoon Sword",
+    "identified": true,
+    "properties": [
+      {
+        "name": "One Handed Sword",
+        "values": [],
+        "displayMode": 0
+      },
+      {
+        "name": "Quality",
+        "values": [
+          [
+            "+20%",
+            1
+          ]
+        ],
+        "displayMode": 0,
+        "type": 6
+      },
+      {
+        "name": "Physical Damage",
+        "values": [
+          [
+            "132-257",
+            1
+          ]
+        ],
+        "displayMode": 0,
+        "type": 9
+      },
+      {
+        "name": "Elemental Damage",
+        "values": [
+          [
+            "40-80",
+            4
+          ]
+        ],
+        "displayMode": 0,
+        "type": 10
+      },
+      {
+        "name": "Critical Strike Chance",
+        "values": [
+          [
+            "7.56%",
+            1
+          ]
+        ],
+        "displayMode": 0,
+        "type": 12
+      },
+      {
+        "name": "Attacks per Second",
+        "values": [
+          [
+            "1.69",
+            1
+          ]
+        ],
+        "displayMode": 0,
+        "type": 13
+      },
+      {
+        "name": "Weapon Range",
+        "values": [
+          [
+            "14",
+            0
+          ]
+        ],
+        "displayMode": 0,
+        "type": 14
+      }
+    ],
+    "requirements": [
+      {
+        "name": "Level",
+        "values": [
+          [
+            "72",
+            0
+          ]
+        ],
+        "displayMode": 0
+      },
+      {
+        "name": "Dex",
+        "values": [
+          [
+            "220",
+            0
+          ]
+        ],
+        "displayMode": 1
+      }
+    ],
+    "implicitMods": [
+      "12% chance to cause Bleeding on Hit"
+    ],
+    "explicitMods": [
+      "179% increased Physical Damage",
+      "Adds 40 to 80 Fire Damage"
+    ],
+    "craftedMods": [
+      "Can have multiple Crafted Modifiers",
+      "Adds 12 to 20 Physical Damage",
+      "13% increased Attack Speed",
+      "26% increased Critical Strike Chance"
+    ],
+    "frameType": 2,
+    "x": 9,
+    "y": 0,
+    "inventoryId": "Stash103",
+    "socketedItems": []
+  }
+]

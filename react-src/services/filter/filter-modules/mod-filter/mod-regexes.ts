@@ -11,16 +11,19 @@ export const totalModRegexes: IMod[] = [
     type: ModFilterType.TOTAL,
   },
   {
+    // check all / dual res
     label: '+#% to Cold Resistance',
     regex: /\+(\d+)% to Cold Resistance/,
     type: ModFilterType.TOTAL,
   },
   {
+    // check all / dual res
     label: '+#% to Fire Resistance',
     regex: /\+(\d+)% to Fire Resistance/,
     type: ModFilterType.TOTAL,
   },
   {
+    // check all / dual res
     label: '+#% to Lightning Resistance',
     regex: /\+(\d+)% to Lightning Resistance/,
     type: ModFilterType.TOTAL,
@@ -44,6 +47,7 @@ export const totalModRegexes: IMod[] = [
     type: ModFilterType.TOTAL,
   },
   {
+    // check dual res
     label: '+#% to Chaos Resistance',
     regex: /\+(\d+)% to Chaos Resistance/,
     type: ModFilterType.TOTAL,

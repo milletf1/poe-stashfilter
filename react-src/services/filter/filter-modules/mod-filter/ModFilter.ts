@@ -30,6 +30,8 @@ export default class ModFilter implements IFilterModule<IModFilterParams[]> {
     switch (condition.mod.type) {
       case ModFilterType.EXPLICIT:
         return this.checkExplicitMod(item, condition);
+      case ModFilterType.CRAFTED:
+        return this.checkCraftedMod(item, condition);
       default:
         return false;
     }
@@ -44,27 +46,49 @@ export default class ModFilter implements IFilterModule<IModFilterParams[]> {
   private checkExplicitMod(item: IBaseItem, condition: IModFilterParams): boolean {
     if ((item as any).explicitMods) {
       const explicitMods: string[] = (item as any).explicitMods;
-      const testRegex: RegExp = condition.mod.regex;
+      const matchingMod: string = explicitMods.find((mod: string) => this.checkMod(mod, condition));
+      if (matchingMod !== undefined) { return true; }
+    }
+    return false;
+  }
 
-      for (const mod of explicitMods) {
-        const res: RegExpExecArray | null = testRegex.exec(mod);
+  /**
+   * Checks if an `IBaseItem` instance has a particular crafted mod value
+   * @param item The item to check
+   * @param condition The crafted mod that the item should have, and its minimum and maximum
+   * numerical value
+   */
+  private checkCraftedMod(item: IBaseItem, condition: IModFilterParams): boolean {
+    if ((item as any).craftedMods) {
+      const craftedMods: string[] = (item as any).craftedMods;
+      const matchingMod: string = craftedMods.find((mod: string) => this.checkMod(mod, condition));
+      if (matchingMod !== undefined) { return true; }
+    }
+    return false;
+  }
 
-        if (res !== null) {
-          // mod matches regex
-          if (res.length > 1) {
-            let value: number = res.slice(1)
-              .reduce((total: number, val: string) => total += parseInt(val, 10), 0);
-            value = value / (res.length - 1);
-            if (condition.min !== undefined && value < condition.min) { return false; }
-            if (condition.max !== undefined && value > condition.max) { return false; }
-            return true;
-          } else if (testRegex.toString().indexOf('(\\d+)') === -1) {
-            return true;
-          } else {
-            const logMessage: string = `Error filtering explicit mod - capture group was empty\nregex: ${testRegex.toString()}\nmod: ${mod}`;
-            ElectronApi.log(logMessage);
-          }
-        }
+  /**
+   * Checks if an `IBaseItem` instance has a particular mod value
+   * @param item The item to check
+   * @param condition The mod that the item should have, and its minimum and maximum numerical value
+   */
+  private checkMod(mod: string, condition: IModFilterParams): boolean {
+    const res: RegExpExecArray | null = condition.mod.regex.exec(mod);
+
+    if (res !== null) {
+      // mod matches regex
+      if (res.length > 1) {
+        let value: number = res.slice(1)
+          .reduce((total: number, val: string) => total += parseInt(val, 10), 0);
+        value = value / (res.length - 1);
+        if (condition.min !== undefined && value < condition.min) { return false; }
+        if (condition.max !== undefined && value > condition.max) { return false; }
+        return true;
+      } else if (condition.mod.regex.toString().indexOf('(\\d+)') === -1) {
+        return true;
+      } else {
+        const logMessage: string = `Error filtering ${condition.mod.type} mod - capture group was empty\nregex: ${condition.mod.regex.toString()}\nmod: ${mod}`;
+        ElectronApi.log(logMessage);
       }
     }
     return false;

@@ -2,7 +2,8 @@ import { IMod, IModFilterParams } from '../../services/filter/filter-modules/mod
 import ModFilter from '../../services/filter/filter-modules/mod-filter/ModFilter';
 import { assertItemsFound, getTestItem } from '../utils';
 import { IBaseItem } from './../../models/items/IBaseItem';
-import { explicitModRegexes } from './../../services/filter/filter-modules/mod-filter/mod-regexes';
+import { craftedModRegexes, explicitModRegexes } from './../../services/filter/filter-modules/mod-filter/mod-regexes';
+import craftedModJson from './crafted-mod-filter-test-items.json';
 import explicitModJson from './explicit-mod-filter-test-items.json';
 
 describe('explicit mod tests', () => {
@@ -85,7 +86,7 @@ describe('explicit mod tests', () => {
     assertItemsFound(testItems, actual);
   });
 
-  it ('should return items that have 2 numerical values that can be checked', () => {
+  test('should return items that have 2 numerical values that can be checked', () => {
     const testItems: IBaseItem[] = [];
     testItems.push(getTestItem(items, 'Windripper', 'Imperial Bow'));
     if (!testItems[testItems.length - 1]) {
@@ -102,7 +103,7 @@ describe('explicit mod tests', () => {
     assertItemsFound(testItems, actual);
   });
 
-  it('should return items that match multiple conditions', () => {
+  test('should return items that match multiple conditions', () => {
     const testItems: IBaseItem[] = [];
     testItems.push(getTestItem(items, 'Carcass Jack', 'Varnished Coat'));
     if (!testItems[testItems.length - 1]) {
@@ -128,7 +129,7 @@ describe('explicit mod tests', () => {
     assertItemsFound(testItems, actual);
   });
 
-  it('should return items that don\'t a have a numerical value that can be checked', () => {
+  test('should return items that don\'t a have a numerical value that can be checked', () => {
     const testItems: IBaseItem[] = [];
     testItems.push(getTestItem(items, 'Wanderlust', 'Wool Shoes'));
     if (!testItems[testItems.length - 1]) {
@@ -146,13 +147,177 @@ describe('explicit mod tests', () => {
   });
 });
 
+describe('crafted mod tests', () => {
+
+  const items: IBaseItem[] = (craftedModJson as IBaseItem[]);
+
+  test('should return items with a maximum life value above a minimum value', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, 'Dread Vise', 'Carnal Mitts'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('Failed to find expected item "Dread Vise Carnal Mitts" in test data');
+    }
+    testItems.push(getTestItem(items, 'Onslaught Nails', 'Mesh Gloves'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('Failed to find expected item "Onslaught Nails Mesh Gloves" in test data');
+    }
+    const modFilterParams: IMod = craftedModRegexes
+      .find((modRegex: IMod) => modRegex.label === '+# to maximum Life');
+    if (!modFilterParams) {
+      throw new Error('Couldn\'t find crafted "+# to maximum Life" mod filter param');
+    }
+    const filter: ModFilter = new ModFilter();
+    const actual: IBaseItem[] = filter.filter(items, [{ mod: modFilterParams, min: 60 }]);
+
+    assertItemsFound(testItems, actual);
+  });
+
+  test('should return items with a maximum life value below a maximum value', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, 'Plague Tether', 'Stygian Vise'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('Failed to find expected item "Plague Tether Stygian Vise" in test data');
+    }
+    testItems.push(getTestItem(items, 'Corruption Knot', 'Diamond Ring'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('Failed to find expected item "Corruption Knot Diamond Ring" in test data');
+    }
+    const modFilterParams: IMod = craftedModRegexes
+      .find((modRegex: IMod) => modRegex.label === '+# to maximum Life');
+    if (!modFilterParams) {
+      throw new Error('Couldn\'t find crafted "+# to maximum Life" mod filter param');
+    }
+    const filter: ModFilter = new ModFilter();
+    const actual: IBaseItem[] = filter.filter(items, [{ mod: modFilterParams, max: 60 }]);
+
+    assertItemsFound(testItems, actual);
+  });
+
+  test('should return items with a maximum life value between a minimum and maximum value', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, 'Plague Tether', 'Stygian Vise'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('Failed to find expected item "Plague Tether Stygian Vise" in test data');
+    }
+    testItems.push(getTestItem(items, 'Dread Vise', 'Carnal Mitts'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('Failed to find expected item "Dread Vise Carnal Mitts" in test data');
+    }
+    const modFilterParams: IMod = craftedModRegexes
+      .find((modRegex: IMod) => modRegex.label === '+# to maximum Life');
+    if (!modFilterParams) {
+      throw new Error('Couldn\'t find crafted "+# to maximum Life" mod filter param');
+    }
+    const filter: ModFilter = new ModFilter();
+    const actual: IBaseItem[] = filter.filter(items, [{ mod: modFilterParams, min: 50, max: 69 }]);
+
+    assertItemsFound(testItems, actual);
+  });
+
+  test('should return items with a maximum life mod', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, 'Dread Vise', 'Carnal Mitts'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('Failed to find expected item "Dread Vise Carnal Mitts" in test data');
+    }
+    testItems.push(getTestItem(items, 'Onslaught Nails', 'Mesh Gloves'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('Failed to find expected item "Onslaught Nails Mesh Gloves" in test data');
+    }
+    testItems.push(getTestItem(items, 'Plague Tether', 'Stygian Vise'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('Failed to find expected item "Plague Tether Stygian Vise" in test data');
+    }
+    testItems.push(getTestItem(items, 'Corruption Knot', 'Diamond Ring'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('Failed to find expected item "Corruption Knot Diamond Ring" in test data');
+    }
+    const modFilterParams: IMod = craftedModRegexes
+      .find((modRegex: IMod) => modRegex.label === '+# to maximum Life');
+    if (!modFilterParams) {
+      throw new Error('Couldn\'t find crafted "+# to maximum Life" mod filter param');
+    }
+    const filter: ModFilter = new ModFilter();
+    const actual: IBaseItem[] = filter.filter(items, [{ mod: modFilterParams }]);
+
+    assertItemsFound(testItems, actual);
+  });
+
+  test('should return items that have 2 numerical values that can be checked', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, 'Hate Sever', 'Dragoon Sword'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('Failed to find expected item "Hate Sever Dragoon Sword" in test data');
+    }
+    const modFilterParams: IMod = craftedModRegexes
+      .find((modRegex: IMod) => modRegex.label === 'Adds # to # Physical Damage');
+    if (!modFilterParams) {
+      throw new Error('Couldn\'t find crafted "Adds # to # Physical Damage" mod filter param');
+    }
+    const filter: ModFilter = new ModFilter();
+    const actual: IBaseItem[] = filter.filter(items, [{ mod: modFilterParams, min: 10, max: 20 }]);
+
+    assertItemsFound(testItems, actual);
+  });
+
+  test('should return items that don\'t a have a numerical value that can be checked', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, 'Hate Sever', 'Dragoon Sword'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('Failed to find expected item "Hate Sever Dragoon Sword" in test data');
+    }
+    testItems.push(getTestItem(items, 'Death Bane', 'Ambusher'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('Failed to find expected item "Death Bane Ambusher" in test data');
+    }
+    const modFilterParams: IMod = craftedModRegexes
+      .find((modRegex: IMod) => modRegex.label === 'Can have multiple Crafted Modifiers');
+    if (!modFilterParams) {
+      // tslint:disable-next-line:max-line-length
+      throw new Error('Couldn\'t find crafted "Can have multiple Crafted Modifiers" mod filter param');
+    }
+    const filter: ModFilter = new ModFilter();
+    const actual: IBaseItem[] = filter.filter(items, [{ mod: modFilterParams, min: 10, max: 20 }]);
+
+    assertItemsFound(testItems, actual);
+  });
+
+  // multiple conditions
+  test('should return items that match multiple conditions', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, 'Death Bane', 'Ambusher'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('Failed to find expected item "Death Bane Ambusher" in test data');
+    }
+    const increasedAttackSpeedMod: IMod = craftedModRegexes
+      .find((modRegex: IMod) => modRegex.label === '#% increased Attack Speed');
+    if (!increasedAttackSpeedMod) {
+      throw new Error('Couldn\'t find crafted "#% increased Attack Speede" mod filter param');
+    }
+    const increasedPhysicalDpsMod: IMod = craftedModRegexes
+      .find((modRegex: IMod) => modRegex.label === '#% increased Physical Damage');
+    if (!increasedPhysicalDpsMod) {
+      throw new Error('Couldn\'t find crafted "#% increased Physical Damage" mod filter param');
+    }
+    const filterParams: IModFilterParams[] = [
+      { mod: increasedAttackSpeedMod , min: 10, max: 20 },
+      { mod: increasedPhysicalDpsMod, min: 40, max: 50 },
+    ];
+    const filter: ModFilter = new ModFilter();
+    const actual: IBaseItem[] = filter.filter(items, filterParams);
+
+    assertItemsFound(testItems, actual);
+  });
+});
+
 describe('total mod tests', () => {
-  // maximum life
-  // energy shield
-  // mana
-  // accuracy,
-  // %evasion rating
-  // fire resistance
+  // maximum life // includes strength
+  // energy shield // includes int
+  // mana // includes int
+  // accuracy, // includes dex
+  // %evasion rating // includes dex
+  // fire resistance // includes all / dual res res
+  // chaos resistance // includes dual res
 });
 
 describe('psuedo mod tests', () => {
@@ -162,19 +327,12 @@ describe('psuedo mod tests', () => {
   // total resistance
 });
 
-describe('crafted mod tests', () => {
-  // increased physical damage %
-  // critical strike
-  // maximum life
-  // %es
-});
-
-// implicit mod tests
-// fractured mod tests
-// abyss mod tests
-// unique mod tests
-// leaguestone tests
-// beastiary tests
-// enchantment tests
-// prophecy tests
-// map tests
+// TODO: implicit mod tests
+// TODO: fractured mod tests
+// TODO: abyss mod tests
+// TODO: unique mod tests
+// TODO: leaguestone tests
+// TODO: beastiary tests
+// TODO: enchantment tests
+// TODO: prophecy tests
+// TODO: map tests
