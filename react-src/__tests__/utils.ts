@@ -1,7 +1,7 @@
-import { IItemProperty } from './../models/items/IItemProperty';
 import { ReactWrapper } from 'enzyme';
 import { IBaseItem } from '../models/items/IBaseItem';
 import { isICurrency } from '../models/items/ICurrency';
+import { IItemProperty } from './../models/items/IItemProperty';
 
 /**
  * Finds and returns the first item with a given name and typeline.

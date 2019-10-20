@@ -1,3 +1,4 @@
+import { isIFractured } from '../../../../models/items/IFractured';
 import { isIGear } from '../../../../models/items/IGear';
 import ElectronApi from '../../../electron-api/ElectronApi';
 import { IBaseItem } from './../../../../models/items/IBaseItem';
@@ -32,6 +33,8 @@ export default class ModFilter implements IFilterModule<IModFilterParams[]> {
         return this.checkExplicitMod(item, condition);
       case ModFilterType.CRAFTED:
         return this.checkCraftedMod(item, condition);
+      case ModFilterType.TOTAL:
+        return this.checkTotalMod(item, condition);
       default:
         return false;
     }
@@ -68,29 +71,100 @@ export default class ModFilter implements IFilterModule<IModFilterParams[]> {
   }
 
   /**
+   * Checks if an `IBaseItem` instance has a total mod value
+   * @param item The item to check
+   * @param condition The total mod that the item should have, and its minimum and maximum
+   * numerical value
+   */
+  private checkTotalMod(item: IBaseItem, condition: IModFilterParams): boolean {
+    let totalValue: number = 0;
+
+    // TODO: edge cases
+
+    if (Array.isArray(condition.mod.regex)) {
+      for (const regex of condition.mod.regex) {
+        totalValue += this.getTotalModValue(item, regex);
+      }
+    } else {
+      totalValue = this.getTotalModValue(item, condition.mod.regex);
+    }
+
+    if (totalValue === 0) { return false; }
+    if (!isNaN(condition.min) && totalValue < condition.min) { return false; }
+    if (!isNaN(condition.max) && totalValue > condition.max) { return false; }
+    return true;
+  }
+
+  private getTotalModValue(item: IBaseItem, regex: RegExp): number {
+    let value: number = 0;
+    if ((item as any).implicitMods) {
+      value += this.getModValueFromModsArray((item as any).implicitMods, regex);
+    }
+    if ((item as any).explicitMods) {
+      value += this.getModValueFromModsArray((item as any).explicitMods, regex);
+    }
+    if ((item as any).craftedMods) {
+      value += this.getModValueFromModsArray((item as any).craftedMods, regex);
+    }
+    if ((item as any).fracturedMods) {
+      value += this.getModValueFromModsArray((item as any).fracturedMods, regex);
+    }
+    return value;
+  }
+
+  private getModValueFromModsArray(mods: string[], regex: RegExp): number {
+    let value: number = 0;
+    for (const mod of mods) {
+      value += this.getModValue(mod, regex);
+    }
+    return value;
+  }
+
+  /**
    * Checks if an `IBaseItem` instance has a particular mod value
    * @param item The item to check
    * @param condition The mod that the item should have, and its minimum and maximum numerical value
    */
   private checkMod(mod: string, condition: IModFilterParams): boolean {
-    const res: RegExpExecArray | null = condition.mod.regex.exec(mod);
 
-    if (res !== null) {
-      // mod matches regex
-      if (res.length > 1) {
-        let value: number = res.slice(1)
-          .reduce((total: number, val: string) => total += parseInt(val, 10), 0);
-        value = value / (res.length - 1);
-        if (condition.min !== undefined && value < condition.min) { return false; }
-        if (condition.max !== undefined && value > condition.max) { return false; }
-        return true;
-      } else if (condition.mod.regex.toString().indexOf('(\\d+)') === -1) {
-        return true;
-      } else {
-        const logMessage: string = `Error filtering ${condition.mod.type} mod - capture group was empty\nregex: ${condition.mod.regex.toString()}\nmod: ${mod}`;
-        ElectronApi.log(logMessage);
-      }
+    if (Array.isArray(condition.mod.regex)) {
+      return condition.mod.regex.findIndex((regex: RegExp) =>
+        this.checkCondition(mod, regex, condition.min, condition.max)) !== -1;
     }
+    return this.checkCondition(mod, condition.mod.regex, condition.min, condition.max);
+  }
+
+  private checkCondition(mod: string, testRegex: RegExp, min?: number, max?: number): boolean {
+    const res: RegExpExecArray | null = testRegex.exec(mod);
+    if (res !== null) {
+        if (res.length > 1) {
+          let value: number = res.slice(1).reduce(this.reduceModValue, 0);
+          value = value / (res.length - 1);
+          if (!isNaN(min) && value < min) { return false; }
+          if (!isNaN(max) && value > max) { return false; }
+          return true;
+        } else if (testRegex.toString().indexOf('(\\d+)') === -1) {
+          return true;
+        } else {
+          const logMessage: string = `Error filtering "${mod}" mod - capture group was empty\nregex: ${testRegex.toString()}\nmod: ${mod}`;
+          ElectronApi.log(logMessage);
+        }
+      }
     return false;
+  }
+
+  private getModValue(mod: string, testRegex: RegExp): number {
+    const res = testRegex.exec(mod);
+    if (res !== null && res.length > 1) {
+      let value: number = res.slice(1).reduce(this.reduceModValue, 0);
+      value = value / (res.length - 1);
+      return value;
+    }
+    return 0;
+  }
+
+  private reduceModValue(total: number, val: string): number {
+    const value: number = parseInt(val, 10);
+    return isNaN(value) ? total : total + value;
   }
 }

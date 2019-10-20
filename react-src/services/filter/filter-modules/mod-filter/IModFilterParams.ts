@@ -10,5 +10,5 @@ export interface IModFilterParams {
 export interface IMod {
   type: ModFilterType;
   label: string;
-  regex: RegExp;
+  regex: RegExp | RegExp[];
 }

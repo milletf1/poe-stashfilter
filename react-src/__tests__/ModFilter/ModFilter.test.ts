@@ -2,9 +2,10 @@ import { IMod, IModFilterParams } from '../../services/filter/filter-modules/mod
 import ModFilter from '../../services/filter/filter-modules/mod-filter/ModFilter';
 import { assertItemsFound, getTestItem } from '../utils';
 import { IBaseItem } from './../../models/items/IBaseItem';
-import { craftedModRegexes, explicitModRegexes } from './../../services/filter/filter-modules/mod-filter/mod-regexes';
+import { craftedModRegexes, explicitModRegexes, totalModRegexes } from './../../services/filter/filter-modules/mod-filter/mod-regexes';
 import craftedModJson from './crafted-mod-filter-test-items.json';
 import explicitModJson from './explicit-mod-filter-test-items.json';
+import totalModJson from './total-mod-filter-test-items.json';
 
 describe('explicit mod tests', () => {
 
@@ -311,13 +312,31 @@ describe('crafted mod tests', () => {
 });
 
 describe('total mod tests', () => {
-  // maximum life // includes strength
-  // energy shield // includes int
-  // mana // includes int
-  // accuracy, // includes dex
-  // %evasion rating // includes dex
-  // fire resistance // includes all / dual res res
-  // chaos resistance // includes dual res
+  const items: IBaseItem[] = (totalModJson as IBaseItem[]);
+
+  test('should return items with total life', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, 'Oblivion Pendant', 'Onyx Amulet'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('Failed to find expected item "Oblivion Pendant Onyx Amulet" in test data');
+    }
+    const modFilterParams: IMod = totalModRegexes
+      .find((modRegex: IMod) => modRegex.label === '+# to maximum Life');
+    if (!modFilterParams) {
+      throw new Error('Couldn\'t find total "+# to maximum Life" mod filter param');
+    }
+    const filter: ModFilter = new ModFilter();
+    const actual: IBaseItem[] = filter.filter(items, [{ mod: modFilterParams, min: 56, max: 60}]);
+
+    assertItemsFound(testItems, actual);
+  });
+
+  // energy shield // includes int //  Golem Gyre Paua Ring
+  // mana // includes int //  Golem Gyre Paua Ring
+  // accuracy, // includes dex // golem eye 2 stone ring
+  // %evasion rating // includes dex // corpse crown ursine pelt
+  // fire resistance // includes all / dual res res //  golem eye 2 stone ring
+  // chaos resistance // includes dual res // soul finger Amethyst Ring
 });
 
 describe('psuedo mod tests', () => {
