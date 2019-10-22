@@ -316,9 +316,9 @@ describe('total mod tests', () => {
 
   test('should return items with total life', () => {
     const testItems: IBaseItem[] = [];
-    testItems.push(getTestItem(items, 'Oblivion Pendant', 'Onyx Amulet'));
+    testItems.push(getTestItem(items, 'Headhunter', 'Leather Belt'));
     if (!testItems[testItems.length - 1]) {
-      throw new Error('Failed to find expected item "Oblivion Pendant Onyx Amulet" in test data');
+      throw new Error('Failed to find expected item "Headhunter Leather Belt" in test data');
     }
     const modFilterParams: IMod = totalModRegexes
       .find((modRegex: IMod) => modRegex.label === '+# to maximum Life');
@@ -326,7 +326,7 @@ describe('total mod tests', () => {
       throw new Error('Couldn\'t find total "+# to maximum Life" mod filter param');
     }
     const filter: ModFilter = new ModFilter();
-    const actual: IBaseItem[] = filter.filter(items, [{ mod: modFilterParams, min: 56, max: 60}]);
+    const actual: IBaseItem[] = filter.filter(items, [{ mod: modFilterParams, min: 100, max: 120}]);
 
     assertItemsFound(testItems, actual);
   });
@@ -337,6 +337,8 @@ describe('total mod tests', () => {
   // %evasion rating // includes dex // corpse crown ursine pelt
   // fire resistance // includes all / dual res res //  golem eye 2 stone ring
   // chaos resistance // includes dual res // soul finger Amethyst Ring
+
+  // something that is not an edge case
 });
 
 describe('psuedo mod tests', () => {
