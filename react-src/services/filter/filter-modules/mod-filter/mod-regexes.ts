@@ -5,51 +5,81 @@ import { ModFilterType } from './ModFilterType';
 /* [total] mods */
 export const totalModRegexes: IMod[] = [
   {
-    // include strength
     label: '+# to maximum Life',
-    regex: /\+(\d+) to maximum Life/,
+    regex: [
+      /\+(\d+) to maximum Life/,
+      /\+(\d+) to all Attributes/,
+      /\+(\d+) to Strength/,
+      /\+(\d+) to Strength and Dexterity/,
+      /\+(\d+) to Strength and Intelligence/,
+    ],
     type: ModFilterType.TOTAL,
   },
   {
-    // check all / dual res
     label: '+#% to Cold Resistance',
-    regex: /\+(\d+)% to Cold Resistance/,
+    regex: [
+      /\+(\d+)% to Cold Resistance/,
+      /\+(\d+)% to Fire and Cold Resistances/,
+      /\+(\d+)% to Cold and Lightning Resistances/,
+      /\+(\d+)% to all Elemental Resistances/,
+    ],
     type: ModFilterType.TOTAL,
   },
   {
-    // check all / dual res
     label: '+#% to Fire Resistance',
-    regex: /\+(\d+)% to Fire Resistance/,
+    regex: [
+      /\+(\d+)% to Fire Resistance/,
+      /\+(\d+)% to Fire and Cold Resistances/,
+      /\+(\d+)% to Fire and Lightning Resistances/,
+      /\+(\d+)% to all Elemental Resistances/,
+    ],
     type: ModFilterType.TOTAL,
   },
   {
-    // check all / dual res
     label: '+#% to Lightning Resistance',
-    regex: /\+(\d+)% to Lightning Resistance/,
+    regex: [
+      /\+(\d+)% to Lightning Resistance/,
+      /\+(\d+)% to Cold and Lightning Resistances/,
+      /\+(\d+)% to Fire and Lightning Resistances/,
+      /\+(\d+)% to all Elemental Resistances/,
+    ],
     type: ModFilterType.TOTAL,
   },
   {
-    // all elemental resist (not total)
     label: '+#% to all Elemental Resistances',
     regex: /\+(\d+)% to all Elemental Resistances/,
     type: ModFilterType.TOTAL,
   },
   {
-    // include intelligence
     label: '+# to maximum Energy Shield',
-    regex: /\+(\d+) to maximum Energy Shield/,
+    regex: [
+      /\+(\d+) to maximum Energy Shield/,
+      /\+(\d+) to Intelligence/,
+      /\+(\d+) to Dexterity and Intelligence/,
+      /\+(\d+) to Strength and Intelligence/,
+      /\+(\d+) to all Attributes/,
+    ],
     type: ModFilterType.TOTAL,
   },
   {
-    // include intelligence
     label: '+# to maximum Mana',
-    regex: /\+(\d+) to maximum Mana/,
+    regex: [
+      /\+(\d+) to maximum Mana/,
+      /\+(\d+) to Intelligence/,
+      /\+(\d+) to Dexterity and Intelligence/,
+      /\+(\d+) to Strength and Intelligence/,
+      /\+(\d+) to all Attributes/,
+    ],
     type: ModFilterType.TOTAL,
   },
   {
-    // check dual res
     label: '+#% to Chaos Resistance',
-    regex: /\+(\d+)% to Chaos Resistance/,
+    regex: [
+      /\+(\d+)% to Chaos Resistance/,
+      /\+(\d+)% to Cold and Chaos Resistances/,
+      /\+(\d+)% to Fire and Chaos Resistances/,
+      /\+(\d+)% to Lightning and Chaos Resistances/,
+    ],
     type: ModFilterType.TOTAL,
   },
   {
@@ -84,17 +114,32 @@ export const totalModRegexes: IMod[] = [
   },
   {
     label: '+# to Dexterity',
-    regex: /\+(\d+) to Dexterity/,
+    regex: [
+      /\+(\d+) to Dexterity/,
+      /\+(\d+) to Dexterity and Intelligence/,
+      /\+(\d+) to Strength and Dexterity/,
+      /\+(\d+) to all Attributes/,
+    ],
     type: ModFilterType.TOTAL,
   },
   {
     label: '+# to Intelligence',
-    regex: /\+(\d+) to Intelligence/,
+    regex: [
+      /\+(\d+) to Intelligence/,
+      /\+(\d+) to Dexterity and Intelligence/,
+      /\+(\d+) to Strength and Intelligence/,
+      /\+(\d+) to all Attributes/,
+    ],
     type: ModFilterType.TOTAL,
   },
   {
     label: '+# to Strength',
-    regex: /\+(\d+) to Strength/,
+    regex: [
+      /\+(\d+) to Strength/,
+      /\+(\d+) to Strength and Intelligence/,
+      /\+(\d+) to Strength and Dexterity/,
+      /\+(\d+) to all Attributes/,
+    ],
     type: ModFilterType.TOTAL,
   },
   {
@@ -1850,7 +1895,13 @@ export const totalModRegexes: IMod[] = [
   },
   {
     label: '+# to Accuracy Rating',
-    regex: /\+(\d+) to Accuracy Rating/,
+    regex: [
+      /\+(\d+) to Accuracy Rating/,
+      /\+(\d+) to Dexterity/,
+      /\+(\d+) to Dexterity and Intelligence/,
+      /\+(\d+) to Strength and Dexterity/,
+      /\+(\d+) to all Attributes/,
+    ],
     type: ModFilterType.TOTAL,
   },
   {
@@ -2150,7 +2201,13 @@ export const totalModRegexes: IMod[] = [
   },
   {
     label: '#% increased Evasion Rating',
-    regex: /(\d+)% increased Evasion Rating/,
+    regex: [
+      /(\d+)% increased Evasion Rating/,
+      /\+(\d+) to Dexterity/,
+      /\+(\d+) to Dexterity and Intelligence/,
+      /\+(\d+) to Strength and Dexterity/,
+      /\+(\d+) to all Attributes/,
+    ],
     type: ModFilterType.TOTAL,
   },
   {
@@ -3716,21 +3773,25 @@ export const totalModRegexes: IMod[] = [
 ];
 /* [pseudo] mods */
 export const pseudoModRegexes: IMod[] = [
+  // sum of armour and evasion
   {
     label: '# Armour + Evasion',
     regex: /(\d+) Armour \+ Evasion/,
     type: ModFilterType.PSEUDO,
   },
+  // number fractured mods
   {
     label: '# Fractured Modifiers',
     regex: /(\d+) Fractured Modifiers/,
     type: ModFilterType.PSEUDO,
   },
+  // total elemental resistance
   {
     label: '+#% total Elemental Resistance',
     regex: /\+(\d+)% total Elemental Resistance/,
     type: ModFilterType.PSEUDO,
   },
+  // total resistance
   {
     label: '+#% total Resistance',
     regex: /\+(\d+)% total Resistance/,
