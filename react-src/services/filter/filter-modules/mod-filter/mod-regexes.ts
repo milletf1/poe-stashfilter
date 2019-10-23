@@ -52,13 +52,8 @@ export const totalModRegexes: IMod[] = [
   },
   {
     label: '+# to maximum Energy Shield',
-    regex: [
-      /\+(\d+) to maximum Energy Shield/,
-      /\+(\d+) to Intelligence/,
-      /\+(\d+) to Dexterity and Intelligence/,
-      /\+(\d+) to Strength and Intelligence/,
-      /\+(\d+) to all Attributes/,
-    ],
+    regex: /\+(\d+) to maximum Energy Shield/,
+
     type: ModFilterType.TOTAL,
   },
   {
@@ -570,7 +565,16 @@ export const totalModRegexes: IMod[] = [
   },
   {
     label: '#% increased Energy Shield',
-    regex: /(\d+)% increased Energy Shield/,
+    // TODO: increased evasion and energy shield, increased armou and energy shield
+    regex: [
+      /(\d+)% increased Energy Shield/,
+      /\+(\d+) to Intelligence/,
+      /\+(\d+) to Dexterity and Intelligence/,
+      /\+(\d+) to Strength and Intelligence/,
+      /\+(\d+) to all Attributes/,
+      /(\d+)% increased Armour and Energy Shield/,
+      /(\d+)% increased Evasion and Energy Shield/,
+    ],
     type: ModFilterType.TOTAL,
   },
   {
@@ -865,7 +869,11 @@ export const totalModRegexes: IMod[] = [
   },
   {
     label: '#% increased Armour',
-    regex: /(\d+)% increased Armour/,
+    regex: [
+      /(\d+)% increased Armour/,
+      /(\d+)% increased Armour and Energy Shield/,
+      /(\d+)% increased Armour and Evasion/,
+    ],
     type: ModFilterType.TOTAL,
   },
   {
@@ -2207,6 +2215,8 @@ export const totalModRegexes: IMod[] = [
       /\+(\d+) to Dexterity and Intelligence/,
       /\+(\d+) to Strength and Dexterity/,
       /\+(\d+) to all Attributes/,
+      /(\d+)% increased Armour and Evasion/,
+      /(\d+)% increased Evasion and Energy Shield/,
     ],
     type: ModFilterType.TOTAL,
   },
