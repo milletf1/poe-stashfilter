@@ -4511,5 +4511,485 @@
     "x": 11,
     "y": 11,
     "inventoryId": "Stash60"
+  },
+  {
+    "verified": false,
+    "w": 2,
+    "h": 3,
+    "ilvl": 85,
+    "icon": "https:\/\/web.poecdn.com\/image\/Art\/2DItems\/Armours\/BodyArmours\/BodyStrDexInt1C.png?scale=1&w=2&h=3&v=5a4eb9d863bef835aa3d9cc9224f51a5",
+    "league": "Standard",
+    "id": "64ba44f9f3a628dfcb34c0af2bdf5fbda10b222296b68602568e4e6957b2e955",
+    "sockets": [
+      {
+        "group": 0,
+        "attr": "D",
+        "sColour": "G"
+      },
+      {
+        "group": 0,
+        "attr": "I",
+        "sColour": "B"
+      },
+      {
+        "group": 0,
+        "attr": "I",
+        "sColour": "B"
+      },
+      {
+        "group": 0,
+        "attr": "D",
+        "sColour": "G"
+      },
+      {
+        "group": 0,
+        "attr": "D",
+        "sColour": "G"
+      },
+      {
+        "group": 0,
+        "attr": "S",
+        "sColour": "R"
+      }
+    ],
+    "name": "Armageddon Shroud",
+    "typeLine": "Vaal Regalia",
+    "identified": true,
+    "properties": [
+      {
+        "name": "Quality",
+        "values": [
+          [
+            "+20%",
+            1
+          ]
+        ],
+        "displayMode": 0,
+        "type": 6
+      },
+      {
+        "name": "Energy Shield",
+        "values": [
+          [
+            "749",
+            1
+          ]
+        ],
+        "displayMode": 0,
+        "type": 18
+      }
+    ],
+    "requirements": [
+      {
+        "name": "Level",
+        "values": [
+          [
+            "72",
+            0
+          ]
+        ],
+        "displayMode": 0
+      },
+      {
+        "name": "Str",
+        "values": [
+          [
+            "70",
+            0
+          ]
+        ],
+        "displayMode": 1
+      },
+      {
+        "name": "Dex",
+        "values": [
+          [
+            "114",
+            0
+          ]
+        ],
+        "displayMode": 1
+      },
+      {
+        "name": "Int",
+        "values": [
+          [
+            "194",
+            0
+          ]
+        ],
+        "displayMode": 1
+      }
+    ],
+    "explicitMods": [
+      "+144 to maximum Energy Shield",
+      "124% increased Energy Shield",
+      "+14 to maximum Life",
+      "+44% to Fire Resistance",
+      "+8% to Lightning Resistance"
+    ],
+    "craftedMods": [
+      "+30 to Intelligence"
+    ],
+    "frameType": 2,
+    "x": 9,
+    "y": 9,
+    "inventoryId": "Stash55",
+    "socketedItems": [
+      {
+        "verified": false,
+        "w": 1,
+        "h": 1,
+        "ilvl": 0,
+        "icon": "https:\/\/web.poecdn.com\/image\/Art\/2DItems\/Gems\/GhostlyThrow.png?scale=1&w=1&h=1&v=5a2f118e177b8f5d3f3355abe665e26b",
+        "support": false,
+        "id": "fb812f90f1c498d1192a32695bdbe59d359689f05cb155b6b58c8e50c2df3137",
+        "name": "",
+        "typeLine": "Spectral Throw",
+        "identified": true,
+        "corrupted": true,
+        "properties": [
+          {
+            "name": "Attack, Projectile",
+            "values": [],
+            "displayMode": 0
+          },
+          {
+            "name": "Level",
+            "values": [
+              [
+                "21 (Max)",
+                0
+              ]
+            ],
+            "displayMode": 0,
+            "type": 5
+          },
+          {
+            "name": "Mana Cost",
+            "values": [
+              [
+                "10",
+                0
+              ]
+            ],
+            "displayMode": 0
+          },
+          {
+            "name": "Effectiveness of Added Damage",
+            "values": [
+              [
+                "101%",
+                0
+              ]
+            ],
+            "displayMode": 0
+          },
+          {
+            "name": "Quality",
+            "values": [
+              [
+                "+20%",
+                1
+              ]
+            ],
+            "displayMode": 0,
+            "type": 6
+          }
+        ],
+        "requirements": [
+          {
+            "name": "Level",
+            "values": [
+              [
+                "72",
+                0
+              ]
+            ],
+            "displayMode": 0
+          },
+          {
+            "name": "Str",
+            "values": [
+              [
+                "70",
+                0
+              ]
+            ],
+            "displayMode": 1
+          },
+          {
+            "name": "Dex",
+            "values": [
+              [
+                "100",
+                0
+              ]
+            ],
+            "displayMode": 1
+          }
+        ],
+        "secDescrText": "Throws a spectral copy of your melee weapon. It flies out and then returns to you, in a spinning attack that damages enemies in its path.",
+        "explicitMods": [
+          "Deals 101.1% of Base Damage",
+          "10% increased Attack Speed"
+        ],
+        "descrText": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+        "frameType": 4,
+        "socket": 0,
+        "colour": "D"
+      },
+      {
+        "verified": false,
+        "w": 1,
+        "h": 1,
+        "ilvl": 0,
+        "icon": "https:\/\/web.poecdn.com\/image\/Art\/2DItems\/Gems\/Support\/ElementalFocus.png?scale=1&w=1&h=1&v=90c05eda67f11a43b95d22d7d770d115",
+        "support": true,
+        "id": "747e428388ef174c09d9961736595d4db1bb312ecb09389802a0b88d33ee95cf",
+        "name": "",
+        "typeLine": "Elemental Focus Support",
+        "identified": true,
+        "corrupted": true,
+        "properties": [
+          {
+            "name": "Support",
+            "values": [],
+            "displayMode": 0
+          },
+          {
+            "name": "Level",
+            "values": [
+              [
+                "21 (Max)",
+                0
+              ]
+            ],
+            "displayMode": 0,
+            "type": 5
+          },
+          {
+            "name": "Mana Multiplier",
+            "values": [
+              [
+                "130%",
+                0
+              ]
+            ],
+            "displayMode": 0
+          },
+          {
+            "name": "Quality",
+            "values": [
+              [
+                "+20%",
+                1
+              ]
+            ],
+            "displayMode": 0,
+            "type": 6
+          }
+        ],
+        "requirements": [
+          {
+            "name": "Level",
+            "values": [
+              [
+                "72",
+                0
+              ]
+            ],
+            "displayMode": 0
+          },
+          {
+            "name": "Int",
+            "values": [
+              [
+                "114",
+                0
+              ]
+            ],
+            "displayMode": 1
+          }
+        ],
+        "secDescrText": "Supports any skill that hits or burns enemies.",
+        "explicitMods": [
+          "Supported Skills deal 50% more Elemental Damage",
+          "Supported Skills cannot inflict Elemental Ailments",
+          "Supported Skills deal 10% increased Elemental Damage"
+        ],
+        "descrText": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Active Skill Gem you wish to augment. Right click to remove from a socket.",
+        "frameType": 4,
+        "socket": 1,
+        "colour": "I"
+      },
+      {
+        "verified": false,
+        "w": 1,
+        "h": 1,
+        "ilvl": 0,
+        "icon": "https:\/\/web.poecdn.com\/image\/Art\/2DItems\/Gems\/Support\/LightningPenetration.png?scale=1&w=1&h=1&v=8de701243b97ffb292780b44d16c27cd",
+        "support": true,
+        "id": "ffbbebef323a5cebbe9c9240b1dcf15a924c8463b8164611adac45d508d1a156",
+        "name": "",
+        "typeLine": "Lightning Penetration Support",
+        "identified": true,
+        "properties": [
+          {
+            "name": "Lightning, Support",
+            "values": [],
+            "displayMode": 0
+          },
+          {
+            "name": "Level",
+            "values": [
+              [
+                "20 (Max)",
+                0
+              ]
+            ],
+            "displayMode": 0,
+            "type": 5
+          },
+          {
+            "name": "Mana Multiplier",
+            "values": [
+              [
+                "140%",
+                0
+              ]
+            ],
+            "displayMode": 0
+          },
+          {
+            "name": "Quality",
+            "values": [
+              [
+                "+20%",
+                1
+              ]
+            ],
+            "displayMode": 0,
+            "type": 6
+          }
+        ],
+        "requirements": [
+          {
+            "name": "Level",
+            "values": [
+              [
+                "70",
+                0
+              ]
+            ],
+            "displayMode": 0
+          },
+          {
+            "name": "Int",
+            "values": [
+              [
+                "111",
+                0
+              ]
+            ],
+            "displayMode": 1
+          }
+        ],
+        "secDescrText": "Supports any skill that hits enemies, making those hits penetrate enemy lightning resistance.",
+        "explicitMods": [
+          "Supported Skills Penetrate 37% Lightning Resistance",
+          "Supported Skills deal 10% increased Lightning Damage"
+        ],
+        "descrText": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Active Skill Gem you wish to augment. Right click to remove from a socket.",
+        "frameType": 4,
+        "socket": 2,
+        "colour": "I"
+      },
+      {
+        "verified": false,
+        "w": 1,
+        "h": 1,
+        "ilvl": 0,
+        "icon": "https:\/\/web.poecdn.com\/image\/Art\/2DItems\/Gems\/Support\/GreaterMultipleProjectiles.png?scale=1&w=1&h=1&v=e1b6fb26e5937957e08ce80e113f41e2",
+        "support": true,
+        "id": "7a361f096fa482c79a10ff8a9af9061e01f72f4d15029f2cd0aa2baf49302206",
+        "name": "",
+        "typeLine": "Greater Multiple Projectiles Support",
+        "identified": true,
+        "corrupted": true,
+        "properties": [
+          {
+            "name": "Support, Projectile",
+            "values": [],
+            "displayMode": 0
+          },
+          {
+            "name": "Level",
+            "values": [
+              [
+                "21 (Max)",
+                0
+              ]
+            ],
+            "displayMode": 0,
+            "type": 5
+          },
+          {
+            "name": "Mana Multiplier",
+            "values": [
+              [
+                "165%",
+                0
+              ]
+            ],
+            "displayMode": 0
+          },
+          {
+            "name": "Quality",
+            "values": [
+              [
+                "+20%",
+                1
+              ]
+            ],
+            "displayMode": 0,
+            "type": 6
+          }
+        ],
+        "requirements": [
+          {
+            "name": "Level",
+            "values": [
+              [
+                "72",
+                0
+              ]
+            ],
+            "displayMode": 0
+          },
+          {
+            "name": "Dex",
+            "values": [
+              [
+                "114",
+                0
+              ]
+            ],
+            "displayMode": 1
+          }
+        ],
+        "secDescrText": "Supports projectile skills.",
+        "explicitMods": [
+          "Supported Skills deal 25% less Projectile Damage",
+          "Supported Skills have 10% increased Attack Speed",
+          "Supported Skills have 10% increased Cast Speed",
+          "Supported Skills fire 4 additional Projectiles"
+        ],
+        "descrText": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Active Skill Gem you wish to augment. Right click to remove from a socket.",
+        "frameType": 4,
+        "socket": 3,
+        "colour": "D"
+      }
+    ]
   }
 ]

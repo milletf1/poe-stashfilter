@@ -565,7 +565,6 @@ export const totalModRegexes: IMod[] = [
   },
   {
     label: '#% increased Energy Shield',
-    // TODO: increased evasion and energy shield, increased armou and energy shield
     regex: [
       /(\d+)% increased Energy Shield/,
       /\+(\d+) to Intelligence/,

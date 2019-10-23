@@ -1,10 +1,12 @@
-import { isIFractured } from '../../../../models/items/IFractured';
-import { isIGear } from '../../../../models/items/IGear';
 import ElectronApi from '../../../electron-api/ElectronApi';
 import { IBaseItem } from './../../../../models/items/IBaseItem';
 import { IFilterModule } from './../IFilterModule';
 import { IModFilterParams } from './IModFilterParams';
 import { ModFilterType } from './ModFilterType';
+
+const ATTRIBUTE_VALUE_DIVISOR: number = 10;
+const STRENGTH_TO_LIFE_VALUE: number = 5;
+const INT_TO_ES_VALUE: number = 2;
 
 export default class ModFilter implements IFilterModule<IModFilterParams[]> {
   public type: string = 'ModFilter';
@@ -79,25 +81,25 @@ export default class ModFilter implements IFilterModule<IModFilterParams[]> {
   private checkTotalMod(item: IBaseItem, condition: IModFilterParams): boolean {
     let totalValue: number = 0;
 
-    // check edge cases
-    if (condition.mod.label === '+# to maximum Life') {
-      if (Array.isArray(condition.mod.regex)) {
-        return this.checkMaximumLifeTotalMod(
-          item,
-          condition.mod.regex,
-          condition.min,
-          condition.max);
-      } else {
-        const logMessage: string = `Error filtering "+# to maximum Life [TOTAL]" mod. Expected an array of test regexes but found one`;
-        ElectronApi.log(logMessage);
-      }
-    }
-    // +# to maximum Energy Shield (intelligence)
-    // +# to maximum Mana (intelligence)
-    // +# to Accuracy Rating (dexterity)
-    // #% increased Evasion Rating (dexterity)
-
     if (Array.isArray(condition.mod.regex)) {
+      // check edge cases
+      switch (condition.mod.label) {
+        case '+# to maximum Life':
+          return this.checkMaximumLifeTotalMod(
+            item,
+            condition.mod.regex,
+            condition.min,
+            condition.max);
+        case '#% increased Energy Shield':
+            return this.checkPercentIncreasedEnergyShieldTotalMod(
+              item,
+              condition.mod.regex,
+              condition.min,
+              condition.max);
+      }
+      // +# to maximum Mana (intelligence)
+      // +# to Accuracy Rating (dexterity)
+      // #% increased Evasion Rating (dexterity)
       for (const regex of condition.mod.regex) {
         totalValue += this.getTotalModValue(item, regex);
       }
@@ -131,7 +133,7 @@ export default class ModFilter implements IFilterModule<IModFilterParams[]> {
       let value: number = this.getTotalModValue(item, regex);
 
       if (regex.toString() !== '/\\+(\\d+) to maximum Life/') {
-        value = Math.floor(value / 10) * 5;
+        value = Math.floor(value / ATTRIBUTE_VALUE_DIVISOR) * STRENGTH_TO_LIFE_VALUE;
       }
       totalLife += value;
     }
@@ -139,6 +141,38 @@ export default class ModFilter implements IFilterModule<IModFilterParams[]> {
     if (totalLife === 0) { return false; }
     if (!isNaN(minValue) && totalLife < minValue) { return false; }
     if (!isNaN(maxValue) && totalLife > maxValue) { return false; }
+    return true;
+  }
+
+  /**
+   * Checks if an `IBaseItem` instance has a total % increased energy shield value
+   * @param item The item to check
+   * @param testRegexes The test regexes to check the item's mods against
+   * @param minValue the minimum % increased energy shield that the item can have
+   * @param maxValue the maximum % increased energy shield that the item can have
+   */
+  private checkPercentIncreasedEnergyShieldTotalMod(
+    item: IBaseItem,
+    testRegexes: RegExp[],
+    minValue?: number,
+    maxValue?: number,
+  ): boolean {
+
+    let totalEs: number = 0;
+
+    for (const regex of testRegexes) {
+      let value: number = this.getTotalModValue(item, regex);
+
+      if (regex.toString() !== '/(\\d+)% increased Energy Shield/') {
+        value = Math.floor(value / ATTRIBUTE_VALUE_DIVISOR) * INT_TO_ES_VALUE;
+      }
+      totalEs += value;
+    }
+
+    if (totalEs === 0) { return false; }
+    if (!isNaN(minValue) && totalEs < minValue) { return false; }
+    if (!isNaN(maxValue) && totalEs > maxValue) { return false; }
+    console.log(item.name, totalEs);
     return true;
   }
 
@@ -198,19 +232,19 @@ export default class ModFilter implements IFilterModule<IModFilterParams[]> {
   private checkCondition(mod: string, testRegex: RegExp, min?: number, max?: number): boolean {
     const res: RegExpExecArray | null = testRegex.exec(mod);
     if (res !== null) {
-        if (res.length > 1) {
-          let value: number = res.slice(1).reduce(this.reduceModValue, 0);
-          value = value / (res.length - 1);
-          if (!isNaN(min) && value < min) { return false; }
-          if (!isNaN(max) && value > max) { return false; }
-          return true;
-        } else if (testRegex.toString().indexOf('(\\d+)') === -1) {
-          return true;
-        } else {
-          const logMessage: string = `Error filtering "${mod}" mod - capture group was empty\nregex: ${testRegex.toString()}\nmod: ${mod}`;
-          ElectronApi.log(logMessage);
-        }
+      if (res.length > 1) {
+        let value: number = res.slice(1).reduce(this.reduceModValue, 0);
+        value = value / (res.length - 1);
+        if (!isNaN(min) && value < min) { return false; }
+        if (!isNaN(max) && value > max) { return false; }
+        return true;
+      } else if (testRegex.toString().indexOf('(\\d+)') === -1) {
+        return true;
+      } else {
+        const logMessage: string = `Error filtering "${mod}" mod - capture group was empty\nregex: ${testRegex.toString()}\nmod: ${mod}`;
+        ElectronApi.log(logMessage);
       }
+    }
     return false;
   }
 
