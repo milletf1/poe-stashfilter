@@ -326,7 +326,10 @@ describe('total mod tests', () => {
       throw new Error('Couldn\'t find total "+# to maximum Life" mod filter param');
     }
     const filter: ModFilter = new ModFilter();
-    const actual: IBaseItem[] = filter.filter(items, [{ mod: modFilterParams, min: 100, max: 120 }]);
+    const actual: IBaseItem[] = filter.filter(
+      items,
+      [{ mod: modFilterParams, min: 100, max: 120 }],
+    );
 
     assertItemsFound(testItems, actual);
   });
@@ -398,14 +401,82 @@ describe('total mod tests', () => {
       items,
       [{ mod: modFilterParams, min: 100, max: 110 }],
     );
+
     assertItemsFound(testItems, actual);
   });
 
-  // fire resistance // includes all / dual res res //  golem eye 2 stone ring
-  // chaos resistance // includes dual res // soul finger Amethyst Ring
+  test('should return items with total fire resistance', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, 'Golem Eye', 'Two-Stone Ring'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('Failed to find expected item "Golem Eye Two-Stone Ring" in test data');
+    }
+    const modFilterParams: IMod = totalModRegexes
+      .find((modRegex: IMod) => modRegex.label === '+#% to Fire Resistance');
+    if (!modFilterParams) {
+      throw new Error('Couldn\'t find total "+#% to Fire Resistance" mod filter param');
+    }
+    const filter: ModFilter = new ModFilter();
+    const actual: IBaseItem[] = filter.filter(items, [{ mod: modFilterParams, min: 19, max: 21 }]);
+
+    assertItemsFound(testItems, actual);
+  });
+
+  test('should return items with total chaos resistance', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, 'Soul Finger', 'Amethyst Ring'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('Failed to find expected item "Soul Finger Amethyst Ring" in test data');
+    }
+    const modFilterParams: IMod = totalModRegexes
+      .find((modRegex: IMod) => modRegex.label === '+#% to Chaos Resistance');
+    if (!modFilterParams) {
+      throw new Error('Couldn\'t find total "+#% to Chaos Resistance" mod filter param');
+    }
+    const filter: ModFilter = new ModFilter();
+    const actual: IBaseItem[] = filter.filter(items, [{ mod: modFilterParams, min: 20, max: 25 }]);
+
+    assertItemsFound(testItems, actual);
+  });
 
   // something that is not an edge case with array of regexes
-  // something that is not an edge case with single regex
+  test('should return items with total dexterity', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, 'Oblivion Pendant', 'Onyx Amulet'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('Failed to find expected item "Oblivion Pendant Onyx Amulet" in test data');
+    }
+    const modFilterParams: IMod = totalModRegexes
+      .find((modRegex: IMod) => modRegex.label === '+# to Dexterity');
+    if (!modFilterParams) {
+      throw new Error('Couldn\'t find total "+# to Dexterity" mod filter param');
+    }
+    const filter: ModFilter = new ModFilter();
+    const actual: IBaseItem[] = filter.filter(items, [{ mod: modFilterParams, min: 30, max: 31 }]);
+
+    assertItemsFound(testItems, actual);
+  });
+
+  test('should return items with total adds cold damage to attacks', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, 'Windripper', 'Imperial Bow'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('Failed to find expected item "Windripper Imperial Bow" in test data');
+    }
+    testItems.push(getTestItem(items, 'Torment Gutter', 'Harpy Rapier'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('Failed to find expected item "Torment Gutter Harpy Rapier" in test data');
+    }
+    const modFilterParams: IMod = totalModRegexes
+      .find((modRegex: IMod) => modRegex.label === 'Adds # to # Cold Damage');
+    if (!modFilterParams) {
+      throw new Error('Couldn\'t find explicit "Adds # to # Cold Damage" mod filter param');
+    }
+    const filter: ModFilter = new ModFilter();
+    const actual: IBaseItem[] = filter.filter(items, [{ mod: modFilterParams, min: 40, max: 50 }]);
+
+    assertItemsFound(testItems, actual);
+  });
 });
 
 describe('psuedo mod tests', () => {
