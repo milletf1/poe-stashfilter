@@ -8,6 +8,8 @@ const ATTRIBUTE_VALUE_DIVISOR: number = 10;
 const STRENGTH_TO_LIFE_VALUE: number = 5;
 const INT_TO_ES_VALUE: number = 2;
 const INT_TO_MANA_VALUE: number = 5;
+const DEX_TO_ACCURACY_VALUE: number = 20;
+const DEX_TO_EVASION_VALUE: number = 2;
 
 export default class ModFilter implements IFilterModule<IModFilterParams[]> {
   public type: string = 'ModFilter';
@@ -99,6 +101,16 @@ export default class ModFilter implements IFilterModule<IModFilterParams[]> {
             condition.max);
         case '+# to maximum Mana':
           return this.checkMaximumManaTotalMod(item,
+            condition.mod.regex,
+            condition.min,
+            condition.max);
+        case '+# to Accuracy Rating':
+          return this.checkFlatAccuraryTotalMod(item,
+            condition.mod.regex,
+            condition.min,
+            condition.max);
+        case '#% increased Evasion Rating':
+          return this.checkPercentIncreasedEvasionTotalMod(item,
             condition.mod.regex,
             condition.min,
             condition.max);
@@ -209,6 +221,68 @@ export default class ModFilter implements IFilterModule<IModFilterParams[]> {
     if (totalMana === 0) { return false; }
     if (!isNaN(minValue) && totalMana < minValue) { return false; }
     if (!isNaN(maxValue) && totalMana > maxValue) { return false; }
+    return true;
+  }
+
+  /**
+   * Checks if an `IBaseItem` instance has a total flat accuracy value
+   * @param item The item to check
+   * @param testRegexes The test regexes to check the item's mods against
+   * @param minValue the minimum accuracy that the item can have
+   * @param maxValue the maximum accuracy that the item can have
+   */
+  private checkFlatAccuraryTotalMod(
+    item: IBaseItem,
+    testRegexes: RegExp[],
+    minValue?: number,
+    maxValue?: number,
+  ): boolean {
+
+    let totalAccuracy: number = 0;
+
+    for (const regex of testRegexes) {
+      let value: number = this.getTotalModValue(item, regex);
+
+      if (regex.toString() !== '/\\+(\\d+) to Accuracy Rating/') {
+        value = Math.floor(value / ATTRIBUTE_VALUE_DIVISOR) * DEX_TO_ACCURACY_VALUE;
+      }
+      totalAccuracy += value;
+    }
+
+    if (totalAccuracy === 0) { return false; }
+    if (!isNaN(minValue) && totalAccuracy < minValue) { return false; }
+    if (!isNaN(maxValue) && totalAccuracy > maxValue) { return false; }
+    return true;
+  }
+
+  /**
+   * Checks if an `IBaseItem` instance has a total % increased evasion rating value
+   * @param item The item to check
+   * @param testRegexes The test regexes to check the item's mods against
+   * @param minValue the minimum % increased evasion rating that the item can have
+   * @param maxValue the maximum % increased evasion rating that the item can have
+   */
+  private checkPercentIncreasedEvasionTotalMod(
+    item: IBaseItem,
+    testRegexes: RegExp[],
+    minValue?: number,
+    maxValue?: number,
+  ): boolean {
+
+    let totalEvasion: number = 0;
+
+    for (const regex of testRegexes) {
+      let value: number = this.getTotalModValue(item, regex);
+
+      if (regex.toString() !== '/(\\d+)% increased Evasion Rating/') {
+        value = Math.floor(value / ATTRIBUTE_VALUE_DIVISOR) * DEX_TO_EVASION_VALUE;
+      }
+      totalEvasion += value;
+    }
+
+    if (totalEvasion === 0) { return false; }
+    if (!isNaN(minValue) && totalEvasion < minValue) { return false; }
+    if (!isNaN(maxValue) && totalEvasion > maxValue) { return false; }
     return true;
   }
 

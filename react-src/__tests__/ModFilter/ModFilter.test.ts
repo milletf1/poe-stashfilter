@@ -122,7 +122,7 @@ describe('explicit mod tests', () => {
     }
     const filterParams: IModFilterParams[] = [
       { mod: lifeMod, min: 55, max: 65 },
-      { mod: aoeMod , min: 15, max: 25 },
+      { mod: aoeMod, min: 15, max: 25 },
     ];
     const filter: ModFilter = new ModFilter();
     const actual: IBaseItem[] = filter.filter(items, filterParams);
@@ -301,7 +301,7 @@ describe('crafted mod tests', () => {
       throw new Error('Couldn\'t find crafted "#% increased Physical Damage" mod filter param');
     }
     const filterParams: IModFilterParams[] = [
-      { mod: increasedAttackSpeedMod , min: 10, max: 20 },
+      { mod: increasedAttackSpeedMod, min: 10, max: 20 },
       { mod: increasedPhysicalDpsMod, min: 40, max: 50 },
     ];
     const filter: ModFilter = new ModFilter();
@@ -326,7 +326,7 @@ describe('total mod tests', () => {
       throw new Error('Couldn\'t find total "+# to maximum Life" mod filter param');
     }
     const filter: ModFilter = new ModFilter();
-    const actual: IBaseItem[] = filter.filter(items, [{ mod: modFilterParams, min: 100, max: 120}]);
+    const actual: IBaseItem[] = filter.filter(items, [{ mod: modFilterParams, min: 100, max: 120 }]);
 
     assertItemsFound(testItems, actual);
   });
@@ -352,7 +352,7 @@ describe('total mod tests', () => {
     const testItems: IBaseItem[] = [];
     testItems.push(getTestItem(items, 'Golem Gyre', 'Paua Ring'));
     if (!testItems[testItems.length - 1]) {
-      throw new Error('Failed to find expected item "Armageddon Shroud Vaal Regalia" in test data');
+      throw new Error('Failed to find expected item "Golem Gyre Paua Ring" in test data');
     }
     const modFilterParams: IMod = totalModRegexes
       .find((modRegex: IMod) => modRegex.label === '+# to maximum Mana');
@@ -365,8 +365,41 @@ describe('total mod tests', () => {
     assertItemsFound(testItems, actual);
   });
 
-  // accuracy, // includes dex // golem eye 2 stone ring
-  // %evasion rating // includes dex // corpse crown ursine pelt
+  test('should return items with total flat accuracy', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, 'Golem Eye', 'Two-Stone Ring'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('Failed to find expected item "Golem Eye Two-Stone Ring" in test data');
+    }
+    const modFilterParams: IMod = totalModRegexes
+      .find((modRegex: IMod) => modRegex.label === '+# to Accuracy Rating');
+    if (!modFilterParams) {
+      throw new Error('Couldn\'t find total "+# to Accuracy Rating" mod filter param');
+    }
+    const filter: ModFilter = new ModFilter();
+    const actual: IBaseItem[] = filter.filter(items, [{ mod: modFilterParams, min: 260 }]);
+
+    assertItemsFound(testItems, actual);
+  });
+
+  test('should return items with total evasion rating', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, 'Corpse Crown', 'Ursine Pelt'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('Failed to find expected item "Corpse Crown Ursine Pelt" in test data');
+    }
+    const modFilterParams: IMod = totalModRegexes
+      .find((modRegex: IMod) => modRegex.label === '#% increased Evasion Rating');
+    if (!modFilterParams) {
+      throw new Error('Couldn\'t find total "#% increased Evasion Rating" mod filter param');
+    }
+    const filter: ModFilter = new ModFilter();
+    const actual: IBaseItem[] = filter.filter(
+      items,
+      [{ mod: modFilterParams, min: 100, max: 110 }],
+    );
+    assertItemsFound(testItems, actual);
+  });
 
   // fire resistance // includes all / dual res res //  golem eye 2 stone ring
   // chaos resistance // includes dual res // soul finger Amethyst Ring
