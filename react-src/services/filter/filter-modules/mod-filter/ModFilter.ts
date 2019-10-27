@@ -7,6 +7,7 @@ import { ModFilterType } from './ModFilterType';
 const ATTRIBUTE_VALUE_DIVISOR: number = 10;
 const STRENGTH_TO_LIFE_VALUE: number = 5;
 const INT_TO_ES_VALUE: number = 2;
+const INT_TO_MANA_VALUE: number = 5;
 
 export default class ModFilter implements IFilterModule<IModFilterParams[]> {
   public type: string = 'ModFilter';
@@ -91,11 +92,16 @@ export default class ModFilter implements IFilterModule<IModFilterParams[]> {
             condition.min,
             condition.max);
         case '#% increased Energy Shield':
-            return this.checkPercentIncreasedEnergyShieldTotalMod(
-              item,
-              condition.mod.regex,
-              condition.min,
-              condition.max);
+          return this.checkPercentIncreasedEnergyShieldTotalMod(
+            item,
+            condition.mod.regex,
+            condition.min,
+            condition.max);
+        case '+# to maximum Mana':
+          return this.checkMaximumManaTotalMod(item,
+            condition.mod.regex,
+            condition.min,
+            condition.max);
       }
       // +# to maximum Mana (intelligence)
       // +# to Accuracy Rating (dexterity)
@@ -172,7 +178,37 @@ export default class ModFilter implements IFilterModule<IModFilterParams[]> {
     if (totalEs === 0) { return false; }
     if (!isNaN(minValue) && totalEs < minValue) { return false; }
     if (!isNaN(maxValue) && totalEs > maxValue) { return false; }
-    console.log(item.name, totalEs);
+    return true;
+  }
+
+  /**
+   * Checks if an `IBaseItem` instance has a total maximum mana value
+   * @param item The item to check
+   * @param testRegexes The test regexes to check the item's mods against
+   * @param minValue the minimum mana that the item can have
+   * @param maxValue the maximum mana that the item can have
+   */
+  private checkMaximumManaTotalMod(
+    item: IBaseItem,
+    testRegexes: RegExp[],
+    minValue?: number,
+    maxValue?: number,
+  ): boolean {
+
+    let totalMana: number = 0;
+
+    for (const regex of testRegexes) {
+      let value: number = this.getTotalModValue(item, regex);
+
+      if (regex.toString() !== '/\\+(\\d+) to maximum Mana/') {
+        value = Math.floor(value / ATTRIBUTE_VALUE_DIVISOR) * INT_TO_MANA_VALUE;
+      }
+      totalMana += value;
+    }
+
+    if (totalMana === 0) { return false; }
+    if (!isNaN(minValue) && totalMana < minValue) { return false; }
+    if (!isNaN(maxValue) && totalMana > maxValue) { return false; }
     return true;
   }
 

@@ -331,7 +331,6 @@ describe('total mod tests', () => {
     assertItemsFound(testItems, actual);
   });
 
-  // energy shield // includes int // Armageddon Shroud
   test('should return items with total energy shield', () => {
     const testItems: IBaseItem[] = [];
     testItems.push(getTestItem(items, 'Armageddon Shroud', 'Vaal Regalia'));
@@ -348,9 +347,27 @@ describe('total mod tests', () => {
 
     assertItemsFound(testItems, actual);
   });
-  // mana // includes int //  Golem Gyre Paua Ring
+
+  test('should return items with total mana', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, 'Golem Gyre', 'Paua Ring'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('Failed to find expected item "Armageddon Shroud Vaal Regalia" in test data');
+    }
+    const modFilterParams: IMod = totalModRegexes
+      .find((modRegex: IMod) => modRegex.label === '+# to maximum Mana');
+    if (!modFilterParams) {
+      throw new Error('Couldn\'t find total "+# to maximum Mana" mod filter param');
+    }
+    const filter: ModFilter = new ModFilter();
+    const actual: IBaseItem[] = filter.filter(items, [{ mod: modFilterParams, min: 75, max: 80 }]);
+
+    assertItemsFound(testItems, actual);
+  });
+
   // accuracy, // includes dex // golem eye 2 stone ring
   // %evasion rating // includes dex // corpse crown ursine pelt
+
   // fire resistance // includes all / dual res res //  golem eye 2 stone ring
   // chaos resistance // includes dual res // soul finger Amethyst Ring
 
