@@ -10,6 +10,9 @@ const INT_TO_ES_VALUE: number = 2;
 const INT_TO_MANA_VALUE: number = 5;
 const DEX_TO_ACCURACY_VALUE: number = 20;
 const DEX_TO_EVASION_VALUE: number = 2;
+const RESISTANCE_REGEX_TEST_REGEX: RegExp = /\\\+\(\\d\+\)% to.*Resistance[s]?\//;
+const ALL_ELEMENTAL_RESISTANCE_TEST_REGEX: RegExp = /to all Elemental Resistances/;
+const RESISTANCE_TYPE_TEST_REGEX: RegExp = /(Fire|Lightning|Cold|Chaos)/g;
 
 export default class ModFilter implements IFilterModule<IModFilterParams[]> {
   public type: string = 'ModFilter';
@@ -40,6 +43,8 @@ export default class ModFilter implements IFilterModule<IModFilterParams[]> {
         return this.checkCraftedMod(item, condition);
       case ModFilterType.TOTAL:
         return this.checkTotalMod(item, condition);
+      case ModFilterType.PSEUDO:
+        return this.checkPseudoMod(item, condition);
       default:
         return false;
     }
@@ -284,6 +289,75 @@ export default class ModFilter implements IFilterModule<IModFilterParams[]> {
     if (!isNaN(minValue) && totalEvasion < minValue) { return false; }
     if (!isNaN(maxValue) && totalEvasion > maxValue) { return false; }
     return true;
+  }
+
+  /**
+   * Checks if an `IBaseItem` instance has a total mod value
+   * @param item The item to check
+   * @param condition The psuedo mod that the item should have, and its minimum and maximum
+   * numerical value
+   */
+  private checkPseudoMod(item: IBaseItem, condition: IModFilterParams): boolean {
+    switch (condition.mod.label) {
+      case '+#% total Elemental Resistance':
+        return this.checkPseudoElementalResistanceMod(
+            item,
+            condition.mod.regex as RegExp[],
+            condition.min,
+            condition.max);
+      default:
+        return false;
+    }
+  }
+
+  /**
+   * Checks if an `IBaseItem` instance has a pseudo elemental resistance value
+   * @param item The item to check
+   * @param testRegexes The test regexes to check the item's mods against
+   * @param minValue the minimum elemental resistance value that the item can have
+   * @param maxValue the maximum elemental resistance value that the item can have
+   */
+  private checkPseudoElementalResistanceMod(
+    item: IBaseItem,
+    testRegexes: RegExp[],
+    minValue?: number,
+    maxValue?: number,
+  ): boolean {
+
+    let totalResistance: number = 0;
+
+    for (const regex of testRegexes) {
+      const val: number = this.getTotalModValue(item, regex);
+
+      if (val > 0) {
+        const valMultiplier: number = this.getResistanceMultiplier(regex);
+        totalResistance = totalResistance + (val * valMultiplier);
+      }
+    }
+
+    if (totalResistance === 0) { return false; }
+    if (!isNaN(minValue) && totalResistance < minValue) { return false; }
+    if (!isNaN(maxValue) && totalResistance > maxValue) { return false; }
+    return true;
+  }
+
+  /**
+   * Returns a number that can be used to calculate
+   * the total resistance value of a resistance mod
+   * @param regex The regex to check
+   */
+  private getResistanceMultiplier(regex: RegExp): number {
+    const regexStr: string = regex.toString();
+
+    if (!RESISTANCE_REGEX_TEST_REGEX.test(regexStr)) {
+      return 0;
+    }
+    const resistTypes: string[] | null = regexStr.match(RESISTANCE_TYPE_TEST_REGEX);
+
+    if (resistTypes !== null && resistTypes.length > 0) {
+      return resistTypes.length;
+    }
+    return ALL_ELEMENTAL_RESISTANCE_TEST_REGEX.test(regexStr) ? 3 : 0;
   }
 
   /**

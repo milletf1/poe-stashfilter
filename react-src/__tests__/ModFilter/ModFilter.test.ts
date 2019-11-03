@@ -2,9 +2,10 @@ import { IMod, IModFilterParams } from '../../services/filter/filter-modules/mod
 import ModFilter from '../../services/filter/filter-modules/mod-filter/ModFilter';
 import { assertItemsFound, getTestItem } from '../utils';
 import { IBaseItem } from './../../models/items/IBaseItem';
-import { craftedModRegexes, explicitModRegexes, totalModRegexes } from './../../services/filter/filter-modules/mod-filter/mod-regexes';
+import { craftedModRegexes, explicitModRegexes, pseudoModRegexes, totalModRegexes } from './../../services/filter/filter-modules/mod-filter/mod-regexes';
 import craftedModJson from './crafted-mod-filter-test-items.json';
 import explicitModJson from './explicit-mod-filter-test-items.json';
+import pseudoModJson from './pseudo-mod-filter-test-items.json';
 import totalModJson from './total-mod-filter-test-items.json';
 
 describe('explicit mod tests', () => {
@@ -479,13 +480,30 @@ describe('total mod tests', () => {
   });
 });
 
-describe('psuedo mod tests', () => {
-  // total elemental resistance
-  // armour + evasion
-  // fractured modifiers
-  // total resistance
+describe('pseudo mod tests', () => {
+  const items: IBaseItem[] = (pseudoModJson as IBaseItem[]);
+  // total elemental resistance apocalypse turn 32 + 45 + 40 = 112
+  test('should return items with total element resistance', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, 'Apocalypse Turn', 'Two-Stone Ring'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('Failed to find expected item "Apocalypse Turn Two-Stone Ring" in test data');
+    }
+    const modFilterParams: IMod = pseudoModRegexes
+      .find((modRegex: IMod) => modRegex.label === '+#% total Elemental Resistance');
+    if (!modFilterParams) {
+      throw new Error('Couldn\'t find explicit "+#% total Elemental Resistance" mod filter param');
+    }
+    const filter: ModFilter = new ModFilter();
+    const actual: IBaseItem[] = filter.filter(items, [{ mod: modFilterParams, min: 100}]);
+
+    assertItemsFound(testItems, actual);
+  });
+  // number of fractured modifiers Beast Fletch 2 mods
+  // total resistance pain band 45 + 19 + 23 = 87
 });
 
+// TODO: 1 single test items file for these tests. Single test for rest of this list
 // TODO: implicit mod tests
 // TODO: fractured mod tests
 // TODO: abyss mod tests

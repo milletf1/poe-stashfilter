@@ -3782,12 +3782,6 @@ export const totalModRegexes: IMod[] = [
 ];
 /* [pseudo] mods */
 export const pseudoModRegexes: IMod[] = [
-  // sum of armour and evasion
-  {
-    label: '# Armour + Evasion',
-    regex: /(\d+) Armour \+ Evasion/,
-    type: ModFilterType.PSEUDO,
-  },
   // number fractured mods
   {
     label: '# Fractured Modifiers',
@@ -3797,13 +3791,33 @@ export const pseudoModRegexes: IMod[] = [
   // total elemental resistance
   {
     label: '+#% total Elemental Resistance',
-    regex: /\+(\d+)% total Elemental Resistance/,
+    regex: [
+      /\+(\d+)% to Cold Resistance/,
+      /\+(\d+)% to Fire Resistance/,
+      /\+(\d+)% to Lightning Resistance/,
+      /\+(\d+)% to Fire and Cold Resistances/,
+      /\+(\d+)% to Fire and Lightning Resistances/,
+      /\+(\d+)% to Cold and Lightning Resistances/,
+      /\+(\d+)% to all Elemental Resistances/,
+    ],
     type: ModFilterType.PSEUDO,
   },
   // total resistance
   {
     label: '+#% total Resistance',
-    regex: /\+(\d+)% total Resistance/,
+    regex: [
+      /\+(\d+)% to Cold Resistance/,
+      /\+(\d+)% to Fire Resistance/,
+      /\+(\d+)% to Lightning Resistance/,
+      /\+(\d+)% to Chaos Resistance/,
+      /\+(\d+)% to Fire and Cold Resistances/,
+      /\+(\d+)% to Fire and Lightning Resistances/,
+      /\+(\d+)% to Cold and Lightning Resistances/,
+      /\+(\d+)% to Cold and Chaos Resistances/,
+      /\+(\d+)% to Fire and Chaos Resistances/,
+      /\+(\d+)% to Lightning and Chaos Resistances/,
+      /\+(\d+)% to all Elemental Resistances/,
+    ],
     type: ModFilterType.PSEUDO,
   },
 ];

@@ -1,0 +1,308 @@
+[
+  {
+    "verified": false,
+    "w": 1,
+    "h": 1,
+    "ilvl": 62,
+    "icon": "https:\/\/web.poecdn.com\/image\/Art\/2DItems\/Rings\/TopazRuby.png?scale=1&w=1&h=1&v=0bd3c7197b952981eb21cb0dc278c04d",
+    "league": "Standard",
+    "id": "22b935d12976a8d46351c8164cf93ad5893b9841da619f3549f79d547b8e17d5",
+    "name": "Apocalypse Turn",
+    "typeLine": "Two-Stone Ring",
+    "identified": true,
+    "requirements": [
+      {
+        "name": "Level",
+        "values": [
+          [
+            "49",
+            0
+          ]
+        ],
+        "displayMode": 0
+      }
+    ],
+    "implicitMods": [
+      "+16% to Fire and Lightning Resistances"
+    ],
+    "explicitMods": [
+      "+28 to Strength",
+      "+25 to maximum Energy Shield",
+      "+41 to maximum Mana",
+      "24% increased Rarity of Items found",
+      "+15% to all Elemental Resistances",
+      "+40% to Cold Resistance"
+    ],
+    "frameType": 2,
+    "x": 4,
+    "y": 10,
+    "inventoryId": "Stash95"
+  },
+  {
+    "verified": false,
+    "w": 1,
+    "h": 1,
+    "ilvl": 72,
+    "icon": "https:\/\/web.poecdn.com\/image\/Art\/2DItems\/Rings\/DiamondRing.png?scale=1&w=1&h=1&v=d53fabd123b7c64d59ffe8a6baf7d778",
+    "league": "Standard",
+    "id": "8ea86b66687bd52df99dee12eec802db685a9a2c158ea68d376c8a5cbd529b3a",
+    "name": "Pain Band",
+    "typeLine": "Diamond Ring",
+    "identified": true,
+    "requirements": [
+      {
+        "name": "Level",
+        "values": [
+          [
+            "57",
+            0
+          ]
+        ],
+        "displayMode": 0
+      }
+    ],
+    "implicitMods": [
+      "29% increased Global Critical Strike Chance"
+    ],
+    "explicitMods": [
+      "Adds 5 to 13 Fire Damage to Attacks",
+      "+8 to maximum Energy Shield",
+      "+75 to maximum Life",
+      "+45% to Fire Resistance",
+      "+19% to Lightning Resistance",
+      "+23% to Chaos Resistance"
+    ],
+    "frameType": 2,
+    "x": 0,
+    "y": 2,
+    "inventoryId": "Stash95"
+  },
+  {
+    "verified": false,
+    "w": 2,
+    "h": 4,
+    "ilvl": 77,
+    "icon": "https:\/\/web.poecdn.com\/image\/Art\/2DItems\/Weapons\/TwoHandWeapons\/Bows\/Bow5.png?scale=1&w=2&h=4&fractured=1&v=daf0ddbfc1b8447bcd479d760100f24b",
+    "league": "Standard",
+    "id": "86aa73f9f110357b8a607e5eb93d27a2e5e2209cbf2f441bd5231172a43be559",
+    "fractured": true,
+    "sockets": [
+      {
+        "group": 0,
+        "attr": "D",
+        "sColour": "G"
+      },
+      {
+        "group": 0,
+        "attr": "D",
+        "sColour": "G"
+      }
+    ],
+    "name": "Beast Fletch",
+    "typeLine": "Assassin Bow",
+    "identified": true,
+    "properties": [
+      {
+        "name": "Bow",
+        "values": [],
+        "displayMode": 0
+      },
+      {
+        "name": "Physical Damage",
+        "values": [
+          [
+            "30-89",
+            0
+          ]
+        ],
+        "displayMode": 0,
+        "type": 9
+      },
+      {
+        "name": "Elemental Damage",
+        "values": [
+          [
+            "48-84",
+            4
+          ],
+          [
+            "8-140",
+            6
+          ]
+        ],
+        "displayMode": 0,
+        "type": 10
+      },
+      {
+        "name": "Critical Strike Chance",
+        "values": [
+          [
+            "6.50%",
+            0
+          ]
+        ],
+        "displayMode": 0,
+        "type": 12
+      },
+      {
+        "name": "Attacks per Second",
+        "values": [
+          [
+            "1.39",
+            1
+          ]
+        ],
+        "displayMode": 0,
+        "type": 13
+      }
+    ],
+    "requirements": [
+      {
+        "name": "Level",
+        "values": [
+          [
+            "62",
+            0
+          ]
+        ],
+        "displayMode": 0
+      },
+      {
+        "name": "Dex",
+        "values": [
+          [
+            "212",
+            0
+          ]
+        ],
+        "displayMode": 1
+      }
+    ],
+    "explicitMods": [
+      "Adds 48 to 84 Fire Damage",
+      "11% increased Attack Speed",
+      "+36% to Global Critical Strike Multiplier",
+      "15% chance to cause Bleeding on Hit"
+    ],
+    "fracturedMods": [
+      "+2 to Level of Socketed Bow Gems",
+      "Adds 8 to 140 Lightning Damage"
+    ],
+    "frameType": 2,
+    "x": 0,
+    "y": 0,
+    "inventoryId": "Stash48",
+    "socketedItems": []
+  },
+  {
+    "verified": false,
+    "w": 2,
+    "h": 2,
+    "ilvl": 78,
+    "icon": "https:\/\/web.poecdn.com\/image\/Art\/2DItems\/Armours\/Boots\/BootsDexInt4.png?scale=1&w=2&h=2&fractured=1&v=bfbd6b83d1a5a8dafbae030a0041b5fe",
+    "league": "Standard",
+    "id": "19d02fa9c7e9f2a9dbe8beadfd565b1e9d463dda6b493a019ce62c00b87c8f66",
+    "fractured": true,
+    "sockets": [
+      {
+        "group": 0,
+        "attr": "I",
+        "sColour": "B"
+      },
+      {
+        "group": 0,
+        "attr": "I",
+        "sColour": "B"
+      },
+      {
+        "group": 0,
+        "attr": "I",
+        "sColour": "B"
+      }
+    ],
+    "name": "Kraken Spark",
+    "typeLine": "Carnal Boots",
+    "identified": true,
+    "properties": [
+      {
+        "name": "Quality",
+        "values": [
+          [
+            "+11%",
+            1
+          ]
+        ],
+        "displayMode": 0,
+        "type": 6
+      },
+      {
+        "name": "Evasion Rating",
+        "values": [
+          [
+            "118",
+            1
+          ]
+        ],
+        "displayMode": 0,
+        "type": 17
+      },
+      {
+        "name": "Energy Shield",
+        "values": [
+          [
+            "24",
+            1
+          ]
+        ],
+        "displayMode": 0,
+        "type": 18
+      }
+    ],
+    "requirements": [
+      {
+        "name": "Level",
+        "values": [
+          [
+            "55",
+            0
+          ]
+        ],
+        "displayMode": 0
+      },
+      {
+        "name": "Dex",
+        "values": [
+          [
+            "42",
+            1
+          ]
+        ],
+        "displayMode": 1
+      },
+      {
+        "name": "Int",
+        "values": [
+          [
+            "42",
+            1
+          ]
+        ],
+        "displayMode": 1
+      }
+    ],
+    "explicitMods": [
+      "18% reduced Attribute Requirements",
+      "+42 to Dexterity",
+      "+7 to Evasion Rating",
+      "+3 to maximum Energy Shield"
+    ],
+    "fracturedMods": [
+      "20% increased Movement Speed"
+    ],
+    "frameType": 2,
+    "x": 10,
+    "y": 8,
+    "inventoryId": "Stash48",
+    "socketedItems": []
+  }
+]
