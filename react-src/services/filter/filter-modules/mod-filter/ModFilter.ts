@@ -1,3 +1,4 @@
+import { isIFractured } from '../../../../models/items/IFractured';
 import ElectronApi from '../../../electron-api/ElectronApi';
 import { IBaseItem } from './../../../../models/items/IBaseItem';
 import { IFilterModule } from './../IFilterModule';
@@ -120,20 +121,13 @@ export default class ModFilter implements IFilterModule<IModFilterParams[]> {
             condition.min,
             condition.max);
       }
-      // +# to maximum Mana (intelligence)
-      // +# to Accuracy Rating (dexterity)
-      // #% increased Evasion Rating (dexterity)
       for (const regex of condition.mod.regex) {
         totalValue += this.getTotalModValue(item, regex);
       }
     } else {
       totalValue = this.getTotalModValue(item, condition.mod.regex);
     }
-
-    if (totalValue === 0) { return false; }
-    if (!isNaN(condition.min) && totalValue < condition.min) { return false; }
-    if (!isNaN(condition.max) && totalValue > condition.max) { return false; }
-    return true;
+    return this.checkNumberWithinBounds(totalValue, condition.min, condition.max);
   }
 
   /**
@@ -160,11 +154,7 @@ export default class ModFilter implements IFilterModule<IModFilterParams[]> {
       }
       totalLife += value;
     }
-
-    if (totalLife === 0) { return false; }
-    if (!isNaN(minValue) && totalLife < minValue) { return false; }
-    if (!isNaN(maxValue) && totalLife > maxValue) { return false; }
-    return true;
+    return this.checkNumberWithinBounds(totalLife, minValue, maxValue);
   }
 
   /**
@@ -191,11 +181,7 @@ export default class ModFilter implements IFilterModule<IModFilterParams[]> {
       }
       totalEs += value;
     }
-
-    if (totalEs === 0) { return false; }
-    if (!isNaN(minValue) && totalEs < minValue) { return false; }
-    if (!isNaN(maxValue) && totalEs > maxValue) { return false; }
-    return true;
+    return this.checkNumberWithinBounds(totalEs, minValue, maxValue);
   }
 
   /**
@@ -222,11 +208,7 @@ export default class ModFilter implements IFilterModule<IModFilterParams[]> {
       }
       totalMana += value;
     }
-
-    if (totalMana === 0) { return false; }
-    if (!isNaN(minValue) && totalMana < minValue) { return false; }
-    if (!isNaN(maxValue) && totalMana > maxValue) { return false; }
-    return true;
+    return this.checkNumberWithinBounds(totalMana, minValue, maxValue);
   }
 
   /**
@@ -253,11 +235,7 @@ export default class ModFilter implements IFilterModule<IModFilterParams[]> {
       }
       totalAccuracy += value;
     }
-
-    if (totalAccuracy === 0) { return false; }
-    if (!isNaN(minValue) && totalAccuracy < minValue) { return false; }
-    if (!isNaN(maxValue) && totalAccuracy > maxValue) { return false; }
-    return true;
+    return this.checkNumberWithinBounds(totalAccuracy, minValue, maxValue);
   }
 
   /**
@@ -284,11 +262,7 @@ export default class ModFilter implements IFilterModule<IModFilterParams[]> {
       }
       totalEvasion += value;
     }
-
-    if (totalEvasion === 0) { return false; }
-    if (!isNaN(minValue) && totalEvasion < minValue) { return false; }
-    if (!isNaN(maxValue) && totalEvasion > maxValue) { return false; }
-    return true;
+    return this.checkNumberWithinBounds(totalEvasion, minValue, maxValue);
   }
 
   /**
@@ -305,6 +279,12 @@ export default class ModFilter implements IFilterModule<IModFilterParams[]> {
             condition.mod.regex as RegExp[],
             condition.min,
             condition.max);
+      case '# Fractured Modifiers':
+        return this.checkNumberOfExplicitMods(
+          item,
+          condition.mod.regex as RegExp[],
+          condition.min,
+          condition.max);
       default:
         return false;
     }
@@ -334,11 +314,26 @@ export default class ModFilter implements IFilterModule<IModFilterParams[]> {
         totalResistance = totalResistance + (val * valMultiplier);
       }
     }
+    return this.checkNumberWithinBounds(totalResistance, minValue, maxValue);
+  }
 
-    if (totalResistance === 0) { return false; }
-    if (!isNaN(minValue) && totalResistance < minValue) { return false; }
-    if (!isNaN(maxValue) && totalResistance > maxValue) { return false; }
-    return true;
+  /**
+   * Checks if an `IBaseItem` instance has a specific number of fractured mods
+   * @param item The item to check
+   * @param testRegexes The test regexes to check the item's mods against
+   * @param minValue the minimum number of fractured mods that the item can have
+   * @param maxValue the maximum number of fractured mods that the item can have
+   */
+  private checkNumberOfExplicitMods(
+    item: IBaseItem,
+    testRegexes: RegExp[],
+    minValue?: number,
+    maxValue?: number,
+  ): boolean {
+    if (!isIFractured(item)) { return false; }
+    const totalFracturedMods: number = item.fracturedMods.length;
+
+    return this.checkNumberWithinBounds(totalFracturedMods, minValue, maxValue);
   }
 
   /**
@@ -456,5 +451,20 @@ export default class ModFilter implements IFilterModule<IModFilterParams[]> {
   private reduceModValue(total: number, val: string): number {
     const value: number = parseInt(val, 10);
     return isNaN(value) ? total : total + value;
+  }
+
+  /**
+   * Checks if a number is within a specific range. Returns true if number
+   * is within min and max
+   * NOTE: false will always be returned if val is equal to 0
+   * @param val Number to be checked
+   * @param min The smallest number that val can be
+   * @param max The largest number that val can be
+   */
+  private checkNumberWithinBounds(val: number, min?: number, max?: number): boolean {
+    if (val === 0) { return false; }
+    if (!isNaN(min) && val < min) { return false; }
+    if (!isNaN(max) && val > max) { return false; }
+    return true;
   }
 }

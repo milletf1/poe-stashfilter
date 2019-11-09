@@ -482,7 +482,7 @@ describe('total mod tests', () => {
 
 describe('pseudo mod tests', () => {
   const items: IBaseItem[] = (pseudoModJson as IBaseItem[]);
-  // total elemental resistance apocalypse turn 32 + 45 + 40 = 112
+
   test('should return items with total element resistance', () => {
     const testItems: IBaseItem[] = [];
     testItems.push(getTestItem(items, 'Apocalypse Turn', 'Two-Stone Ring'));
@@ -492,14 +492,31 @@ describe('pseudo mod tests', () => {
     const modFilterParams: IMod = pseudoModRegexes
       .find((modRegex: IMod) => modRegex.label === '+#% total Elemental Resistance');
     if (!modFilterParams) {
-      throw new Error('Couldn\'t find explicit "+#% total Elemental Resistance" mod filter param');
+      throw new Error('Couldn\'t find pseudo "+#% total Elemental Resistance" mod filter param');
     }
     const filter: ModFilter = new ModFilter();
     const actual: IBaseItem[] = filter.filter(items, [{ mod: modFilterParams, min: 100}]);
 
     assertItemsFound(testItems, actual);
   });
-  // number of fractured modifiers Beast Fletch 2 mods
+
+  test('should return items with number of fractured mods', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, 'Beast Fletch', 'Assassin Bow'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('Failed to find expected item "Beast Fletch Assassin Bow" in test data');
+    }
+    const modFilterParams: IMod = pseudoModRegexes
+      .find((modRegex: IMod) => modRegex.label === '# Fractured Modifiers');
+    if (!modFilterParams) {
+      throw new Error('Couldnt\'t find pseudo "# Fractured Modifiers" mod filter param');
+    }
+    const filter: ModFilter = new ModFilter();
+    const actual: IBaseItem[] = filter.filter(items, [{mod: modFilterParams, min: 2}]);
+
+    assertItemsFound(testItems, actual);
+  });
+
   // total resistance pain band 45 + 19 + 23 = 87
 });
 
