@@ -3,7 +3,7 @@ import { ICategory } from './ICategory';
 
 export interface IFossil extends IBaseItem {
   /** Category */
-  category: ICategory;
+  category?: ICategory;
   /** Description text */
   descrText: string;
   /** Explicit modifiers */
@@ -12,7 +12,6 @@ export interface IFossil extends IBaseItem {
 
 /** IFossil type guard */
 export function isIFossil(o: any): o is IFossil {
-  return (o as IFossil).category !== undefined
-   && (o as IFossil).category.currency !== undefined
-   && (o as IFossil).category.currency.findIndex((cat: string) => cat === 'fossil') !== -1;
+  return (o as IFossil).descrText !== undefined
+    && (o as IFossil).descrText === 'Place in a Resonator to influence item crafting.';
 }

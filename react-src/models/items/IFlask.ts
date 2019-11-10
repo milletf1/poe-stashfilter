@@ -14,12 +14,13 @@ export interface IFlask extends IBaseItem {
   /** Flavour text */
   flavourText: string[];
   /** Category */
-  category: ICategory;
+  category?: ICategory;
   /** Description text */
   descrText: string;
 }
 
 /** IFlask type guard */
 export function isIFlask(o: any): o is IFlask {
-  return (o as IFlask).category !== undefined && (o as IFlask).category.flasks !== undefined;
+  return (o as IFlask).descrText !== undefined
+    && (o as IFlask).descrText === 'Right click to drink. Can only hold charges while in belt. Refills as you kill monsters.';
 }

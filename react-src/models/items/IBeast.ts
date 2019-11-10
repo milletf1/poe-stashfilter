@@ -7,7 +7,7 @@ export interface IBeast extends IBaseItem {
   /** Description text */
   descrText: string;
   /** Category */
-  category: ICategory;
+  category?: ICategory;
   /** Properties */
   properties: IItemProperty[];
   /** Explicit modifiers */
@@ -16,5 +16,6 @@ export interface IBeast extends IBaseItem {
 
 /** IBeast type guard */
 export function isIBeast(o: any): o is IBeast {
-  return (o as IBeast).category !== undefined && (o as IBeast).category.monsters !== undefined;
+  return (o as IBeast).descrText !== undefined
+    && (o as IBeast).descrText === 'Right-click to add this to your bestiary.';
 }

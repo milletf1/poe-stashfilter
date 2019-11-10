@@ -26,11 +26,11 @@ export interface IGem extends IBaseItem {
   /** Corrupted gem */
   corrupted: boolean;
   /** Category */
-  category: ICategory;
+  category?: ICategory;
 }
 
 /** IGem type guard */
 export function isIGem(o: any): o is IGem {
-  return (o as IGem).category !== undefined && (o as IGem).category.gems !== undefined
-    && (o as IVaalGem).vaal === undefined;
+  return (o as IGem).icon !== undefined &&
+    /\/2DItems\/Gems/.test((o as IGem).icon);
 }

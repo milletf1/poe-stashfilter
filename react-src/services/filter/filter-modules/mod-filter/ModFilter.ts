@@ -403,7 +403,7 @@ export default class ModFilter implements IFilterModule<IModFilterParams[]> {
   /**
    * Tests an item modifer against a regex. If they match a numerical value is extracted from the
    * mod (by a capture group in the regex) and checked to make sure it is within the bounds defined
-   * by the `min` and `max` parameters.
+   * by the `min` and `max` parameters. If a numerical value cannot be extracted, then true is returned
    * @param mod The mod to check
    * @param testRegex The regex to check the `mod` parameter
    * @param min The minimum value that the mod can have

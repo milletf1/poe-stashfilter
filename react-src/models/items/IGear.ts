@@ -15,7 +15,7 @@ export interface IGear extends ISocketableItem {
   /** Requirements */
   requirements: IItemProperty[];
   /** Category */
-  category: ICategory;
+  category?: ICategory;
   /** Flavour text */
   flavourText: string[];
   /** Explicit modifiers */
@@ -39,13 +39,11 @@ export interface IIncubatedItem {
 
 /** IGear type guard */
 export function isIGear(o: any): o is IGear {
-  return (o as IGear).category !== undefined
-    && ((o as IGear).category.accessories !== undefined
-    || (o as IGear).category.armour !== undefined
-    || (o as IGear).category.weapons !== undefined);
+  return (o as IGear).icon !== undefined
+    && /\/2DItems\/(Rings|Armours|Weapons|Amulets|Belts)\//.test((o as IGear).icon);
 }
 
 /** Checks if an object is a belt */
 export function checkIsBelt(o: any): boolean {
-  return isIGear(o) && o.category.accessories !== undefined && o.category.accessories[0] === 'belt';
+  return isIGear(o) && /\/2DItems\/Belts\//.test(o.icon);
 }
