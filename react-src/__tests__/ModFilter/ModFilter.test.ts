@@ -517,7 +517,22 @@ describe('pseudo mod tests', () => {
     assertItemsFound(testItems, actual);
   });
 
-  // total resistance pain band 45 + 19 + 23 = 87
+  test('should return items with total resistance', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, 'Pain Band', 'Diamond Ring'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('Failed to find expected item "Pain Band Diamond Ring" in test data');
+    }
+    const modFilterParams: IMod = pseudoModRegexes
+      .find((modRegex: IMod) => modRegex.label === '+#% total Resistance');
+    if (!modFilterParams) {
+      throw new Error('Couldn\'t find pseudo "+#% total Resistance" mod filter param');
+    }
+    const filter: ModFilter = new ModFilter();
+    const actual: IBaseItem[] = filter.filter(items, [{ mod: modFilterParams, min: 80, max: 100}]);
+
+    assertItemsFound(testItems, actual);
+  });
 });
 
 // TODO: 1 single test items file for these tests. Single test for rest of this list

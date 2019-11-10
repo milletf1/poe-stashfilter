@@ -273,8 +273,9 @@ export default class ModFilter implements IFilterModule<IModFilterParams[]> {
    */
   private checkPseudoMod(item: IBaseItem, condition: IModFilterParams): boolean {
     switch (condition.mod.label) {
+      case '+#% total Resistance':
       case '+#% total Elemental Resistance':
-        return this.checkPseudoElementalResistanceMod(
+        return this.checkPseudoResistanceMod(
             item,
             condition.mod.regex as RegExp[],
             condition.min,
@@ -297,7 +298,7 @@ export default class ModFilter implements IFilterModule<IModFilterParams[]> {
    * @param minValue the minimum elemental resistance value that the item can have
    * @param maxValue the maximum elemental resistance value that the item can have
    */
-  private checkPseudoElementalResistanceMod(
+  private checkPseudoResistanceMod(
     item: IBaseItem,
     testRegexes: RegExp[],
     minValue?: number,
