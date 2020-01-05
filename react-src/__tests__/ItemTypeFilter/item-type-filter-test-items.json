@@ -138,11 +138,6 @@
       "Death collects you in the end."
     ],
     "frameType": 3,
-    "category": {
-      "weapons": [
-        "twoaxe"
-      ]
-    },
     "x": 0,
     "y": 0,
     "inventoryId": "Stash111",
@@ -186,11 +181,6 @@
     ],
     "descrText": "Place into an Abyssal Socket on an Item or into an allocated Jewel Socket on the Passive Skill Tree. Right click to remove from the Socket.",
     "frameType": 2,
-    "category": {
-      "jewels": [
-        "abyss"
-      ]
-    },
     "x": 11,
     "y": 10,
     "inventoryId": "Stash111"
@@ -235,9 +225,6 @@
     "frameType": 5,
     "stackSize": 55,
     "maxStackSize": 100,
-    "category": {
-      "currency": []
-    },
     "x": 9,
     "y": 7,
     "inventoryId": "Stash111"
@@ -321,11 +308,6 @@
       "+12% to all Elemental Resistances"
     ],
     "frameType": 3,
-    "category": {
-      "armour": [
-        "shield"
-      ]
-    },
     "x": 4,
     "y": 7,
     "inventoryId": "Stash111",
@@ -358,9 +340,6 @@
     "frameType": 5,
     "stackSize": 97,
     "maxStackSize": 100,
-    "category": {
-      "currency": []
-    },
     "x": 7,
     "y": 3,
     "inventoryId": "Stash111"
@@ -447,11 +426,6 @@
       "+44% to Lightning Resistance"
     ],
     "frameType": 2,
-    "category": {
-      "armour": [
-        "gloves"
-      ]
-    },
     "x": 4,
     "y": 10,
     "inventoryId": "Stash111",
@@ -493,9 +467,6 @@
     ],
     "descrText": "Right-click to open your Legacy Panel and place a Leaguestone in an empty slot. It will apply to the next new area you enter.",
     "frameType": 1,
-    "category": {
-      "leaguestones": []
-    },
     "x": 7,
     "y": 2,
     "inventoryId": "Stash111"
@@ -623,11 +594,6 @@
       "<default>{This item can be transformed with a Blessing of Chayula}"
     ],
     "frameType": 3,
-    "category": {
-      "weapons": [
-        "onesword"
-      ]
-    },
     "x": 6,
     "y": 2,
     "inventoryId": "Stash111",
@@ -738,11 +704,6 @@
       "+18% Chance to Block Attack Damage while wielding a Staff"
     ],
     "frameType": 3,
-    "category": {
-      "weapons": [
-        "staff"
-      ]
-    },
     "x": 4,
     "y": 0,
     "inventoryId": "Stash111",
@@ -850,11 +811,6 @@
       }
     ],
     "frameType": 3,
-    "category": {
-      "weapons": [
-        "oneaxe"
-      ]
-    },
     "x": 4,
     "y": 4,
     "inventoryId": "Stash111",
@@ -989,11 +945,6 @@
       "Fear is the wound left untended."
     ],
     "frameType": 3,
-    "category": {
-      "weapons": [
-        "claw"
-      ]
-    },
     "x": 6,
     "y": 0,
     "inventoryId": "Stash111",
@@ -1089,11 +1040,6 @@
       "Gain 7% of Fire Damage as Extra Chaos Damage"
     ],
     "frameType": 2,
-    "category": {
-      "weapons": [
-        "wand"
-      ]
-    },
     "x": 8,
     "y": 4,
     "inventoryId": "Stash111",
@@ -1119,12 +1065,6 @@
       "Mankind is in grave peril. By accepting this scarab, you pledge your life."
     ],
     "frameType": 0,
-    "category": {
-      "maps": [
-        "fragment",
-        "scarab"
-      ]
-    },
     "x": 10,
     "y": 8,
     "inventoryId": "Stash111"
@@ -1171,9 +1111,6 @@
     "frameType": 5,
     "stackSize": 1,
     "maxStackSize": 9,
-    "category": {
-      "currency": []
-    },
     "x": 9,
     "y": 11,
     "inventoryId": "Stash111"
@@ -1211,9 +1148,6 @@
     "stackSize": 2,
     "maxStackSize": 9,
     "artFilename": "Humility",
-    "category": {
-      "cards": []
-    },
     "x": 3,
     "y": 10,
     "inventoryId": "Stash111"
@@ -1339,11 +1273,6 @@
       "13% increased Attack Speed"
     ],
     "frameType": 2,
-    "category": {
-      "weapons": [
-        "dagger"
-      ]
-    },
     "x": 2,
     "y": 3,
     "inventoryId": "Stash111",
@@ -1367,9 +1296,6 @@
     ],
     "descrText": "Place into an allocated Jewel Socket on the Passive Skill Tree. Right click to remove from the Socket.",
     "frameType": 2,
-    "category": {
-      "jewels": []
-    },
     "x": 10,
     "y": 9,
     "inventoryId": "Stash111"
@@ -1422,9 +1348,6 @@
     ],
     "descrText": "Travel to this Map by using it in the Templar Laboratory or a personal Map Device. Maps can only be used once.",
     "frameType": 0,
-    "category": {
-      "maps": []
-    },
     "x": 8,
     "y": 7,
     "inventoryId": "Stash111"
@@ -1462,11 +1385,6 @@
       "+24% to Cold Resistance"
     ],
     "frameType": 2,
-    "category": {
-      "accessories": [
-        "belt"
-      ]
-    },
     "x": 2,
     "y": 6,
     "inventoryId": "Stash111"
@@ -1498,9 +1416,6 @@
     "frameType": 5,
     "stackSize": 3,
     "maxStackSize": 20,
-    "category": {
-      "currency": []
-    },
     "x": 11,
     "y": 11,
     "inventoryId": "Stash111"
@@ -1543,11 +1458,6 @@
     ],
     "descrText": "All sockets must be filled with Fossils before this item can be used.",
     "frameType": 5,
-    "category": {
-      "currency": [
-        "resonator"
-      ]
-    },
     "x": 9,
     "y": 4,
     "inventoryId": "Stash111",
@@ -1567,11 +1477,6 @@
         ],
         "descrText": "Place in a Resonator to influence item crafting.",
         "frameType": 5,
-        "category": {
-          "currency": [
-            "fossil"
-          ]
-        },
         "socket": 0,
         "colour": null
       }
@@ -1590,11 +1495,6 @@
     "identified": true,
     "descrText": "This item will transform when correctly arranged with other items.",
     "frameType": 3,
-    "category": {
-      "currency": [
-        "piece"
-      ]
-    },
     "x": 2,
     "y": 7,
     "inventoryId": "Stash111"
@@ -1615,11 +1515,6 @@
     ],
     "descrText": "Place in a Resonator to influence item crafting.",
     "frameType": 5,
-    "category": {
-      "currency": [
-        "fossil"
-      ]
-    },
     "x": 11,
     "y": 8,
     "inventoryId": "Stash111"
@@ -1680,9 +1575,6 @@
     ],
     "descrText": "Right-click to add this to your bestiary.",
     "frameType": 2,
-    "category": {
-      "monsters": []
-    },
     "x": 10,
     "y": 11,
     "inventoryId": "Stash111"
@@ -1815,11 +1707,6 @@
       "Of the Defiant Heart."
     ],
     "frameType": 3,
-    "category": {
-      "armour": [
-        "chest"
-      ]
-    },
     "x": 0,
     "y": 4,
     "inventoryId": "Stash111",
@@ -1942,11 +1829,6 @@
       "a storm is sure to follow."
     ],
     "frameType": 3,
-    "category": {
-      "weapons": [
-        "bow"
-      ]
-    },
     "x": 8,
     "y": 0,
     "inventoryId": "Stash111",
@@ -2038,9 +1920,6 @@
       "- Lavianga, Advisor to Kaom"
     ],
     "frameType": 3,
-    "category": {
-      "flasks": []
-    },
     "x": 3,
     "y": 3,
     "inventoryId": "Stash111"
@@ -2169,12 +2048,6 @@
       "Through endless storms of fervent devotion."
     ],
     "frameType": 3,
-    "category": {
-      "weapons": [
-        "sceptre",
-        "onemace"
-      ]
-    },
     "x": 6,
     "y": 9,
     "inventoryId": "Stash111",
@@ -2299,11 +2172,6 @@
       "+75 to Accuracy Rating"
     ],
     "frameType": 2,
-    "category": {
-      "weapons": [
-        "twomace"
-      ]
-    },
     "x": 6,
     "y": 5,
     "inventoryId": "Stash111",
@@ -2424,11 +2292,6 @@
       "30% increased Enfeeble Curse Effect"
     ],
     "frameType": 2,
-    "category": {
-      "armour": [
-        "helmet"
-      ]
-    },
     "x": 0,
     "y": 10,
     "inventoryId": "Stash111",
@@ -2469,11 +2332,6 @@
       "10% increased Light Radius"
     ],
     "frameType": 2,
-    "category": {
-      "accessories": [
-        "ring"
-      ]
-    },
     "x": 3,
     "y": 9,
     "inventoryId": "Stash111"
@@ -2515,11 +2373,6 @@
       "6% of Damage taken gained as Mana over 4 seconds when Hit"
     ],
     "frameType": 2,
-    "category": {
-      "accessories": [
-        "amulet"
-      ]
-    },
     "x": 3,
     "y": 8,
     "inventoryId": "Stash111"
@@ -2604,11 +2457,6 @@
     ],
     "descrText": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Active Skill Gem you wish to augment. Right click to remove from a socket.",
     "frameType": 4,
-    "category": {
-      "gems": [
-        "supportgem"
-      ]
-    },
     "x": 11,
     "y": 9,
     "inventoryId": "Stash111"
@@ -2648,11 +2496,6 @@
       "0.4% of Physical Attack Damage Leeched as Life"
     ],
     "frameType": 2,
-    "category": {
-      "armour": [
-        "quiver"
-      ]
-    },
     "x": 0,
     "y": 7,
     "inventoryId": "Stash111"
@@ -2701,11 +2544,6 @@
       "27% increased Elemental Damage with Attack Skills"
     ],
     "frameType": 2,
-    "category": {
-      "accessories": [
-        "belt"
-      ]
-    },
     "x": 2,
     "y": 2,
     "inventoryId": "Stash111",
@@ -2803,11 +2641,6 @@
       "0.4% of Damage Leeched as Life and Mana if you've Killed Recently"
     ],
     "frameType": 2,
-    "category": {
-      "armour": [
-        "boots"
-      ]
-    },
     "x": 2,
     "y": 0,
     "inventoryId": "Stash111",
@@ -2826,11 +2659,6 @@
     "identified": true,
     "descrText": "Travel to Xoph's Domain by using this item in the Templar Laboratory or a personal Map Device. Can only be used once.",
     "frameType": 0,
-    "category": {
-      "maps": [
-        "fragment"
-      ]
-    },
     "x": 9,
     "y": 10,
     "inventoryId": "Stash111"
@@ -2852,11 +2680,6 @@
       "Your fate rests in her even hands."
     ],
     "frameType": 0,
-    "category": {
-      "maps": [
-        "fragment"
-      ]
-    },
     "x": 9,
     "y": 8,
     "inventoryId": "Stash111"
@@ -2882,11 +2705,6 @@
       "and yet it always breaks free."
     ],
     "frameType": 0,
-    "category": {
-      "maps": [
-        "fragment"
-      ]
-    },
     "x": 7,
     "y": 4,
     "inventoryId": "Stash111"
@@ -2907,11 +2725,6 @@
       "We are but dogs, howling at an uncaring moon."
     ],
     "frameType": 0,
-    "category": {
-      "maps": [
-        "fragment"
-      ]
-    },
     "x": 3,
     "y": 11,
     "inventoryId": "Stash111"
@@ -2933,11 +2746,6 @@
       "nothingness and equilibrium of eternity."
     ],
     "frameType": 0,
-    "category": {
-      "maps": [
-        "fragment"
-      ]
-    },
     "x": 10,
     "y": 10,
     "inventoryId": "Stash111"
@@ -2958,11 +2766,6 @@
       "Look to our Queen, for she will lead us into the light."
     ],
     "frameType": 0,
-    "category": {
-      "maps": [
-        "fragment"
-      ]
-    },
     "x": 3,
     "y": 5,
     "inventoryId": "Stash111"
@@ -3045,11 +2848,6 @@
       "40% increased Global Accuracy Rating"
     ],
     "frameType": 0,
-    "category": {
-      "weapons": [
-        "twosword"
-      ]
-    },
     "x": 8,
     "y": 8,
     "inventoryId": "Stash111",
@@ -3160,11 +2958,6 @@
       "10% reduced Enemy Stun Threshold"
     ],
     "frameType": 0,
-    "category": {
-      "weapons": [
-        "onemace"
-      ]
-    },
     "x": 10,
     "y": 0,
     "inventoryId": "Stash111",
@@ -3200,9 +2993,6 @@
     "frameType": 5,
     "stackSize": 20,
     "maxStackSize": 20,
-    "category": {
-      "currency": []
-    },
     "x": 9,
     "y": 9,
     "inventoryId": "Stash111"
@@ -3304,11 +3094,6 @@
       "43% increased Fishing Range"
     ],
     "frameType": 2,
-    "category": {
-      "weapons": [
-        "rod"
-      ]
-    },
     "x": 2,
     "y": 8,
     "inventoryId": "Stash111",
@@ -3331,9 +3116,6 @@
     ],
     "prophecyText": "You will track down a powerful Ancient Archer who will drop a unique item when slain.",
     "frameType": 8,
-    "category": {
-      "currency": []
-    },
     "x": 9,
     "y": 6,
     "inventoryId": "Stash111"
@@ -3354,11 +3136,6 @@
     ],
     "descrText": "Right click this item then left click an item to apply it. The Incubated item drops after killing a specific number of monsters.",
     "frameType": 0,
-    "category": {
-      "currency": [
-        "incubator"
-      ]
-    },
     "x": 11,
     "y": 0,
     "inventoryId": "Stash111"
@@ -3393,9 +3170,6 @@
     "frameType": 5,
     "stackSize": 1,
     "maxStackSize": 10,
-    "category": {
-      "currency": []
-    },
     "x": 11,
     "y": 1,
     "inventoryId": "Stash111"
@@ -3413,11 +3187,6 @@
     "identified": true,
     "descrText": "Place two or more different Emblems in a Map Device to access the Domain of Timeless Conflict. Can only be used once.",
     "frameType": 0,
-    "category": {
-      "maps": [
-        "fragment"
-      ]
-    },
     "x": 11,
     "y": 2,
     "inventoryId": "Stash111"
@@ -3449,9 +3218,6 @@
     "frameType": 5,
     "stackSize": 81,
     "maxStackSize": 5000,
-    "category": {
-      "currency": []
-    },
     "x": 11,
     "y": 3,
     "inventoryId": "Stash111"

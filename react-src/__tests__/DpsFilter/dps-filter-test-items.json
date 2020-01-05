@@ -116,11 +116,6 @@
       "31% increased Elemental Damage with Attack Skills"
     ],
     "frameType": 2,
-    "category": {
-      "weapons": [
-        "onesword"
-      ]
-    },
     "x": 9,
     "y": 0,
     "inventoryId": "Stash112",
@@ -167,11 +162,6 @@
       "And Ventor met his latest trophy."
     ],
     "frameType": 3,
-    "category": {
-      "accessories": [
-        "ring"
-      ]
-    },
     "x": 7,
     "y": 2,
     "inventoryId": "Stash112"
@@ -217,11 +207,6 @@
       "or the blood of others."
     ],
     "frameType": 3,
-    "category": {
-      "armour": [
-        "quiver"
-      ]
-    },
     "x": 6,
     "y": 3,
     "inventoryId": "Stash112"
@@ -390,11 +375,6 @@
       "And a tenacious sense of justice."
     ],
     "frameType": 3,
-    "category": {
-      "weapons": [
-        "staff"
-      ]
-    },
     "x": 7,
     "y": 8,
     "inventoryId": "Stash112",
@@ -480,11 +460,6 @@
         ],
         "descrText": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Active Skill Gem you wish to augment. Right click to remove from a socket.",
         "frameType": 4,
-        "category": {
-          "gems": [
-            "supportgem"
-          ]
-        },
         "socket": 0,
         "colour": "D"
       }
@@ -527,11 +502,6 @@
       "until fate pulled you away."
     ],
     "frameType": 3,
-    "category": {
-      "accessories": [
-        "amulet"
-      ]
-    },
     "x": 7,
     "y": 1,
     "inventoryId": "Stash112"
@@ -662,11 +632,6 @@
       "40% increased Global Critical Strike Chance"
     ],
     "frameType": 0,
-    "category": {
-      "weapons": [
-        "dagger"
-      ]
-    },
     "x": 11,
     "y": 9,
     "inventoryId": "Stash112",
@@ -781,11 +746,6 @@
       "+15% to Lightning Resistance"
     ],
     "frameType": 1,
-    "category": {
-      "weapons": [
-        "bow"
-      ]
-    },
     "x": 5,
     "y": 8,
     "inventoryId": "Stash112",
@@ -937,11 +897,6 @@
       "Laughing."
     ],
     "frameType": 3,
-    "category": {
-      "weapons": [
-        "twosword"
-      ]
-    },
     "x": 9,
     "y": 4,
     "inventoryId": "Stash112",
@@ -1063,11 +1018,6 @@
       "18% reduced Attribute Requirements"
     ],
     "frameType": 1,
-    "category": {
-      "weapons": [
-        "twoaxe"
-      ]
-    },
     "x": 9,
     "y": 8,
     "inventoryId": "Stash112",
@@ -1204,11 +1154,6 @@
       "+11% to Lightning Resistance"
     ],
     "frameType": 2,
-    "category": {
-      "weapons": [
-        "onesword"
-      ]
-    },
     "x": 8,
     "y": 0,
     "inventoryId": "Stash112",
@@ -1323,11 +1268,6 @@
       "The wyrm draws warmth from the fires of desire."
     ],
     "frameType": 3,
-    "category": {
-      "armour": [
-        "boots"
-      ]
-    },
     "x": 6,
     "y": 6,
     "inventoryId": "Stash112",
@@ -1422,11 +1362,6 @@
         ],
         "descrText": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Active Skill Gem you wish to augment. Right click to remove from a socket.",
         "frameType": 4,
-        "category": {
-          "gems": [
-            "supportgem"
-          ]
-        },
         "socket": 0,
         "colour": "D"
       },
@@ -1534,11 +1469,6 @@
         ],
         "descrText": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
         "frameType": 4,
-        "category": {
-          "gems": [
-            "activegem"
-          ]
-        },
         "socket": 1,
         "colour": "I"
       },
@@ -1601,11 +1531,6 @@
         ],
         "descrText": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Active Skill Gem you wish to augment. Right click to remove from a socket.",
         "frameType": 4,
-        "category": {
-          "gems": [
-            "supportgem"
-          ]
-        },
         "socket": 2,
         "colour": "I"
       },
@@ -1719,11 +1644,6 @@
         ],
         "descrText": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
         "frameType": 4,
-        "category": {
-          "gems": [
-            "activegem"
-          ]
-        },
         "socket": 3,
         "colour": "D"
       }
@@ -1839,11 +1759,6 @@
       "+60 to maximum Life"
     ],
     "frameType": 2,
-    "category": {
-      "armour": [
-        "helmet"
-      ]
-    },
     "x": 4,
     "y": 1,
     "inventoryId": "Stash112",
@@ -1974,11 +1889,6 @@
         ],
         "descrText": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Active Skill Gem you wish to augment. Right click to remove from a socket.",
         "frameType": 4,
-        "category": {
-          "gems": [
-            "supportgem"
-          ]
-        },
         "socket": 0,
         "colour": "S"
       },
@@ -2110,11 +2020,6 @@
         ],
         "descrText": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
         "frameType": 4,
-        "category": {
-          "gems": [
-            "activegem"
-          ]
-        },
         "socket": 1,
         "colour": "S"
       }
@@ -2248,11 +2153,6 @@
       "she found peace at last."
     ],
     "frameType": 3,
-    "category": {
-      "armour": [
-        "chest"
-      ]
-    },
     "x": 4,
     "y": 3,
     "inventoryId": "Stash112",
@@ -2347,11 +2247,6 @@
         ],
         "descrText": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
         "frameType": 4,
-        "category": {
-          "gems": [
-            "activegem"
-          ]
-        },
         "socket": 0,
         "colour": "D"
       },
@@ -2435,11 +2330,6 @@
         ],
         "descrText": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Active Skill Gem you wish to augment. Right click to remove from a socket.",
         "frameType": 4,
-        "category": {
-          "gems": [
-            "supportgem"
-          ]
-        },
         "socket": 1,
         "colour": "D"
       },
@@ -2532,11 +2422,6 @@
         ],
         "descrText": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Active Skill Gem you wish to augment. Right click to remove from a socket.",
         "frameType": 4,
-        "category": {
-          "gems": [
-            "supportgem"
-          ]
-        },
         "socket": 2,
         "colour": "S"
       },
@@ -2619,11 +2504,6 @@
         ],
         "descrText": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Active Skill Gem you wish to augment. Right click to remove from a socket.",
         "frameType": 4,
-        "category": {
-          "gems": [
-            "supportgem"
-          ]
-        },
         "socket": 3,
         "colour": "I"
       },
@@ -2706,11 +2586,6 @@
         ],
         "descrText": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Active Skill Gem you wish to augment. Right click to remove from a socket.",
         "frameType": 4,
-        "category": {
-          "gems": [
-            "supportgem"
-          ]
-        },
         "socket": 4,
         "colour": "I"
       },
@@ -2793,11 +2668,6 @@
         ],
         "descrText": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Active Skill Gem you wish to augment. Right click to remove from a socket.",
         "frameType": 4,
-        "category": {
-          "gems": [
-            "supportgem"
-          ]
-        },
         "socket": 5,
         "colour": "I"
       }
@@ -2844,11 +2714,6 @@
       "And Ventor met his latest trophy."
     ],
     "frameType": 3,
-    "category": {
-      "accessories": [
-        "ring"
-      ]
-    },
     "x": 6,
     "y": 2,
     "inventoryId": "Stash112"
@@ -2952,11 +2817,6 @@
       "68% increased Evasion Rating"
     ],
     "frameType": 2,
-    "category": {
-      "armour": [
-        "gloves"
-      ]
-    },
     "x": 2,
     "y": 6,
     "inventoryId": "Stash112",
@@ -3077,11 +2937,6 @@
         ],
         "descrText": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
         "frameType": 4,
-        "category": {
-          "gems": [
-            "activegem"
-          ]
-        },
         "socket": 0,
         "colour": "D"
       },
@@ -3185,11 +3040,6 @@
         ],
         "descrText": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
         "frameType": 4,
-        "category": {
-          "gems": [
-            "activegem"
-          ]
-        },
         "socket": 1,
         "colour": "D"
       },
@@ -3282,11 +3132,6 @@
         ],
         "descrText": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
         "frameType": 4,
-        "category": {
-          "gems": [
-            "activegem"
-          ]
-        },
         "socket": 2,
         "colour": "I"
       },
@@ -3369,11 +3214,6 @@
         ],
         "descrText": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Active Skill Gem you wish to augment. Right click to remove from a socket.",
         "frameType": 4,
-        "category": {
-          "gems": [
-            "supportgem"
-          ]
-        },
         "socket": 3,
         "colour": "D"
       }
@@ -3419,11 +3259,6 @@
       "- Lavianga, Advisor to Kaom"
     ],
     "frameType": 3,
-    "category": {
-      "accessories": [
-        "belt"
-      ]
-    },
     "x": 4,
     "y": 6,
     "inventoryId": "Stash112"
@@ -3597,11 +3432,6 @@
       "It hunts; as silent as falling snow, as deadly as the tempest."
     ],
     "frameType": 3,
-    "category": {
-      "weapons": [
-        "bow"
-      ]
-    },
     "x": 2,
     "y": 2,
     "inventoryId": "Stash112",
@@ -3687,11 +3517,6 @@
         ],
         "descrText": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Active Skill Gem you wish to augment. Right click to remove from a socket.",
         "frameType": 4,
-        "category": {
-          "gems": [
-            "supportgem"
-          ]
-        },
         "socket": 0,
         "colour": "D"
       },
@@ -3774,11 +3599,6 @@
         ],
         "descrText": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Active Skill Gem you wish to augment. Right click to remove from a socket.",
         "frameType": 4,
-        "category": {
-          "gems": [
-            "supportgem"
-          ]
-        },
         "socket": 1,
         "colour": "I"
       },
@@ -3872,11 +3692,6 @@
         ],
         "descrText": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Active Skill Gem you wish to augment. Right click to remove from a socket.",
         "frameType": 4,
-        "category": {
-          "gems": [
-            "supportgem"
-          ]
-        },
         "socket": 2,
         "colour": "S"
       },
@@ -3948,11 +3763,6 @@
         ],
         "descrText": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Active Skill Gem you wish to augment. Right click to remove from a socket.",
         "frameType": 4,
-        "category": {
-          "gems": [
-            "supportgem"
-          ]
-        },
         "socket": 3,
         "colour": "S"
       },
@@ -4060,11 +3870,6 @@
         ],
         "descrText": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
         "frameType": 4,
-        "category": {
-          "gems": [
-            "activegem"
-          ]
-        },
         "socket": 4,
         "colour": "D"
       },
@@ -4147,11 +3952,6 @@
         ],
         "descrText": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Active Skill Gem you wish to augment. Right click to remove from a socket.",
         "frameType": 4,
-        "category": {
-          "gems": [
-            "supportgem"
-          ]
-        },
         "socket": 5,
         "colour": "D"
       }
@@ -4276,11 +4076,6 @@
       "That is not the case when fighting the Maraketh."
     ],
     "frameType": 3,
-    "category": {
-      "weapons": [
-        "bow"
-      ]
-    },
     "x": 10,
     "y": 0,
     "inventoryId": "Stash112",
@@ -4422,11 +4217,6 @@
       "26% increased Critical Strike Chance"
     ],
     "frameType": 2,
-    "category": {
-      "weapons": [
-        "dagger"
-      ]
-    },
     "x": 11,
     "y": 6,
     "inventoryId": "Stash112",
