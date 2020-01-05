@@ -1,4 +1,3 @@
-import { IAbyssJewel } from './IAbyssJewel';
 import { IItemProperty } from './IItemProperty';
 import { IJewel, isIJewel } from './IJewel';
 

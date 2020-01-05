@@ -2,9 +2,10 @@ import { IMod, IModFilterParams } from '../../services/filter/filter-modules/mod
 import ModFilter from '../../services/filter/filter-modules/mod-filter/ModFilter';
 import { assertItemsFound, getTestItem } from '../utils';
 import { IBaseItem } from './../../models/items/IBaseItem';
-import { craftedModRegexes, explicitModRegexes, pseudoModRegexes, totalModRegexes } from './../../services/filter/filter-modules/mod-filter/mod-regexes';
+import { abyssModRegexes, craftedModRegexes, enchantmentsModRegexes, explicitModRegexes, fracturedModRegexes, implicitModRegexes, pseudoModRegexes, totalModRegexes } from './../../services/filter/filter-modules/mod-filter/mod-regexes';
 import craftedModJson from './crafted-mod-filter-test-items.json';
 import explicitModJson from './explicit-mod-filter-test-items.json';
+import otherModJson from './other-mod-filter-test-items.json';
 import pseudoModJson from './pseudo-mod-filter-test-items.json';
 import totalModJson from './total-mod-filter-test-items.json';
 
@@ -495,7 +496,7 @@ describe('pseudo mod tests', () => {
       throw new Error('Couldn\'t find pseudo "+#% total Elemental Resistance" mod filter param');
     }
     const filter: ModFilter = new ModFilter();
-    const actual: IBaseItem[] = filter.filter(items, [{ mod: modFilterParams, min: 100}]);
+    const actual: IBaseItem[] = filter.filter(items, [{ mod: modFilterParams, min: 100 }]);
 
     assertItemsFound(testItems, actual);
   });
@@ -512,7 +513,7 @@ describe('pseudo mod tests', () => {
       throw new Error('Couldnt\'t find pseudo "# Fractured Modifiers" mod filter param');
     }
     const filter: ModFilter = new ModFilter();
-    const actual: IBaseItem[] = filter.filter(items, [{mod: modFilterParams, min: 2}]);
+    const actual: IBaseItem[] = filter.filter(items, [{ mod: modFilterParams, min: 2 }]);
 
     assertItemsFound(testItems, actual);
   });
@@ -529,19 +530,95 @@ describe('pseudo mod tests', () => {
       throw new Error('Couldn\'t find pseudo "+#% total Resistance" mod filter param');
     }
     const filter: ModFilter = new ModFilter();
-    const actual: IBaseItem[] = filter.filter(items, [{ mod: modFilterParams, min: 80, max: 100}]);
+    const actual: IBaseItem[] = filter.filter(items, [{ mod: modFilterParams, min: 80, max: 100 }]);
 
     assertItemsFound(testItems, actual);
   });
 });
 
-// TODO: 1 single test items file for these tests. Single test for rest of this list
-// TODO: implicit mod tests
-// TODO: fractured mod tests
-// TODO: abyss mod tests
-// TODO: unique mod tests
-// TODO: leaguestone tests
-// TODO: beastiary tests
-// TODO: enchantment tests
-// TODO: prophecy tests
-// TODO: map tests
+describe('other mod tests', () => {
+  const items: IBaseItem[] = (otherModJson as IBaseItem[]);
+
+  test('should return items with implicit mods', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, 'Victario\'s Charity', 'Laminated Kite Shield'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('Failed to find expected item "Victario\'s Charity" in test data');
+    }
+    const modFilterParams: IMod = implicitModRegexes
+      .find((modRegex: IMod) => modRegex.label === '+#% to all Elemental Resistances');
+    if (!modFilterParams) {
+      // tslint:disable-next-line:max-line-length
+      throw new Error('Couldn\'t find implicit "+#% to all Elemental Resistances" mod filter param');
+    }
+    const filter: ModFilter = new ModFilter();
+    const actual: IBaseItem[] = filter.filter(items, [{ mod: modFilterParams, min: 5, max: 10 }]);
+
+    assertItemsFound(testItems, actual);
+  });
+
+  test('should return items with an enchantment', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, 'Corpse Crown', 'Ursine Pelt'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('Failed to find expected item "Corpse Crown Ursine Pelt" in test data');
+    }
+    const modFilterParams: IMod = enchantmentsModRegexes
+      .find((modRegex: IMod) => modRegex.label === '#% increased Elemental Weakness Curse Effect');
+    if (!modFilterParams) {
+      // tslint:disable-next-line:max-line-length
+      throw new Error('Couldn\'t find enchantment "#% increased Elemental Weakness Curse Effect" mod filter param');
+    }
+    const filter: ModFilter = new ModFilter();
+    const actual: IBaseItem[] = filter.filter(items, [{ mod: modFilterParams, min: 15, max: 25 }]);
+
+    assertItemsFound(testItems, actual);
+  });
+
+  test('should return items with a fractured mod', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, 'Agony Wrap', 'Golden Plate'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('Failed to find expected item "Agony Wrap Golden Plate" in test data');
+    }
+    const modFilterParams: IMod = fracturedModRegexes
+      .find((modRegex: IMod) => modRegex.label === '+# to maximum Life');
+    if (!modFilterParams) {
+      throw new Error('Couldn\'t find fractured "+# to maximum Life" mod filter param');
+    }
+    const filter: ModFilter = new ModFilter();
+    const actual: IBaseItem[] = filter.filter(items, [{ mod: modFilterParams, min: 80 }]);
+
+    assertItemsFound(testItems, actual);
+  });
+
+  test('should return items with an abyss mod', () => {
+    // TODO: abyss mod tests : Foul Iridescence : Adds 15 to 31 Fire Damage to Attacks
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, 'Foul Iridescence', 'Searching Eye Jewel'));
+    if (!testItems[testItems.length - 1]) {
+      // tslint:disable-next-line:max-line-length
+      throw new Error('Failed to find expected item "Foul Iridescence Searching Eye Jewel" in test data');
+    }
+    const modFilterParams: IMod = abyssModRegexes
+      .find((modRegex: IMod) => modRegex.label === 'Adds # to # Fire Damage to Attacks');
+    if (!modFilterParams) {
+      // tslint:disable-next-line:max-line-length
+      throw new Error('Couldn\'t find fractured "Adds # to # Fire Damage to Attacks" mod filter param');
+    }
+    const filter: ModFilter = new ModFilter();
+    const actual: IBaseItem[] = filter.filter(items, [{ mod: modFilterParams, min: 15 }]);
+
+    assertItemsFound(testItems, actual);
+  });
+
+  // TODO: unique mod tests : The tempest : No physical damage
+
+  // TODO: beastiary tests : Grayclaw the Mangy : Fertile Presence
+
+  // TODO: map tests : Cursed Panorama : Monsters reflect 14% of elemental damage
+
+  // TODO: prophecy tests : A master seeks help : You will find jun and complete her mission
+
+  // TODO: leaguestone tests : Enduring Breach Leaguestone : +3 to Maximum Charges
+});

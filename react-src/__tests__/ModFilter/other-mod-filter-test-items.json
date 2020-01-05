@@ -1,0 +1,648 @@
+[
+  {
+    "verified": false,
+    "w": 2,
+    "h": 3,
+    "ilvl": 77,
+    "icon": "https:\/\/web.poecdn.com\/image\/Art\/2DItems\/Armours\/Shields\/VictarosCharity.png?scale=1&w=2&h=3&v=b5f034fe54feee94cb46ab4979e90745",
+    "league": "Standard",
+    "id": "600aa2d27d32a35d7ba75e8ef9d287a3ba7907e470bdbd848334945208f01418",
+    "sockets": [
+      {
+        "group": 0,
+        "attr": "I",
+        "sColour": "B"
+      },
+      {
+        "group": 1,
+        "attr": "S",
+        "sColour": "R"
+      }
+    ],
+    "name": "Victario's Charity",
+    "typeLine": "Laminated Kite Shield",
+    "identified": true,
+    "properties": [
+      {
+        "name": "Chance to Block",
+        "values": [
+          [
+            "24%",
+            0
+          ]
+        ],
+        "displayMode": 0,
+        "type": 15
+      },
+      {
+        "name": "Armour",
+        "values": [
+          [
+            "113",
+            0
+          ]
+        ],
+        "displayMode": 0,
+        "type": 16
+      },
+      {
+        "name": "Energy Shield",
+        "values": [
+          [
+            "22",
+            0
+          ]
+        ],
+        "displayMode": 0,
+        "type": 18
+      }
+    ],
+    "requirements": [
+      {
+        "name": "Level",
+        "values": [
+          [
+            "50",
+            0
+          ]
+        ],
+        "displayMode": 0
+      },
+      {
+        "name": "Str",
+        "values": [
+          [
+            "64",
+            0
+          ]
+        ],
+        "displayMode": 1
+      },
+      {
+        "name": "Int",
+        "values": [
+          [
+            "64",
+            0
+          ]
+        ],
+        "displayMode": 1
+      }
+    ],
+    "implicitMods": [
+      "+8% to all Elemental Resistances"
+    ],
+    "explicitMods": [
+      "+59 to maximum Life",
+      "+22% to Lightning Resistance",
+      "+11% to Chaos Resistance",
+      "10% increased Area of Effect of Aura Skills",
+      "10% chance to grant a Power Charge to nearby Allies on Kill",
+      "5% chance to grant a Frenzy Charge to nearby Allies on Hit"
+    ],
+    "flavourText": [
+      "A man's life is the greatest gift he can give."
+    ],
+    "frameType": 3,
+    "x": 0,
+    "y": 5,
+    "inventoryId": "Stash86",
+    "socketedItems": []
+  },
+  {
+    "verified": false,
+    "w": 2,
+    "h": 2,
+    "ilvl": 69,
+    "icon": "https:\/\/web.poecdn.com\/image\/Art\/2DItems\/Armours\/Helmets\/HelmetDex7.png?scale=1&w=2&h=2&v=8d01ba9ab32a8d671bcc66c25c0e90ec",
+    "league": "Standard",
+    "id": "a413338303b381f97032c55f2bba941118fe15b231b88b1a4af3ed8a991da0f4",
+    "sockets": [
+      {
+        "group": 0,
+        "attr": "I",
+        "sColour": "B"
+      },
+      {
+        "group": 0,
+        "attr": "D",
+        "sColour": "G"
+      },
+      {
+        "group": 0,
+        "attr": "D",
+        "sColour": "G"
+      },
+      {
+        "group": 0,
+        "attr": "I",
+        "sColour": "B"
+      }
+    ],
+    "name": "Corpse Crown",
+    "typeLine": "Ursine Pelt",
+    "identified": true,
+    "properties": [
+      {
+        "name": "Quality",
+        "values": [
+          [
+            "+20%",
+            1
+          ]
+        ],
+        "displayMode": 0,
+        "type": 6
+      },
+      {
+        "name": "Evasion Rating",
+        "values": [
+          [
+            "602",
+            1
+          ]
+        ],
+        "displayMode": 0,
+        "type": 17
+      }
+    ],
+    "requirements": [
+      {
+        "name": "Level",
+        "values": [
+          [
+            "55",
+            0
+          ]
+        ],
+        "displayMode": 0
+      },
+      {
+        "name": "Dex",
+        "values": [
+          [
+            "114",
+            0
+          ]
+        ],
+        "displayMode": 1
+      }
+    ],
+    "explicitMods": [
+      "+21 to Dexterity",
+      "98% increased Evasion Rating",
+      "+98 to maximum Life",
+      "+37% to Lightning Resistance"
+    ],
+    "craftedMods": [
+      "+30% to Cold Resistance"
+    ],
+    "enchantMods": [
+      "20% increased Elemental Weakness Curse Effect"
+    ],
+    "frameType": 2,
+    "x": 0,
+    "y": 2,
+    "inventoryId": "Stash105",
+    "socketedItems": []
+  },
+  {
+    "verified": false,
+    "w": 2,
+    "h": 3,
+    "ilvl": 74,
+    "icon": "https:\/\/web.poecdn.com\/image\/Art\/2DItems\/Armours\/BodyArmours\/BodyStr1B.png?scale=1&w=2&h=3&fractured=1&v=6c6b69e01fc02c25ec7455b8e72dba87",
+    "league": "Standard",
+    "id": "dcdaeeab4ac2a16ff7588a71bb69dcf35610e6be6c25c0bca4a8eecae692e2c5",
+    "fractured": true,
+    "sockets": [
+      {
+        "group": 0,
+        "attr": "S",
+        "sColour": "R"
+      },
+      {
+        "group": 0,
+        "attr": "S",
+        "sColour": "R"
+      }
+    ],
+    "name": "Agony Wrap",
+    "typeLine": "Golden Plate",
+    "identified": true,
+    "properties": [
+      {
+        "name": "Armour",
+        "values": [
+          [
+            "682",
+            1
+          ]
+        ],
+        "displayMode": 0,
+        "type": 16
+      }
+    ],
+    "requirements": [
+      {
+        "name": "Level",
+        "values": [
+          [
+            "56",
+            0
+          ]
+        ],
+        "displayMode": 0
+      },
+      {
+        "name": "Str",
+        "values": [
+          [
+            "152",
+            0
+          ]
+        ],
+        "displayMode": 1
+      }
+    ],
+    "explicitMods": [
+      "22% increased Armour",
+      "Regenerate 2.9 Life per second",
+      "+18% to Cold Resistance",
+      "Reflects 41 Physical Damage to Melee Attackers",
+      "2% additional Physical Damage Reduction"
+    ],
+    "fracturedMods": [
+      "+86 to maximum Life"
+    ],
+    "frameType": 2,
+    "x": 0,
+    "y": 4,
+    "inventoryId": "Stash48",
+    "socketedItems": []
+  },
+  {
+    "verified": false,
+    "w": 1,
+    "h": 1,
+    "ilvl": 77,
+    "icon": "https:\/\/web.poecdn.com\/image\/Art\/2DItems\/Jewels\/SearchingEye.png?scale=1&w=1&h=1&v=1594a76f6cdc4a09e38ca58035d0ce87",
+    "league": "Standard",
+    "id": "3e35022e471f99704bb7fb387b725182b096b6445ceada6df48ce1d5cb63e1ee",
+    "abyssJewel": true,
+    "name": "Foul Iridescence",
+    "typeLine": "Searching Eye Jewel",
+    "identified": true,
+    "properties": [
+      {
+        "name": "Abyss",
+        "values": [],
+        "displayMode": 0
+      }
+    ],
+    "requirements": [
+      {
+        "name": "Level",
+        "values": [
+          [
+            "51",
+            0
+          ]
+        ],
+        "displayMode": 0
+      }
+    ],
+    "explicitMods": [
+      "Adds 15 to 31 Fire Damage to Attacks",
+      "Adds 12 to 27 Cold Damage to Bow Attacks",
+      "Adds 10 to 16 Fire Damage to Bow Attacks"
+    ],
+    "descrText": "Place into an Abyssal Socket on an Item or into an allocated Jewel Socket on the Passive Skill Tree. Right click to remove from the Socket.",
+    "frameType": 2,
+    "x": 11,
+    "y": 10,
+    "inventoryId": "Stash104"
+  },
+  {
+    "verified": false,
+    "w": 2,
+    "h": 4,
+    "ilvl": 70,
+    "icon": "https:\/\/web.poecdn.com\/image\/Art\/2DItems\/Weapons\/TwoHandWeapons\/Bows\/Stormcloud.png?scale=1&w=2&h=4&v=5c899c3ce30abab4d60111e6bfbaf3b8",
+    "league": "Standard",
+    "id": "2bc8dfa8b82ee4f26f721c9cd91f59601982ad4ac33a2f4569b00a30c223b307",
+    "sockets": [
+      {
+        "group": 0,
+        "attr": "D",
+        "sColour": "G"
+      },
+      {
+        "group": 0,
+        "attr": "I",
+        "sColour": "B"
+      },
+      {
+        "group": 0,
+        "attr": "D",
+        "sColour": "G"
+      },
+      {
+        "group": 0,
+        "attr": "D",
+        "sColour": "G"
+      }
+    ],
+    "name": "The Tempest",
+    "typeLine": "Long Bow",
+    "identified": true,
+    "properties": [
+      {
+        "name": "Bow",
+        "values": [],
+        "displayMode": 0
+      },
+      {
+        "name": "Quality",
+        "values": [
+          [
+            "+20%",
+            1
+          ]
+        ],
+        "displayMode": 0,
+        "type": 6
+      },
+      {
+        "name": "Elemental Damage",
+        "values": [
+          [
+            "1-85",
+            6
+          ]
+        ],
+        "displayMode": 0,
+        "type": 10
+      },
+      {
+        "name": "Critical Strike Chance",
+        "values": [
+          [
+            "6.00%",
+            0
+          ]
+        ],
+        "displayMode": 0,
+        "type": 12
+      },
+      {
+        "name": "Attacks per Second",
+        "values": [
+          [
+            "1.89",
+            1
+          ]
+        ],
+        "displayMode": 0,
+        "type": 13
+      }
+    ],
+    "requirements": [
+      {
+        "name": "Level",
+        "values": [
+          [
+            "32",
+            0
+          ]
+        ],
+        "displayMode": 0
+      },
+      {
+        "name": "Dex",
+        "values": [
+          [
+            "38",
+            0
+          ]
+        ],
+        "displayMode": 1
+      }
+    ],
+    "explicitMods": [
+      "No Physical Damage",
+      "100% increased Lightning Damage",
+      "Adds 1 to 85 Lightning Damage",
+      "45% increased Attack Speed"
+    ],
+    "flavourText": [
+      "Where steel-grey clouds gather and crash together,\r",
+      "a storm is sure to follow."
+    ],
+    "frameType": 3,
+    "x": 8,
+    "y": 0,
+    "inventoryId": "Stash104",
+    "socketedItems": []
+  },
+  {
+    "verified": false,
+    "w": 1,
+    "h": 1,
+    "ilvl": 78,
+    "icon": "https:\/\/web.poecdn.com\/image\/Art\/2DItems\/Currency\/BestiaryOrbFull.png?scale=1&w=1&h=1&v=0d0f6c8509eaf231513fc8b9a5df4626",
+    "league": "Standard",
+    "id": "5108ee1169ccea25ac566be95d61951496fb6485417a8c6c4f8f2ec3c3065808",
+    "name": "Grayclaw the Mangy",
+    "typeLine": "Farric Frost Hellion Alpha",
+    "identified": true,
+    "properties": [
+      {
+        "name": "Genus",
+        "values": [
+          [
+            "Hellions",
+            0
+          ]
+        ],
+        "displayMode": 0,
+        "type": 21
+      },
+      {
+        "name": "Group",
+        "values": [
+          [
+            "Felines",
+            0
+          ]
+        ],
+        "displayMode": 0,
+        "type": 22
+      },
+      {
+        "name": "Family",
+        "values": [
+          [
+            "The Wilds",
+            0
+          ]
+        ],
+        "displayMode": 0,
+        "type": 23
+      }
+    ],
+    "explicitMods": [
+      "Fertile Presence",
+      "Spectral Swipe",
+      "Corrupting Blood",
+      "Allies Move and Attack Faster",
+      "Extra Cold Damage",
+      "Evasive"
+    ],
+    "descrText": "Right-click to add this to your bestiary.",
+    "frameType": 2,
+    "x": 10,
+    "y": 11,
+    "inventoryId": "Stash104"
+  },
+  {
+    "verified": false,
+    "w": 1,
+    "h": 1,
+    "ilvl": 80,
+    "icon": "https:\/\/web.poecdn.com\/image\/Art\/2DItems\/Currency\/Classic\/Breach.png?scale=1&w=1&h=1&v=89627250f62ad6e444049822192e8990",
+    "league": "Standard",
+    "id": "b554de9636307e4c3d1d63f91d39622b43cd76ff64e09261e25e29be815fe07d",
+    "name": "",
+    "typeLine": "Enduring Breach Leaguestone",
+    "identified": true,
+    "corrupted": true,
+    "properties": [
+      {
+        "name": "Currently has %0 of %1 Charges",
+        "values": [
+          [
+            "2",
+            0
+          ],
+          [
+            "8",
+            1
+          ]
+        ],
+        "displayMode": 3
+      }
+    ],
+    "implicitMods": [
+      "Next Area will contain a Breach"
+    ],
+    "explicitMods": [
+      "+3 to Maximum Charges"
+    ],
+    "descrText": "Right-click to open your Legacy Panel and place a Leaguestone in an empty slot. It will apply to the next new area you enter.",
+    "frameType": 1,
+    "x": 7,
+    "y": 2,
+    "inventoryId": "Stash104"
+  },
+  {
+    "verified": false,
+    "w": 1,
+    "h": 1,
+    "ilvl": 0,
+    "icon": "https:\/\/web.poecdn.com\/image\/Art\/2DItems\/Currency\/ProphecyOrbRed.png?scale=1&w=1&h=1&v=dc9105d2b038a79c7c316fc2ba30cef0",
+    "league": "Standard",
+    "id": "009a16681860a36ef4dbc385f91ff2c6566ffb001aa082d686e2be963318717a",
+    "name": "",
+    "typeLine": "The Last Watch",
+    "identified": true,
+    "descrText": "Right-click to add this prophecy to your character.",
+    "flavourText": [
+      "A loyal soldier in life, he stands watch, bow in hand, waiting to be sent to the Mother of death."
+    ],
+    "prophecyText": "You will track down a powerful Ancient Archer who will drop a unique item when slain.",
+    "frameType": 8,
+    "x": 9,
+    "y": 6,
+    "inventoryId": "Stash104"
+  },
+  {
+    "verified": false,
+    "w": 1,
+    "h": 1,
+    "ilvl": 78,
+    "icon": "https:\/\/web.poecdn.com\/image\/Art\/2DItems\/Maps\/AtlasMaps\/Dunes2.png?scale=1&w=1&h=1&v=5329bf8eb0167e98f120920980426d1a",
+    "league": "Standard",
+    "id": "a094211714b9ed22564b296d1a80baefbb10ec7a02ade63fbeafe3aea38e966e",
+    "name": "Cursed Panorama",
+    "typeLine": "Shaped Dunes Map",
+    "identified": true,
+    "properties": [
+      {
+        "name": "Map Tier",
+        "values": [
+          [
+            "10",
+            0
+          ]
+        ],
+        "displayMode": 0,
+        "type": 1
+      },
+      {
+        "name": "Item Quantity",
+        "values": [
+          [
+            "+62%",
+            1
+          ]
+        ],
+        "displayMode": 0,
+        "type": 2
+      },
+      {
+        "name": "Item Rarity",
+        "values": [
+          [
+            "+31%",
+            1
+          ]
+        ],
+        "displayMode": 0,
+        "type": 3
+      }
+    ],
+    "explicitMods": [
+      "Area is inhabited by ranged monsters",
+      "Monsters reflect 15% of Elemental Damage",
+      "Monsters Poison on Hit",
+      "Monsters have a 15% chance to cause Elemental Ailments on Hit"
+    ],
+    "descrText": "Travel to this Map by using it in the Templar Laboratory or a personal Map Device. Maps can only be used once.",
+    "frameType": 2,
+    "x": 6,
+    "y": 10,
+    "inventoryId": "Stash5"
+  },
+  {
+    "verified": false,
+    "w": 1,
+    "h": 1,
+    "ilvl": 0,
+    "icon": "https:\/\/web.poecdn.com\/image\/Art\/2DItems\/Currency\/ProphecyOrbRed.png?scale=1&w=1&h=1&v=dc9105d2b038a79c7c316fc2ba30cef0",
+    "league": "Standard",
+    "id": "71ddc920a1d41508c744cd00c3073d584be97b331a541fa53c467c999552d406",
+    "name": "",
+    "typeLine": "A Master Seeks Help",
+    "identified": true,
+    "descrText": "Right-click to add this prophecy to your character.",
+    "flavourText": [
+      "Pursuing a world of perfect balance, a veiled master seeks aid."
+    ],
+    "prophecyText": "You will find Jun and complete her mission.",
+    "frameType": 8,
+    "x": 9,
+    "y": 9,
+    "inventoryId": "Stash107"
+  }
+]

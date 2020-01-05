@@ -1,3 +1,4 @@
+import { isIAbyssJewel } from '../../../../models/items/IAbyssJewel';
 import { isIFractured } from '../../../../models/items/IFractured';
 import ElectronApi from '../../../electron-api/ElectronApi';
 import { IBaseItem } from './../../../../models/items/IBaseItem';
@@ -46,6 +47,14 @@ export default class ModFilter implements IFilterModule<IModFilterParams[]> {
         return this.checkTotalMod(item, condition);
       case ModFilterType.PSEUDO:
         return this.checkPseudoMod(item, condition);
+      case ModFilterType.IMPLICIT:
+        return this.checkImplicitMod(item, condition);
+      case ModFilterType.ENCHANTMENT:
+        return this.checkEnchantmentMod(item, condition);
+      case ModFilterType.FRACTURED:
+        return this.checkFracturedMod(item, condition);
+      case ModFilterType.ABYSS:
+        return this.checkAbyssMod(item, condition);
       default:
         return false;
     }
@@ -281,7 +290,7 @@ export default class ModFilter implements IFilterModule<IModFilterParams[]> {
             condition.min,
             condition.max);
       case '# Fractured Modifiers':
-        return this.checkNumberOfExplicitMods(
+        return this.checkNumberOfFracturedMods(
           item,
           condition.mod.regex as RegExp[],
           condition.min,
@@ -289,6 +298,59 @@ export default class ModFilter implements IFilterModule<IModFilterParams[]> {
       default:
         return false;
     }
+  }
+
+  /**
+   * Checks if an `IBaseItem` instance has an implicit mod
+   * @param item The item to check
+   * @param condition The implicit mod that the item should have, and its minimum and maximum
+   * numerical value
+   */
+  private checkImplicitMod(item: IBaseItem, condition: IModFilterParams): boolean {
+    if ((item as any).implicitMods) {
+      const implicitMods: string[] = (item as any).implicitMods;
+      const matchingMod: string = implicitMods.find((mod: string) => this.checkMod(mod, condition));
+      if (matchingMod !== undefined) { return true; }
+    }
+    return false;
+  }
+
+  /**
+   * Checks if an `IBaseItem` instance has an enchanment mod
+   * @param item The item to check
+   * @param condition The enchantment mod that the item should have, and its minimum and maximum
+   * numerical value
+   */
+  private checkEnchantmentMod(item: IBaseItem, condition: IModFilterParams): boolean {
+    if ((item as any).enchantMods) {
+      const enchantMods: string[] = (item as any).enchantMods;
+      const matchingMod: string = enchantMods.find((mod: string) => this.checkMod(mod, condition));
+      if (matchingMod !== undefined) { return true; }
+    }
+    return false;
+  }
+
+  /**
+   * Checks if an `IBaseItem` instance has a fractured mod
+   * @param item The item to check
+   * @param condition The fractured mod that the item should have, and its minimum and maximum
+   * numerical value
+   */
+  private checkFracturedMod(item: IBaseItem, condition: IModFilterParams): boolean {
+    if ((item as any).fracturedMods) {
+      const fracturedMods: string[] = (item as any).fracturedMods;
+      const matchingMod: string = fracturedMods
+        .find((mod: string) => this.checkMod(mod, condition));
+      if (matchingMod !== undefined) { return true; }
+    }
+    return false;
+  }
+
+  private checkAbyssMod(item: IBaseItem, condition: IModFilterParams): boolean {
+    if (isIAbyssJewel(item)) {
+      return this.checkExplicitMod(item, condition);
+    }
+    return false;
   }
 
   /**
@@ -325,7 +387,7 @@ export default class ModFilter implements IFilterModule<IModFilterParams[]> {
    * @param minValue the minimum number of fractured mods that the item can have
    * @param maxValue the maximum number of fractured mods that the item can have
    */
-  private checkNumberOfExplicitMods(
+  private checkNumberOfFracturedMods(
     item: IBaseItem,
     testRegexes: RegExp[],
     minValue?: number,
@@ -403,7 +465,8 @@ export default class ModFilter implements IFilterModule<IModFilterParams[]> {
   /**
    * Tests an item modifer against a regex. If they match a numerical value is extracted from the
    * mod (by a capture group in the regex) and checked to make sure it is within the bounds defined
-   * by the `min` and `max` parameters. If a numerical value cannot be extracted, then true is returned
+   * by the `min` and `max` parameters. If a numerical value cannot be extracted, then true is
+   * returned
    * @param mod The mod to check
    * @param testRegex The regex to check the `mod` parameter
    * @param min The minimum value that the mod can have
