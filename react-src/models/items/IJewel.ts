@@ -1,5 +1,4 @@
 import { IBaseItem } from './IBaseItem';
-import { ICategory } from './ICategory';
 import { IItemProperty } from './IItemProperty';
 
 /** Jewel item model */
@@ -10,8 +9,6 @@ export interface IJewel extends IBaseItem {
   descrText: string;
   /** Explicit modifiers */
   explicitMods: string[];
-  /** Category */
-  category: ICategory;
   /** Flavour text */
   flavourText: string[];
   /** Mirrored jewel */
@@ -22,5 +19,6 @@ export interface IJewel extends IBaseItem {
 
 /** IJewel type guard */
 export function isIJewel(o: any): o is IJewel {
-  return (o as IJewel).category !== undefined && (o as IJewel).category.jewels !== undefined;
+  return (o as IJewel).icon !== undefined &&
+    /\/2DItems\/Jewels/.test((o as IJewel).icon);
 }

@@ -1,13 +1,10 @@
 import { IBaseItem } from './IBaseItem';
-import { ICategory } from './ICategory';
 
 export interface IProphecy extends IBaseItem {
   /** Description text */
   descrText: string;
   /** Flavour text */
   flavourText: string[];
-  /** Category */
-  category: ICategory;
   /** Prophecy text */
   prophecyText: string;
 }

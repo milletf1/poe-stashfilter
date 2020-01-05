@@ -1,9 +1,6 @@
 import { IBaseItem } from './IBaseItem';
-import { ICategory } from './ICategory';
 
 export interface IFossil extends IBaseItem {
-  /** Category */
-  category?: ICategory;
   /** Description text */
   descrText: string;
   /** Explicit modifiers */

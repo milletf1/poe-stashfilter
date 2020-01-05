@@ -1,5 +1,4 @@
 import { IBaseItem } from './IBaseItem';
-import { ICategory } from './ICategory';
 import { IItemProperty } from './IItemProperty';
 import { ISocket } from './ISocket';
 import { ISocketableItem } from './ISocketableItem';
@@ -14,8 +13,6 @@ export interface IGear extends ISocketableItem {
   properties: IItemProperty[];
   /** Requirements */
   requirements: IItemProperty[];
-  /** Category */
-  category?: ICategory;
   /** Flavour text */
   flavourText: string[];
   /** Explicit modifiers */

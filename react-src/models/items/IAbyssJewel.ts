@@ -10,5 +10,5 @@ export interface IAbyssJewel extends IJewel {
 
 /** IAbyssJewel type guard */
 export function isIAbyssJewel(o: any): o is IAbyssJewel {
-  return isIJewel(o) && (o as IAbyssJewel).abyssJewel !== undefined;
+  return isIJewel(o) && (o as IAbyssJewel).abyssJewel;
 }

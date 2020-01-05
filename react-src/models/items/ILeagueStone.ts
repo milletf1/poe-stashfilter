@@ -1,5 +1,4 @@
 import { IBaseItem } from './IBaseItem';
-import { ICategory } from './ICategory';
 import { IItemProperty } from './IItemProperty';
 
 export interface ILeagueStone extends IBaseItem {
@@ -13,12 +12,10 @@ export interface ILeagueStone extends IBaseItem {
   implicitMods: string[];
   /** Explicit modifiers */
   explicitMods: string[];
-  /** Category */
-  category: ICategory;
 }
 
 /** ILeagueStone type guard */
 export function isILeagueStone(o: any): o is ILeagueStone {
-  return (o as ILeagueStone).category !== undefined
-    && (o as ILeagueStone).category.leaguestones !== undefined;
+  return (o as ILeagueStone).descrText !== undefined
+    && (o as ILeagueStone).descrText === 'Right-click to open your Legacy Panel and place a Leaguestone in an empty slot. It will apply to the next new area you enter.';
 }

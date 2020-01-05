@@ -1,6 +1,5 @@
 import { FrameTypes } from './FrameTypes';
 import { IBaseItem, isIBaseItem } from './IBaseItem';
-import { ICategory } from './ICategory';
 import { IAdditionalItemProperty, IItemProperty } from './IItemProperty';
 import { IVaalGem } from './IVaalGem';
 
@@ -25,8 +24,6 @@ export interface IGem extends IBaseItem {
   duplicated: boolean;
   /** Corrupted gem */
   corrupted: boolean;
-  /** Category */
-  category?: ICategory;
 }
 
 /** IGem type guard */

@@ -1,5 +1,4 @@
 import { IBaseItem } from './IBaseItem';
-import { ICategory } from './ICategory';
 import { IItemProperty } from './IItemProperty';
 
 export interface IStackableItem extends IBaseItem {
@@ -9,8 +8,6 @@ export interface IStackableItem extends IBaseItem {
   maxStackSize: number;
   /** Description text */
   descrText: string;
-  /** Category */
-  category: ICategory;
   /** Item properties */
   properties: IItemProperty[];
   /** Explicit modifiers */

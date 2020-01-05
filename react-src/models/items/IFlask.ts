@@ -1,5 +1,4 @@
 import { IBaseItem } from './IBaseItem';
-import { ICategory } from './ICategory';
 import { IItemProperty } from './IItemProperty';
 
 export interface IFlask extends IBaseItem {
@@ -13,8 +12,6 @@ export interface IFlask extends IBaseItem {
   explicitMods: string[];
   /** Flavour text */
   flavourText: string[];
-  /** Category */
-  category?: ICategory;
   /** Description text */
   descrText: string;
 }
