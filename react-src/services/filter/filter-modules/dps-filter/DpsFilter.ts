@@ -1,4 +1,4 @@
-import { IGear, isIGear } from '../../../../models/items/IGear';
+import { checkIsWeapon, IGear } from '../../../../models/items/IGear';
 import { IItemProperty } from '../../../../models/items/IItemProperty';
 import { IBaseItem } from './../../../../models/items/IBaseItem';
 import { IFilterModule } from './../IFilterModule';
@@ -48,20 +48,17 @@ class DpsFilter implements IFilterModule<IDpsFilterParams | IDpsFilterParams[]> 
    * @param condition The criteria that the item should be checked against
    */
   private itemMeetsCondition(item: IBaseItem, condition: IDpsFilterParams): boolean {
-    if (!isIGear(item)
-      || (item as IGear).category.weapons === undefined
-      || (condition.min === undefined
-      && condition.max === undefined)) {
+    if (!checkIsWeapon(item) || (condition.min === undefined && condition.max === undefined)) {
       return false;
     }
-
+    const weapon: IGear = item as IGear;
     switch (condition.type) {
-      case DpsType.ANY: return this.filterItemOnAnyDps(item, condition.min, condition.max);
-      case DpsType.CHAOS: return this.filterItemOnChaosDps(item, condition.min, condition.max);
+      case DpsType.ANY: return this.filterItemOnAnyDps(weapon, condition.min, condition.max);
+      case DpsType.CHAOS: return this.filterItemOnChaosDps(weapon, condition.min, condition.max);
       case DpsType.PHYSICAL:
-        return this.filterItemOnPhysicalDps(item, condition.min, condition.max);
+        return this.filterItemOnPhysicalDps(weapon, condition.min, condition.max);
       case DpsType.ELEMENTAL:
-        return this.filterItemOnElementalDps(item, condition.min, condition.max);
+        return this.filterItemOnElementalDps(weapon, condition.min, condition.max);
       default: return false;
     }
   }

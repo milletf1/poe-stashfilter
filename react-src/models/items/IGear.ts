@@ -40,6 +40,11 @@ export function isIGear(o: any): o is IGear {
     && /\/2DItems\/(Rings|Armours|Weapons|Amulets|Belts)\//.test((o as IGear).icon);
 }
 
+/** Checks if an object is a weapon */
+export function checkIsWeapon(o: any): boolean {
+  return isIGear(o) && /\/2DItems\/Weapons\//.test(o.icon);
+}
+
 /** Checks if an object is a belt */
 export function checkIsBelt(o: any): boolean {
   return isIGear(o) && /\/2DItems\/Belts\//.test(o.icon);
