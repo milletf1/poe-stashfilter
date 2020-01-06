@@ -2,7 +2,7 @@ import { IMod, IModFilterParams } from '../../services/filter/filter-modules/mod
 import ModFilter from '../../services/filter/filter-modules/mod-filter/ModFilter';
 import { assertItemsFound, getTestItem } from '../utils';
 import { IBaseItem } from './../../models/items/IBaseItem';
-import { abyssModRegexes, bestiaryModRegexes, craftedModRegexes, enchantmentsModRegexes, explicitModRegexes, fracturedModRegexes, implicitModRegexes, leaguestoneModRegexes, mapModRegexes, propheciesModRegexes, pseudoModRegexes, totalModRegexes, uniqueModRegexes } from './../../services/filter/filter-modules/mod-filter/mod-regexes';
+import { abyssModRegexes, bestiaryModRegexes, craftedModRegexes, enchantmentsModRegexes, explicitModRegexes, fracturedModRegexes, implicitModRegexes, leaguestoneModRegexes, mapModRegexes, organModRegexes, propheciesModRegexes, pseudoModRegexes, totalModRegexes, uniqueModRegexes } from './../../services/filter/filter-modules/mod-filter/mod-regexes';
 import craftedModJson from './crafted-mod-filter-test-items.json';
 import explicitModJson from './explicit-mod-filter-test-items.json';
 import otherModJson from './other-mod-filter-test-items.json';
@@ -666,7 +666,6 @@ describe('other mod tests', () => {
   });
 
   test('should return items with a prophecy mod', () => {
-    // TODO: prophecy tests : A master seeks help : You will find jun and complete her mission
     const testItems: IBaseItem[] = [];
     testItems.push(getTestItem(items, '', 'A Master Seeks Help'));
     if (!testItems[testItems.length - 1]) {
@@ -685,7 +684,6 @@ describe('other mod tests', () => {
   });
 
   test('should return items with a leaguestone mod', () => {
-    // TODO: leaguestone tests : Enduring Breach Leaguestone : +3 to Maximum Charges
     const testItems: IBaseItem[] = [];
     testItems.push(getTestItem(items, '', 'Enduring Breach Leaguestone'));
     if (!testItems[testItems.length - 1]) {
@@ -702,5 +700,20 @@ describe('other mod tests', () => {
     assertItemsFound(testItems, actual);
   });
 
-  // TODO: organ tests
+  test('should return items with an organ mod', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, '', 'Armala, the Widow\'s Heart'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('Failed to find expected item "Armala, the Widow\'s Heart" in test data');
+    }
+    const modFilterParams: IMod = organModRegexes
+      .find((modRegex: IMod) => modRegex.label === 'Drops an Enchanted Helmet');
+    if (!modFilterParams) {
+      throw new Error('Couldn\'t find "Drops an Enchanted Helmet" organ mod filter param');
+    }
+    const filter: ModFilter = new ModFilter();
+    const actual: IBaseItem[] = filter.filter(items, [{ mod: modFilterParams }]);
+
+    assertItemsFound(testItems, actual);
+  });
 });

@@ -45,6 +45,7 @@ export default class ModFilter implements IFilterModule<IModFilterParams[]> {
       case ModFilterType.BESTIARY:
       case ModFilterType.MAP:
       case ModFilterType.LEAGUESTONE:
+      case ModFilterType.ORGAN:
       case ModFilterType.EXPLICIT:
         return this.checkExplicitMod(item, condition);
       case ModFilterType.CRAFTED:
