@@ -42,4 +42,5 @@ export const enum ItemType {
   FOSSIL,
   DIVINE_VESSEL,
   BREACHSTONE,
+  ORGAN,
 }

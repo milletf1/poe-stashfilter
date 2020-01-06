@@ -97,4 +97,6 @@ export const BREACHSTONE_TEST_REGEX: RegExp =
   /.*\/2DItems\/Currency\/Breach\/BreachFragments.+\.png/;
 /** Regex for checking currency */
 export const CURRENCY_TEST_REGEX: RegExp =
-/.*\/2DItems\/Currency\/(?!Bestiary(OrbFull|Trap\d)|ProphecyOrbRed|.+\/).+\.png/;
+  /.*\/2DItems\/Currency\/(?!Bestiary(OrbFull|Trap\d)|ProphecyOrbRed|.+\/).+\.png/;
+/** Regex for checking metamorph organs */
+export const ORGAN_TEST_REGEX: RegExp = /.*\/2DItems\/Currency\/Metamorph/;
