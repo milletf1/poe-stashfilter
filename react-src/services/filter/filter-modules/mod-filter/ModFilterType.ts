@@ -12,4 +12,5 @@ export const enum ModFilterType {
   MAP,
   PROPHECY,
   LEAGUESTONE,
+  ORGAN,
 }
