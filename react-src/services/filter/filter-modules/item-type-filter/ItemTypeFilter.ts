@@ -180,12 +180,14 @@ class ItemTypeFilter implements IFilterModule<ItemType[] | IItemBase[] | IItemFi
       case ItemType.DIVINE_VESSEL:
         return itemTypeTestRegExps.DIVINE_VESSEL_TEST_REGEX.test(item.icon);
       case ItemType.SPLINTER:
-          return itemTypeTestRegExps.SPLINTER_TEST_REGEX.test(item.icon)
-            && itemTypeTestRegExps.SPLINTER_TYPELINE_TEST_REGEX.test(item.typeLine);
+        return itemTypeTestRegExps.SPLINTER_TEST_REGEX.test(item.icon)
+          && itemTypeTestRegExps.SPLINTER_TYPELINE_TEST_REGEX.test(item.typeLine);
       case ItemType.BREACHSTONE:
-          return itemTypeTestRegExps.BREACHSTONE_TEST_REGEX.test(item.icon);
+        return itemTypeTestRegExps.BREACHSTONE_TEST_REGEX.test(item.icon);
       case ItemType.CURRENCY:
-          return itemTypeTestRegExps.CURRENCY_TEST_REGEX.test(item.icon);
+        return itemTypeTestRegExps.CURRENCY_TEST_REGEX.test(item.icon);
+      case ItemType.ORGAN:
+        return itemTypeTestRegExps.ORGAN_TEST_REGEX.test(item.icon);
       default: return false;
     }
   }

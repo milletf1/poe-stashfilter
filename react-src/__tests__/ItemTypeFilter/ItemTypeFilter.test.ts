@@ -1212,4 +1212,17 @@ describe('Item Type Filter tests', () => {
     const actual: IBaseItem[] = filter.filter(items, { types, bases });
     assertItemsFound(testItems, actual);
   });
+
+  test('should return organ bases', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, null, 'Armala, the Widow\'s Heart'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "Armala, the Widow\'s Heart" in test data');
+    }
+    const filter: ItemTypeFilter = new ItemTypeFilter();
+    const itemBase: IItemBase = createIItemBase(ItemType.ORGAN, 'Heart');
+    const actual: IBaseItem[] = filter.filter(items, [itemBase]);
+
+    assertItemsFound(testItems, actual);
+  });
 });

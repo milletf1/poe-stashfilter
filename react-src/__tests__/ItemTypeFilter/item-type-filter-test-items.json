@@ -3221,5 +3221,77 @@
     "x": 11,
     "y": 3,
     "inventoryId": "Stash111"
+  },
+  {
+    "verified": false,
+    "w": 1,
+    "h": 1,
+    "icon": "https:\/\/web.poecdn.com\/image\/Art\/2DItems\/Currency\/Metamorph\/HeartInventory.png?scale=1&w=1&h=1&v=4a8ae63b22f0bf7943de4a190f33f2f6",
+    "league": "Metamorph",
+    "id": "33176dd3f82ff94ce868c6473cd3ab9af4490d8652d10fc6f17e273f96d9086b",
+    "name": "",
+    "typeLine": "Armala, the Widow's Heart",
+    "identified": true,
+    "itemLevel": 81,
+    "ilvl": 81,
+    "properties": [
+      {
+        "name": "Uses",
+        "values": [
+          [
+            "Laser Barrage",
+            0
+          ]
+        ],
+        "displayMode": 0,
+        "type": 27
+      }
+    ],
+    "explicitMods": [
+      "Drops additional Currency Items",
+      "Drops additional Currency Items",
+      "Drops an Enchanted Helmet",
+      "Drops additional Currency Items",
+      "Drops additional Currency Items"
+    ],
+    "descrText": "Combine this with four other different samples in Tane's Laboratory.",
+    "frameType": 3,
+    "x": 5,
+    "y": 0,
+    "inventoryId": "Stash7"
+  },
+  {
+    "verified": false,
+    "w": 1,
+    "h": 1,
+    "icon": "https:\/\/web.poecdn.com\/image\/Art\/2DItems\/Currency\/Metamorph\/BrainInventory.png?scale=1&w=1&h=1&v=021e436a86e69d86567c60a85ec05198",
+    "league": "Metamorph",
+    "id": "dba3968676502653d533f2adad8bd7043fa2851ad130dcb889526d7ddf1671d9",
+    "name": "",
+    "typeLine": "Lycius, Midnight's Howl's Brain",
+    "identified": true,
+    "itemLevel": 79,
+    "ilvl": 79,
+    "properties": [
+      {
+        "name": "Uses",
+        "values": [
+          [
+            "Pack Rush",
+            0
+          ]
+        ],
+        "displayMode": 0,
+        "type": 27
+      }
+    ],
+    "explicitMods": [
+      "Drops a Rare Weapon"
+    ],
+    "descrText": "Combine this with four other different samples in Tane's Laboratory.",
+    "frameType": 3,
+    "x": 3,
+    "y": 3,
+    "inventoryId": "Stash7"
   }
 ]
