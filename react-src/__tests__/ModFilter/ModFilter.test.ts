@@ -2,7 +2,7 @@ import { IMod, IModFilterParams } from '../../services/filter/filter-modules/mod
 import ModFilter from '../../services/filter/filter-modules/mod-filter/ModFilter';
 import { assertItemsFound, getTestItem } from '../utils';
 import { IBaseItem } from './../../models/items/IBaseItem';
-import { abyssModRegexes, craftedModRegexes, enchantmentsModRegexes, explicitModRegexes, fracturedModRegexes, implicitModRegexes, pseudoModRegexes, totalModRegexes } from './../../services/filter/filter-modules/mod-filter/mod-regexes';
+import { abyssModRegexes, bestiaryModRegexes, craftedModRegexes, enchantmentsModRegexes, explicitModRegexes, fracturedModRegexes, implicitModRegexes, leaguestoneModRegexes, mapModRegexes, propheciesModRegexes, pseudoModRegexes, totalModRegexes, uniqueModRegexes } from './../../services/filter/filter-modules/mod-filter/mod-regexes';
 import craftedModJson from './crafted-mod-filter-test-items.json';
 import explicitModJson from './explicit-mod-filter-test-items.json';
 import otherModJson from './other-mod-filter-test-items.json';
@@ -593,7 +593,6 @@ describe('other mod tests', () => {
   });
 
   test('should return items with an abyss mod', () => {
-    // TODO: abyss mod tests : Foul Iridescence : Adds 15 to 31 Fire Damage to Attacks
     const testItems: IBaseItem[] = [];
     testItems.push(getTestItem(items, 'Foul Iridescence', 'Searching Eye Jewel'));
     if (!testItems[testItems.length - 1]) {
@@ -612,13 +611,96 @@ describe('other mod tests', () => {
     assertItemsFound(testItems, actual);
   });
 
-  // TODO: unique mod tests : The tempest : No physical damage
+  test('should return items with a unique mod', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, 'The Tempest', 'Long Bow'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('Failed to find expected item "The Tempest Long Bow" in test data');
+    }
+    const modFilterParams: IMod = uniqueModRegexes
+      .find((modRegex: IMod) => modRegex.label === 'No Physical Damage');
+    if (!modFilterParams) {
+      throw new Error('Couldn\'t find unique "No Physical Damage" mod filter param');
+    }
+    const filter: ModFilter = new ModFilter();
+    const actual: IBaseItem[] = filter.filter(items, [{ mod: modFilterParams }]);
 
-  // TODO: beastiary tests : Grayclaw the Mangy : Fertile Presence
+    assertItemsFound(testItems, actual);
+  });
 
-  // TODO: map tests : Cursed Panorama : Monsters reflect 14% of elemental damage
+  test('should return items with a beastiary mod', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, 'Grayclaw the Mangy', 'Farric Frost Hellion Alpha'));
+    if (!testItems[testItems.length - 1]) {
+      // tslint:disable-next-line:max-line-length
+      throw new Error('Failed to find expected item "Grayclaw the Mangy Farric Frost Hellion Alpha" in test data');
+    }
+    const modFilterParams: IMod = bestiaryModRegexes
+      .find((modRegex: IMod) => modRegex.label === 'Fertile Presence');
+    if (!modFilterParams) {
+      throw new Error('Couldn\'t find beastiary "Fertile Presence" mod filter param');
+    }
+    const filter: ModFilter = new ModFilter();
+    const actual: IBaseItem[] = filter.filter(items, [{ mod: modFilterParams }]);
 
-  // TODO: prophecy tests : A master seeks help : You will find jun and complete her mission
+    assertItemsFound(testItems, actual);
+  });
 
-  // TODO: leaguestone tests : Enduring Breach Leaguestone : +3 to Maximum Charges
+  test('should return items with a map mod', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, 'Cursed Panorama', 'Shaped Dunes Map'));
+    if (!testItems[testItems.length - 1]) {
+      // tslint:disable-next-line:max-line-length
+      throw new Error('Failed to find expected item "Cursed Panorama Shaped Dunes Map" in test data');
+    }
+    const modFilterParams: IMod = mapModRegexes
+      .find((modRegex: IMod) => modRegex.label === 'Monsters reflect #% of Elemental Damage');
+    if (!modFilterParams) {
+      // tslint:disable-next-line:max-line-length
+      throw new Error('Couldn\'t find beastiary "Monsters reflect #% of Elemental Damage" mod filter param');
+    }
+    const filter: ModFilter = new ModFilter();
+    const actual: IBaseItem[] = filter.filter(items, [{ mod: modFilterParams, min: 10 }]);
+
+    assertItemsFound(testItems, actual);
+  });
+
+  test('should return items with a prophecy mod', () => {
+    // TODO: prophecy tests : A master seeks help : You will find jun and complete her mission
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, '', 'A Master Seeks Help'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('Failed to find expected item "A Master Seeks Help" in test data');
+    }
+    const modFilterParams: IMod = propheciesModRegexes
+      .find((modRegex: IMod) => modRegex.label === 'You will find Jun and complete her mission.');
+    if (!modFilterParams) {
+      // tslint:disable-next-line:max-line-length
+      throw new Error('Couldn\'t find "You will find Jun and complete her mission." prophecy mod filter param');
+    }
+    const filter: ModFilter = new ModFilter();
+    const actual: IBaseItem[] = filter.filter(items, [{ mod: modFilterParams }]);
+
+    assertItemsFound(testItems, actual);
+  });
+
+  test('should return items with a leaguestone mod', () => {
+    // TODO: leaguestone tests : Enduring Breach Leaguestone : +3 to Maximum Charges
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, '', 'Enduring Breach Leaguestone'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('Failed to find expected item "Enduring Breach Leaguestone" in test data');
+    }
+    const modFilterParams: IMod = leaguestoneModRegexes
+      .find((modRegex: IMod) => modRegex.label === '+# to Maximum Charges');
+    if (!modFilterParams) {
+      throw new Error('Couldn\'t find "+# to Maximum Charges" leaguestone mod filter param');
+    }
+    const filter: ModFilter = new ModFilter();
+    const actual: IBaseItem[] = filter.filter(items, [{ mod: modFilterParams }]);
+
+    assertItemsFound(testItems, actual);
+  });
+
+  // TODO: organ tests
 });

@@ -1,5 +1,6 @@
 import { isIAbyssJewel } from '../../../../models/items/IAbyssJewel';
 import { isIFractured } from '../../../../models/items/IFractured';
+import { isIProphecy } from '../../../../models/items/IProphecy';
 import ElectronApi from '../../../electron-api/ElectronApi';
 import { IBaseItem } from './../../../../models/items/IBaseItem';
 import { IFilterModule } from './../IFilterModule';
@@ -39,6 +40,11 @@ export default class ModFilter implements IFilterModule<IModFilterParams[]> {
    */
   private itemMeetsCondition(item: IBaseItem, condition: IModFilterParams): boolean {
     switch (condition.mod.type) {
+      case ModFilterType.ABYSS:
+      case ModFilterType.UNIQUE:
+      case ModFilterType.BESTIARY:
+      case ModFilterType.MAP:
+      case ModFilterType.LEAGUESTONE:
       case ModFilterType.EXPLICIT:
         return this.checkExplicitMod(item, condition);
       case ModFilterType.CRAFTED:
@@ -53,8 +59,8 @@ export default class ModFilter implements IFilterModule<IModFilterParams[]> {
         return this.checkEnchantmentMod(item, condition);
       case ModFilterType.FRACTURED:
         return this.checkFracturedMod(item, condition);
-      case ModFilterType.ABYSS:
-        return this.checkAbyssMod(item, condition);
+      case ModFilterType.PROPHECY:
+        return this.checkProphecyMod(item, condition);
       default:
         return false;
     }
@@ -346,11 +352,14 @@ export default class ModFilter implements IFilterModule<IModFilterParams[]> {
     return false;
   }
 
-  private checkAbyssMod(item: IBaseItem, condition: IModFilterParams): boolean {
-    if (isIAbyssJewel(item)) {
-      return this.checkExplicitMod(item, condition);
-    }
-    return false;
+  /**
+   * Checks if an `IBaseItem` instance has a prophecy mod
+   * @param item The item to check
+   * @param condition The fractured mod that the item should have, and its minimum and maximum
+   * numerical value
+   */
+  private checkProphecyMod(item: IBaseItem, condition: IModFilterParams): boolean {
+    return isIProphecy(item) ? this.checkMod(item.prophecyText, condition) : false;
   }
 
   /**
