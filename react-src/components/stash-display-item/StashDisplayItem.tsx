@@ -11,6 +11,7 @@ import { isIGem } from '../../models/items/IGem';
 import { isIJewel } from '../../models/items/IJewel';
 import { isILeagueStone } from '../../models/items/ILeagueStone';
 import { isIMap } from '../../models/items/IMap';
+import { isIOrgan } from '../../models/items/IOrgan';
 import { isIProphecy } from '../../models/items/IProphecy';
 import { isIResonator } from '../../models/items/IResonator';
 import { isISocketableItem } from '../../models/items/ISocketableItem';
@@ -29,6 +30,7 @@ import ItemDetails from '../item-details/ItemDetails';
 import JewelItemDetails from '../item-details/jewel-item-details/JewelItemDetails';
 import LeaguestoneItemDetails from '../item-details/leaguestone-item-details/LeaguestoneItemDetails';
 import MapItemDetails from '../item-details/map-item-details/MapItemDetails';
+import OrganItemDetails from '../item-details/organ-item-details/OrganItemDetails';
 import ProphecyItemDetails from '../item-details/prophecy-item-details/ProphecyItemDetails';
 import ResonatorItemDetails from '../item-details/resonator-item-details/ResonatorItemDetails';
 import ItemSockets from '../item-sockets/ItemSockets';
@@ -281,6 +283,14 @@ class StashDisplayItem extends React.Component<IStashDisplayItemProps, IStashDis
     if (isIBeast(this.props.item)) {
       return (
         <BeastItemDetails
+          item={this.props.item}
+          style={style}
+          elementRefCallback={this.onElementRefUpdate}/>
+      );
+    }
+    if (isIOrgan(this.props.item)) {
+      return (
+        <OrganItemDetails
           item={this.props.item}
           style={style}
           elementRefCallback={this.onElementRefUpdate}/>
