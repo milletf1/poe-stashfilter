@@ -96,7 +96,7 @@ export const SPLINTER_TYPELINE_TEST_REGEX: RegExp = /(^Splinter\ of|Splinter$)/;
 export const BREACHSTONE_TEST_REGEX: RegExp =
   /.*\/2DItems\/Currency\/Breach\/BreachFragments.+\.png/;
 /** Regex for checking currency */
-export const CURRENCY_TEST_REGEX: RegExp =
-  /.*\/2DItems\/Currency\/(?!Bestiary(OrbFull|Trap\d)|ProphecyOrbRed|.+\/).+\.png/;
+// tslint:disable-next-line:max-line-length
+export const CURRENCY_TEST_REGEX: RegExp = /.*\/2DItems\/Currency\/(?!Bestiary(OrbFull|Trap\d)|ProphecyOrbRed|(?!Oils|Catalysts).+\/).+\.png/;
 /** Regex for checking metamorph organs */
 export const ORGAN_TEST_REGEX: RegExp = /.*\/2DItems\/Currency\/Metamorph/;
