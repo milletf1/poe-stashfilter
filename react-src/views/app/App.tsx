@@ -5,6 +5,8 @@ import { HashRouter, Route, withRouter } from 'react-router-dom';
 import { bindActionCreators, Dispatch } from 'redux';
 import * as ipcChannels from '../../../electron-src/ipc-channels';
 import NavigationBar from '../../components/navigation-bar/NavigationBar';
+import { ILeague } from '../../models/ILeague';
+import ElectronApi from '../../services/electron-api/ElectronApi';
 import { accountActions } from '../../store/account/accountActions';
 import { IAccountState, initialState } from '../../store/account/accountState';
 import { IAppState } from '../../store/app/appState';
@@ -56,13 +58,36 @@ class App extends React.Component<IAppProps, {}> {
         ipcRenderer.send(ipcChannels.SAVE_STATE, this.props.store.getState());
       });
       if (this.props.authCredentials.isAuthorized && this.props.authCredentials.accountName) {
+        this.updateLeagues();
         this.props.history.push(this.props.activeAccount.uiState.route);
       } else {
         this.props.history.push('/login');
       }
   }
 
-  protected setActiveAccountState(accountState: IAccountState = initialState): void {
+  private async updateLeagues(): Promise<void> {
+    try {
+      const apiLeagues: ILeague[] = await
+        ElectronApi.getLeagues(this.props.activeAccount.accountName);
+      const leagues: ILeague[] = [];
+
+      for (const apiLeague of apiLeagues) {
+        const league: ILeague = this.props.activeAccount.leagues
+          .find((l: ILeague) => l.name === apiLeague.name);
+
+        if (league !== undefined) {
+          leagues.push(league);
+        } else {
+          leagues.push(apiLeague);
+        }
+      }
+      this.props.setLeagues(leagues);
+    } catch (err) {
+      /* no-op */
+    }
+  }
+
+  private setActiveAccountState(accountState: IAccountState = initialState): void {
     this.props.setAccountName(accountState.accountName);
     this.props.setLeagues(accountState.leagues);
     this.props.setSearches(accountState.searches);

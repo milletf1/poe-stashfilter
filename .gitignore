@@ -66,3 +66,4 @@ typings/
 
 # dist folder
 dist/
+electron-src/log.txt

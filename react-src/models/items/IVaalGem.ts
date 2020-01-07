@@ -1,4 +1,4 @@
-import { IGem } from './IGem';
+import { IGem, isIGem } from './IGem';
 import { IItemProperty } from './IItemProperty';
 
 export interface IVaalGem extends IGem {
@@ -14,6 +14,5 @@ export interface IVaalGemAttribute {
 
 /** IVaalGem type guard */
 export function isIVaalGem(o: any): o is IVaalGem {
-  return (o as IGem).category !== undefined && (o as IGem).category.gems !== undefined
-    && (o as IVaalGem).vaal !== undefined;
+  return isIGem(o as IVaalGem) && (o as IVaalGem).vaal !== undefined;
 }

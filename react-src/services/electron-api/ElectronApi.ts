@@ -2,11 +2,13 @@ import { ipcRenderer } from 'electron';
 import * as ipcChannels from '../../../electron-src/ipc-channels';
 import { ICharacter } from '../../models/characters/ICharacter';
 import { ICharacterItems } from '../../models/characters/ICharacterItems';
+import { ILeague } from '../../models/ILeague';
 import { IStashTab } from '../../models/stash-tabs/IStashTab';
 import { IAccountNameResponse } from './interfaces/IAccountNameResponse';
 import { IAuthenticationResponse } from './interfaces/IAuthenticationResponse';
 import { IGetCharacterItemsResponse } from './interfaces/IGetCharacterItemsResponse';
 import { IGetCharactersResponse } from './interfaces/IGetCharactersResponse';
+import { IGetLeaguesResponse } from './interfaces/IGetLeaguesResponse';
 import { IGetStashTabResponse } from './interfaces/IGetStashTabResponse';
 
 class ElectronApi {
@@ -146,6 +148,22 @@ class ElectronApi {
         league,
         tabIndex,
       });
+    });
+  }
+
+  public static async getLeagues(accountName: string): Promise<ILeague[]> {
+    return new Promise<ILeague[]>((res: (leagues: ILeague[]) => void, rej: (e: Error) => void) => {
+
+      ipcRenderer.once(ipcChannels.GET_LEAGUES_RESPONSE, (event, args: IGetLeaguesResponse) => {
+        if (args.leagues) {
+          res(args.leagues);
+        } else if (args.error) {
+          rej(new Error(args.error));
+        } else {
+          rej(new Error('Failed to retrieve leagues'));
+        }
+      });
+      ipcRenderer.send(ipcChannels.GET_LEAGUES_REQUEST, { accountName });
     });
   }
 

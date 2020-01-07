@@ -46,7 +46,6 @@ class VaalGemItem extends React.Component<IVaalGemItemProps, {}> {
     const item: IVaalGem = this.props.item;
     return {
       ...item,
-      category: item.category,
       corrupted: item.corrupted,
       duplicated: item.duplicated,
       explicitMods: item.vaal.explicitMods,

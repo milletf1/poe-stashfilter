@@ -33197,6 +33197,11 @@ export const organModRegexes: IMod[] = [
     type: ModFilterType.ORGAN,
   },
   {
+    label: 'Drops additional Silver Coins',
+    regex:  /Drops additional Silver Coins/,
+    type: ModFilterType.ORGAN,
+  },
+  {
     label: 'Drops additional Shaper Armour',
     regex:  /Drops additional Shaper Armour/,
     type: ModFilterType.ORGAN,
