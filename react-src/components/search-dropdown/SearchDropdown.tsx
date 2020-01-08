@@ -5,6 +5,7 @@ import { ISearchDropdownProps } from './ISearchDropdownProps';
 
 import { MenuItem, Paper, TextField, Typography } from '@material-ui/core';
 import { zIndex } from 'material-ui/styles';
+import './search-dropdown.scss';
 
 class SearchDropdown extends React.Component<ISearchDropdownProps, {}> {
 
@@ -49,7 +50,7 @@ class SearchDropdown extends React.Component<ISearchDropdownProps, {}> {
       }),
     };
     return (
-      <div>
+      <div className='search-dropdown'>
         <Select
           styles={selectStyles}
           isClearable={true}

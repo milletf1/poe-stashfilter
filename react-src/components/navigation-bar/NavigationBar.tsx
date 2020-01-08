@@ -115,7 +115,7 @@ class NavigationBar extends React.Component<INavigationBarProps, INavigationBarS
   /**
    * Maps the current route to a tab index
    */
-  protected get tabIndex(): number {
+  private get tabIndex(): number {
     switch (this.props.route) {
       case '/search': return 1;
       case '/browse':
@@ -128,7 +128,7 @@ class NavigationBar extends React.Component<INavigationBarProps, INavigationBarS
    * Maps a tab index to a route
    * @param tabIndex Tab index
    */
-  protected getRouteFromTabIndex(tabIndex: number): string {
+  private getRouteFromTabIndex(tabIndex: number): string {
     switch (tabIndex) {
       case 1: return '/search';
       case 0:
@@ -142,7 +142,7 @@ class NavigationBar extends React.Component<INavigationBarProps, INavigationBarS
    * @param event The onChange event
    * @param value The number of the tab that fired the change event
    */
-  protected onChangeTab(event: React.ChangeEvent, value: number): void {
+  private onChangeTab(event: React.ChangeEvent, value: number): void {
     const route = this.getRouteFromTabIndex(value);
     this.props.setUiState({ route });
     this.props.history.push(route);
@@ -152,7 +152,7 @@ class NavigationBar extends React.Component<INavigationBarProps, INavigationBarS
    * League select event listener. Updates the selected league.
    * @param event The dropdown change event
    */
-  protected onLeagueDropdownValueChanged(event: React.ChangeEvent<HTMLSelectElement>): void {
+  private onLeagueDropdownValueChanged(event: React.ChangeEvent<HTMLSelectElement>): void {
     const leagueIndex = this.props.leagues.findIndex((league: ILeague) => {
       return league.name === event.target.value;
     });
@@ -163,7 +163,7 @@ class NavigationBar extends React.Component<INavigationBarProps, INavigationBarS
    * Import items button click listener. Disables the button while getting
    * all the stash tabs and character inventories for the selected league.
    */
-  protected async onImportItemsClick(): Promise<void> {
+  private async onImportItemsClick(): Promise<void> {
     this.setState({ importItemsButtonEnabled: false });
 
     const stashTabs: IStashTab[] = await this.getStashTabs();
@@ -179,7 +179,7 @@ class NavigationBar extends React.Component<INavigationBarProps, INavigationBarS
   /**
    * Logout button click listener. Logs out the current active account.
    */
-  protected async onLogoutClick(): Promise<void> {
+  private async onLogoutClick(): Promise<void> {
     this.setState({ logoutButtonEnabled: false });
     await ElectronApi.logout();
 
@@ -195,7 +195,7 @@ class NavigationBar extends React.Component<INavigationBarProps, INavigationBarS
    * currently selected league from the Path of Exile website
    * @returns Promise<ICharacterItems[]> character inventories retrieved from website
    */
-  protected async getCharacterItems(): Promise<ICharacterItems[]> {
+  private async getCharacterItems(): Promise<ICharacterItems[]> {
     const characterItems: ICharacterItems[] = [];
     try {
       const leagueIndex: number = this.props.leagueIndex;
@@ -221,7 +221,7 @@ class NavigationBar extends React.Component<INavigationBarProps, INavigationBarS
    * league from the Path of Exile website
    * @returns Promise<IStashTab[]> stash tabs retrieved from website
    */
-  protected async getStashTabs(): Promise<IStashTab[]> {
+  private async getStashTabs(): Promise<IStashTab[]> {
     const stashTabs: IStashTab[] = [];
     try {
       const leagueIndex: number = this.props.leagueIndex;
