@@ -2,15 +2,11 @@ body {
     font-family: "Roboto";
 }
 
-#root {
-  max-height: 100vh;
-  overflow-x: hidden;
-}
-
-.page-container {
+.view-container {
   padding: 4px;
   overflow: hidden;
   position: relative;
-  height: 100vh;
-  width: 100vw;
+  // background: gray;
+  flex-grow: 1;
+  z-index: 1200;
 }

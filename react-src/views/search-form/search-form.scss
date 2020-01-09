@@ -1,0 +1,11 @@
+.search-form {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .filtered-item-display {
+    flex-grow: 1;
+    // width: 100%;
+    overflow-y: auto;
+  }
+}

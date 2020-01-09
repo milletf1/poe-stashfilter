@@ -1,19 +1,24 @@
 import { Button, Grid, withTheme } from '@material-ui/core';
-import { Item } from 'electron';
 import * as React from 'react';
 import { ChangeEvent } from 'react-autosuggest';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import { bindActionCreators, Dispatch } from 'redux';
 import AutocompleteTextBox from '../../components/autocomplete-textbox/AutocompleteTextbox';
 import { ISearchDropdownLabel } from '../../components/search-dropdown/ISearchDropdownLabel';
 import SearchDropdown from '../../components/search-dropdown/SearchDropdown';
 import { ILeague } from '../../models/ILeague';
-import { IBaseItem } from '../../models/items/IBaseItem';
+import { IBaseItem, isIBaseItem } from '../../models/items/IBaseItem';
+import { ISearchResult } from '../../models/search/ISearchResult';
+import { BrowseItemCategory } from '../../models/ui-state/BrowseItemCategory';
 import { IItemBase } from '../../services/filter/filter-modules/item-type-filter/IItemBase';
 import { ItemType } from '../../services/filter/filter-modules/item-type-filter/ItemType';
 import ItemTypeFilter from '../../services/filter/filter-modules/item-type-filter/ItemTypeFilter';
 import NameFilter from '../../services/filter/filter-modules/name-filter/NameFilter';
+import { accountActions } from '../../store/account/accountActions';
 import { IAppState } from '../../store/app/appState';
+import SearchResults from '../SearchResults/SearchResults';
+import './search-form.scss';
 // readup https://material-ui.com/demos/autocomplete/
 // goal is to make autocomplete and select look the same, no label inclded
 const itemNameSuggestions: string[] = [];
@@ -24,9 +29,14 @@ const itemCategories: ISearchDropdownLabel[] = Object.keys(ItemType).map((val: s
   value: ItemType[val],
 }));
 
+const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators({
+  setSearchResults: accountActions.setSearchResults,
+}, dispatch);
+
 const mapStateToProps = (state: IAppState, props: any) => ({
   leagueIndex: state.activeAccount.uiState.leagueIndex,
   leagues: state.activeAccount.leagues,
+  searchResults: state.activeAccount.searchResults,
 });
 
 class SearchForm extends React.Component<any, any> {
@@ -49,74 +59,77 @@ class SearchForm extends React.Component<any, any> {
 
   public render() {
     return (
-      <div className='page-container'>
+      <div className='search-form view-container'>
+        <div className='search-container'>
         <Grid container spacing={16}>
-          {/* Search results history */}
-          {/* <Grid item xs={3} md={2} style={{padding: '8px 0'}}>
-            Search results here
-          </Grid> */}
-          {/* Main window */}
-          {/* <Grid item xs={9} md={10}> */}
           <Grid item xs={12}>
-            <Grid container spacing={16}>
-              <Grid item xs={12}>
-                <AutocompleteTextBox
-                  suggestions={itemNameSuggestions}
-                  value={this.state.itemName}
-                  placeholder='Name'
-                  onChange={this.onItemNameSuggestionValueChange.bind(this)}
-                />
-              </Grid>
-              <Grid item xs={6}>
-                <SearchDropdown
-                  options={itemCategories}
-                  placeholder='Category'
-                  value={this.state.itemType}
-                  onChange={this.onItemCategoryChange.bind(this)}
-                />
-              </Grid>
-              <Grid item xs={6}>
-                <AutocompleteTextBox
-                  suggestions={itemBaseTypeSuggestions}
-                  value={this.state.itemBase}
-                  placeholder='Base'
-                  onChange={this.onItemBaseNameSuggestionValueChange.bind(this)}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <Button
-                  variant='contained'
-                  color='primary'
-                  disabled={!this.state.searchButtonEnabled}
-                  onClick={this.onSearchClick}>
-                  Search
-                </Button>
-              </Grid>
-              <Grid item xs={12}>
-                Search results here
-              </Grid>
-            </Grid>
+            <AutocompleteTextBox
+              suggestions={itemNameSuggestions}
+              value={this.state.itemName}
+              placeholder='Name'
+              onChange={this.onItemNameSuggestionValueChange.bind(this)}
+            />
+          </Grid>
+          <Grid item xs={6}>
+            <SearchDropdown
+              options={itemCategories}
+              placeholder='Category'
+              value={this.state.itemType}
+              onChange={this.onItemCategoryChange.bind(this)}
+            />
+          </Grid>
+          <Grid item xs={6}>
+            <AutocompleteTextBox
+              suggestions={itemBaseTypeSuggestions}
+              value={this.state.itemBase}
+              placeholder='Base'
+              onChange={this.onItemBaseNameSuggestionValueChange.bind(this)}
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <Button
+              variant='contained'
+              color='primary'
+              disabled={!this.state.searchButtonEnabled}
+              onClick={this.onSearchClick}>
+              Search
+            </Button>
           </Grid>
         </Grid>
+        </div>
+        <div className='filtered-item-display'>
+          <SearchResults searchResults={this.state.filteredItems} />
+        </div>
       </div>
     );
   }
 
   private async onSearchClick(): Promise<void> {
     this.setState({ searchButtonEnabled: false });
-
-    // console.log('search league ', this.props.leagues[this.props.leagueIndex].name);
     const league: ILeague = this.props.leagues[this.props.leagueIndex];
-    const results: IBaseItem[] = [];
+    const searchResults: ISearchResult[] = [];
 
     for (const character of league.characters) {
-      results.push(...this.filterItems(character.items));
+      const containerName: string = character.character.name;
+      const characterItems = this.filterItems(character.items);
+      searchResults.push(...characterItems.map((item: IBaseItem) => ({
+        containerCategory: BrowseItemCategory.CHARACTER,
+        containerName,
+        item,
+      })));
     }
     for (const stashTab of league.stashTabs) {
-      results.push(...this.filterItems(stashTab.items));
+      const containerName: string = stashTab.details.n;
+      const stashItems = this.filterItems(stashTab.items);
+      searchResults.push(...stashItems.map((item: IBaseItem) => ({
+        containerCategory: BrowseItemCategory.STASH_TAB,
+        containerName,
+        item,
+      })));
     }
-    console.log('found items', results);
+
     this.setState({ searchButtonEnabled: true });
+    this.props.setSearchResults(searchResults);
   }
 
   private filterItems(items: IBaseItem[]): IBaseItem[] {
@@ -165,5 +178,4 @@ class SearchForm extends React.Component<any, any> {
   }
 }
 
-// export default SearchForm;
-export default connect(mapStateToProps)(withTheme()(withRouter(SearchForm)));
+export default connect(mapStateToProps, mapDispatchToProps)(withTheme()(withRouter(SearchForm)));

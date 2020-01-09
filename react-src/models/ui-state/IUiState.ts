@@ -1,5 +1,4 @@
 import { BrowseItemCategory } from './BrowseItemCategory';
-import { IUiState } from './IUiState';
 
 export interface IUiState {
   /** Selected tab */

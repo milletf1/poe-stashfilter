@@ -29,7 +29,6 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators({
   setIsAuthorized: authDetailsActions.setIsAuthorized,
   setLeagues: accountActions.setLeagues,
   setRememberAuth: authDetailsActions.setRememberAuth,
-  setSearches: accountActions.setSearches,
   setUiState: accountActions.setUiState,
 }, dispatch);
 
@@ -90,7 +89,6 @@ class App extends React.Component<IAppProps, {}> {
   private setActiveAccountState(accountState: IAccountState = initialState): void {
     this.props.setAccountName(accountState.accountName);
     this.props.setLeagues(accountState.leagues);
-    this.props.setSearches(accountState.searches);
 
     if (!accountState.uiState.route) {
       this.props.setUiState({...accountState.uiState, route: '/browse'});

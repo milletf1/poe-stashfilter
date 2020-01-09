@@ -52,7 +52,7 @@ class NavigationBar extends React.Component<INavigationBarProps, INavigationBarS
     const importItemsButtonStyle: React.CSSProperties = { marginLeft: '24px'};
 
     return (
-      <AppBar position='static'>
+      <AppBar position='relative'>
         <Grid container>
           {/* Tabs section */}
           <Grid item xs={4}>

@@ -21,7 +21,6 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators({
   setIsAuthorized: authDetailsActions.setIsAuthorized,
   setLeagues: accountActions.setLeagues,
   setRememberAuth: authDetailsActions.setRememberAuth,
-  setSearches: accountActions.setSearches,
   setUiState: accountActions.setUiState,
 }, dispatch);
 
@@ -44,7 +43,7 @@ class LoginForm extends React.Component<ILoginFormProps, ILoginFormState> {
 
   public render() {
     return (
-      <div className='page-container'>
+      <div className='view-container'>
         <Grid alignContent='center' container spacing={16} style={{height: '100vh'}}>
           <Grid item xs={12}>
           <Typography align='center' variant='h2' gutterBottom>
@@ -163,7 +162,6 @@ class LoginForm extends React.Component<ILoginFormProps, ILoginFormState> {
   protected setActiveAccountState(accountState: IAccountState = initialState): void {
     this.props.setAccountName(accountState.accountName);
     this.props.setLeagues(accountState.leagues);
-    this.props.setSearches(accountState.searches);
 
     if (!accountState.uiState.route) {
       this.props.setUiState({...accountState.uiState, route: '/browse'});

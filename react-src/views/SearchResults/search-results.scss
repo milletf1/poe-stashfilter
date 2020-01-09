@@ -1,0 +1,12 @@
+.search-results {
+  color: white;
+  width: 100%;
+
+  .search-result {
+    display: flex;
+
+    .item-display {
+      position: relative;
+    }
+  }
+}
