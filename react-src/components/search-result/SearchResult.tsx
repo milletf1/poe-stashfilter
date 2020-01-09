@@ -36,6 +36,7 @@ import { isIStackableItem } from '../../models/items/IStackableItem';
 import { isIVaalGem } from '../../models/items/IVaalGem';
 import { ISearchResult } from '../../models/search/ISearchResult';
 import { ISearchResultProps } from './ISearchResultProps';
+import './search-result.scss';
 
 class SearchResult extends React.Component<ISearchResultProps, {}> {
   public render() {

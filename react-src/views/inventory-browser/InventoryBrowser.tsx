@@ -23,7 +23,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators({
   setSelectedTab: accountActions.setSelectedTab,
 }, dispatch);
 
-class InventoryBrowser extends React.Component<IInventoryBrowserProps, any> {
+class InventoryBrowser extends React.Component<IInventoryBrowserProps, {}> {
   constructor(props) {
     super(props);
 }

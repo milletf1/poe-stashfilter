@@ -18,6 +18,8 @@ import NameFilter from '../../services/filter/filter-modules/name-filter/NameFil
 import { accountActions } from '../../store/account/accountActions';
 import { IAppState } from '../../store/app/appState';
 import SearchResults from '../SearchResults/SearchResults';
+import { ISearchFormProps } from './ISearchFormProps';
+import { ISearchFormState } from './ISearchFormState';
 import './search-form.scss';
 // readup https://material-ui.com/demos/autocomplete/
 // goal is to make autocomplete and select look the same, no label inclded
@@ -39,7 +41,7 @@ const mapStateToProps = (state: IAppState, props: any) => ({
   searchResults: state.activeAccount.searchResults,
 });
 
-class SearchForm extends React.Component<any, any> {
+class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
 
   private nameFilter: NameFilter;
   private itemTypeFilter: ItemTypeFilter;
@@ -98,7 +100,7 @@ class SearchForm extends React.Component<any, any> {
         </Grid>
         </div>
         <div className='filtered-item-display'>
-          <SearchResults searchResults={this.state.filteredItems} />
+          <SearchResults />
         </div>
       </div>
     );

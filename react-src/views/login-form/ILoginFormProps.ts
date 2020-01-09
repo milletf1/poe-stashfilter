@@ -1,6 +1,5 @@
 import { History } from 'history';
 import { ILeague } from '../../models/ILeague';
-import { ISearchParameters } from '../../models/search/ISearchParameters';
 import { IUiState } from '../../models/ui-state/IUiState';
 import { IAccountState } from '../../store/account/accountState';
 
@@ -13,6 +12,5 @@ export interface ILoginFormProps {
   setIsAuthorized: (isAuthorized: boolean) => any;
   setLeagues: (leagues: ILeague[]) => any;
   setRememberAuth: (remember: boolean) => any;
-  setSearches: (searches: ISearchParameters[]) => any;
   setUiState: (uiState: Partial<IUiState>) => any;
 }
