@@ -61,41 +61,41 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
 
   public render(): JSX.Element {
     return (
-        <Grid container spacing={16}>
-          <Grid item xs={12}>
-            <AutocompleteTextBox
-              suggestions={itemNameSuggestions}
-              value={this.state.itemName}
-              placeholder='Name'
-              onChange={this.onItemNameSuggestionValueChange.bind(this)}
-            />
-          </Grid>
-          <Grid item xs={6}>
-            <SearchDropdown
-              options={itemCategories}
-              placeholder='Category'
-              value={this.state.itemType}
-              onChange={this.onItemCategoryChange.bind(this)}
-            />
-          </Grid>
-          <Grid item xs={6}>
-            <AutocompleteTextBox
-              suggestions={itemBaseTypeSuggestions}
-              value={this.state.itemBase}
-              placeholder='Base'
-              onChange={this.onItemBaseNameSuggestionValueChange.bind(this)}
-            />
-          </Grid>
-          <Grid item xs={12}>
-            <Button
-              variant='contained'
-              color='primary'
-              disabled={!this.state.searchButtonEnabled}
-              onClick={this.onSearchClick}>
-              Search
-            </Button>
-          </Grid>
+      <Grid container spacing={16}>
+        <Grid item xs={12}>
+          <AutocompleteTextBox
+            suggestions={itemNameSuggestions}
+            value={this.state.itemName}
+            placeholder='Name'
+            onChange={this.onItemNameSuggestionValueChange.bind(this)}
+          />
         </Grid>
+        <Grid item xs={6}>
+          <SearchDropdown
+            options={itemCategories}
+            placeholder='Category'
+            value={this.state.itemType}
+            onChange={this.onItemCategoryChange.bind(this)}
+          />
+        </Grid>
+        <Grid item xs={6}>
+          <AutocompleteTextBox
+            suggestions={itemBaseTypeSuggestions}
+            value={this.state.itemBase}
+            placeholder='Base'
+            onChange={this.onItemBaseNameSuggestionValueChange.bind(this)}
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <Button
+            variant='contained'
+            color='primary'
+            disabled={!this.state.searchButtonEnabled}
+            onClick={this.onSearchClick}>
+            Search
+          </Button>
+        </Grid>
+      </Grid>
     );
   }
 

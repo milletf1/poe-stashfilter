@@ -2,8 +2,46 @@
   display: flex;
   flex-direction: column;
 
-  .filtered-item-view-container {
+  .filtered-item-view-container, .search-view-container {
+    width: 100%;
+    height: 100%;
+  }
+
+  .panel {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+  }
+
+  .expanded-panel {
     flex-grow: 1;
+
+    .MuiCollapse-wrapper-290, .MuiCollapse-wrapperInner-291 {
+      display: flex;
+      flex-grow: 1;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+  }
+
+  .panel-details {
+    width: 100%;
     overflow-y: auto;
+  }
+
+  .panel-summary {
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .expanded-panel-summary {
+    display: none;
+  }
+
+  .search-results {
+    // hack to make the results panel close immediately when displaying lots of items
+    height: 0;
   }
 }
