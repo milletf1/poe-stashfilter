@@ -1,7 +1,28 @@
 .search-result {
   display: flex;
+  padding: 4px;
 
   .item-display {
     position: relative;
+    width: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .item-wrapper {
+      position: relative;
+    }
+  }
+
+  .item-details, .card-wrapper {
+    flex-grow: 1;
+    background: transparent;
+  }
+
+  .stash-display {
+    width: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }

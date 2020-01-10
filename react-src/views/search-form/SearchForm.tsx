@@ -17,10 +17,10 @@ import ItemTypeFilter from '../../services/filter/filter-modules/item-type-filte
 import NameFilter from '../../services/filter/filter-modules/name-filter/NameFilter';
 import { accountActions } from '../../store/account/accountActions';
 import { IAppState } from '../../store/app/appState';
-import SearchResults from '../SearchResults/SearchResults';
+import SearchResults from '../search-results/SearchResults';
 import { ISearchFormProps } from './ISearchFormProps';
 import { ISearchFormState } from './ISearchFormState';
-import './search-form.scss';
+
 // readup https://material-ui.com/demos/autocomplete/
 // goal is to make autocomplete and select look the same, no label inclded
 const itemNameSuggestions: string[] = [];
@@ -59,10 +59,8 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
     this.onSearchClick = this.onSearchClick.bind(this);
  }
 
-  public render() {
+  public render(): JSX.Element {
     return (
-      <div className='search-form view-container'>
-        <div className='search-container'>
         <Grid container spacing={16}>
           <Grid item xs={12}>
             <AutocompleteTextBox
@@ -98,11 +96,6 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
             </Button>
           </Grid>
         </Grid>
-        </div>
-        <div className='filtered-item-display'>
-          <SearchResults />
-        </div>
-      </div>
     );
   }
 

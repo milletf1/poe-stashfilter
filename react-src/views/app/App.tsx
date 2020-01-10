@@ -13,7 +13,7 @@ import { IAppState } from '../../store/app/appState';
 import { authDetailsActions } from '../../store/auth-details/AuthDetailsActions';
 import InventoryBrowser from '../inventory-browser/InventoryBrowser';
 import LoginForm from '../login-form/LoginForm';
-import SearchForm from '../search-form/SearchForm';
+import SearchPage from '../search-page/SearchPage';
 import SplashPage from '../splash-page/SplashPage';
 import './app.scss';
 import { IAppProps } from './IAppProps';
@@ -45,7 +45,7 @@ class App extends React.Component<IAppProps, {}> {
           <Route exact path='/' component={SplashPage} />
           <Route path='/login' component={LoginForm} />
           <Route path='/browse' component={InventoryBrowser} />
-          <Route path='/search' component={SearchForm} />
+          <Route path='/search' component={SearchPage} />
         </div>
       </HashRouter>
 

@@ -38,31 +38,40 @@ import { ISearchResult } from '../../models/search/ISearchResult';
 import { ISearchResultProps } from './ISearchResultProps';
 import './search-result.scss';
 
+const CELL_WIDTH: number = 45;
+
 class SearchResult extends React.Component<ISearchResultProps, {}> {
   public render() {
     const result: ISearchResult = this.props.searchResult;
     return (
       <div className='search-result'>
         <div className='item-display'>
-          <img
-            className='item-image'
-            src={result.item.icon}
-            width={result.item.w * 45}
-            height={result.item.h * 45}/>
-          {
-            isISocketableItem(result.item) &&
-            <ItemSockets
-              hasTooltip={false}
-              quadStash={false}
-              item={result.item}
-              style={{top: 0, pointerEvents: 'none'}} />
-          }
-          {
-            isIStackableItem(result.item) &&
-            <span className='stack-size'>{result.item.stackSize}</span>
-          }
+          <div className='item-wrapper'>
+            <img
+              className='item-image'
+              src={result.item.icon}
+              width={result.item.w * CELL_WIDTH}
+              height={result.item.h * CELL_WIDTH}/>
+            {
+              isISocketableItem(result.item) &&
+              <ItemSockets
+                hasTooltip={false}
+                quadStash={false}
+                item={result.item}
+                style={{top: 0, pointerEvents: 'none'}} />
+            }
+            {
+              isIStackableItem(result.item) &&
+              <span className='stack-size'>{result.item.stackSize}</span>
+            }
+          </div>
         </div>
         { this.createItemElement(result.item) }
+        <div className='stash-display'>
+          <div className='name'>
+            {result.containerName}
+          </div>
+        </div>
       </div>
     );
   }

@@ -1,11 +1,9 @@
-.search-form {
-  height: 100%;
+.search-page {
   display: flex;
   flex-direction: column;
 
-  .filtered-item-display {
+  .filtered-item-view-container {
     flex-grow: 1;
-    // width: 100%;
     overflow-y: auto;
   }
 }
