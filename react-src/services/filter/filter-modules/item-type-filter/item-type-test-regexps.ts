@@ -80,7 +80,7 @@ export const RING_TEST_REGEX: RegExp = /.*\/2DItems\/Rings\//;
 export const SCARAB_TEST_REGEX: RegExp = /.*\/2DItems\/Currency\/Scarabs/;
 /** Regex for checking map fragments */
 export const MAP_FRAGMENT_TEST_REGEX: RegExp =
-  /.*\/2DItems\/Maps\/((Uber)?Vaal|.*Fragment)/;
+  /.*\/2DItems\/Maps\/((Uber)?Vaal(?!Shard)|.*Fragment|AtlasMapGuardian)/;
 /** Regex for checking resonators */
 export const RESONATOR_TYPELINE_TEST_REGEX: RegExp = /.*\ Resonator$/;
 /** Regex for checking fossils */

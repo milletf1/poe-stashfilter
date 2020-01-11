@@ -2,7 +2,7 @@ import * as React from 'react';
 import { IBaseItem } from '../../models/items/IBaseItem';
 import { isIBeast } from '../../models/items/IBeast';
 import { ICard, isICard } from '../../models/items/ICard';
-import { isICurrency } from '../../models/items/ICurrency';
+import { ICurrency, isICurrency } from '../../models/items/ICurrency';
 import { isIFlask } from '../../models/items/IFlask';
 import { isIFossil } from '../../models/items/IFossil';
 import { isIFractured } from '../../models/items/IFractured';
@@ -10,7 +10,7 @@ import { isIGear } from '../../models/items/IGear';
 import { isIGem } from '../../models/items/IGem';
 import { isIJewel } from '../../models/items/IJewel';
 import { isILeagueStone } from '../../models/items/ILeagueStone';
-import { isIMap } from '../../models/items/IMap';
+import { IMap, isIMap } from '../../models/items/IMap';
 import { isIOrgan } from '../../models/items/IOrgan';
 import { isIProphecy } from '../../models/items/IProphecy';
 import { isIResonator } from '../../models/items/IResonator';
@@ -18,6 +18,7 @@ import { isISocketableItem } from '../../models/items/ISocketableItem';
 import { isIStackableItem } from '../../models/items/IStackableItem';
 import { isIVaalGem } from '../../models/items/IVaalGem';
 import { StashTypes } from '../../models/stash-tabs/StashTypes';
+import { INCUBATOR_TEST_REGEX, MAP_FRAGMENT_TEST_REGEX } from '../../services/filter/filter-modules/item-type-filter/item-type-test-regexps';
 import Card from '../card/Card';
 import BeastItemDetails from '../item-details/beast-item-details/BeastItemDetails';
 import CurrencyItemDetails from '../item-details/currency-item-details/CurrencyItemDetails';
@@ -176,18 +177,18 @@ class StashDisplayItem extends React.Component<IStashDisplayItemProps, IStashDis
   /** Creates and returns an onhover tooltip for the item prop */
   private createItemTooltipElement(): JSX.Element {
     const style: React.CSSProperties = (this.tooltipPositionStyle as React.CSSProperties);
-    if (isICurrency(this.props.item)) {
+    if (isICurrency(this.props.item) || INCUBATOR_TEST_REGEX.test(this.props.item.icon)) {
       return (
         <CurrencyItemDetails
-          item={this.props.item}
+          item={this.props.item as ICurrency}
           style={style}
           elementRefCallback={this.onElementRefUpdate}/>
       );
     }
-    if (isIMap(this.props.item)) {
+    if (isIMap(this.props.item) || MAP_FRAGMENT_TEST_REGEX.test(this.props.item.icon)) {
       return (
         <MapItemDetails
-        item={this.props.item}
+        item={this.props.item as IMap}
         style={style}
         elementRefCallback={this.onElementRefUpdate}/>
       );

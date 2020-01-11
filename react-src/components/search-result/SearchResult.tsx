@@ -19,7 +19,7 @@ import VaalGemItem from '../../components/vaal-gem-item/VaalGemItem';
 import { IBaseItem } from '../../models/items/IBaseItem';
 import { isIBeast } from '../../models/items/IBeast';
 import { isICard } from '../../models/items/ICard';
-import { isICurrency } from '../../models/items/ICurrency';
+import { ICurrency, isICurrency } from '../../models/items/ICurrency';
 import { isIFlask } from '../../models/items/IFlask';
 import { isIFossil } from '../../models/items/IFossil';
 import { isIFractured } from '../../models/items/IFractured';
@@ -27,7 +27,7 @@ import { isIGear } from '../../models/items/IGear';
 import { isIGem } from '../../models/items/IGem';
 import { isIJewel } from '../../models/items/IJewel';
 import { isILeagueStone } from '../../models/items/ILeagueStone';
-import { isIMap } from '../../models/items/IMap';
+import { IMap, isIMap } from '../../models/items/IMap';
 import { IOrgan, isIOrgan } from '../../models/items/IOrgan';
 import { isIProphecy } from '../../models/items/IProphecy';
 import { isIResonator } from '../../models/items/IResonator';
@@ -36,6 +36,7 @@ import { isIStackableItem } from '../../models/items/IStackableItem';
 import { isIVaalGem } from '../../models/items/IVaalGem';
 import { ISearchResult } from '../../models/search/ISearchResult';
 import { IStashTabColour } from '../../models/stash-tabs/IStashTabMetadata';
+import { INCUBATOR_TEST_REGEX, MAP_FRAGMENT_TEST_REGEX } from '../../services/filter/filter-modules/item-type-filter/item-type-test-regexps';
 import { ISearchResultProps } from './ISearchResultProps';
 import './search-result.scss';
 
@@ -78,8 +79,12 @@ class SearchResult extends React.Component<ISearchResultProps, {}> {
   }
 
   private createItemElement(item: IBaseItem): JSX.Element {
-    if (isICurrency(item)) { return <CurrencyItemDetails item={item} />; }
-    if (isIMap(item)) { return <MapItemDetails item={item} />; }
+    if (isICurrency(item) || INCUBATOR_TEST_REGEX.test(item.icon)) {
+      return <CurrencyItemDetails item={item as ICurrency} />;
+    }
+    if (isIMap(item) || MAP_FRAGMENT_TEST_REGEX.test(item.icon)) {
+      return <MapItemDetails item={item as IMap} />;
+    }
     if (isIGear(item)) {
       return isIFractured(item)
       ? <FracturedItemDetails item={item} />
