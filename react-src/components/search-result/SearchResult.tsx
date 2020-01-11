@@ -36,7 +36,7 @@ import { isIStackableItem } from '../../models/items/IStackableItem';
 import { isIVaalGem } from '../../models/items/IVaalGem';
 import { ISearchResult } from '../../models/search/ISearchResult';
 import { IStashTabColour } from '../../models/stash-tabs/IStashTabMetadata';
-import { INCUBATOR_TEST_REGEX, MAP_FRAGMENT_TEST_REGEX } from '../../services/filter/filter-modules/item-type-filter/item-type-test-regexps';
+import { BREACHSTONE_TEST_REGEX, INCUBATOR_TEST_REGEX, MAP_FRAGMENT_TEST_REGEX, SCARAB_TEST_REGEX, SPLINTER_TEST_REGEX } from '../../services/filter/filter-modules/item-type-filter/item-type-test-regexps';
 import { ISearchResultProps } from './ISearchResultProps';
 import './search-result.scss';
 
@@ -79,10 +79,15 @@ class SearchResult extends React.Component<ISearchResultProps, {}> {
   }
 
   private createItemElement(item: IBaseItem): JSX.Element {
-    if (isICurrency(item) || INCUBATOR_TEST_REGEX.test(item.icon)) {
+    if (isICurrency(item)
+      || INCUBATOR_TEST_REGEX.test(item.icon)
+      || SPLINTER_TEST_REGEX.test(item.icon)
+      || SCARAB_TEST_REGEX.test(item.icon)) {
       return <CurrencyItemDetails item={item as ICurrency} />;
     }
-    if (isIMap(item) || MAP_FRAGMENT_TEST_REGEX.test(item.icon)) {
+    if (isIMap(item)
+      || MAP_FRAGMENT_TEST_REGEX.test(item.icon)
+      || BREACHSTONE_TEST_REGEX.test(item.icon)) {
       return <MapItemDetails item={item as IMap} />;
     }
     if (isIGear(item)) {
@@ -101,7 +106,7 @@ class SearchResult extends React.Component<ISearchResultProps, {}> {
     if (isICard(item)) { return <Card card={item} />; }
     if (isIBeast(item)) { return <BeastItemDetails item={item} />; }
     if (isIOrgan(item)) { return <OrganItemDetails item={item} />; }
-    return <ItemDetails item={item} />;
+    return <CurrencyItemDetails item={item as ICurrency} />;
   }
 
   private getStashColour(): string {

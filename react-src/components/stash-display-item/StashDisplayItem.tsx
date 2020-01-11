@@ -18,7 +18,7 @@ import { isISocketableItem } from '../../models/items/ISocketableItem';
 import { isIStackableItem } from '../../models/items/IStackableItem';
 import { isIVaalGem } from '../../models/items/IVaalGem';
 import { StashTypes } from '../../models/stash-tabs/StashTypes';
-import { INCUBATOR_TEST_REGEX, MAP_FRAGMENT_TEST_REGEX } from '../../services/filter/filter-modules/item-type-filter/item-type-test-regexps';
+import { BREACHSTONE_TEST_REGEX, INCUBATOR_TEST_REGEX, MAP_FRAGMENT_TEST_REGEX, SCARAB_TEST_REGEX, SPLINTER_TEST_REGEX } from '../../services/filter/filter-modules/item-type-filter/item-type-test-regexps';
 import Card from '../card/Card';
 import BeastItemDetails from '../item-details/beast-item-details/BeastItemDetails';
 import CurrencyItemDetails from '../item-details/currency-item-details/CurrencyItemDetails';
@@ -177,7 +177,10 @@ class StashDisplayItem extends React.Component<IStashDisplayItemProps, IStashDis
   /** Creates and returns an onhover tooltip for the item prop */
   private createItemTooltipElement(): JSX.Element {
     const style: React.CSSProperties = (this.tooltipPositionStyle as React.CSSProperties);
-    if (isICurrency(this.props.item) || INCUBATOR_TEST_REGEX.test(this.props.item.icon)) {
+    if (isICurrency(this.props.item)
+      || INCUBATOR_TEST_REGEX.test(this.props.item.icon)
+      || SPLINTER_TEST_REGEX.test(this.props.item.icon)
+      || SCARAB_TEST_REGEX.test(this.props.item.icon)) {
       return (
         <CurrencyItemDetails
           item={this.props.item as ICurrency}
@@ -185,7 +188,9 @@ class StashDisplayItem extends React.Component<IStashDisplayItemProps, IStashDis
           elementRefCallback={this.onElementRefUpdate}/>
       );
     }
-    if (isIMap(this.props.item) || MAP_FRAGMENT_TEST_REGEX.test(this.props.item.icon)) {
+    if (isIMap(this.props.item)
+      || MAP_FRAGMENT_TEST_REGEX.test(this.props.item.icon)
+      || BREACHSTONE_TEST_REGEX.test(this.props.item.icon)) {
       return (
         <MapItemDetails
         item={this.props.item as IMap}
@@ -298,8 +303,8 @@ class StashDisplayItem extends React.Component<IStashDisplayItemProps, IStashDis
       );
     }
     return (
-      <ItemDetails
-        item={this.props.item}
+      <CurrencyItemDetails
+        item={this.props.item as ICurrency}
         style={style}
         elementRefCallback={this.onElementRefUpdate}/>
     );
