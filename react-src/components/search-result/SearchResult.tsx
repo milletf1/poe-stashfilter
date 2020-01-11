@@ -35,6 +35,7 @@ import { isISocketableItem } from '../../models/items/ISocketableItem';
 import { isIStackableItem } from '../../models/items/IStackableItem';
 import { isIVaalGem } from '../../models/items/IVaalGem';
 import { ISearchResult } from '../../models/search/ISearchResult';
+import { IStashTabColour } from '../../models/stash-tabs/IStashTabMetadata';
 import { ISearchResultProps } from './ISearchResultProps';
 import './search-result.scss';
 
@@ -68,8 +69,8 @@ class SearchResult extends React.Component<ISearchResultProps, {}> {
         </div>
         { this.createItemElement(result.item) }
         <div className='stash-display'>
-          <div className='name'>
-            {result.containerName}
+          <div className='name' style={{color: this.getStashColour()}}>
+            {result.stashName}
           </div>
         </div>
       </div>
@@ -96,6 +97,14 @@ class SearchResult extends React.Component<ISearchResultProps, {}> {
     if (isIBeast(item)) { return <BeastItemDetails item={item} />; }
     if (isIOrgan(item)) { return <OrganItemDetails item={item} />; }
     return <ItemDetails item={item} />;
+  }
+
+  private getStashColour(): string {
+    if (this.props.searchResult.colour === undefined) {
+      return '#ECCBA9';
+    }
+    const colour: IStashTabColour = this.props.searchResult.colour;
+    return `rgb(${colour.r}, ${colour.g}, ${colour.b})`;
   }
 }
 

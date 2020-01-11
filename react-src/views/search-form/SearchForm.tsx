@@ -10,6 +10,7 @@ import SearchDropdown from '../../components/search-dropdown/SearchDropdown';
 import { ILeague } from '../../models/ILeague';
 import { IBaseItem, isIBaseItem } from '../../models/items/IBaseItem';
 import { ISearchResult } from '../../models/search/ISearchResult';
+import { IStashTabColour } from '../../models/stash-tabs/IStashTabMetadata';
 import { BrowseItemCategory } from '../../models/ui-state/BrowseItemCategory';
 import { IItemBase } from '../../services/filter/filter-modules/item-type-filter/IItemBase';
 import { ItemType } from '../../services/filter/filter-modules/item-type-filter/ItemType';
@@ -105,21 +106,23 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
     const searchResults: ISearchResult[] = [];
 
     for (const character of league.characters) {
-      const containerName: string = character.character.name;
-      const characterItems = this.filterItems(character.items);
+      const stashName: string = character.character.name;
+      const characterItems: IBaseItem[] = this.filterItems(character.items);
       searchResults.push(...characterItems.map((item: IBaseItem) => ({
         containerCategory: BrowseItemCategory.CHARACTER,
-        containerName,
         item,
+        stashName,
       })));
     }
     for (const stashTab of league.stashTabs) {
-      const containerName: string = stashTab.details.n;
-      const stashItems = this.filterItems(stashTab.items);
+      const stashName: string = stashTab.details.n;
+      const colour: IStashTabColour = stashTab.details.colour || null;
+      const stashItems: IBaseItem[] = this.filterItems(stashTab.items);
       searchResults.push(...stashItems.map((item: IBaseItem) => ({
+        colour,
         containerCategory: BrowseItemCategory.STASH_TAB,
-        containerName,
         item,
+        stashName,
       })));
     }
 

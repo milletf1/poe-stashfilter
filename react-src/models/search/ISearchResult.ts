@@ -1,8 +1,10 @@
 import { IBaseItem } from '../items/IBaseItem';
 import { BrowseItemCategory } from '../ui-state/BrowseItemCategory';
+import { IStashTabColour } from './../stash-tabs/IStashTabMetadata';
 
 export interface ISearchResult {
   item: IBaseItem;
-  containerName: string;
+  stashName: string;
+  colour?: IStashTabColour;
   containerCategory: BrowseItemCategory;
 }

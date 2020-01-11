@@ -1,6 +1,6 @@
 export interface IStashTabMetadata {
-  /** Colour of tab TODO: confirm for normal stash tabs */
-  colour?: any;
+  /** Colour of tab  */
+  colour?: IStashTabColour;
   /** Id */
   id: string;
   /** Index */
@@ -11,9 +11,15 @@ export interface IStashTabMetadata {
   hidden: boolean;
   /** Selected */
   selected: boolean;
-  /** Type of stash tab TODO: confirm for normal stash tabs */
+  /** Type of stash tab */
   type: string;
   srcC: string;
   srcL: string;
   srcR: string;
+}
+
+export interface IStashTabColour {
+  r: number;
+  g: number;
+  b: number;
 }
