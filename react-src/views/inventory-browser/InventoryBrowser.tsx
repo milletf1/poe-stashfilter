@@ -7,6 +7,7 @@ import { bindActionCreators, Dispatch } from 'redux';
 import StashDisplay from '../../components/stash-display/StashDisplay';
 import { ICharacterItems } from '../../models/characters/ICharacterItems';
 import { IStashTab } from '../../models/stash-tabs/IStashTab';
+import { IStashTabColour } from '../../models/stash-tabs/IStashTabMetadata';
 import { BrowseItemCategory } from '../../models/ui-state/BrowseItemCategory';
 import { accountActions } from '../../store/account/accountActions';
 import { IAppState } from '../../store/app/appState';
@@ -32,7 +33,7 @@ class InventoryBrowser extends React.Component<IInventoryBrowserProps, {}> {
     return (
     <div className='view-container inventory-browser'>
       <Grid container spacing={16}>
-        <Grid item xs={3} md={2} style={{padding: '8px 0'}}>
+        <Grid item xs={4} md={3} style={{padding: '8px 0'}}>
           <List className='inventory-browser-list'>
             <ListSubheader className='list-subheader'>Characters</ListSubheader>
             {
@@ -42,7 +43,7 @@ class InventoryBrowser extends React.Component<IInventoryBrowserProps, {}> {
                     <ListItem
                       button
                       key={character.character.name}
-                      className='browse-list-item'
+                      className='browse-list-item character'
                       selected={this.props.uiState.browseCategory === BrowseItemCategory.CHARACTER
                         && this.props.uiState.browseIndex === index}
                       onClick={(e) => this.props.setSelectedTab(
@@ -68,7 +69,8 @@ class InventoryBrowser extends React.Component<IInventoryBrowserProps, {}> {
                       onClick={(e) => this.props.setSelectedTab(
                         index,
                         BrowseItemCategory.STASH_TAB)}
-                      title={stashTab.details.n}>
+                      title={stashTab.details.n}
+                      style={{background: this.getStashColour(stashTab)}}>
                       {stashTab.details.n}
                     </ListItem>
                   );
@@ -76,7 +78,7 @@ class InventoryBrowser extends React.Component<IInventoryBrowserProps, {}> {
             }
           </List>
         </Grid>
-        <Grid item xs={9} md={10}>
+        <Grid item xs={8} md={9}>
           <Grid
             container
             spacing={16}
@@ -89,8 +91,16 @@ class InventoryBrowser extends React.Component<IInventoryBrowserProps, {}> {
     );
   }
 
-  protected onListItemClick(browseCategory: BrowseItemCategory, index: number): void {
+  private onListItemClick(browseCategory: BrowseItemCategory, index: number): void {
     this.props.setSelectedTab(index, browseCategory);
+  }
+
+  private getStashColour(stashTab: IStashTab): string {
+    if (stashTab.details.colour === undefined) {
+      return 'transparent';
+    }
+    const colour: IStashTabColour = stashTab.details.colour;
+    return `rgb(${colour.r}, ${colour.g}, ${colour.b})`;
   }
 }
 
