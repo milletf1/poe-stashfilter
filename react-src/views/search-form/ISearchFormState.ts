@@ -5,4 +5,7 @@ export interface ISearchFormState {
   itemName: string;
   itemType: ISearchDropdownLabel;
   searchButtonEnabled: boolean;
+  mods: ISearchDropdownLabel[];
+  modsMin: string[]; // number
+  modsMax: string[]; // number
 }

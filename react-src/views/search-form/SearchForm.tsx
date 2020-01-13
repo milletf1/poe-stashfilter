@@ -1,4 +1,4 @@
-import { Button, Grid, withTheme } from '@material-ui/core';
+import { Button, Grid, Input, withTheme } from '@material-ui/core';
 import * as React from 'react';
 import { ChangeEvent } from 'react-autosuggest';
 import { connect } from 'react-redux';
@@ -15,10 +15,11 @@ import { BrowseItemCategory } from '../../models/ui-state/BrowseItemCategory';
 import { IItemBase } from '../../services/filter/filter-modules/item-type-filter/IItemBase';
 import { ItemType } from '../../services/filter/filter-modules/item-type-filter/ItemType';
 import ItemTypeFilter from '../../services/filter/filter-modules/item-type-filter/ItemTypeFilter';
+import { IMod } from '../../services/filter/filter-modules/mod-filter/IModFilterParams';
+import { totalModRegexes } from '../../services/filter/filter-modules/mod-filter/mod-regexes';
 import NameFilter from '../../services/filter/filter-modules/name-filter/NameFilter';
 import { accountActions } from '../../store/account/accountActions';
 import { IAppState } from '../../store/app/appState';
-import SearchResults from '../search-results/SearchResults';
 import { ISearchFormProps } from './ISearchFormProps';
 import { ISearchFormState } from './ISearchFormState';
 
@@ -31,6 +32,12 @@ const itemCategories: ISearchDropdownLabel[] = Object.keys(ItemType).map((val: s
   label: ItemType[val],
   value: ItemType[val],
 }));
+
+const mods: ISearchDropdownLabel[] = [];
+mods.push(...totalModRegexes.map((val: IMod) => ({
+  label: `[Total] ${val.label}`,
+  value: val,
+})));
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators({
   setSearchResults: accountActions.setSearchResults,
@@ -53,11 +60,15 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
       itemBase: '',
       itemName: '',
       itemType: null,
+      mods: [null],
+      modsMax: [undefined],
+      modsMin: [undefined],
       searchButtonEnabled: true,
     };
     this.nameFilter = new NameFilter();
     this.itemTypeFilter = new ItemTypeFilter();
     this.onSearchClick = this.onSearchClick.bind(this);
+    this.onModChange = this.onModChange.bind(this);
  }
 
   public render(): JSX.Element {
@@ -87,6 +98,39 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
             onChange={this.onItemBaseNameSuggestionValueChange.bind(this)}
           />
         </Grid>
+        {
+          this.state.mods.map((mod: ISearchDropdownLabel, index: number) => {
+            const key: string = `${new Date().getTime()}-${Math.random}`;
+            return (
+              <Grid container item xs={12} spacing={16} key={key}>
+                <Grid item xs={8}>
+                  <SearchDropdown
+                    options={mods}
+                    placeholder='Mod'
+                    value={mod}
+                    onChange={(m: ISearchDropdownLabel) => this.onModChange(m, index)}
+                  />
+                </Grid>
+                <Grid item xs={2}>
+                  <Input
+                    type='number'
+                    placeholder='min'
+                    value={this.state.modsMin[index]}
+                    onChange={(e: any) => this.onModMinChange(index, e.target.value)}
+                  />
+                </Grid>
+                <Grid item xs={2}>
+                  <Input
+                    type='number'
+                    placeholder='max'
+                    value={this.state.modsMax[index]}
+                    onChange={(e: any) => this.onModMaxChange(index, e.target.value)}
+                  />
+                </Grid>
+              </Grid>
+            );
+          })
+        }
         <Grid item xs={12}>
           <Button
             variant='contained'
@@ -98,6 +142,24 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
         </Grid>
       </Grid>
     );
+  }
+
+  private onModMinChange(index: number, value?: string): void {
+    const stateModsMin: string[] = this.state.modsMin;
+    stateModsMin[index] = value;
+    this.setState({ modsMin: stateModsMin });
+  }
+
+  private onModMaxChange(index: number, value?: string): void {
+    const stateModsMax: string[] = this.state.modsMax;
+    stateModsMax[index] = value;
+    this.setState({ modsMax: stateModsMax });
+  }
+
+  private onModChange(mod: ISearchDropdownLabel, index: number): void {
+    const stateMods: ISearchDropdownLabel[] = this.state.mods;
+    stateMods[index] = mod;
+    this.setState({ mods: stateMods });
   }
 
   private async onSearchClick(): Promise<void> {
@@ -154,6 +216,7 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
       hasFiltered = true;
       if (results.length === 0) { return results; }
     }
+    // TODO: mods
     return results;
   }
 

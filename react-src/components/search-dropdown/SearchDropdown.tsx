@@ -145,7 +145,6 @@ class SearchDropdown extends React.Component<ISearchDropdownProps, {}> {
     return (
       <Paper square {...props.innerProps} style={{
         left: '0',
-        maxHeight: '200px',
         overflowY: 'scroll',
         position: 'absolute',
         right: '0',
