@@ -1,10 +1,9 @@
 import { withStyles } from '@material-ui/core/styles';
 import * as React from 'react';
-import Select from 'react-select';
+import Select, { createFilter } from 'react-select';
 import { ISearchDropdownProps } from './ISearchDropdownProps';
 
 import { MenuItem, Paper, TextField, Typography } from '@material-ui/core';
-import { zIndex } from 'material-ui/styles';
 import './search-dropdown.scss';
 
 class SearchDropdown extends React.Component<ISearchDropdownProps, {}> {
@@ -59,6 +58,7 @@ class SearchDropdown extends React.Component<ISearchDropdownProps, {}> {
           options={this.props.options}
           onChange={this.props.onChange}
           placeholder={this.props.placeholder}
+          filterOption={createFilter({ ignoreAccents: false })}
         />
       </div>
     );
