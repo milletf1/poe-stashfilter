@@ -107,10 +107,14 @@ class SearchDropdown extends React.Component<ISearchDropdownProps, {}> {
   }
 
   protected renderOption(props): JSX.Element {
+    // hack to fix laggy dropdown
+    delete props.innerProps.onMouseMove;
+    delete props.innerProps.onMouseOver;
+
     return (
       <MenuItem
         buttonRef={props.innerRef}
-        selected={props.isFocused}
+        selected={false}
         component='div'
         style={{
           fontWeight: props.isSelected ? 500 : 400,
@@ -135,7 +139,8 @@ class SearchDropdown extends React.Component<ISearchDropdownProps, {}> {
           textOverflow: 'ellipsis',
           whiteSpace: 'nowrap',
         }}
-        {...props.innerProps}>
+        {...props.innerProps}
+      >
         {props.children}
       </Typography>
     );
