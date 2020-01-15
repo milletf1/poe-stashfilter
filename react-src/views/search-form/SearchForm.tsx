@@ -15,8 +15,9 @@ import { BrowseItemCategory } from '../../models/ui-state/BrowseItemCategory';
 import { IItemBase } from '../../services/filter/filter-modules/item-type-filter/IItemBase';
 import { ItemType } from '../../services/filter/filter-modules/item-type-filter/ItemType';
 import ItemTypeFilter from '../../services/filter/filter-modules/item-type-filter/ItemTypeFilter';
-import { IMod } from '../../services/filter/filter-modules/mod-filter/IModFilterParams';
+import { IMod, IModFilterParams } from '../../services/filter/filter-modules/mod-filter/IModFilterParams';
 import { totalModRegexes } from '../../services/filter/filter-modules/mod-filter/mod-regexes';
+import ModFilter from '../../services/filter/filter-modules/mod-filter/ModFilter';
 import NameFilter from '../../services/filter/filter-modules/name-filter/NameFilter';
 import { accountActions } from '../../store/account/accountActions';
 import { IAppState } from '../../store/app/appState';
@@ -53,6 +54,7 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
 
   private nameFilter: NameFilter;
   private itemTypeFilter: ItemTypeFilter;
+  private modFilter: ModFilter;
 
   constructor(props) {
     super(props);
@@ -67,6 +69,7 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
     };
     this.nameFilter = new NameFilter();
     this.itemTypeFilter = new ItemTypeFilter();
+    this.modFilter = new ModFilter();
     this.onSearchClick = this.onSearchClick.bind(this);
     this.onModChange = this.onModChange.bind(this);
  }
@@ -216,7 +219,27 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
       hasFiltered = true;
       if (results.length === 0) { return results; }
     }
-    // TODO: mods
+    // filter mods
+    const modFilterParams: IModFilterParams[] = [];
+    for (let i = 0; i < this.state.mods.length; i++) {
+      if (this.state.mods[i] != null) {
+        const mod: IModFilterParams = { mod: this.state.mods[i].value };
+
+        if (this.state.modsMin[i] != null) {
+          mod.min = parseInt(this.state.modsMin[i], 10);
+        }
+        if (this.state.modsMax[i] != null) {
+          mod.max = parseInt(this.state.modsMax[i], 10);
+        }
+        if (mod.min != null || mod.max != null) {
+          modFilterParams.push(mod);
+        }
+      }
+    }
+    if (modFilterParams.length > 0) {
+      results = this.modFilter.filter(hasFiltered ? results : items, modFilterParams);
+      hasFiltered = true;
+    }
     return results;
   }
 
