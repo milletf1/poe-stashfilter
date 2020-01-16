@@ -1,4 +1,3 @@
-import { IMod } from './IModFilterParams';
 import { ModFilterType } from './ModFilterType';
 
 export interface IModFilterParams {

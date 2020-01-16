@@ -72,6 +72,8 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
     this.modFilter = new ModFilter();
     this.onSearchClick = this.onSearchClick.bind(this);
     this.onModChange = this.onModChange.bind(this);
+    this.onModMinChange = this.onModMinChange.bind(this);
+    this.onModMaxChange = this.onModMaxChange.bind(this);
  }
 
   public render(): JSX.Element {
@@ -111,23 +113,23 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
                     options={mods}
                     placeholder='Mod'
                     value={mod}
-                    onChange={(m: ISearchDropdownLabel) => this.onModChange(m, index)}
+                    onChange={this.onModChange(index)}
                   />
                 </Grid>
                 <Grid item xs={2}>
                   <Input
-                    type='number'
+                    id={`mods-min-${index}`}
                     placeholder='min'
                     value={this.state.modsMin[index]}
-                    onChange={(e: any) => this.onModMinChange(index, e.target.value)}
+                    onChange={this.onModMinChange}
                   />
                 </Grid>
                 <Grid item xs={2}>
                   <Input
-                    type='number'
+                    id={`mods-max-${index}`}
                     placeholder='max'
                     value={this.state.modsMax[index]}
-                    onChange={(e: any) => this.onModMaxChange(index, e.target.value)}
+                    onChange={this.onModMaxChange}
                   />
                 </Grid>
               </Grid>
@@ -147,22 +149,42 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
     );
   }
 
-  private onModMinChange(index: number, value?: string): void {
+  private onModMinChange(event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>): void {
+    const elementId: string = event.target.id;
+    const index: number = parseInt(elementId.split('-')[2], 10);
     const stateModsMin: string[] = this.state.modsMin;
-    stateModsMin[index] = value;
+    const selectStart: number = event.target.selectionStart;
+    const selectEnd: number = event.target.selectionEnd;
+    stateModsMin[index] = event.target.value;
     this.setState({ modsMin: stateModsMin });
+    setTimeout(() => {
+      const inputEl: HTMLInputElement = document.getElementById(elementId) as HTMLInputElement;
+      inputEl.focus();
+      inputEl.setSelectionRange(selectStart, selectEnd);
+    });
   }
 
-  private onModMaxChange(index: number, value?: string): void {
+  private onModMaxChange(event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>): void {
+    const elementId: string = event.target.id;
+    const index: number = parseInt(elementId.split('-')[2], 10);
     const stateModsMax: string[] = this.state.modsMax;
-    stateModsMax[index] = value;
+    const selectStart: number = event.target.selectionStart;
+    const selectEnd: number = event.target.selectionEnd;
+    stateModsMax[index] = event.target.value;
     this.setState({ modsMax: stateModsMax });
+    setTimeout(() => {
+      const inputEl: HTMLInputElement = document.getElementById(elementId) as HTMLInputElement;
+      inputEl.focus();
+      inputEl.setSelectionRange(selectStart, selectEnd);
+    });
   }
 
-  private onModChange(mod: ISearchDropdownLabel, index: number): void {
-    const stateMods: ISearchDropdownLabel[] = this.state.mods;
-    stateMods[index] = mod;
-    this.setState({ mods: stateMods });
+  private onModChange(index: number): (mod: ISearchDropdownLabel) => void {
+    return (mod: ISearchDropdownLabel): void => {
+      const stateMods: ISearchDropdownLabel[] = this.state.mods;
+      stateMods[index] = mod;
+      this.setState({ mods: stateMods });
+    };
   }
 
   private async onSearchClick(): Promise<void> {
@@ -226,10 +248,16 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
         const mod: IModFilterParams = { mod: this.state.mods[i].value };
 
         if (this.state.modsMin[i] != null) {
-          mod.min = parseInt(this.state.modsMin[i], 10);
+          const min: number = parseInt(this.state.modsMin[i], 10);
+          if (!isNaN(min)) {
+            mod.min = min;
+          }
         }
         if (this.state.modsMax[i] != null) {
-          mod.max = parseInt(this.state.modsMax[i], 10);
+          const max: number = parseInt(this.state.modsMax[i], 10);
+          if (!isNaN(max)) {
+            mod.max = max;
+          }
         }
         if (mod.min != null || mod.max != null) {
           modFilterParams.push(mod);
