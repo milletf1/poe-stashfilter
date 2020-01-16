@@ -74,6 +74,7 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
     this.onModChange = this.onModChange.bind(this);
     this.onModMinChange = this.onModMinChange.bind(this);
     this.onModMaxChange = this.onModMaxChange.bind(this);
+    this.removeItemModElement = this.removeItemModElement.bind(this);
  }
 
   public render(): JSX.Element {
@@ -104,37 +105,44 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
           />
         </Grid>
         {
-          this.state.mods.map((mod: ISearchDropdownLabel, index: number) => {
-            const key: string = `${new Date().getTime()}-${Math.random}`;
-            return (
-              <Grid container item xs={12} spacing={16} key={key}>
-                <Grid item xs={8}>
-                  <SearchDropdown
-                    options={mods}
-                    placeholder='Mod'
-                    value={mod}
-                    onChange={this.onModChange(index)}
-                  />
-                </Grid>
-                <Grid item xs={2}>
-                  <Input
-                    id={`mods-min-${index}`}
-                    placeholder='min'
-                    value={this.state.modsMin[index]}
-                    onChange={this.onModMinChange}
-                  />
-                </Grid>
-                <Grid item xs={2}>
-                  <Input
-                    id={`mods-max-${index}`}
-                    placeholder='max'
-                    value={this.state.modsMax[index]}
-                    onChange={this.onModMaxChange}
-                  />
-                </Grid>
-              </Grid>
-            );
-          })
+          this.state.mods.length > 0
+            ?  this.state.mods.map((mod: ISearchDropdownLabel, index: number) => {
+                const key: string = `${index}-${new Date().getTime()}`;
+                return (
+                  <Grid container item xs={12} spacing={16} key={key}>
+                    <Grid item xs={9}>
+                      <SearchDropdown
+                        options={mods}
+                        placeholder='Mod'
+                        value={mod}
+                        onChange={this.onModChange(index)} />
+                    </Grid>
+                    <Grid item xs={1}>
+                      <Input
+                        id={`mods-min-${index}`}
+                        placeholder='min'
+                        value={this.state.modsMin[index]}
+                        onChange={this.onModMinChange} />
+                    </Grid>
+                    <Grid item xs={1}>
+                      <Input
+                        id={`mods-max-${index}`}
+                        placeholder='max'
+                        value={this.state.modsMax[index]}
+                        onChange={this.onModMaxChange} />
+                    </Grid>
+                    <Grid item xs={1}>
+                    <Button
+                      id={`mods-delete-${index}`}
+                      color='secondary'
+                      onClick={this.removeItemModElement}>
+                      Remove
+                    </Button>
+                    </Grid>
+                  </Grid>
+                );
+              })
+            : <Grid item xs={12}>No mods here :)</Grid>
         }
         <Grid item xs={12}>
           <Button
@@ -147,6 +155,23 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
         </Grid>
       </Grid>
     );
+  }
+
+  private removeItemModElement(event: React.MouseEvent<HTMLElement>): void {
+    const index: number = parseInt(event.currentTarget.id.split('-')[2], 10);
+    if (!isNaN(index)) {
+      const stateModsMin: string[] = this.state.modsMin;
+      const stateModsMax: string[] = this.state.modsMax;
+      const stateMods: ISearchDropdownLabel[] = this.state.mods;
+      stateModsMin.splice(index, 1);
+      stateModsMax.splice(index, 1);
+      stateMods.splice(index, 1);
+      this.setState({
+        mods: stateMods,
+        modsMax: stateModsMax,
+        modsMin: stateModsMin,
+      });
+    }
   }
 
   private onModMinChange(event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>): void {
