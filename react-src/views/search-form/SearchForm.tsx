@@ -372,7 +372,7 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
             mod.max = max;
           }
         }
-        if (mod.min != null || mod.max != null) {
+        if (mod.min != null || mod.max != null || mod.mod.label.indexOf('#') === -1) {
           modFilterParams.push(mod);
         }
       }
