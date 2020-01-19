@@ -2,7 +2,20 @@ import { IMod, IModFilterParams } from '../../services/filter/filter-modules/mod
 import ModFilter from '../../services/filter/filter-modules/mod-filter/ModFilter';
 import { assertItemsFound, getTestItem } from '../utils';
 import { IBaseItem } from './../../models/items/IBaseItem';
-import { abyssModRegexes, bestiaryModRegexes, craftedModRegexes, enchantmentsModRegexes, explicitModRegexes, fracturedModRegexes, implicitModRegexes, leaguestoneModRegexes, mapModRegexes, organModRegexes, propheciesModRegexes, pseudoModRegexes, totalModRegexes, uniqueModRegexes } from './../../services/filter/filter-modules/mod-filter/mod-regexes';
+import { abyssModRegexes } from './../../services/filter/filter-modules/mod-filter/mod-regexes/abyss-mods';
+import { bestiaryModRegexes } from './../../services/filter/filter-modules/mod-filter/mod-regexes/bestiary-mods';
+import { craftedModRegexes } from './../../services/filter/filter-modules/mod-filter/mod-regexes/crafted-mods';
+import { enchantmentModRegexes } from './../../services/filter/filter-modules/mod-filter/mod-regexes/enchantment-mods';
+import { explicitModRegexes } from './../../services/filter/filter-modules/mod-filter/mod-regexes/explicit-mods';
+import { fracturedModRegexes } from './../../services/filter/filter-modules/mod-filter/mod-regexes/fractured-mods';
+import { implicitModRegexes } from './../../services/filter/filter-modules/mod-filter/mod-regexes/implicit-mods';
+import { leaguestoneModRegexes } from './../../services/filter/filter-modules/mod-filter/mod-regexes/leaguestone-mods';
+import { mapModRegexes } from './../../services/filter/filter-modules/mod-filter/mod-regexes/map-mods';
+import { organModRegexes } from './../../services/filter/filter-modules/mod-filter/mod-regexes/organ-mods';
+import { propheciesModRegexes } from './../../services/filter/filter-modules/mod-filter/mod-regexes/prophecy-mods';
+import { pseudoModRegexes } from './../../services/filter/filter-modules/mod-filter/mod-regexes/pseudo-mods';
+import { totalModRegexes } from './../../services/filter/filter-modules/mod-filter/mod-regexes/total-mods';
+import { uniqueModRegexes } from './../../services/filter/filter-modules/mod-filter/mod-regexes/unique-mods';
 import craftedModJson from './crafted-mod-filter-test-items.json';
 import explicitModJson from './explicit-mod-filter-test-items.json';
 import otherModJson from './other-mod-filter-test-items.json';
@@ -563,7 +576,7 @@ describe('other mod tests', () => {
     if (!testItems[testItems.length - 1]) {
       throw new Error('Failed to find expected item "Corpse Crown Ursine Pelt" in test data');
     }
-    const modFilterParams: IMod = enchantmentsModRegexes
+    const modFilterParams: IMod = enchantmentModRegexes
       .find((modRegex: IMod) => modRegex.label === '#% increased Elemental Weakness Curse Effect');
     if (!modFilterParams) {
       // tslint:disable-next-line:max-line-length

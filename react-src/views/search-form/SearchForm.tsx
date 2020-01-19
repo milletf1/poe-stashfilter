@@ -16,7 +16,20 @@ import { IItemBase } from '../../services/filter/filter-modules/item-type-filter
 import { ItemType } from '../../services/filter/filter-modules/item-type-filter/ItemType';
 import ItemTypeFilter from '../../services/filter/filter-modules/item-type-filter/ItemTypeFilter';
 import { IMod, IModFilterParams } from '../../services/filter/filter-modules/mod-filter/IModFilterParams';
-import { totalModRegexes } from '../../services/filter/filter-modules/mod-filter/mod-regexes';
+import { abyssModRegexes } from '../../services/filter/filter-modules/mod-filter/mod-regexes/abyss-mods';
+import { bestiaryModRegexes } from '../../services/filter/filter-modules/mod-filter/mod-regexes/bestiary-mods';
+import { craftedModRegexes } from '../../services/filter/filter-modules/mod-filter/mod-regexes/crafted-mods';
+import { enchantmentModRegexes } from '../../services/filter/filter-modules/mod-filter/mod-regexes/enchantment-mods';
+import { explicitModRegexes } from '../../services/filter/filter-modules/mod-filter/mod-regexes/explicit-mods';
+import { fracturedModRegexes } from '../../services/filter/filter-modules/mod-filter/mod-regexes/fractured-mods';
+import { implicitModRegexes } from '../../services/filter/filter-modules/mod-filter/mod-regexes/implicit-mods';
+import { leaguestoneModRegexes } from '../../services/filter/filter-modules/mod-filter/mod-regexes/leaguestone-mods';
+import { mapModRegexes } from '../../services/filter/filter-modules/mod-filter/mod-regexes/map-mods';
+import { organModRegexes } from '../../services/filter/filter-modules/mod-filter/mod-regexes/organ-mods';
+import { propheciesModRegexes } from '../../services/filter/filter-modules/mod-filter/mod-regexes/prophecy-mods';
+import { pseudoModRegexes } from '../../services/filter/filter-modules/mod-filter/mod-regexes/pseudo-mods';
+import { totalModRegexes } from '../../services/filter/filter-modules/mod-filter/mod-regexes/total-mods';
+import { uniqueModRegexes } from '../../services/filter/filter-modules/mod-filter/mod-regexes/unique-mods';
 import ModFilter from '../../services/filter/filter-modules/mod-filter/ModFilter';
 import NameFilter from '../../services/filter/filter-modules/name-filter/NameFilter';
 import { accountActions } from '../../store/account/accountActions';
@@ -24,8 +37,6 @@ import { IAppState } from '../../store/app/appState';
 import { ISearchFormProps } from './ISearchFormProps';
 import { ISearchFormState } from './ISearchFormState';
 
-// readup https://material-ui.com/demos/autocomplete/
-// goal is to make autocomplete and select look the same, no label inclded
 const itemNameSuggestions: string[] = [];
 const itemBaseTypeSuggestions: string[] = [];
 
@@ -37,6 +48,58 @@ const itemCategories: ISearchDropdownLabel[] = Object.keys(ItemType).map((val: s
 const mods: ISearchDropdownLabel[] = [];
 mods.push(...totalModRegexes.map((val: IMod) => ({
   label: `[Total] ${val.label}`,
+  value: val,
+})));
+mods.push(...pseudoModRegexes.map((val: IMod) => ({
+  label: `[Pseudo] ${val.label}`,
+  value: val,
+})));
+mods.push(...explicitModRegexes.map((val: IMod) => ({
+  label: `[Explicit] ${val.label}`,
+  value: val,
+})));
+mods.push(...uniqueModRegexes.map((val: IMod) => ({
+  label: `[Unique] ${val.label}`,
+  value: val,
+})));
+mods.push(...mapModRegexes.map((val: IMod) => ({
+  label: `[Map] ${val.label}`,
+  value: val,
+})));
+mods.push(...abyssModRegexes.map((val: IMod) => ({
+  label: `[Abyss] ${val.label}`,
+  value: val,
+})));
+mods.push(...bestiaryModRegexes.map((val: IMod) => ({
+  label: `[Beastiary] ${val.label}`,
+  value: val,
+})));
+mods.push(...craftedModRegexes.map((val: IMod) => ({
+  label: `[Craft] ${val.label}`,
+  value: val,
+})));
+mods.push(...enchantmentModRegexes.map((val: IMod) => ({
+  label: `[Enchantment] ${val.label}`,
+  value: val,
+})));
+mods.push(...fracturedModRegexes.map((val: IMod) => ({
+  label: `[Fractured] ${val.label}`,
+  value: val,
+})));
+mods.push(...implicitModRegexes.map((val: IMod) => ({
+  label: `[Implicit] ${val.label}`,
+  value: val,
+})));
+mods.push(...leaguestoneModRegexes.map((val: IMod) => ({
+  label: `[Leaguestone] ${val.label}`,
+  value: val,
+})));
+mods.push(...organModRegexes.map((val: IMod) => ({
+  label: `[Organ] ${val.label}`,
+  value: val,
+})));
+mods.push(...propheciesModRegexes.map((val: IMod) => ({
+  label: `[Prophecy] ${val.label}`,
   value: val,
 })));
 
