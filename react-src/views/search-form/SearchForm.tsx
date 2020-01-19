@@ -71,6 +71,7 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
     this.itemTypeFilter = new ItemTypeFilter();
     this.modFilter = new ModFilter();
     this.onSearchClick = this.onSearchClick.bind(this);
+    this.onAddModClick = this.onAddModClick.bind(this);
     this.onModChange = this.onModChange.bind(this);
     this.onModMinChange = this.onModMinChange.bind(this);
     this.onModMaxChange = this.onModMaxChange.bind(this);
@@ -147,6 +148,14 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
         <Grid item xs={12}>
           <Button
             variant='contained'
+            color='secondary'
+            onClick={this.onAddModClick}>
+            Add mod
+          </Button>
+        </Grid>
+        <Grid item xs={12}>
+          <Button
+            variant='contained'
             color='primary'
             disabled={!this.state.searchButtonEnabled}
             onClick={this.onSearchClick}>
@@ -210,6 +219,22 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
       stateMods[index] = mod;
       this.setState({ mods: stateMods });
     };
+  }
+
+  private onAddModClick(): void {
+    const stateMods: ISearchDropdownLabel[] = this.state.mods;
+    const stateModsMin: string[] = this.state.modsMin;
+    const stateModsMax: string[] = this.state.modsMax;
+
+    stateMods.push(null);
+    stateModsMin.push(undefined);
+    stateModsMax.push(undefined);
+
+    this.setState({
+      mods: stateMods,
+      modsMax: stateModsMax,
+      modsMin: stateModsMin,
+    });
   }
 
   private async onSearchClick(): Promise<void> {
