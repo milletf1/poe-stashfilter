@@ -1,5 +1,13 @@
 .search-dropdown {
   .MuiPaper-root-10 {
     overflow-y: hidden !important;
+
+    .fast-option {
+      color: #fff;
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.1);
+      }
+    }
   }
 }

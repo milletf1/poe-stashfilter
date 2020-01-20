@@ -3,6 +3,7 @@ import * as React from 'react';
 import { ChangeEvent } from 'react-autosuggest';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import { Select } from 'react-select-virtualized';
 import { bindActionCreators, Dispatch } from 'redux';
 import AutocompleteTextBox from '../../components/autocomplete-textbox/AutocompleteTextbox';
 import { ISearchDropdownLabel } from '../../components/search-dropdown/ISearchDropdownLabel';

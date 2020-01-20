@@ -1,6 +1,6 @@
 import { withStyles } from '@material-ui/core/styles';
 import * as React from 'react';
-import Select, { createFilter } from 'react-select';
+import { Select } from 'react-select-virtualized';
 import { ISearchDropdownProps } from './ISearchDropdownProps';
 
 import { MenuItem, Paper, TextField, Typography } from '@material-ui/core';
@@ -14,7 +14,6 @@ class SearchDropdown extends React.Component<ISearchDropdownProps, {}> {
       Control: this.renderControl.bind(this),
       Menu: this.renderMenu.bind(this),
       NoOptionsMessage: this.renderNoOptionsMessage.bind(this),
-      Option: this.renderOption.bind(this),
       SingleValue: this.renderSingleValue.bind(this),
     };
     const selectStyles = {
@@ -58,7 +57,6 @@ class SearchDropdown extends React.Component<ISearchDropdownProps, {}> {
           options={this.props.options}
           onChange={this.props.onChange}
           placeholder={this.props.placeholder}
-          filterOption={createFilter({ ignoreAccents: false })}
         />
       </div>
     );
@@ -106,29 +104,6 @@ class SearchDropdown extends React.Component<ISearchDropdownProps, {}> {
     );
   }
 
-  protected renderOption(props): JSX.Element {
-    // hack to fix laggy dropdown
-    delete props.innerProps.onMouseMove;
-    delete props.innerProps.onMouseOver;
-
-    return (
-      <MenuItem
-        buttonRef={props.innerRef}
-        selected={false}
-        component='div'
-        style={{
-          fontWeight: props.isSelected ? 500 : 400,
-          overflowX: 'hidden',
-          textOverflow: 'ellipsis',
-          whiteSpace: 'nowrap',
-        }}
-        {...props.innerProps}
-      >
-        {props.children}
-      </MenuItem>
-    );
-  }
-
   protected renderSingleValue(props): JSX.Element {
     return (
       <Typography
@@ -150,7 +125,7 @@ class SearchDropdown extends React.Component<ISearchDropdownProps, {}> {
     return (
       <Paper square {...props.innerProps} style={{
         left: '0',
-        overflowY: 'scroll',
+        overflowX: 'hidden',
         position: 'absolute',
         right: '0',
         zIndex: '10'}}>
