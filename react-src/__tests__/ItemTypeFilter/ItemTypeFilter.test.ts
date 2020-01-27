@@ -529,6 +529,10 @@ describe('Item Type Filter tests', () => {
     if (!testItems[testItems.length - 1]) {
       throw new Error('failed to find expected item "Timeless Karui Emblem" in test data');
     }
+    testItems.push(getTestItem(items, null, 'Divine Vessel'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "Divine Vessel" in test data');
+    }
     const filter: ItemTypeFilter = new ItemTypeFilter();
     const actual: IBaseItem[] = filter.filter(items, [ItemType.MAP_FRAGMENT]);
 
@@ -555,18 +559,6 @@ describe('Item Type Filter tests', () => {
     }
     const filter: ItemTypeFilter = new ItemTypeFilter();
     const actual: IBaseItem[] = filter.filter(items, [ItemType.FOSSIL]);
-
-    assertItemsFound(testItems, actual);
-  });
-
-  test('should return divine vessels', () => {
-    const testItems: IBaseItem[] = [];
-    testItems.push(getTestItem(items, null, 'Divine Vessel'));
-    if (!testItems[testItems.length - 1]) {
-      throw new Error('failed to find expected item "Divine Vessel" in test data');
-    }
-    const filter: ItemTypeFilter = new ItemTypeFilter();
-    const actual: IBaseItem[] = filter.filter(items, [ItemType.DIVINE_VESSEL]);
 
     assertItemsFound(testItems, actual);
   });

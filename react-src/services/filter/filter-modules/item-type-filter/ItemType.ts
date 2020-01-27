@@ -40,7 +40,6 @@ export enum ItemType {
   SPLINTER = 'Splinter',
   RESONATOR = 'Resonator',
   FOSSIL = 'Fossil',
-  DIVINE_VESSEL = 'Divine Vessel',
   BREACHSTONE = 'Breachstone',
   ORGAN = 'Organ',
 }
