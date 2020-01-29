@@ -3,7 +3,6 @@ import * as React from 'react';
 import { ChangeEvent } from 'react-autosuggest';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { Select } from 'react-select-virtualized';
 import { bindActionCreators, Dispatch } from 'redux';
 import AutocompleteTextBox from '../../components/autocomplete-textbox/AutocompleteTextbox';
 import { ISearchDropdownLabel } from '../../components/search-dropdown/ISearchDropdownLabel';
@@ -37,6 +36,46 @@ import { accountActions } from '../../store/account/accountActions';
 import { IAppState } from '../../store/app/appState';
 import { ISearchFormProps } from './ISearchFormProps';
 import { ISearchFormState } from './ISearchFormState';
+import { amuletBases } from './item-bases/amulet-bases';
+import { beltBases } from './item-bases/belt-bases';
+import { bodyArmourBases } from './item-bases/body-armour-bases';
+import { bootBases } from './item-bases/boot-bases';
+import { bowBases } from './item-bases/bow-bases';
+import { breachstoneBases } from './item-bases/breachstone-bases';
+import { cardBases } from './item-bases/card-bases';
+import { clawBases } from './item-bases/claw-bases';
+import { currencyBases } from './item-bases/currency-bases';
+import { daggerBases } from './item-bases/dagger-bases';
+import { essenceBases } from './item-bases/essence-bases';
+import { flaskBases } from './item-bases/flask-bases';
+import { fossilBases } from './item-bases/fossil-bases';
+import { gemBases } from './item-bases/gem-bases';
+import { gloveBases } from './item-bases/glove-bases';
+import { helmetBases } from './item-bases/helmet-bases';
+import { incubatorBases } from './item-bases/incubator-bases';
+import { jewelBases } from './item-bases/jewel-bases';
+import { leaguestoneBases } from './item-bases/leaguestone-bases';
+import { mapBases } from './item-bases/map-bases';
+import { mapFragmentBases } from './item-bases/map-fragment-bases';
+import { netBases } from './item-bases/net-bases';
+import { oilBases } from './item-bases/oil-bases';
+import { oneHandAxeBases } from './item-bases/one-hand-axe-bases';
+import { oneHandMaceBases } from './item-bases/one-hand-mace-bases';
+import { oneHandSwordBases } from './item-bases/one-hand-sword-bases';
+import { organBases } from './item-bases/organ-bases';
+import { prophecyBases } from './item-bases/prophecy-bases';
+import { quiverBases } from './item-bases/quiver-bases';
+import { resonatorBases } from './item-bases/resonator-bases';
+import { ringBases } from './item-bases/ring-bases';
+import { scarabBases } from './item-bases/scarab-bases';
+import { sceptreBases } from './item-bases/sceptre-bases';
+import { shieldBases } from './item-bases/shield-bases';
+import { splinterBases } from './item-bases/splinter-bases';
+import { staffBases } from './item-bases/staff-bases';
+import { twoHandAxeBases } from './item-bases/two-hand-axe-bases';
+import { twoHandMaceBases } from './item-bases/two-hand-mace-bases';
+import { twoHandSwordBases } from './item-bases/two-hand-sword-bases';
+import { wandBases } from './item-bases/wand-bases';
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators({
   setSearchResults: accountActions.setSearchResults,
@@ -57,8 +96,7 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
   constructor(props) {
     super(props);
     this.state = {
-      itemBase: '',
-      itemBaseTypeSuggestions: [],
+      itemBase: null,
       itemName: '',
       itemNameSuggestions: [],
       itemType: null,
@@ -76,6 +114,9 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
     this.onModMinChange = this.onModMinChange.bind(this);
     this.onModMaxChange = this.onModMaxChange.bind(this);
     this.removeItemModElement = this.removeItemModElement.bind(this);
+    this.onItemNameSuggestionValueChange = this.onItemNameSuggestionValueChange.bind(this);
+    this.onItemCategoryChange = this.onItemCategoryChange.bind(this);
+    this.onItemBaseChange = this.onItemBaseChange.bind(this);
  }
 
   private get mods(): ISearchDropdownLabel[] {
@@ -116,6 +157,127 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
     }));
   }
 
+  private get itemBases(): ISearchDropdownLabel[] {
+    if (this.state.itemType === null) { return []; }
+
+    switch (this.state.itemType.value) {
+      case ItemType.ONE_HAND_WEAPON:
+        return this.convertIItemBasesToISearchDropdownLabel([
+          ...oneHandAxeBases,
+          ...oneHandMaceBases,
+          ...oneHandSwordBases,
+          ...sceptreBases,
+          ...clawBases,
+          ...daggerBases,
+          ...wandBases,
+        ].sort((a: IItemBase, b: IItemBase) => {
+          const aBase: string = a.base.toUpperCase();
+          const bBase: string = b.base.toUpperCase();
+          if (aBase < bBase) { return -1; }
+          if (aBase > bBase) { return 1; }
+          return 0;
+        }));
+      case ItemType.TWO_HAND_WEAPON:
+        return this.convertIItemBasesToISearchDropdownLabel([
+          ...bowBases,
+          ...staffBases,
+          ...twoHandAxeBases,
+          ...twoHandMaceBases,
+          ...twoHandSwordBases,
+        ].sort((a: IItemBase, b: IItemBase) => {
+          const aBase: string = a.base.toUpperCase();
+          const bBase: string = b.base.toUpperCase();
+          if (aBase < bBase) { return -1; }
+          if (aBase > bBase) { return 1; }
+          return 0;
+        }));
+      case ItemType.BOW:
+          return this.convertIItemBasesToISearchDropdownLabel(bowBases);
+      case ItemType.CLAW:
+        return this.convertIItemBasesToISearchDropdownLabel(clawBases);
+      case ItemType.DAGGER:
+        return this.convertIItemBasesToISearchDropdownLabel(daggerBases);
+      case ItemType.ONE_HAND_AXE:
+        return this.convertIItemBasesToISearchDropdownLabel(oneHandAxeBases);
+      case ItemType.ONE_HAND_MACE:
+        return this.convertIItemBasesToISearchDropdownLabel(oneHandMaceBases);
+      case ItemType.ONE_HAND_SWORD:
+        return this.convertIItemBasesToISearchDropdownLabel(oneHandSwordBases);
+      case ItemType.SCEPTRE:
+        return this.convertIItemBasesToISearchDropdownLabel(sceptreBases);
+      case ItemType.STAFF:
+        return this.convertIItemBasesToISearchDropdownLabel(staffBases);
+      case ItemType.TWO_HAND_AXE:
+        return this.convertIItemBasesToISearchDropdownLabel(twoHandAxeBases);
+      case ItemType.TWO_HAND_MACE:
+        return this.convertIItemBasesToISearchDropdownLabel(twoHandMaceBases);
+      case ItemType.TWO_HAND_SWORD:
+        return this.convertIItemBasesToISearchDropdownLabel(twoHandSwordBases);
+      case ItemType.WAND:
+        return this.convertIItemBasesToISearchDropdownLabel(wandBases);
+      case ItemType.BODY_ARMOUR:
+        return this.convertIItemBasesToISearchDropdownLabel(bodyArmourBases);
+      case ItemType.BOOTS:
+        return this.convertIItemBasesToISearchDropdownLabel(bootBases);
+      case ItemType.GLOVES:
+        return this.convertIItemBasesToISearchDropdownLabel(gloveBases);
+      case ItemType.HELMET:
+        return this.convertIItemBasesToISearchDropdownLabel(helmetBases);
+      case ItemType.SHIELD:
+        return this.convertIItemBasesToISearchDropdownLabel(shieldBases);
+      case ItemType.AMULET:
+        return this.convertIItemBasesToISearchDropdownLabel(amuletBases);
+      case ItemType.BELT:
+        return this.convertIItemBasesToISearchDropdownLabel(beltBases);
+      case ItemType.CURRENCY:
+        return this.convertIItemBasesToISearchDropdownLabel(currencyBases);
+      case ItemType.CARD:
+        return this.convertIItemBasesToISearchDropdownLabel(cardBases);
+      case ItemType.ESSENCE:
+        return this.convertIItemBasesToISearchDropdownLabel(essenceBases);
+      case ItemType.FLASK:
+        return this.convertIItemBasesToISearchDropdownLabel(flaskBases);
+      case ItemType.GEM:
+        return this.convertIItemBasesToISearchDropdownLabel(gemBases);
+      case ItemType.INCUBATOR:
+        return this.convertIItemBasesToISearchDropdownLabel(incubatorBases);
+      case ItemType.JEWEL:
+        return this.convertIItemBasesToISearchDropdownLabel(jewelBases);
+      case ItemType.LEAGUESTONE:
+        return this.convertIItemBasesToISearchDropdownLabel(leaguestoneBases);
+      case ItemType.MAP:
+        return this.convertIItemBasesToISearchDropdownLabel(mapBases);
+      case ItemType.NET:
+        return this.convertIItemBasesToISearchDropdownLabel(netBases);
+      case ItemType.PROPHECY:
+        return this.convertIItemBasesToISearchDropdownLabel(prophecyBases);
+      case ItemType.QUIVER:
+        return this.convertIItemBasesToISearchDropdownLabel(quiverBases);
+      case ItemType.RING:
+        return this.convertIItemBasesToISearchDropdownLabel(ringBases);
+      case ItemType.SCARAB:
+        return this.convertIItemBasesToISearchDropdownLabel(scarabBases);
+      case ItemType.MAP_FRAGMENT:
+        return this.convertIItemBasesToISearchDropdownLabel(mapFragmentBases);
+      case ItemType.SPLINTER:
+        return this.convertIItemBasesToISearchDropdownLabel(splinterBases);
+      case ItemType.RESONATOR:
+        return this.convertIItemBasesToISearchDropdownLabel(resonatorBases);
+      case ItemType.FOSSIL:
+        return this.convertIItemBasesToISearchDropdownLabel(fossilBases);
+      case ItemType.BREACHSTONE:
+        return this.convertIItemBasesToISearchDropdownLabel(breachstoneBases);
+      case ItemType.OIL:
+        return this.convertIItemBasesToISearchDropdownLabel(oilBases);
+      case ItemType.ORGAN:
+        return this.convertIItemBasesToISearchDropdownLabel(organBases);
+      case ItemType.BEAST:
+      case ItemType.FISHING_ROD:
+      default:
+        return [];
+    }
+  }
+
   public render(): JSX.Element {
     return (
       <Grid container spacing={16}>
@@ -124,7 +286,7 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
             suggestions={this.state.itemNameSuggestions}
             value={this.state.itemName}
             placeholder='Name'
-            onChange={this.onItemNameSuggestionValueChange.bind(this)}
+            onChange={this.onItemNameSuggestionValueChange}
           />
         </Grid>
         <Grid item xs={6}>
@@ -132,15 +294,15 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
             options={this.itemCategories}
             placeholder='Category'
             value={this.state.itemType}
-            onChange={this.onItemCategoryChange.bind(this)}
+            onChange={this.onItemCategoryChange}
           />
         </Grid>
         <Grid item xs={6}>
-          <AutocompleteTextBox
-            suggestions={this.state.itemBaseTypeSuggestions}
-            value={this.state.itemBase}
+          <SearchDropdown
+            options={this.itemBases}
             placeholder='Base'
-            onChange={this.onItemBaseNameSuggestionValueChange.bind(this)}
+            value={this.state.itemBase}
+            onChange={this.onItemBaseChange}
           />
         </Grid>
         {
@@ -181,7 +343,7 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
                   </Grid>
                 );
               })
-            : <Grid item xs={12}>No mods here :)</Grid>
+            : <Grid item xs={12}></Grid>
         }
         <Grid item xs={12}>
           <Button
@@ -202,6 +364,10 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
         </Grid>
       </Grid>
     );
+  }
+
+  private convertIItemBasesToISearchDropdownLabel(itemBases: IItemBase[]): ISearchDropdownLabel[] {
+    return itemBases.map((val: IItemBase) => ({ label: val.base, value: val }));
   }
 
   private removeItemModElement(event: React.MouseEvent<HTMLElement>): void {
@@ -309,7 +475,9 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
     let results: IBaseItem[] = [];
     let hasFiltered: boolean = false;
     const itemName: string = this.state.itemName.trim();
-    const baseName: string = this.state.itemBase.trim();
+    const baseName: string = this.state.itemBase !== null
+      ? this.state.itemBase.value.base.trim()
+      : '';
     if (!!itemName) {
       // filter item name
       results = this.nameFilter.filter(items, itemName);
@@ -360,7 +528,14 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
   }
 
   private onItemCategoryChange(itemType: ISearchDropdownLabel) {
-    this.setState({ itemType });
+    if (this.state.itemType !== null
+      && itemType !== null
+      && this.state.itemType.value === itemType.value) { return; }
+    this.setState({ itemBase: null, itemType });
+  }
+
+  private onItemBaseChange(itemBase: ISearchDropdownLabel | null) {
+    this.setState({ itemBase });
   }
 
   private onItemNameSuggestionValueChange(
@@ -368,13 +543,6 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
     payload: ChangeEvent): void {
     const itemName: string = payload.newValue;
     this.setState({ itemName });
-  }
-
-  private onItemBaseNameSuggestionValueChange(
-    event: React.ChangeEvent<HTMLInputElement>,
-    payload: ChangeEvent): void {
-    const itemBase: string = payload.newValue;
-    this.setState({ itemBase });
   }
 }
 

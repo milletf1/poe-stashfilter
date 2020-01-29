@@ -1,7 +1,7 @@
 import { ISearchDropdownLabel } from './../../components/search-dropdown/ISearchDropdownLabel';
 
 export interface ISearchFormState {
-  itemBase: string;
+  itemBase: ISearchDropdownLabel;
   itemName: string;
   itemType: ISearchDropdownLabel;
   searchButtonEnabled: boolean;
@@ -9,5 +9,4 @@ export interface ISearchFormState {
   modsMin: string[]; // number
   modsMax: string[]; // number
   itemNameSuggestions: string[];
-  itemBaseTypeSuggestions: string[];
 }
