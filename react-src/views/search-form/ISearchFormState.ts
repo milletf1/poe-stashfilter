@@ -8,4 +8,6 @@ export interface ISearchFormState {
   mods: ISearchDropdownLabel[];
   modsMin: string[]; // number
   modsMax: string[]; // number
+  itemNameSuggestions: string[];
+  itemBaseTypeSuggestions: string[];
 }

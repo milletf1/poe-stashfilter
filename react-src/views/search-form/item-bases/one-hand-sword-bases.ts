@@ -39,8 +39,8 @@ export const oneHandSwordBases: IItemBase[] = [
     type: ItemType.ONE_HAND_SWORD,
   },
   {
-    'base': 'Charan's Sword''
-    type: ItemType''.ONE_HAND_SWORD,
+    base: 'Charan\'s Sword',
+    type: ItemType.ONE_HAND_SWORD,
   },
   {
     base: 'Copper Sword',

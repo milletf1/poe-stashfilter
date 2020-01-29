@@ -38,72 +38,6 @@ import { IAppState } from '../../store/app/appState';
 import { ISearchFormProps } from './ISearchFormProps';
 import { ISearchFormState } from './ISearchFormState';
 
-const itemNameSuggestions: string[] = [];
-const itemBaseTypeSuggestions: string[] = [];
-
-const itemCategories: ISearchDropdownLabel[] = Object.keys(ItemType).map((val: string) => ({
-  label: ItemType[val],
-  value: ItemType[val],
-}));
-
-const mods: ISearchDropdownLabel[] = [];
-mods.push(...totalModRegexes.map((val: IMod) => ({
-  label: `[Total] ${val.label}`,
-  value: val,
-})));
-mods.push(...pseudoModRegexes.map((val: IMod) => ({
-  label: `[Pseudo] ${val.label}`,
-  value: val,
-})));
-mods.push(...explicitModRegexes.map((val: IMod) => ({
-  label: `[Explicit] ${val.label}`,
-  value: val,
-})));
-mods.push(...uniqueModRegexes.map((val: IMod) => ({
-  label: `[Unique] ${val.label}`,
-  value: val,
-})));
-mods.push(...mapModRegexes.map((val: IMod) => ({
-  label: `[Map] ${val.label}`,
-  value: val,
-})));
-mods.push(...abyssModRegexes.map((val: IMod) => ({
-  label: `[Abyss] ${val.label}`,
-  value: val,
-})));
-mods.push(...bestiaryModRegexes.map((val: IMod) => ({
-  label: `[Beastiary] ${val.label}`,
-  value: val,
-})));
-mods.push(...craftedModRegexes.map((val: IMod) => ({
-  label: `[Craft] ${val.label}`,
-  value: val,
-})));
-mods.push(...enchantmentModRegexes.map((val: IMod) => ({
-  label: `[Enchantment] ${val.label}`,
-  value: val,
-})));
-mods.push(...fracturedModRegexes.map((val: IMod) => ({
-  label: `[Fractured] ${val.label}`,
-  value: val,
-})));
-mods.push(...implicitModRegexes.map((val: IMod) => ({
-  label: `[Implicit] ${val.label}`,
-  value: val,
-})));
-mods.push(...leaguestoneModRegexes.map((val: IMod) => ({
-  label: `[Leaguestone] ${val.label}`,
-  value: val,
-})));
-mods.push(...organModRegexes.map((val: IMod) => ({
-  label: `[Organ] ${val.label}`,
-  value: val,
-})));
-mods.push(...propheciesModRegexes.map((val: IMod) => ({
-  label: `[Prophecy] ${val.label}`,
-  value: val,
-})));
-
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators({
   setSearchResults: accountActions.setSearchResults,
 }, dispatch);
@@ -124,7 +58,9 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
     super(props);
     this.state = {
       itemBase: '',
+      itemBaseTypeSuggestions: [],
       itemName: '',
+      itemNameSuggestions: [],
       itemType: null,
       mods: [null],
       modsMax: [undefined],
@@ -142,12 +78,50 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
     this.removeItemModElement = this.removeItemModElement.bind(this);
  }
 
+  private get mods(): ISearchDropdownLabel[] {
+    return [
+      ...totalModRegexes.map((val: IMod) => ({ label: `[Total] ${val.label}`, value: val })),
+      ...pseudoModRegexes.map((val: IMod) => ({ label: `[Pseudo] ${val.label}`, value: val })),
+      ...explicitModRegexes.map((val: IMod) => ({ label: `[Explicit] ${val.label}`, value: val })),
+      ...uniqueModRegexes.map((val: IMod) => ({ label: `[Unique] ${val.label}`, value: val })),
+      ...mapModRegexes.map((val: IMod) => ({ label: `[Map] ${val.label}`, value: val })),
+      ...abyssModRegexes.map((val: IMod) => ({ label: `[Abyss] ${val.label}`, value: val })),
+      ...bestiaryModRegexes.map((val: IMod) => ({ label: `[Beastiary] ${val.label}`, value: val })),
+      ...craftedModRegexes.map((val: IMod) => ({ label: `[Craft] ${val.label}`, value: val })),
+      ...enchantmentModRegexes.map((val: IMod) => ({
+        label: `[Enchantment] ${val.label}`,
+        value: val,
+      })),
+      ...fracturedModRegexes.map((val: IMod) => ({
+        label: `[Fractured] ${val.label}`,
+        value: val,
+      })),
+      ...implicitModRegexes.map((val: IMod) => ({ label: `[Implicit] ${val.label}`, value: val })),
+      ...leaguestoneModRegexes.map((val: IMod) => ({
+        label: `[Leaguestone] ${val.label}`,
+        value: val,
+      })),
+      ...organModRegexes.map((val: IMod) => ({ label: `[Organ] ${val.label}`, value: val })),
+      ...propheciesModRegexes.map((val: IMod) => ({
+        label: `[Prophecy] ${val.label}`,
+        value: val,
+      })),
+    ];
+  }
+
+  private get itemCategories(): ISearchDropdownLabel[] {
+    return Object.keys(ItemType).map((val: string) => ({
+      label: ItemType[val],
+      value: ItemType[val],
+    }));
+  }
+
   public render(): JSX.Element {
     return (
       <Grid container spacing={16}>
         <Grid item xs={12}>
           <AutocompleteTextBox
-            suggestions={itemNameSuggestions}
+            suggestions={this.state.itemNameSuggestions}
             value={this.state.itemName}
             placeholder='Name'
             onChange={this.onItemNameSuggestionValueChange.bind(this)}
@@ -155,7 +129,7 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
         </Grid>
         <Grid item xs={6}>
           <SearchDropdown
-            options={itemCategories}
+            options={this.itemCategories}
             placeholder='Category'
             value={this.state.itemType}
             onChange={this.onItemCategoryChange.bind(this)}
@@ -163,7 +137,7 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
         </Grid>
         <Grid item xs={6}>
           <AutocompleteTextBox
-            suggestions={itemBaseTypeSuggestions}
+            suggestions={this.state.itemBaseTypeSuggestions}
             value={this.state.itemBase}
             placeholder='Base'
             onChange={this.onItemBaseNameSuggestionValueChange.bind(this)}
@@ -177,7 +151,7 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
                   <Grid container item xs={12} spacing={16} key={key}>
                     <Grid item xs={9}>
                       <SearchDropdown
-                        options={mods}
+                        options={this.mods}
                         placeholder='Mod'
                         value={mod}
                         onChange={this.onModChange(index)} />
