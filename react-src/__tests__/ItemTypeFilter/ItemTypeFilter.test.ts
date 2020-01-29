@@ -621,6 +621,10 @@ describe('Item Type Filter tests', () => {
     if (!testItems[testItems.length - 1]) {
       throw new Error('failed to find expected item "Bestiary Orb" in test data');
     }
+    testItems.push(getTestItem(items, null, 'Amber Oil'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "Amber Oil" in test data');
+    }
     const filter: ItemTypeFilter = new ItemTypeFilter();
     const actual: IBaseItem[] = filter.filter(items, [ItemType.CURRENCY]);
     assertItemsFound(testItems, actual);
@@ -1195,6 +1199,10 @@ describe('Item Type Filter tests', () => {
     if (!testItems[testItems.length - 1]) {
       throw new Error('failed to find expected item "Sacrifice at Midnight" in test data');
     }
+    testItems.push(getTestItem(items, null, 'Amber Oil'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "Amber Oil" in test data');
+    }
     const types: ItemType[] = [ItemType.RING, ItemType.CURRENCY];
     const bases: IItemBase[] = [
       createIItemBase(ItemType.CURRENCY, 'Orb of Fusing'),
@@ -1213,6 +1221,19 @@ describe('Item Type Filter tests', () => {
     }
     const filter: ItemTypeFilter = new ItemTypeFilter();
     const itemBase: IItemBase = createIItemBase(ItemType.ORGAN, 'Heart');
+    const actual: IBaseItem[] = filter.filter(items, [itemBase]);
+
+    assertItemsFound(testItems, actual);
+  });
+
+  test('should return oils', () => {
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, null, 'Amber Oil'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('failed to find expected item "Amber Oil" in test data');
+    }
+    const filter: ItemTypeFilter = new ItemTypeFilter();
+    const itemBase: IItemBase = createIItemBase(ItemType.OIL, 'Amber Oil');
     const actual: IBaseItem[] = filter.filter(items, [itemBase]);
 
     assertItemsFound(testItems, actual);

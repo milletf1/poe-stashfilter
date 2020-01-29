@@ -41,5 +41,6 @@ export enum ItemType {
   RESONATOR = 'Resonator',
   FOSSIL = 'Fossil',
   BREACHSTONE = 'Breachstone',
+  OIL = 'Oil',
   ORGAN = 'Organ',
 }

@@ -100,3 +100,5 @@ export const BREACHSTONE_TEST_REGEX: RegExp =
 export const CURRENCY_TEST_REGEX: RegExp = /.*\/2DItems\/Currency\/(?!Bestiary(OrbFull|Trap\d)|ProphecyOrbRed|(?!Oils|Catalysts).+\/).+\.png/;
 /** Regex for checking metamorph organs */
 export const ORGAN_TEST_REGEX: RegExp = /.*\/2DItems\/Currency\/Metamorph/;
+/** Regex for checking oils */
+export const OIL_TEST_REGEX: RegExp = /.*\/2DItems\/Currency\/Oils/;

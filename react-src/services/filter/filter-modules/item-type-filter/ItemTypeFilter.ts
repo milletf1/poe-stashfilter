@@ -187,6 +187,8 @@ class ItemTypeFilter implements IFilterModule<ItemType[] | IItemBase[] | IItemFi
         return itemTypeTestRegExps.CURRENCY_TEST_REGEX.test(item.icon);
       case ItemType.ORGAN:
         return itemTypeTestRegExps.ORGAN_TEST_REGEX.test(item.icon);
+      case ItemType.OIL:
+        return itemTypeTestRegExps.OIL_TEST_REGEX.test(item.icon);
       default: return false;
     }
   }

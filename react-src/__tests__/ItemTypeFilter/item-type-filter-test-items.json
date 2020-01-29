@@ -3293,5 +3293,36 @@
     "x": 3,
     "y": 3,
     "inventoryId": "Stash7"
+  },
+  {
+    "verified": false,
+    "w": 1,
+    "h": 1,
+    "icon": "https:\/\/web.poecdn.com\/image\/Art\/2DItems\/Currency\/Oils\/AmberOil.png?scale=1&w=1&h=1&v=bb68a14adbd47ebf3cd4f3e2d1c00d86",
+    "league": "Metamorph",
+    "id": "81f8c2437302f6e752ceb7db394d07d274b8a5d13beeb848b4bc3fefcc7d1b69",
+    "name": "",
+    "typeLine": "Amber Oil",
+    "identified": true,
+    "ilvl": 0,
+    "properties": [
+      {
+        "name": "Stack Size",
+        "values": [
+          [
+            "23\/10",
+            0
+          ]
+        ],
+        "displayMode": 0
+      }
+    ],
+    "descrText": "Can be combined with other Oils at Cassia to Enchant Rings or Amulets, or to modify Blighted Maps.",
+    "frameType": 5,
+    "stackSize": 23,
+    "maxStackSize": 5000,
+    "x": 42,
+    "y": 0,
+    "inventoryId": "Stash2"
   }
 ]
