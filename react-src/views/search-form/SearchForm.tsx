@@ -1,4 +1,4 @@
-import { Button, Grid, Input, withTheme } from '@material-ui/core';
+import { Button, FormLabel, Grid, Input, Typography, withStyles, withTheme } from '@material-ui/core';
 import * as React from 'react';
 import { ChangeEvent } from 'react-autosuggest';
 import { connect } from 'react-redux';
@@ -8,7 +8,7 @@ import AutocompleteTextBox from '../../components/autocomplete-textbox/Autocompl
 import { ISearchDropdownLabel } from '../../components/search-dropdown/ISearchDropdownLabel';
 import SearchDropdown from '../../components/search-dropdown/SearchDropdown';
 import { ILeague } from '../../models/ILeague';
-import { IBaseItem, isIBaseItem } from '../../models/items/IBaseItem';
+import { IBaseItem } from '../../models/items/IBaseItem';
 import { ISearchResult } from '../../models/search/ISearchResult';
 import { IStashTabColour } from '../../models/stash-tabs/IStashTabMetadata';
 import { BrowseItemCategory } from '../../models/ui-state/BrowseItemCategory';
@@ -87,6 +87,10 @@ const mapStateToProps = (state: IAppState, props: any) => ({
   searchResults: state.activeAccount.searchResults,
 });
 
+const modRowStyle: React.CSSProperties = { boxSizing: 'content-box' };
+const modRowInputStyle: React.CSSProperties = { width: '100%' };
+const dpsInputStyle: React.CSSProperties = { margin: '4px' };
+
 class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
 
   private nameFilter: NameFilter;
@@ -117,7 +121,7 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
     this.onItemNameSuggestionValueChange = this.onItemNameSuggestionValueChange.bind(this);
     this.onItemCategoryChange = this.onItemCategoryChange.bind(this);
     this.onItemBaseChange = this.onItemBaseChange.bind(this);
- }
+  }
 
   private get mods(): ISearchDropdownLabel[] {
     return [
@@ -192,7 +196,7 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
           return 0;
         }));
       case ItemType.BOW:
-          return this.convertIItemBasesToISearchDropdownLabel(bowBases);
+        return this.convertIItemBasesToISearchDropdownLabel(bowBases);
       case ItemType.CLAW:
         return this.convertIItemBasesToISearchDropdownLabel(clawBases);
       case ItemType.DAGGER:
@@ -281,77 +285,108 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
   public render(): JSX.Element {
     return (
       <Grid container spacing={16}>
-        <Grid item xs={12}>
+        <Grid item xs={4}>
           <AutocompleteTextBox
             suggestions={this.state.itemNameSuggestions}
             value={this.state.itemName}
             placeholder='Name'
-            onChange={this.onItemNameSuggestionValueChange}
-          />
+            onChange={this.onItemNameSuggestionValueChange} />
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={3}>
           <SearchDropdown
             options={this.itemCategories}
             placeholder='Category'
             value={this.state.itemType}
-            onChange={this.onItemCategoryChange}
-          />
+            onChange={this.onItemCategoryChange} />
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={3}>
           <SearchDropdown
             options={this.itemBases}
             placeholder='Base'
             value={this.state.itemBase}
-            onChange={this.onItemBaseChange}
-          />
+            onChange={this.onItemBaseChange} />
         </Grid>
-        {
-          this.state.mods.length > 0
-            ?  this.state.mods.map((mod: ISearchDropdownLabel, index: number) => {
-                const key: string = `${index}-${new Date().getTime()}`;
-                return (
-                  <Grid container item xs={12} spacing={16} key={key}>
-                    <Grid item xs={9}>
-                      <SearchDropdown
-                        options={this.mods}
-                        placeholder='Mod'
-                        value={mod}
-                        onChange={this.onModChange(index)} />
-                    </Grid>
-                    <Grid item xs={1}>
-                      <Input
-                        id={`mods-min-${index}`}
-                        placeholder='min'
-                        value={this.state.modsMin[index]}
-                        onChange={this.onModMinChange} />
-                    </Grid>
-                    <Grid item xs={1}>
-                      <Input
-                        id={`mods-max-${index}`}
-                        placeholder='max'
-                        value={this.state.modsMax[index]}
-                        onChange={this.onModMaxChange} />
-                    </Grid>
-                    <Grid item xs={1}>
-                    <Button
-                      id={`mods-delete-${index}`}
-                      color='secondary'
-                      onClick={this.removeItemModElement}>
-                      Remove
-                    </Button>
-                    </Grid>
-                  </Grid>
-                );
-              })
-            : <Grid item xs={12}></Grid>
-        }
-        <Grid item xs={12}>
+        <Grid container item xs={2} justify='flex-end'>
           <Button
             variant='contained'
             color='secondary'
             onClick={this.onAddModClick}>
             Add mod
           </Button>
+        </Grid>
+        {
+          this.state.mods.length > 0
+            ? this.state.mods.map((mod: ISearchDropdownLabel, index: number) => {
+              const key: string = `${index}-${new Date().getTime()}`;
+
+              return (
+                <Grid
+                  container
+                  item xs={12}
+                  spacing={16}
+                  key={key}
+                  style={modRowStyle}>
+                  <Grid item xs={4}>
+                    <SearchDropdown
+                      options={this.mods}
+                      placeholder='Mod'
+                      value={mod}
+                      onChange={this.onModChange(index)} />
+                  </Grid>
+                  <Grid item xs={3}>
+                    <Input
+                      id={`mods-min-${index}`}
+                      placeholder='min'
+                      value={this.state.modsMin[index]}
+                      onChange={this.onModMinChange}
+                      style={modRowInputStyle} />
+                  </Grid>
+                  <Grid item xs={3}>
+                    <Input
+                      id={`mods-max-${index}`}
+                      placeholder='max'
+                      value={this.state.modsMax[index]}
+                      onChange={this.onModMaxChange}
+                      style={modRowInputStyle} />
+                  </Grid>
+                  <Grid container item xs={2} justify='flex-end'>
+                    <Button
+                      id={`mods-delete-${index}`}
+                      color='secondary'
+                      onClick={this.removeItemModElement}>
+                      Remove
+                    </Button>
+                  </Grid>
+                </Grid>
+              );
+            })
+            : <Grid item xs={12}></Grid>
+        }
+        <Grid container item xs={6} spacing={16} >
+          <Grid item xs={12} style={{ paddingBottom: 0 }}>
+            <Typography variant='h6'>DPS</Typography>
+          </Grid>
+          <Grid container item xs={3} alignItems='center' style={{ paddingTop: 0 }}>
+            <Typography variant='body2'>Physical DPS</Typography>
+          </Grid>
+          <Grid item xs={9} style={{ paddingTop: 0 }}>
+            <Input placeholder='min' style={dpsInputStyle} />
+            <Input placeholder='max' style={dpsInputStyle} />
+          </Grid>
+          <Grid container item xs={3} alignItems='center'>
+            <Typography variant='body2'>Elemental DPS</Typography>
+          </Grid>
+          <Grid item xs={9}>
+            <Input placeholder='min' style={dpsInputStyle} />
+            <Input placeholder='max' style={dpsInputStyle} />
+          </Grid>
+          <Grid container item xs={3} alignItems='center'>
+            <Typography variant='body2'>Total DPS</Typography>
+          </Grid>
+          <Grid item xs={9}>
+            <Input placeholder='min' style={dpsInputStyle} />
+            <Input placeholder='max' style={dpsInputStyle} />
+          </Grid>
         </Grid>
         <Grid item xs={12}>
           <Button
@@ -489,10 +524,10 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
       if (!!baseName) {
         // filter item base
         const itemBase: IItemBase = { type: itemType, base: baseName };
-        results = this.itemTypeFilter.filter(hasFiltered ? results : items, [ itemBase ]);
+        results = this.itemTypeFilter.filter(hasFiltered ? results : items, [itemBase]);
       } else {
         // filter item type
-        results = this.itemTypeFilter.filter(hasFiltered ? results : items, [ itemType ]);
+        results = this.itemTypeFilter.filter(hasFiltered ? results : items, [itemType]);
       }
       hasFiltered = true;
       if (results.length === 0) { return results; }
