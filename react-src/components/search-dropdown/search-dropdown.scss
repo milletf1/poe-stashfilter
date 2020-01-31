@@ -4,6 +4,9 @@
 
     .fast-option {
       color: #fff;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
 
       &:hover {
         background: rgba(255, 255, 255, 0.1);

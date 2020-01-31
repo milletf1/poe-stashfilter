@@ -87,10 +87,6 @@ const mapStateToProps = (state: IAppState, props: any) => ({
   searchResults: state.activeAccount.searchResults,
 });
 
-const modRowStyle: React.CSSProperties = { boxSizing: 'content-box' };
-const modRowInputStyle: React.CSSProperties = { width: '100%' };
-const dpsInputStyle: React.CSSProperties = { margin: '4px' };
-
 class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
 
   private nameFilter: NameFilter;
@@ -285,28 +281,36 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
   public render(): JSX.Element {
     return (
       <Grid container spacing={16}>
-        <Grid item xs={4}>
+        <Grid item xs={5}>
           <AutocompleteTextBox
             suggestions={this.state.itemNameSuggestions}
             value={this.state.itemName}
             placeholder='Name'
             onChange={this.onItemNameSuggestionValueChange} />
         </Grid>
-        <Grid item xs={3}>
+        <Grid item xs={2}>
           <SearchDropdown
             options={this.itemCategories}
             placeholder='Category'
             value={this.state.itemType}
             onChange={this.onItemCategoryChange} />
         </Grid>
-        <Grid item xs={3}>
+        <Grid item xs={2}>
           <SearchDropdown
             options={this.itemBases}
             placeholder='Base'
             value={this.state.itemBase}
             onChange={this.onItemBaseChange} />
         </Grid>
-        <Grid container item xs={2} justify='flex-end'>
+        <Grid container item xs={3} justify='flex-end'>
+          <Button
+            variant='contained'
+            color='primary'
+            disabled={!this.state.searchButtonEnabled}
+            onClick={this.onSearchClick}
+            style={{ marginRight: '16px' }}>
+            Search
+          </Button>
           <Button
             variant='contained'
             color='secondary'
@@ -325,31 +329,33 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
                   item xs={12}
                   spacing={16}
                   key={key}
-                  style={modRowStyle}>
-                  <Grid item xs={4}>
+                  style={{ boxSizing: 'content-box' }}>
+                  <Grid item xs={7}>
                     <SearchDropdown
                       options={this.mods}
                       placeholder='Mod'
                       value={mod}
                       onChange={this.onModChange(index)} />
                   </Grid>
-                  <Grid item xs={3}>
-                    <Input
-                      id={`mods-min-${index}`}
-                      placeholder='min'
-                      value={this.state.modsMin[index]}
-                      onChange={this.onModMinChange}
-                      style={modRowInputStyle} />
+                  <Grid container item xs={2} spacing={0}>
+                    <Grid item xs={6}>
+                      <Input
+                        id={`mods-min-${index}`}
+                        placeholder='min'
+                        value={this.state.modsMin[index]}
+                        onChange={this.onModMinChange}
+                        style={{ marginRight: '8px' }} />
+                    </Grid>
+                    <Grid item xs={6}>
+                      <Input
+                        id={`mods-max-${index}`}
+                        placeholder='max'
+                        value={this.state.modsMax[index]}
+                        onChange={this.onModMaxChange}
+                        style={{ marginLeft: '8px' }} />
+                    </Grid>
                   </Grid>
-                  <Grid item xs={3}>
-                    <Input
-                      id={`mods-max-${index}`}
-                      placeholder='max'
-                      value={this.state.modsMax[index]}
-                      onChange={this.onModMaxChange}
-                      style={modRowInputStyle} />
-                  </Grid>
-                  <Grid container item xs={2} justify='flex-end'>
+                  <Grid container item xs={3} justify='flex-end'>
                     <Button
                       id={`mods-delete-${index}`}
                       color='secondary'
@@ -369,23 +375,35 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
           <Grid container item xs={3} alignItems='center' style={{ paddingTop: 0 }}>
             <Typography variant='body2'>Physical DPS</Typography>
           </Grid>
-          <Grid item xs={9} style={{ paddingTop: 0 }}>
-            <Input placeholder='min' style={dpsInputStyle} />
-            <Input placeholder='max' style={dpsInputStyle} />
+          <Grid container item xs={9} style={{ paddingTop: 0 }} spacing={0}>
+            <Grid item xs={6}>
+              <Input placeholder='min' style={{ marginRight: '8px' }} />
+            </Grid>
+            <Grid item xs={6}>
+              <Input placeholder='max' style={{ marginLeft: '8px' }} />
+            </Grid>
           </Grid>
           <Grid container item xs={3} alignItems='center'>
             <Typography variant='body2'>Elemental DPS</Typography>
           </Grid>
-          <Grid item xs={9}>
-            <Input placeholder='min' style={dpsInputStyle} />
-            <Input placeholder='max' style={dpsInputStyle} />
+          <Grid container item xs={9} spacing={0}>
+            <Grid item xs={6}>
+              <Input placeholder='min' style={{ marginRight: '8px' }} />
+            </Grid>
+            <Grid item xs={6}>
+              <Input placeholder='max' style={{ marginLeft: '8px' }} />
+            </Grid>
           </Grid>
           <Grid container item xs={3} alignItems='center'>
             <Typography variant='body2'>Total DPS</Typography>
           </Grid>
-          <Grid item xs={9}>
-            <Input placeholder='min' style={dpsInputStyle} />
-            <Input placeholder='max' style={dpsInputStyle} />
+          <Grid container item xs={9} spacing={0}>
+            <Grid item xs={6}>
+              <Input placeholder='min' style={{ marginRight: '8px' }} />
+            </Grid>
+            <Grid item xs={6}>
+              <Input placeholder='max' style={{ marginLeft: '8px' }} />
+            </Grid>
           </Grid>
         </Grid>
         <Grid item xs={12}>
