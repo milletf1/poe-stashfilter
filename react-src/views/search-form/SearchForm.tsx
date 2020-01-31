@@ -96,14 +96,20 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
   constructor(props) {
     super(props);
     this.state = {
+      elementalDpsMax: '',
+      elementalDpsMin: '',
       itemBase: null,
       itemName: '',
       itemNameSuggestions: [],
       itemType: null,
       mods: [null],
-      modsMax: [undefined],
-      modsMin: [undefined],
+      modsMax: [''],
+      modsMin: [''],
+      physicalDpsMax: '',
+      physicalDpsMin: '',
       searchButtonEnabled: true,
+      totalDpsMax: '',
+      totalDpsMin: '',
     };
     this.nameFilter = new NameFilter();
     this.itemTypeFilter = new ItemTypeFilter();
@@ -117,6 +123,12 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
     this.onItemNameSuggestionValueChange = this.onItemNameSuggestionValueChange.bind(this);
     this.onItemCategoryChange = this.onItemCategoryChange.bind(this);
     this.onItemBaseChange = this.onItemBaseChange.bind(this);
+    this.onTotalDpsMinChange = this.onTotalDpsMinChange.bind(this);
+    this.onTotalDpsMaxChange = this.onTotalDpsMaxChange.bind(this);
+    this.onPhysicalDpsMinChange = this.onPhysicalDpsMinChange.bind(this);
+    this.onPhysicalDpsMaxChange = this.onPhysicalDpsMaxChange.bind(this);
+    this.onElementalDpsMinChange = this.onElementalDpsMinChange.bind(this);
+    this.onElementalDpsMaxChange = this.onElementalDpsMaxChange.bind(this);
   }
 
   private get mods(): ISearchDropdownLabel[] {
@@ -377,10 +389,18 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
           </Grid>
           <Grid container item xs={9} style={{ paddingTop: 0 }} spacing={0}>
             <Grid item xs={6}>
-              <Input placeholder='min' style={{ marginRight: '8px' }} />
+              <Input
+                placeholder='min'
+                value={this.state.physicalDpsMin}
+                onChange={this.onPhysicalDpsMinChange}
+                style={{ marginRight: '8px' }} />
             </Grid>
             <Grid item xs={6}>
-              <Input placeholder='max' style={{ marginLeft: '8px' }} />
+              <Input
+                placeholder='max'
+                value={this.state.physicalDpsMax}
+                onChange={this.onPhysicalDpsMaxChange}
+                style={{ marginLeft: '8px' }} />
             </Grid>
           </Grid>
           <Grid container item xs={3} alignItems='center'>
@@ -388,10 +408,18 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
           </Grid>
           <Grid container item xs={9} spacing={0}>
             <Grid item xs={6}>
-              <Input placeholder='min' style={{ marginRight: '8px' }} />
+              <Input
+                placeholder='min'
+                value={this.state.elementalDpsMin}
+                onChange={this.onElementalDpsMinChange}
+                style={{ marginRight: '8px' }} />
             </Grid>
             <Grid item xs={6}>
-              <Input placeholder='max' style={{ marginLeft: '8px' }} />
+              <Input
+                placeholder='max'
+                value={this.state.elementalDpsMax}
+                onChange={this.onElementalDpsMaxChange}
+                style={{ marginLeft: '8px' }} />
             </Grid>
           </Grid>
           <Grid container item xs={3} alignItems='center'>
@@ -399,10 +427,18 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
           </Grid>
           <Grid container item xs={9} spacing={0}>
             <Grid item xs={6}>
-              <Input placeholder='min' style={{ marginRight: '8px' }} />
+              <Input
+                placeholder='min'
+                value={this.state.totalDpsMin}
+                onChange={this.onTotalDpsMinChange}
+                style={{ marginRight: '8px' }} />
             </Grid>
             <Grid item xs={6}>
-              <Input placeholder='max' style={{ marginLeft: '8px' }} />
+              <Input
+                placeholder='max'
+                value={this.state.totalDpsMax}
+                onChange={this.onTotalDpsMaxChange}
+                style={{ marginLeft: '8px' }} />
             </Grid>
           </Grid>
         </Grid>
@@ -438,6 +474,42 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
         modsMin: stateModsMin,
       });
     }
+  }
+
+  private onTotalDpsMinChange(
+    event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
+  ): void {
+    console.log(event.target.value);
+  }
+
+  private onTotalDpsMaxChange(
+    event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
+  ): void {
+    console.log(event.target.value);
+  }
+
+  private onPhysicalDpsMinChange(
+    event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
+  ): void {
+    console.log(event.target.value);
+  }
+
+  private onPhysicalDpsMaxChange(
+    event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
+  ): void {
+    console.log(event.target.value);
+  }
+
+  private onElementalDpsMinChange(
+    event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
+  ): void {
+    console.log(event.target.value);
+  }
+
+  private onElementalDpsMaxChange(
+    event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
+  ): void {
+    console.log(event.target.value);
   }
 
   private onModMinChange(event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>): void {
@@ -556,17 +628,13 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
       if (this.state.mods[i] != null) {
         const mod: IModFilterParams = { mod: this.state.mods[i].value };
 
-        if (this.state.modsMin[i] != null) {
-          const min: number = parseInt(this.state.modsMin[i], 10);
-          if (!isNaN(min)) {
-            mod.min = min;
-          }
+        const min: number = parseInt(this.state.modsMin[i], 10);
+        if (!isNaN(min)) {
+          mod.min = min;
         }
-        if (this.state.modsMax[i] != null) {
-          const max: number = parseInt(this.state.modsMax[i], 10);
-          if (!isNaN(max)) {
-            mod.max = max;
-          }
+        const max: number = parseInt(this.state.modsMax[i], 10);
+        if (!isNaN(max)) {
+          mod.max = max;
         }
         if (mod.min != null || mod.max != null || mod.mod.label.indexOf('#') === -1) {
           modFilterParams.push(mod);
