@@ -10,7 +10,7 @@ export interface IGear extends ISocketableItem {
   /** Corrupted gear */
   corrupted?: boolean;
   /** Properties */
-  properties: IItemProperty[];
+  properties?: IItemProperty[];
   /** Requirements */
   requirements: IItemProperty[];
   /** Flavour text */

@@ -12,6 +12,8 @@ import { IBaseItem } from '../../models/items/IBaseItem';
 import { ISearchResult } from '../../models/search/ISearchResult';
 import { IStashTabColour } from '../../models/stash-tabs/IStashTabMetadata';
 import { BrowseItemCategory } from '../../models/ui-state/BrowseItemCategory';
+import DpsFilter from '../../services/filter/filter-modules/dps-filter/DpsFilter';
+import { DpsType, IDpsFilterParams } from '../../services/filter/filter-modules/dps-filter/IDpsFilterParams';
 import { IItemBase } from '../../services/filter/filter-modules/item-type-filter/IItemBase';
 import { ItemType } from '../../services/filter/filter-modules/item-type-filter/ItemType';
 import ItemTypeFilter from '../../services/filter/filter-modules/item-type-filter/ItemTypeFilter';
@@ -92,6 +94,7 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
   private nameFilter: NameFilter;
   private itemTypeFilter: ItemTypeFilter;
   private modFilter: ModFilter;
+  private dpsFilter: DpsFilter;
 
   constructor(props) {
     super(props);
@@ -114,6 +117,7 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
     this.nameFilter = new NameFilter();
     this.itemTypeFilter = new ItemTypeFilter();
     this.modFilter = new ModFilter();
+    this.dpsFilter = new DpsFilter();
     this.onSearchClick = this.onSearchClick.bind(this);
     this.onAddModClick = this.onAddModClick.bind(this);
     this.onModChange = this.onModChange.bind(this);
@@ -129,6 +133,8 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
     this.onPhysicalDpsMaxChange = this.onPhysicalDpsMaxChange.bind(this);
     this.onElementalDpsMinChange = this.onElementalDpsMinChange.bind(this);
     this.onElementalDpsMaxChange = this.onElementalDpsMaxChange.bind(this);
+
+    this.props.setSearchResults([]);
   }
 
   private get mods(): ISearchDropdownLabel[] {
@@ -331,54 +337,51 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
           </Button>
         </Grid>
         {
-          this.state.mods.length > 0
-            ? this.state.mods.map((mod: ISearchDropdownLabel, index: number) => {
-              const key: string = `${index}-${new Date().getTime()}`;
-
-              return (
-                <Grid
-                  container
-                  item xs={12}
-                  spacing={16}
-                  key={key}
-                  style={{ boxSizing: 'content-box' }}>
-                  <Grid item xs={7}>
-                    <SearchDropdown
-                      options={this.mods}
-                      placeholder='Mod'
-                      value={mod}
-                      onChange={this.onModChange(index)} />
+          this.state.mods.map((mod: ISearchDropdownLabel, index: number) => {
+            const key: string = `${index}-${new Date().getTime()}`;
+            return (
+              <Grid
+                container
+                item xs={12}
+                spacing={16}
+                key={key}
+                style={{ boxSizing: 'content-box' }}>
+                <Grid item xs={7}>
+                  <SearchDropdown
+                    options={this.mods}
+                    placeholder='Mod'
+                    value={mod}
+                    onChange={this.onModChange(index)} />
+                </Grid>
+                <Grid container item xs={2} spacing={0}>
+                  <Grid item xs={6}>
+                    <Input
+                      id={`mods-min-${index}`}
+                      placeholder='min'
+                      value={this.state.modsMin[index]}
+                      onChange={this.onModMinChange}
+                      style={{ marginRight: '8px' }} />
                   </Grid>
-                  <Grid container item xs={2} spacing={0}>
-                    <Grid item xs={6}>
-                      <Input
-                        id={`mods-min-${index}`}
-                        placeholder='min'
-                        value={this.state.modsMin[index]}
-                        onChange={this.onModMinChange}
-                        style={{ marginRight: '8px' }} />
-                    </Grid>
-                    <Grid item xs={6}>
-                      <Input
-                        id={`mods-max-${index}`}
-                        placeholder='max'
-                        value={this.state.modsMax[index]}
-                        onChange={this.onModMaxChange}
-                        style={{ marginLeft: '8px' }} />
-                    </Grid>
-                  </Grid>
-                  <Grid container item xs={3} justify='flex-end'>
-                    <Button
-                      id={`mods-delete-${index}`}
-                      color='secondary'
-                      onClick={this.removeItemModElement}>
-                      Remove
-                    </Button>
+                  <Grid item xs={6}>
+                    <Input
+                      id={`mods-max-${index}`}
+                      placeholder='max'
+                      value={this.state.modsMax[index]}
+                      onChange={this.onModMaxChange}
+                      style={{ marginLeft: '8px' }} />
                   </Grid>
                 </Grid>
-              );
-            })
-            : <Grid item xs={12}></Grid>
+                <Grid container item xs={3} justify='flex-end'>
+                  <Button
+                    id={`mods-delete-${index}`}
+                    color='secondary'
+                    onClick={this.removeItemModElement}>
+                    Remove
+                    </Button>
+                </Grid>
+              </Grid>
+            );
+          })
         }
         <Grid container item xs={6} spacing={16} >
           <Grid item xs={12} style={{ paddingBottom: 0 }}>
@@ -442,15 +445,6 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
             </Grid>
           </Grid>
         </Grid>
-        <Grid item xs={12}>
-          <Button
-            variant='contained'
-            color='primary'
-            disabled={!this.state.searchButtonEnabled}
-            onClick={this.onSearchClick}>
-            Search
-          </Button>
-        </Grid>
       </Grid>
     );
   }
@@ -479,67 +473,71 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
   private onTotalDpsMinChange(
     event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
   ): void {
-    console.log(event.target.value);
+    const totalDpsMin: string = event.target.value;
+    this.setState({ totalDpsMin });
   }
 
   private onTotalDpsMaxChange(
     event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
   ): void {
-    console.log(event.target.value);
+    const totalDpsMax: string = event.target.value;
+    this.setState({ totalDpsMax });
   }
 
   private onPhysicalDpsMinChange(
     event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
   ): void {
-    console.log(event.target.value);
+    const physicalDpsMin: string = event.target.value;
+    this.setState({ physicalDpsMin });
   }
 
   private onPhysicalDpsMaxChange(
     event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
   ): void {
-    console.log(event.target.value);
+    const physicalDpsMax: string = event.target.value;
+    this.setState({ physicalDpsMax });
   }
 
   private onElementalDpsMinChange(
     event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
   ): void {
-    console.log(event.target.value);
+    const elementalDpsMin: string = event.target.value;
+    this.setState({ elementalDpsMin });
   }
 
   private onElementalDpsMaxChange(
     event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
   ): void {
-    console.log(event.target.value);
+    const elementalDpsMax: string = event.target.value;
+    this.setState({ elementalDpsMax });
   }
 
   private onModMinChange(event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>): void {
     const elementId: string = event.target.id;
     const index: number = parseInt(elementId.split('-')[2], 10);
-    const stateModsMin: string[] = this.state.modsMin;
+    const modsMin: string[] = this.state.modsMin;
     const selectStart: number = event.target.selectionStart;
     const selectEnd: number = event.target.selectionEnd;
-    stateModsMin[index] = event.target.value;
-    this.setState({ modsMin: stateModsMin });
-    setTimeout(() => {
-      const inputEl: HTMLInputElement = document.getElementById(elementId) as HTMLInputElement;
-      inputEl.focus();
-      inputEl.setSelectionRange(selectStart, selectEnd);
-    });
+    modsMin[index] = event.target.value;
+    this.setState({ modsMin });
+    setTimeout(() => this.focusInputElement(elementId, selectStart, selectEnd));
   }
 
   private onModMaxChange(event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>): void {
     const elementId: string = event.target.id;
     const index: number = parseInt(elementId.split('-')[2], 10);
-    const stateModsMax: string[] = this.state.modsMax;
+    const modsMax: string[] = this.state.modsMax;
     const selectStart: number = event.target.selectionStart;
     const selectEnd: number = event.target.selectionEnd;
-    stateModsMax[index] = event.target.value;
-    this.setState({ modsMax: stateModsMax });
-    setTimeout(() => {
-      const inputEl: HTMLInputElement = document.getElementById(elementId) as HTMLInputElement;
-      inputEl.focus();
-      inputEl.setSelectionRange(selectStart, selectEnd);
-    });
+    modsMax[index] = event.target.value;
+    this.setState({ modsMax });
+    setTimeout(() => this.focusInputElement(elementId, selectStart, selectEnd));
+  }
+
+  private focusInputElement(elementId: string, selectStart: number, selectEnd: number): void {
+    const inputEl: HTMLInputElement = document.getElementById(elementId) as HTMLInputElement;
+    inputEl.focus();
+    inputEl.setSelectionRange(selectStart, selectEnd);
   }
 
   private onModChange(index: number): (mod: ISearchDropdownLabel) => void {
@@ -598,54 +596,73 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
 
   private filterItems(items: IBaseItem[]): IBaseItem[] {
     let results: IBaseItem[] = [];
-    let hasFiltered: boolean = false;
+    results = this.filterName(items);
+    results = this.filterItemTypeAndBase(results);
+    results = this.filterDps(results);
+    return this.filterItemMods(results);
+  }
+
+  private filterName(items: IBaseItem[]): IBaseItem[] {
     const itemName: string = this.state.itemName.trim();
-    const baseName: string = this.state.itemBase !== null
-      ? this.state.itemBase.value.base.trim()
-      : '';
-    if (!!itemName) {
-      // filter item name
-      results = this.nameFilter.filter(items, itemName);
-      hasFiltered = true;
-      if (results.length === 0) { return results; }
+    return !!itemName ? this.nameFilter.filter(items, itemName) : items;
+  }
+
+  private filterItemTypeAndBase(items: IBaseItem[]): IBaseItem[] {
+    if (this.state.itemBase !== null) {
+      return this.itemTypeFilter.filter(items, [this.state.itemBase.value]);
     }
     if (this.state.itemType !== null) {
-      const itemType: ItemType = this.state.itemType.value as ItemType;
-      if (!!baseName) {
-        // filter item base
-        const itemBase: IItemBase = { type: itemType, base: baseName };
-        results = this.itemTypeFilter.filter(hasFiltered ? results : items, [itemBase]);
-      } else {
-        // filter item type
-        results = this.itemTypeFilter.filter(hasFiltered ? results : items, [itemType]);
-      }
-      hasFiltered = true;
-      if (results.length === 0) { return results; }
+      return this.itemTypeFilter.filter(items, [this.state.itemType.value]);
     }
-    // filter mods
+    return items;
+  }
+
+  private filterItemMods(items: IBaseItem[]): IBaseItem[] {
     const modFilterParams: IModFilterParams[] = [];
     for (let i = 0; i < this.state.mods.length; i++) {
       if (this.state.mods[i] != null) {
         const mod: IModFilterParams = { mod: this.state.mods[i].value };
-
         const min: number = parseInt(this.state.modsMin[i], 10);
-        if (!isNaN(min)) {
-          mod.min = min;
-        }
         const max: number = parseInt(this.state.modsMax[i], 10);
-        if (!isNaN(max)) {
-          mod.max = max;
-        }
+        if (!isNaN(min)) { mod.min = min; }
+        if (!isNaN(max)) { mod.max = max; }
         if (mod.min != null || mod.max != null || mod.mod.label.indexOf('#') === -1) {
           modFilterParams.push(mod);
         }
       }
     }
-    if (modFilterParams.length > 0) {
-      results = this.modFilter.filter(hasFiltered ? results : items, modFilterParams);
-      hasFiltered = true;
+    return modFilterParams.length > 0 ? this.modFilter.filter(items, modFilterParams) : items;
+  }
+
+  private filterDps(items: IBaseItem[]): IBaseItem[] {
+    const dpsFilterParams: IDpsFilterParams[] = [];
+    const minTotal: number = parseInt(this.state.totalDpsMin, 10);
+    const maxTotal: number = parseInt(this.state.totalDpsMax, 10);
+    const minElemental: number = parseInt(this.state.elementalDpsMin, 10);
+    const maxElemental: number = parseInt(this.state.elementalDpsMax, 10);
+    const minPhysical: number = parseInt(this.state.physicalDpsMin, 10);
+    const maxPhysical: number = parseInt(this.state.physicalDpsMax, 10);
+
+    if (!isNaN(minTotal) || !isNaN(maxTotal)) {
+      const totalParams: IDpsFilterParams = { type: DpsType.ANY };
+      if (!isNaN(minTotal)) { totalParams.min = minTotal; }
+      if (!isNaN(maxTotal)) { totalParams.max = maxTotal; }
+      dpsFilterParams.push(totalParams);
     }
-    return results;
+    if (!isNaN(minElemental) || !isNaN(maxElemental)) {
+      const elementalParams: IDpsFilterParams = { type: DpsType.ELEMENTAL };
+      if (!isNaN(minElemental)) { elementalParams.min = minElemental; }
+      if (!isNaN(maxElemental)) { elementalParams.max = maxElemental; }
+      dpsFilterParams.push(elementalParams);
+    }
+    if (!isNaN(minPhysical) || !isNaN(maxPhysical)) {
+      const physicalParams: IDpsFilterParams = { type: DpsType.PHYSICAL };
+      if (!isNaN(minPhysical)) { physicalParams.min = minPhysical; }
+      if (!isNaN(maxPhysical)) { physicalParams.max = maxPhysical; }
+      dpsFilterParams.push(physicalParams);
+    }
+
+    return dpsFilterParams.length > 0 ? this.dpsFilter.filter(items, dpsFilterParams) : items;
   }
 
   private onItemCategoryChange(itemType: ISearchDropdownLabel) {

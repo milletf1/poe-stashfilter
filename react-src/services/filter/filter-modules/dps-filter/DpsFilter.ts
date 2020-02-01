@@ -138,6 +138,7 @@ class DpsFilter implements IFilterModule<IDpsFilterParams | IDpsFilterParams[]> 
    * @param item The `IGear` instance to calculate elemental dps for
    */
   private calculateElementalDps(item: IGear): number {
+    if (item.properties == null) { return 0; }
     const damageProp: IItemProperty = item.properties
     .find((prop: IItemProperty) => prop.name === ELEMENTAL_DAMAGE_PROP_NAME);
     if (!damageProp) { return 0; }
@@ -166,6 +167,7 @@ class DpsFilter implements IFilterModule<IDpsFilterParams | IDpsFilterParams[]> 
    * @param item The `IGear` instance to calculate physical dps for
    */
   private calculatePhysicalDps(item: IGear): number {
+    if (item.properties == null) { return 0; }
     const damageProp: IItemProperty = item.properties
       .find((prop: IItemProperty) => prop.name === PHYSICAL_DAMAGE_PROP_NAME);
     if (!damageProp) { return 0; }
@@ -202,6 +204,7 @@ class DpsFilter implements IFilterModule<IDpsFilterParams | IDpsFilterParams[]> 
    * @param item The `IGear` instance to calculate chaos dps for
    */
   private calculateChaosDps(item: IGear): number {
+    if (item.properties == null) { return 0; }
     const damageProp: IItemProperty = item.properties
     .find((prop: IItemProperty) => prop.name === CHAOS_DAMAGE_PROP_NAME);
     if (!damageProp) { return 0; }
