@@ -78,6 +78,7 @@ import { twoHandAxeBases } from './item-bases/two-hand-axe-bases';
 import { twoHandMaceBases } from './item-bases/two-hand-mace-bases';
 import { twoHandSwordBases } from './item-bases/two-hand-sword-bases';
 import { wandBases } from './item-bases/wand-bases';
+import { itemNames } from './item-names';
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators({
   setSearchResults: accountActions.setSearchResults,
@@ -103,7 +104,8 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
       elementalDpsMin: '',
       itemBase: null,
       itemName: '',
-      itemNameSuggestions: [],
+      itemNameSuggestions: [
+      ],
       itemType: null,
       mods: [null],
       modsMax: [''],
@@ -301,7 +303,7 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
       <Grid container spacing={16}>
         <Grid item xs={5}>
           <AutocompleteTextBox
-            suggestions={this.state.itemNameSuggestions}
+            suggestions={itemNames}
             value={this.state.itemName}
             placeholder='Name'
             onChange={this.onItemNameSuggestionValueChange} />
