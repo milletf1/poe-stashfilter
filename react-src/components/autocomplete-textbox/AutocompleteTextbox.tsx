@@ -65,7 +65,11 @@ class AutocompleteTextBox extends React.Component
   protected renderSuggestionsContainer(
     options: AutoSuggest.RenderSuggestionsContainerParams): JSX.Element {
     return (
-      <Paper {...options.containerProps} square>
+      <Paper {...options.containerProps} style={{
+        left: '0',
+        overflowX: 'hidden',
+        position: 'absolute',
+        zIndex: 10}}>
         {options.children}
       </Paper>
     );

@@ -128,7 +128,7 @@ class SearchDropdown extends React.Component<ISearchDropdownProps, {}> {
         overflowX: 'hidden',
         position: 'absolute',
         right: '0',
-        zIndex: '10'}}>
+        zIndex: 10}}>
         {props.children}
       </Paper>
     );

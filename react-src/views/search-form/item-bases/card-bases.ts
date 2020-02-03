@@ -355,31 +355,31 @@ export const cardBases: IItemBase[] = [
     type: ItemType.CARD,
   },
   {
-    base: 'sambodhi\'s Vow',
+    base: 'Sambodhi\'s Vow',
     type: ItemType.CARD,
   },
   {
-    base: 'scholar of the Seas',
+    base: 'Scholar of the Seas',
     type: ItemType.CARD,
   },
   {
-    base: 'seven Years Bad Luck',
+    base: 'Seven Years Bad Luck',
     type: ItemType.CARD,
   },
   {
-    base: 'shard of Fate',
+    base: 'Shard of Fate',
     type: ItemType.CARD,
   },
   {
-    base: 'squandered Prosperity',
+    base: 'Squandered Prosperity',
     type: ItemType.CARD,
   },
   {
-    base: 'struck by Lightning',
+    base: 'Struck by Lightning',
     type: ItemType.CARD,
   },
   {
-    base: 'succor of the Sinless',
+    base: 'Succor of the Sinless',
     type: ItemType.CARD,
   },
   {
