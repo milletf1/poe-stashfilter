@@ -1,6 +1,7 @@
 .search-result {
   display: flex;
   padding: 4px;
+  min-width: 100%;
 
   .item-display {
     position: relative;

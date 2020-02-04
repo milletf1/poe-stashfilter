@@ -686,5 +686,4 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
   }
 }
 
-// export default connect(mapStateToProps, mapDispatchToProps)(withTheme(withRouter(SearchForm)));
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(SearchForm));
+export default connect(mapStateToProps, mapDispatchToProps)(withTheme(withRouter(SearchForm)));

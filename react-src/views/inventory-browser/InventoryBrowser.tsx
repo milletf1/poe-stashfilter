@@ -105,6 +105,4 @@ class InventoryBrowser extends React.Component<IInventoryBrowserProps, {}> {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)
-  (withRouter(InventoryBrowser));
-// export default connect(mapStateToProps, mapDispatchToProps)
-//   (withTheme(withRouter(InventoryBrowser)));
+  (withTheme(withRouter(InventoryBrowser)));

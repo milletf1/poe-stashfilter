@@ -34,8 +34,7 @@ class SearchPage extends React.Component<any, any> {
           square
           expanded={this.state.expanded === 'search'}
           onChange={this.changePanelFocus('search')}
-          classes={expansionPanelClasses}
-        >
+          classes={expansionPanelClasses}>
           <ExpansionPanelSummary classes={expansionPanelSummaryClasses}>
             Search
           </ExpansionPanelSummary>
@@ -49,8 +48,7 @@ class SearchPage extends React.Component<any, any> {
           square
           expanded={this.state.expanded === 'results'}
           onChange={this.changePanelFocus('results')}
-          classes={expansionPanelClasses}
-        >
+          classes={expansionPanelClasses}>
           <ExpansionPanelSummary classes={expansionPanelSummaryClasses}>
             Results
           </ExpansionPanelSummary>

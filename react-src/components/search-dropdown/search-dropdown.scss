@@ -1,5 +1,5 @@
 .search-dropdown {
-  .MuiPaper-root-10 {
+  .MuiPaper-root {
     overflow-y: hidden !important;
 
     .fast-option {
@@ -7,7 +7,9 @@
       text-overflow: ellipsis;
       overflow: hidden;
       white-space: nowrap;
-
+      font-size: 16px;
+      padding-left: 8px;
+      
       &:hover {
         background: rgba(255, 255, 255, 0.1);
       }

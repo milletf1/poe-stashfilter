@@ -31,5 +31,4 @@ class SearchResults extends React.Component<ISearchResultsProps, {}> {
   }
 }
 
-// export default connect(mapStateToProps)(withTheme(withRouter(SearchResults)));
-export default connect(mapStateToProps)(withRouter(SearchResults));
+export default connect(mapStateToProps)(withTheme(withRouter(SearchResults)));
