@@ -32,7 +32,7 @@ class InventoryBrowser extends React.Component<IInventoryBrowserProps, {}> {
   public render() {
     return (
     <div className='view-container inventory-browser'>
-      <Grid container spacing={16}>
+      <Grid container spacing={2}>
         <Grid item xs={4} md={3} style={{padding: '8px 0'}}>
           <List className='inventory-browser-list'>
             <ListSubheader className='list-subheader'>Characters</ListSubheader>
@@ -81,7 +81,7 @@ class InventoryBrowser extends React.Component<IInventoryBrowserProps, {}> {
         <Grid item xs={8} md={9}>
           <Grid
             container
-            spacing={16}
+            spacing={2}
             style={{height: '100%', padding: '12px 8px'}}>
             <StashDisplay />
           </Grid>
@@ -104,5 +104,7 @@ class InventoryBrowser extends React.Component<IInventoryBrowserProps, {}> {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(
-  withTheme()(withRouter(InventoryBrowser)));
+export default connect(mapStateToProps, mapDispatchToProps)
+  (withRouter(InventoryBrowser));
+// export default connect(mapStateToProps, mapDispatchToProps)
+//   (withTheme(withRouter(InventoryBrowser)));

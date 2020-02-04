@@ -24,9 +24,9 @@ const theme: Theme = createMuiTheme({
     },
     type: 'dark',
   },
-  typography: {
-    useNextVariants: true,
-  },
+  // typography: {
+  //   useNextVariants: true,
+  // },
 });
 
 buildStore().then((store: Store) => {

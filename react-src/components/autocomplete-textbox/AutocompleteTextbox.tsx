@@ -1,10 +1,11 @@
 import { MenuItem, Paper, TextField } from '@material-ui/core';
+import { AutoComplete } from 'material-ui';
 import * as React from 'react';
 import AutoSuggest from 'react-autosuggest';
 import './autocomplete-textbox.scss';
 import { IAutocompleteTextboxProps } from './IAutocompleteTextboxProps';
 import { IAutocompleteTextboxState } from './IAutocompleteTextboxState';
-
+// https://stackoverflow.com/questions/59256947/how-can-i-use-material-ui-autocomplete-together-with-react-virtualized
 class AutocompleteTextBox extends React.Component
   <IAutocompleteTextboxProps, IAutocompleteTextboxState> {
   constructor(props) {

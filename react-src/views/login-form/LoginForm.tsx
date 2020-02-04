@@ -44,7 +44,7 @@ class LoginForm extends React.Component<ILoginFormProps, ILoginFormState> {
   public render() {
     return (
       <div className='view-container'>
-        <Grid alignContent='center' container spacing={16} style={{height: '100vh'}}>
+        <Grid alignContent='center' container spacing={2} style={{height: '100vh'}}>
           <Grid item xs={12}>
           <Typography align='center' variant='h2' gutterBottom>
             Stash Search

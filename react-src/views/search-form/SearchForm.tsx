@@ -300,7 +300,7 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
 
   public render(): JSX.Element {
     return (
-      <Grid container spacing={16}>
+      <Grid container spacing={2}>
         <Grid item xs={5}>
           <AutocompleteTextBox
             suggestions={itemNames}
@@ -345,7 +345,7 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
               <Grid
                 container
                 item xs={12}
-                spacing={16}
+                spacing={2}
                 key={key}
                 style={{ boxSizing: 'content-box' }}>
                 <Grid item xs={7}>
@@ -385,7 +385,7 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
             );
           })
         }
-        <Grid container item xs={6} spacing={16} >
+        <Grid container item xs={6} spacing={2} >
           <Grid item xs={12} style={{ paddingBottom: 0 }}>
             <Typography variant='h6'>DPS</Typography>
           </Grid>
@@ -686,4 +686,5 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(withTheme()(withRouter(SearchForm)));
+// export default connect(mapStateToProps, mapDispatchToProps)(withTheme(withRouter(SearchForm)));
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(SearchForm));
