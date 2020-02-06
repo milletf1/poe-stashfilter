@@ -1,90 +1,43 @@
-import { MenuItem, Paper, TextField } from '@material-ui/core';
-import { AutoComplete } from 'material-ui';
+import { Input, MenuItem, Paper, TextField } from '@material-ui/core';
+import Autocomplete from '@material-ui/lab/Autocomplete';
 import * as React from 'react';
 import AutoSuggest from 'react-autosuggest';
+import { itemNames } from '../../views/search-form/item-names';
 import './autocomplete-textbox.scss';
 import { IAutocompleteTextboxProps } from './IAutocompleteTextboxProps';
 import { IAutocompleteTextboxState } from './IAutocompleteTextboxState';
-// https://stackoverflow.com/questions/59256947/how-can-i-use-material-ui-autocomplete-together-with-react-virtualized
+
 class AutocompleteTextBox extends React.Component
   <IAutocompleteTextboxProps, IAutocompleteTextboxState> {
   constructor(props) {
     super(props);
-
-    this.state = {
-      suggestions: [],
-    };
+    this.onInputChange = this.onInputChange.bind(this);
+    this.renderInputComponent = this.renderInputComponent.bind(this);
   }
 
   public render(): JSX.Element {
-    const inputProps = {
-      onChange: this.props.onChange,
-      placeholder: this.props.placeholder,
-      value: this.props.value,
-    };
-
-    return (
-      <AutoSuggest
-        suggestions={this.state.suggestions}
-        onSuggestionsFetchRequested={this.getSuggestions.bind(this)}
-        onSuggestionsClearRequested={this.clearSuggestions.bind(this)}
-        renderInputComponent={this.renderInputComponent.bind(this)}
-        renderSuggestionsContainer={this.renderSuggestionsContainer.bind(this)}
-        renderSuggestion={this.renderSuggestion.bind(this)}
-        getSuggestionValue={(suggestion: string) => suggestion}
-        inputProps={inputProps}
-      />
-    );
+    return <Autocomplete
+        id='free-solo-demo'
+        freeSolo
+        options={this.props.suggestions}
+        onInputChange={this.onInputChange}
+        renderInput={this.renderInputComponent}
+      />;
   }
 
-  protected getSuggestions(value: AutoSuggest.SuggestionsFetchRequestedParams): void {
-    const searchValue: string = value.value.toLowerCase();
-    const suggestions: string[] = this.props.suggestions.filter((item: string) =>
-      item.toLowerCase().indexOf(searchValue) !== -1);
-
-    this.setState({ suggestions });
-  }
-
-  protected clearSuggestions(): void {
-    this.setState({
-      suggestions: [],
-    });
-  }
-
-  protected renderInputComponent(inputProps): JSX.Element {
+  private renderInputComponent(inputProps): JSX.Element {
     const style = { width: '100%' };
     return (
-      <div>
         <TextField
+          variant='standard'
+          placeholder={ this.props.placeholder }
           style={ style }
-          {...inputProps}
-        />
-      </div>
+          {...inputProps} />
     );
   }
 
-  protected renderSuggestionsContainer(
-    options: AutoSuggest.RenderSuggestionsContainerParams): JSX.Element {
-    return (
-      <Paper {...options.containerProps} style={{
-        left: '0',
-        overflowX: 'hidden',
-        position: 'absolute',
-        zIndex: 10}}>
-        {options.children}
-      </Paper>
-    );
-  }
-
-  protected renderSuggestion(
-    suggestion: string, params: AutoSuggest.RenderSuggestionParams): JSX.Element {
-    return (
-      <MenuItem selected={params.isHighlighted} component='div'>
-        <div className='suggestion-item'>
-          {suggestion}
-        </div>
-      </MenuItem>
-    );
+  private onInputChange(_: React.SyntheticEvent, value: string): void {
+    this.props.onChange(value);
   }
 }
 
