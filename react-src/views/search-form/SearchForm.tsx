@@ -1,6 +1,5 @@
 import { Button, FormLabel, Grid, Input, Typography, withStyles, withTheme } from '@material-ui/core';
 import * as React from 'react';
-import { ChangeEvent } from 'react-autosuggest';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { bindActionCreators, Dispatch } from 'redux';
@@ -303,8 +302,7 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
       <Grid container spacing={2}>
         <Grid item xs={5}>
           <AutocompleteTextBox
-            suggestions={itemNames}
-            value={this.state.itemName}
+            suggestions={this.state.itemNameSuggestions}
             placeholder='Name'
             onChange={this.onItemNameSuggestionValueChange} />
         </Grid>
@@ -678,11 +676,11 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
     this.setState({ itemBase });
   }
 
-  private onItemNameSuggestionValueChange(
-    event: React.ChangeEvent<HTMLInputElement>,
-    payload: ChangeEvent): void {
-    const itemName: string = payload.newValue;
-    this.setState({ itemName });
+  private onItemNameSuggestionValueChange(itemName: string): void {
+    const itemNameSuggestions: string[] = itemNames
+      .filter((name: string) => name.indexOf(itemName));
+    this.setState({ itemName, itemNameSuggestions });
+
   }
 }
 
