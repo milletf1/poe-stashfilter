@@ -2,6 +2,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { IBaseItem } from '../../models/items/IBaseItem';
 import { isICurrencyTab } from '../../models/stash-tabs/ICurrencyTab';
+import { isIDelveTab } from '../../models/stash-tabs/IDelveTab';
 import { isIDivinationTab } from '../../models/stash-tabs/IDivinationTab';
 import { isIEssenceTab } from '../../models/stash-tabs/IEssenceTab';
 import { isIFragmentTab } from '../../models/stash-tabs/IFragmentTab';
@@ -78,6 +79,7 @@ class StashDisplay extends React.Component<IStashDisplayProps, {}> {
         left = item.x * QUAD_STASH_ITEM_SIZE + (item.x * QUAD_STASH_DIVIDER_SIZE);
         top = item.y * QUAD_STASH_ITEM_SIZE + (item.y * QUAD_STASH_DIVIDER_SIZE);
         break;
+      case StashTypes.DELVE:
       case StashTypes.ESSENCE:
       case StashTypes.CURRENCY:
       case StashTypes.FRAGMENT:
@@ -118,6 +120,7 @@ class StashDisplay extends React.Component<IStashDisplayProps, {}> {
     if (isIEssenceTab(stashTab)) { return stashTab.essenceLayout; }
     if (isICurrencyTab(stashTab)) { return stashTab.currencyLayout; }
     if (isIFragmentTab(stashTab)) { return stashTab.fragmentLayout; }
+    if (isIDelveTab(stashTab)) { return stashTab.delveLayout; }
     return null;
   }
 
@@ -145,24 +148,13 @@ class StashDisplay extends React.Component<IStashDisplayProps, {}> {
     }
     const stashTab: IStashTab = leagues[leagueIndex].stashTabs[browseIndex];
 
-    if (!stashTab) {
-      return StashTypes.NORMAL;
-    }
-    if (isIQuadTab(stashTab)) {
-      return StashTypes.QUAD;
-    }
-    if (isICurrencyTab(stashTab)) {
-      return StashTypes.CURRENCY;
-    }
-    if (isIDivinationTab(stashTab)) {
-      return StashTypes.DIVINATION_CARD;
-    }
-    if (isIEssenceTab(stashTab)) {
-      return StashTypes.ESSENCE;
-    }
-    if (isIFragmentTab(stashTab)) {
-      return StashTypes.FRAGMENT;
-    }
+    if (!stashTab) { return StashTypes.NORMAL; }
+    if (isIQuadTab(stashTab)) { return StashTypes.QUAD; }
+    if (isICurrencyTab(stashTab)) { return StashTypes.CURRENCY; }
+    if (isIDivinationTab(stashTab)) { return StashTypes.DIVINATION_CARD; }
+    if (isIEssenceTab(stashTab)) { return StashTypes.ESSENCE; }
+    if (isIFragmentTab(stashTab)) { return StashTypes.FRAGMENT; }
+    if (isIDelveTab(stashTab)) { return StashTypes.DELVE; }
     return StashTypes.NORMAL;
   }
 
@@ -179,6 +171,8 @@ class StashDisplay extends React.Component<IStashDisplayProps, {}> {
         return 'tab essence';
       case StashTypes.FRAGMENT:
         return 'tab fragment';
+      case StashTypes.DELVE:
+        return 'tab delve';
       case StashTypes.NORMAL:
       default:
         return 'tab';

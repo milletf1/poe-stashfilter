@@ -6,4 +6,5 @@ export const enum StashTypes {
   FRAGMENT,
   CHARACTER,
   NORMAL,
+  DELVE,
 }

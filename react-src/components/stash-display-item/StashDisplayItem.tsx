@@ -27,7 +27,6 @@ import FossilItemDetails from '../item-details/fossil-item-details/FossilItemDet
 import FracturedItemDetails from '../item-details/fractured-item-details/FracturedItemDetails';
 import GearItemDetails from '../item-details/gear-item-details/GearItemDetails';
 import GemItemDetails from '../item-details/gem-item-details/GemItemDetails';
-import ItemDetails from '../item-details/ItemDetails';
 import JewelItemDetails from '../item-details/jewel-item-details/JewelItemDetails';
 import LeaguestoneItemDetails from '../item-details/leaguestone-item-details/LeaguestoneItemDetails';
 import MapItemDetails from '../item-details/map-item-details/MapItemDetails';
@@ -86,7 +85,7 @@ class StashDisplayItem extends React.Component<IStashDisplayItemProps, IStashDis
           src={item.icon}
           width={itemWidth}
           height={itemHeight}
-          style={{position: 'fixed'}}/>
+          style={{position: 'fixed'}} />
         {
           isISocketableItem(item) &&
           <ItemSockets
