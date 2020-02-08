@@ -15,10 +15,13 @@
     }
   }
 
-  .item-details, .card-wrapper {
-    flex-grow: 1;
-    width: 100%;
+  .item-details {
+    margin: 0 auto;
     background: transparent;
+  }
+
+  .card-wrapper {
+    margin: 0 auto;
   }
 
   .stash-display {

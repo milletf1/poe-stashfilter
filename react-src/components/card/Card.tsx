@@ -6,20 +6,13 @@ import { ICardProps } from './ICardProps';
 
 import './card.scss';
 
-/** Splits a card's explicit mod into class name and mod text */
-const SPLIT_EXPLICIT_MOD_REGEX: RegExp = /<([^>]*)>{([^}]*)}/g;
-/** Regex to find markup in a card's flavour text that shouldn't be displayed */
-const FLAVOUR_TEXT_REPLACE_REGEX: RegExp = /<size:[0-9]*>{|<smaller>{|}|/g;
-/** Splits an explicit mod into tokens for display */
-const TOKENIZE_EXPLICIT_MOD_REGEX: RegExp = /(<(?!(size:[0-9]*))([^>]*)>{([^}]*)}|(\n))/g;
-
 class Card extends React.Component<ICardProps, {}> {
   public elementRef: React.RefObject<HTMLDivElement> = React.createRef();
 
   public render(): JSX.Element {
     const card: ICard = this.props.card;
     const style: React.CSSProperties = this.props.style;
-    const itemSrc: string = `https://web.poecdn.com/image/gen/divination_cards/${card.artFilename}_panel.png`;
+    const itemSrc: string = `https://web.poecdn.com/image/divination-card/${card.artFilename}_panel.png`;
     const stack: string = card.properties[0].values[0][0];
 
     return (
@@ -55,9 +48,11 @@ class Card extends React.Component<ICardProps, {}> {
   private createFlavourTextElementForCard(): JSX.Element {
     const elements: JSX.Element[] = this.props.card.flavourText
       .map((text: string, index: number) => {
+        // Remove markup in a card's flavour text that shouldn't be displayed
+        const formattedText: string = text.trim().replace(/<size:[0-9]*>{|<smaller>{|}|/g, '');
         return (
           <span key={`${text}-${index}`}>
-            {text.trim().replace(FLAVOUR_TEXT_REPLACE_REGEX, '')}
+            { formattedText }
           </span>
         );
       });
@@ -76,7 +71,8 @@ class Card extends React.Component<ICardProps, {}> {
 
     for (let i = 0; i < this.props.card.explicitMods.length; i++) {
       const mod: string = this.props.card.explicitMods[i];
-      const tokens: RegExpMatchArray = mod.match(TOKENIZE_EXPLICIT_MOD_REGEX);
+      // Splits mod into lines
+      const tokens: RegExpMatchArray = mod.match(/(<(?!(size:[0-9]*))([^>]*)>{([^}]*)}|(\n))/g);
       let tokensForLine: string[] = [];
       let key: string;
 
@@ -120,7 +116,8 @@ class Card extends React.Component<ICardProps, {}> {
    * @param key Element key
    */
   private createExplicitModTextForCard(mod: string, key: string): JSX.Element {
-    const tokens: string[] = SPLIT_EXPLICIT_MOD_REGEX.exec(mod);
+    // Split the card's explicit mod into class name and mod text
+    const tokens: string[] = /<([^>]*)>{([^}]*)}/g.exec(mod);
     if (tokens === null || tokens.length < 3) {
       return <span key={key} />;
     }

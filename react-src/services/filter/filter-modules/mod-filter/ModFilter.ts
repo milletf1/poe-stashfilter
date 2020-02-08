@@ -15,7 +15,6 @@ const DEX_TO_ACCURACY_VALUE: number = 20;
 const DEX_TO_EVASION_VALUE: number = 2;
 const RESISTANCE_REGEX_TEST_REGEX: RegExp = /\\\+\(\\d\+\)% to.*Resistance[s]?\//;
 const ALL_ELEMENTAL_RESISTANCE_TEST_REGEX: RegExp = /to all Elemental Resistances/;
-const RESISTANCE_TYPE_TEST_REGEX: RegExp = /(Fire|Lightning|Cold|Chaos)/g;
 
 export default class ModFilter implements IFilterModule<IModFilterParams[]> {
   public type: string = 'ModFilter';
@@ -420,7 +419,7 @@ export default class ModFilter implements IFilterModule<IModFilterParams[]> {
     if (!RESISTANCE_REGEX_TEST_REGEX.test(regexStr)) {
       return 0;
     }
-    const resistTypes: string[] | null = regexStr.match(RESISTANCE_TYPE_TEST_REGEX);
+    const resistTypes: string[] | null = regexStr.match(/(Fire|Lightning|Cold|Chaos)/g);
 
     if (resistTypes !== null && resistTypes.length > 0) {
       return resistTypes.length;
