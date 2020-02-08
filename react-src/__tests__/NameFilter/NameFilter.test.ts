@@ -1,6 +1,5 @@
 import { IBaseItem } from '../../models/items/IBaseItem';
 import { IGear } from '../../models/items/IGear';
-import { ISocketItem } from '../../models/items/ISocketItem';
 import NameFilter from '../../services/filter/filter-modules/name-filter/NameFilter';
 import { getTestItem } from '../utils';
 import json from './name-filter-test-items.json';

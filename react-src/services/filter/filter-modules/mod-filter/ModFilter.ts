@@ -1,4 +1,3 @@
-import { isIAbyssJewel } from '../../../../models/items/IAbyssJewel';
 import { isIFractured } from '../../../../models/items/IFractured';
 import { isIProphecy } from '../../../../models/items/IProphecy';
 import ElectronApi from '../../../electron-api/ElectronApi';
