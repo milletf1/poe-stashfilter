@@ -41,7 +41,7 @@ describe('Socket Filter tests', () => {
   });
 
   test('should return items with 1 blue socket minimum', () => {
-    // The Tempest's Binding (1), Facebreaker (2), Vortex Brow (2)
+    // The Tempest's Binding (1), Facebreaker (1), Vortex Brow (2)
     const testItems: IBaseItem[] = [];
     testItems.push(getTestItem(items, 'The Tempest\'s Binding', 'Callous Mask'));
     if (!testItems[testItems.length - 1]) {
@@ -62,18 +62,54 @@ describe('Socket Filter tests', () => {
   });
 
   test('should return items with 2 blue sockets minimum', () => {
-    // Facebreaker (2), Vortex Brow (2)
-    throw new Error('Test not implemented');
+    // Vortex Brow (2)
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, 'Vortex Brow', 'Hubris Circlet'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('Failed to find expected item "Vortex Brow Hubris Circlet" in test data');
+    }
+    const filter: SocketFilter = new SocketFilter();
+    const actual: IBaseItem[] = filter.filter(items, { blueSockets: 2 });
+
+    assertItemsFound(testItems, actual);
   });
 
   test('should return items with 1 green socket minimum', () => {
     // Vortex Brow (1), The Tempest's Binding (2), Facebreaker (2)
-    throw new Error('Test not implemented');
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, 'The Tempest\'s Binding', 'Callous Mask'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('Failed to find expected item "The Tempest\'s Binding" in test data');
+    }
+    testItems.push(getTestItem(items, 'Facebreaker', 'Strapped Mitts'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('Failed to find expected item "Facebreaker" in test data');
+    }
+    testItems.push(getTestItem(items, 'Vortex Brow', 'Hubris Circlet'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('Failed to find expected item "Vortex Brow Hubris Circlet" in test data');
+    }
+    const filter: SocketFilter = new SocketFilter();
+    const actual: IBaseItem[] = filter.filter(items, { greenSockets: 1 });
+
+    assertItemsFound(testItems, actual);
   });
 
   test('should return items with 2 green sockets minimum', () => {
     // The Tempest's Binding (2), Facebreaker (2)
-    throw new Error('Test not implemented');
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, 'The Tempest\'s Binding', 'Callous Mask'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('Failed to find expected item "The Tempest\'s Binding" in test data');
+    }
+    testItems.push(getTestItem(items, 'Facebreaker', 'Strapped Mitts'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('Failed to find expected item "Facebreaker" in test data');
+    }
+    const filter: SocketFilter = new SocketFilter();
+    const actual: IBaseItem[] = filter.filter(items, { greenSockets: 2 });
+
+    assertItemsFound(testItems, actual);
   });
 
   test('should return items with 1 white socket minimum', () => {

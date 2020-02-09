@@ -33,6 +33,10 @@ export default class SocketFilter implements IFilterModule<ISocketFilterParams> 
       meetsCondition = condition.blueSockets <= item.sockets
         .filter((socket: ISocket) => socket.sColour === 'B').length;
     }
+    if (meetsCondition && condition.greenSockets != null) {
+      meetsCondition = condition.greenSockets <= item.sockets
+        .filter((socket: ISocket) => socket.sColour === 'G').length;
+    }
     return meetsCondition;
   }
 }
