@@ -101,44 +101,61 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
   constructor(props) {
     super(props);
     this.state = {
+      abyssSockets: '',
+      blueSockets: '',
       elementalDpsMax: '',
       elementalDpsMin: '',
+      greenSockets: '',
       itemBase: null,
       itemName: '',
-      itemNameSuggestions: [
-      ],
+      itemNameSuggestions: [],
       itemType: null,
       mods: [null],
       modsMax: [''],
       modsMin: [''],
       physicalDpsMax: '',
       physicalDpsMin: '',
+      redSockets: '',
       searchButtonEnabled: true,
+      socketsMax: '',
+      socketsMin: '',
       totalDpsMax: '',
       totalDpsMin: '',
+      whiteSockets: '',
     };
+    this.props.setSearchResults([]);
+
     this.nameFilter = new NameFilter();
     this.itemTypeFilter = new ItemTypeFilter();
     this.modFilter = new ModFilter();
     this.dpsFilter = new DpsFilter();
+    // search form event listeners
     this.socketFilter = new SocketFilter();
     this.onSearchClick = this.onSearchClick.bind(this);
     this.onAddModClick = this.onAddModClick.bind(this);
-    this.onModChange = this.onModChange.bind(this);
-    this.onModMinChange = this.onModMinChange.bind(this);
-    this.onModMaxChange = this.onModMaxChange.bind(this);
     this.removeItemModElement = this.removeItemModElement.bind(this);
     this.onItemNameSuggestionValueChange = this.onItemNameSuggestionValueChange.bind(this);
     this.onItemCategoryChange = this.onItemCategoryChange.bind(this);
     this.onItemBaseChange = this.onItemBaseChange.bind(this);
+    // dps filter event listeners
     this.onTotalDpsMinChange = this.onTotalDpsMinChange.bind(this);
     this.onTotalDpsMaxChange = this.onTotalDpsMaxChange.bind(this);
     this.onPhysicalDpsMinChange = this.onPhysicalDpsMinChange.bind(this);
     this.onPhysicalDpsMaxChange = this.onPhysicalDpsMaxChange.bind(this);
     this.onElementalDpsMinChange = this.onElementalDpsMinChange.bind(this);
     this.onElementalDpsMaxChange = this.onElementalDpsMaxChange.bind(this);
-
-    this.props.setSearchResults([]);
+    // mod filter event listeners
+    this.onModChange = this.onModChange.bind(this);
+    this.onModMinChange = this.onModMinChange.bind(this);
+    this.onModMaxChange = this.onModMaxChange.bind(this);
+    // socket filter event listeners
+    this.onSocketsMinChange = this.onSocketsMinChange.bind(this);
+    this.onSocketsMaxChange = this.onSocketsMaxChange.bind(this);
+    this.onRedSocketChange = this.onRedSocketChange.bind(this);
+    this.onBlueSocketChange = this.onBlueSocketChange.bind(this);
+    this.onGreenSocketChange = this.onGreenSocketChange.bind(this);
+    this.onWhiteSocketChange = this.onWhiteSocketChange.bind(this);
+    this.onAbyssSocketChange = this.onAbyssSocketChange.bind(this);
   }
 
   private get mods(): ISearchDropdownLabel[] {
@@ -456,50 +473,50 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
             <Grid item xs={1}>
               <Input
                 placeholder='min'
-                value={this.state.physicalDpsMin}
-                onChange={this.onPhysicalDpsMinChange}
+                value={this.state.socketsMin}
+                onChange={this.onSocketsMinChange}
                 style={{ marginRight: '8px' }} />
             </Grid>
             <Grid item xs={1}>
               <Input
                 placeholder='max'
-                value={this.state.physicalDpsMax}
-                onChange={this.onPhysicalDpsMaxChange}
+                value={this.state.socketsMax}
+                onChange={this.onSocketsMaxChange}
                 style={{ marginRight: '8px' }} />
             </Grid>
             <Grid item xs={1}>
               <Input
                 placeholder='R'
-                value={this.state.totalDpsMin}
-                onChange={this.onTotalDpsMinChange}
+                value={this.state.redSockets}
+                onChange={this.onRedSocketChange}
                 style={{ marginRight: '8px' }} />
             </Grid>
             <Grid item xs={1}>
               <Input
                 placeholder='G'
-                value={this.state.totalDpsMin}
-                onChange={this.onTotalDpsMinChange}
+                value={this.state.greenSockets}
+                onChange={this.onGreenSocketChange}
                 style={{ marginRight: '8px' }} />
             </Grid>
             <Grid item xs={1}>
               <Input
                 placeholder='B'
-                value={this.state.totalDpsMin}
-                onChange={this.onTotalDpsMinChange}
+                value={this.state.blueSockets}
+                onChange={this.onBlueSocketChange}
                 style={{ marginRight: '8px' }} />
             </Grid>
             <Grid item xs={1}>
               <Input
                 placeholder='W'
-                value={this.state.totalDpsMin}
-                onChange={this.onTotalDpsMinChange}
+                value={this.state.whiteSockets}
+                onChange={this.onWhiteSocketChange}
                 style={{ marginRight: '8px' }} />
             </Grid>
             <Grid item xs={1}>
               <Input
                 placeholder='A'
-                value={this.state.totalDpsMin}
-                onChange={this.onTotalDpsMinChange}
+                value={this.state.abyssSockets}
+                onChange={this.onAbyssSocketChange}
                 style={{ marginRight: '8px' }} />
             </Grid>
           </Grid>
@@ -592,6 +609,62 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
     modsMax[index] = event.target.value;
     this.setState({ modsMax });
     setTimeout(() => this.focusInputElement(elementId, selectStart, selectEnd));
+  }
+
+  private onSocketsMinChange(
+    event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
+    ): void {
+
+    const socketsMin: string = event.target.value;
+    this.setState({ socketsMin });
+  }
+
+  private onSocketsMaxChange(
+    event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
+    ): void {
+
+    const socketsMax: string = event.target.value;
+    this.setState({ socketsMax });
+  }
+
+  private onRedSocketChange(
+    event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
+    ): void {
+
+    const redSockets: string = event.target.value;
+    this.setState({ redSockets });
+  }
+
+  private onBlueSocketChange(
+    event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
+    ): void {
+
+    const blueSockets: string = event.target.value;
+    this.setState({ blueSockets });
+  }
+
+  private onGreenSocketChange(
+    event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
+    ): void {
+
+    const greenSockets: string = event.target.value;
+    this.setState({ greenSockets });
+  }
+
+  private onWhiteSocketChange(
+    event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
+    ): void {
+
+    const whiteSockets: string = event.target.value;
+    this.setState({ whiteSockets });
+  }
+
+  private onAbyssSocketChange(
+    event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
+    ): void {
+
+    const abyssSockets: string = event.target.value;
+    this.setState({ abyssSockets });
   }
 
   private focusInputElement(elementId: string, selectStart: number, selectEnd: number): void {

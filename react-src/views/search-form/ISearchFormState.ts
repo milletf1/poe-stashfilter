@@ -15,4 +15,11 @@ export interface ISearchFormState {
   physicalDpsMax: string; // number
   elementalDpsMin: string; // number
   elementalDpsMax: string; // number
+  socketsMin: string; // number
+  socketsMax: string; // number
+  redSockets: string; // number
+  greenSockets: string; // number
+  blueSockets: string; // number
+  whiteSockets: string; // number
+  abyssSockets: string; // number
 }
