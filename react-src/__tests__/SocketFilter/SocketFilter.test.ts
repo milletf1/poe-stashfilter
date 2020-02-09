@@ -114,32 +114,112 @@ describe('Socket Filter tests', () => {
 
   test('should return items with 1 white socket minimum', () => {
     // Malachai's Artifice (1), Tabula rasa (6)
-    throw new Error('Test not implemented');
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, 'Tabula Rasa', 'Simple Robe'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('Failed to find expected item "Tabula Rasa" in test data');
+    }
+    testItems.push(getTestItem(items, 'Malachai\'s Artifice', 'Unset Ring'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('Failed to find expected item "Malachai\'s Artifice" in test data');
+    }
+    const filter: SocketFilter = new SocketFilter();
+    const actual: IBaseItem[] = filter.filter(items, { whiteSockets: 1 });
+
+    assertItemsFound(testItems, actual);
   });
 
   test('should return items with 2 white sockets minimum', () => {
     // Tabula rasa (6)
-    throw new Error('Test not implemented');
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, 'Tabula Rasa', 'Simple Robe'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('Failed to find expected item "Tabula Rasa" in test data');
+    }
+    const filter: SocketFilter = new SocketFilter();
+    const actual: IBaseItem[] = filter.filter(items, { whiteSockets: 2 });
+
+    assertItemsFound(testItems, actual);
   });
 
   test('should return items with 1 abyssal socket minimum', () => {
-    // Tombfist (2) Havok Harness Stygian Vise (1)
-    throw new Error('Test not implemented');
+    // Tombfist (2) Havoc Harness Stygian Vise (1)
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, 'Tombfist', 'Steelscale Gauntlets'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('Failed to find expected item "Tombfist" in test data');
+    }
+    testItems.push(getTestItem(items, 'Havoc Harness', 'Stygian Vise'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('Failed to find expected item "Havoc Harness" in test data');
+    }
+    const filter: SocketFilter = new SocketFilter();
+    const actual: IBaseItem[] = filter.filter(items, { abyssSockets: 1 });
+
+    assertItemsFound(testItems, actual);
   });
 
   test('should return items with 2 abyssal sockets minimum', () => {
     // Tombfist (2)
-    throw new Error('Test not implemented');
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, 'Tombfist', 'Steelscale Gauntlets'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('Failed to find expected item "Tombfist" in test data');
+    }
+    const filter: SocketFilter = new SocketFilter();
+    const actual: IBaseItem[] = filter.filter(items, { abyssSockets: 2 });
+
+    assertItemsFound(testItems, actual);
   });
 
   test('should return items with 5 sockets minimum', () => {
     // Tabula rasa (6)
-    throw new Error('Test not implemented');
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, 'Tabula Rasa', 'Simple Robe'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('Failed to find expected item "Tabula Rasa" in test data');
+    }
+    const filter: SocketFilter = new SocketFilter();
+    const actual: IBaseItem[] = filter.filter(items, { minSockets: 5 });
+
+    assertItemsFound(testItems, actual);
   });
 
   test('should return items with 4 sockets maximum', () => {
-    // Facebreaker (4), Tombfist (4), Havok Harness Stygian Vise (1), Lycosidae (1)
-    // The Tempest's Binding (4), Vortex Brow (3)
-    throw new Error('Test not implemented');
+    // Facebreaker (3), Tombfist (4), Havok Harness Stygian Vise (1), Lycosidae (1)
+    // The Tempest's Binding (4), Vortex Brow (3), Malachai's Artifice (1)
+    const testItems: IBaseItem[] = [];
+    testItems.push(getTestItem(items, 'Facebreaker', 'Strapped Mitts'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('Failed to find expected item "Facebreaker" in test data');
+    }
+    testItems.push(getTestItem(items, 'Tombfist', 'Steelscale Gauntlets'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('Failed to find expected item "Tombfist" in test data');
+    }
+    testItems.push(getTestItem(items, 'Havoc Harness', 'Stygian Vise'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('Failed to find expected item "Havoc Harness" in test data');
+    }
+    testItems.push(getTestItem(items, 'Lycosidae', 'Rawhide Tower Shield'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('Failed to find expected item "Lycosidae" in test data');
+    }
+    testItems.push(getTestItem(items, 'The Tempest\'s Binding', 'Callous Mask'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('Failed to find expected item "The Tempest\'s Binding" in test data');
+    }
+    testItems.push(getTestItem(items, 'Vortex Brow', 'Hubris Circlet'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('Failed to find expected item "Vortex Brow Hubris Circlet" in test data');
+    }
+    testItems.push(getTestItem(items, 'Malachai\'s Artifice', 'Unset Ring'));
+    if (!testItems[testItems.length - 1]) {
+      throw new Error('Failed to find expected item "Malachai\'s Artifice" in test data');
+    }
+    const filter: SocketFilter = new SocketFilter();
+    const actual: IBaseItem[] = filter.filter(items, { maxSockets: 4 });
+
+    assertItemsFound(testItems, actual);
   });
 });

@@ -4,5 +4,6 @@ export interface ISocketFilterParams {
   redSockets?: number;
   greenSockets?: number;
   blueSockets?: number;
+  whiteSockets?: number;
   abyssSockets?: number;
 }

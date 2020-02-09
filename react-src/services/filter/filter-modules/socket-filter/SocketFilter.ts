@@ -25,7 +25,13 @@ export default class SocketFilter implements IFilterModule<ISocketFilterParams> 
     if (!isISocketableItem(item)) { return false; }
     let meetsCondition: boolean = true;
 
-    if (condition.redSockets != null) {
+    if (condition.minSockets != null) {
+      meetsCondition = item.sockets.length >= condition.minSockets;
+    }
+    if (meetsCondition && condition.maxSockets != null) {
+      meetsCondition = item.sockets.length <= condition.maxSockets;
+    }
+    if (meetsCondition && condition.redSockets != null) {
       meetsCondition = condition.redSockets <= item.sockets
         .filter((socket: ISocket) => socket.sColour === 'R').length;
     }
@@ -36,6 +42,14 @@ export default class SocketFilter implements IFilterModule<ISocketFilterParams> 
     if (meetsCondition && condition.greenSockets != null) {
       meetsCondition = condition.greenSockets <= item.sockets
         .filter((socket: ISocket) => socket.sColour === 'G').length;
+    }
+    if (meetsCondition && condition.whiteSockets != null) {
+      meetsCondition = condition.whiteSockets <= item.sockets
+        .filter((socket: ISocket) => socket.sColour === 'W').length;
+    }
+    if (meetsCondition && condition.abyssSockets != null) {
+      meetsCondition = condition.abyssSockets <= item.sockets
+        .filter((socket: ISocket) => socket.sColour === 'A').length;
     }
     return meetsCondition;
   }
