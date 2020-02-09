@@ -33,6 +33,7 @@ import { totalModRegexes } from '../../services/filter/filter-modules/mod-filter
 import { uniqueModRegexes } from '../../services/filter/filter-modules/mod-filter/mod-regexes/unique-mods';
 import ModFilter from '../../services/filter/filter-modules/mod-filter/ModFilter';
 import NameFilter from '../../services/filter/filter-modules/name-filter/NameFilter';
+import SocketFilter from '../../services/filter/filter-modules/socket-filter/SocketFilter';
 import { accountActions } from '../../store/account/accountActions';
 import { IAppState } from '../../store/app/appState';
 import { ISearchFormProps } from './ISearchFormProps';
@@ -95,6 +96,7 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
   private itemTypeFilter: ItemTypeFilter;
   private modFilter: ModFilter;
   private dpsFilter: DpsFilter;
+  private socketFilter: SocketFilter;
 
   constructor(props) {
     super(props);
@@ -119,6 +121,7 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
     this.itemTypeFilter = new ItemTypeFilter();
     this.modFilter = new ModFilter();
     this.dpsFilter = new DpsFilter();
+    this.socketFilter = new SocketFilter();
     this.onSearchClick = this.onSearchClick.bind(this);
     this.onAddModClick = this.onAddModClick.bind(this);
     this.onModChange = this.onModChange.bind(this);
@@ -383,7 +386,7 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
             );
           })
         }
-        <Grid container item xs={6} spacing={2} >
+        <Grid container item xs={6} spacing={2} alignContent='flex-start'>
           <Grid item xs={12} style={{ paddingBottom: 0 }}>
             <Typography variant='h6'>DPS</Typography>
           </Grid>
@@ -445,6 +448,63 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
             </Grid>
           </Grid>
         </Grid>
+        <Grid container item xs={6} spacing={2} alignContent='flex-start'>
+          <Grid item xs={12} style={{ paddingBottom: 0 }}>
+            <Typography variant='h6'>Sockets</Typography>
+          </Grid>
+          <Grid container item xs={12} style={{ paddingTop: 0 }} spacing={0}>
+            <Grid item xs={1}>
+              <Input
+                placeholder='min'
+                value={this.state.physicalDpsMin}
+                onChange={this.onPhysicalDpsMinChange}
+                style={{ marginRight: '8px' }} />
+            </Grid>
+            <Grid item xs={1}>
+              <Input
+                placeholder='max'
+                value={this.state.physicalDpsMax}
+                onChange={this.onPhysicalDpsMaxChange}
+                style={{ marginRight: '8px' }} />
+            </Grid>
+            <Grid item xs={1}>
+              <Input
+                placeholder='R'
+                value={this.state.totalDpsMin}
+                onChange={this.onTotalDpsMinChange}
+                style={{ marginRight: '8px' }} />
+            </Grid>
+            <Grid item xs={1}>
+              <Input
+                placeholder='G'
+                value={this.state.totalDpsMin}
+                onChange={this.onTotalDpsMinChange}
+                style={{ marginRight: '8px' }} />
+            </Grid>
+            <Grid item xs={1}>
+              <Input
+                placeholder='B'
+                value={this.state.totalDpsMin}
+                onChange={this.onTotalDpsMinChange}
+                style={{ marginRight: '8px' }} />
+            </Grid>
+            <Grid item xs={1}>
+              <Input
+                placeholder='W'
+                value={this.state.totalDpsMin}
+                onChange={this.onTotalDpsMinChange}
+                style={{ marginRight: '8px' }} />
+            </Grid>
+            <Grid item xs={1}>
+              <Input
+                placeholder='A'
+                value={this.state.totalDpsMin}
+                onChange={this.onTotalDpsMinChange}
+                style={{ marginRight: '8px' }} />
+            </Grid>
+          </Grid>
+        </Grid>
+
       </Grid>
     );
   }
