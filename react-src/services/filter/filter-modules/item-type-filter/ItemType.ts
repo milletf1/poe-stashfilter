@@ -6,7 +6,7 @@ export enum ItemType {
   DAGGER = 'Dagger',
   ONE_HAND_AXE = 'One Hand Axe',
   ONE_HAND_MACE = 'One Hand Mace',
-  ONE_HAND_SWORD = 'Two Hand Sword',
+  ONE_HAND_SWORD = 'One Hand Sword',
   SCEPTRE = 'Sceptre',
   STAFF = 'Staff',
   TWO_HAND_AXE = 'Two Hand Axe',
