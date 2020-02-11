@@ -33,6 +33,7 @@ import { totalModRegexes } from '../../services/filter/filter-modules/mod-filter
 import { uniqueModRegexes } from '../../services/filter/filter-modules/mod-filter/mod-regexes/unique-mods';
 import ModFilter from '../../services/filter/filter-modules/mod-filter/ModFilter';
 import NameFilter from '../../services/filter/filter-modules/name-filter/NameFilter';
+import { ISocketFilterParams } from '../../services/filter/filter-modules/socket-filter/ISocketFilterParams';
 import SocketFilter from '../../services/filter/filter-modules/socket-filter/SocketFilter';
 import { accountActions } from '../../store/account/accountActions';
 import { IAppState } from '../../store/app/appState';
@@ -732,6 +733,7 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
     results = this.filterName(items);
     results = this.filterItemTypeAndBase(results);
     results = this.filterDps(results);
+    results = this.filterItemSockets(results);
     return this.filterItemMods(results);
   }
 
@@ -765,6 +767,27 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
       }
     }
     return modFilterParams.length > 0 ? this.modFilter.filter(items, modFilterParams) : items;
+  }
+
+  private filterItemSockets(items: IBaseItem[]): IBaseItem[] {
+    const socketFilterParams: ISocketFilterParams = {};
+    const minSockets: number = parseInt(this.state.socketsMin, 10);
+    const maxSockets: number = parseInt(this.state.socketsMax, 10);
+    const redSockets: number = parseInt(this.state.redSockets, 10);
+    const greenSockets: number = parseInt(this.state.greenSockets, 10);
+    const blueSockets: number = parseInt(this.state.blueSockets, 10);
+    const whiteSockets: number = parseInt(this.state.whiteSockets, 10);
+    const abyssSockets: number = parseInt(this.state.abyssSockets, 10);
+
+    if (!isNaN(minSockets)) { socketFilterParams.minSockets = minSockets; }
+    if (!isNaN(maxSockets)) { socketFilterParams.maxSockets = maxSockets; }
+    if (!isNaN(redSockets)) { socketFilterParams.redSockets = redSockets; }
+    if (!isNaN(greenSockets)) { socketFilterParams.greenSockets = greenSockets; }
+    if (!isNaN(blueSockets)) { socketFilterParams.blueSockets = blueSockets; }
+    if (!isNaN(whiteSockets)) { socketFilterParams.whiteSockets = whiteSockets; }
+    if (!isNaN(abyssSockets)) { socketFilterParams.abyssSockets = abyssSockets; }
+
+    return this.socketFilter.filter(items, socketFilterParams);
   }
 
   private filterDps(items: IBaseItem[]): IBaseItem[] {
