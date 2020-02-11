@@ -1,7 +1,7 @@
 import { ExpansionPanel, ExpansionPanelDetails, ExpansionPanelSummary } from '@material-ui/core';
 import * as React from 'react';
-import SearchForm from '../search-form/SearchForm';
-import SearchResults from '../search-results/SearchResults';
+import SearchForm from '../../components/search-form/SearchForm';
+import SearchResults from '../../components/search-results/SearchResults';
 import './search-page.scss';
 
 const expansionPanelClasses = {
