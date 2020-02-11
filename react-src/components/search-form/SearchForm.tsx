@@ -16,27 +16,14 @@ import { DpsType, IDpsFilterParams } from '../../services/filter/filter-modules/
 import { IItemBase } from '../../services/filter/filter-modules/item-type-filter/IItemBase';
 import { ItemType } from '../../services/filter/filter-modules/item-type-filter/ItemType';
 import ItemTypeFilter from '../../services/filter/filter-modules/item-type-filter/ItemTypeFilter';
-import { IMod, IModFilterParams } from '../../services/filter/filter-modules/mod-filter/IModFilterParams';
-import { abyssModRegexes } from '../../services/filter/filter-modules/mod-filter/mod-regexes/abyss-mods';
-import { bestiaryModRegexes } from '../../services/filter/filter-modules/mod-filter/mod-regexes/bestiary-mods';
-import { craftedModRegexes } from '../../services/filter/filter-modules/mod-filter/mod-regexes/crafted-mods';
-import { enchantmentModRegexes } from '../../services/filter/filter-modules/mod-filter/mod-regexes/enchantment-mods';
-import { explicitModRegexes } from '../../services/filter/filter-modules/mod-filter/mod-regexes/explicit-mods';
-import { fracturedModRegexes } from '../../services/filter/filter-modules/mod-filter/mod-regexes/fractured-mods';
-import { implicitModRegexes } from '../../services/filter/filter-modules/mod-filter/mod-regexes/implicit-mods';
-import { leaguestoneModRegexes } from '../../services/filter/filter-modules/mod-filter/mod-regexes/leaguestone-mods';
-import { mapModRegexes } from '../../services/filter/filter-modules/mod-filter/mod-regexes/map-mods';
-import { organModRegexes } from '../../services/filter/filter-modules/mod-filter/mod-regexes/organ-mods';
-import { propheciesModRegexes } from '../../services/filter/filter-modules/mod-filter/mod-regexes/prophecy-mods';
-import { pseudoModRegexes } from '../../services/filter/filter-modules/mod-filter/mod-regexes/pseudo-mods';
-import { totalModRegexes } from '../../services/filter/filter-modules/mod-filter/mod-regexes/total-mods';
-import { uniqueModRegexes } from '../../services/filter/filter-modules/mod-filter/mod-regexes/unique-mods';
+import { IModFilterParams } from '../../services/filter/filter-modules/mod-filter/IModFilterParams';
 import ModFilter from '../../services/filter/filter-modules/mod-filter/ModFilter';
 import NameFilter from '../../services/filter/filter-modules/name-filter/NameFilter';
 import { ISocketFilterParams } from '../../services/filter/filter-modules/socket-filter/ISocketFilterParams';
 import SocketFilter from '../../services/filter/filter-modules/socket-filter/SocketFilter';
 import { accountActions } from '../../store/account/accountActions';
 import { IAppState } from '../../store/app/appState';
+import ModSearch from '../mod-search/ModSearch';
 import { ISearchFormProps } from './ISearchFormProps';
 import { ISearchFormState } from './ISearchFormState';
 import { amuletBases } from './item-bases/amulet-bases';
@@ -134,7 +121,6 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
     this.socketFilter = new SocketFilter();
     this.onSearchClick = this.onSearchClick.bind(this);
     this.onAddModClick = this.onAddModClick.bind(this);
-    this.removeItemModElement = this.removeItemModElement.bind(this);
     this.onItemNameSuggestionValueChange = this.onItemNameSuggestionValueChange.bind(this);
     this.onItemCategoryChange = this.onItemCategoryChange.bind(this);
     this.onItemBaseChange = this.onItemBaseChange.bind(this);
@@ -145,10 +131,6 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
     this.onPhysicalDpsMaxChange = this.onPhysicalDpsMaxChange.bind(this);
     this.onElementalDpsMinChange = this.onElementalDpsMinChange.bind(this);
     this.onElementalDpsMaxChange = this.onElementalDpsMaxChange.bind(this);
-    // mod filter event listeners
-    this.onModChange = this.onModChange.bind(this);
-    this.onModMinChange = this.onModMinChange.bind(this);
-    this.onModMaxChange = this.onModMaxChange.bind(this);
     // socket filter event listeners
     this.onSocketsMinChange = this.onSocketsMinChange.bind(this);
     this.onSocketsMaxChange = this.onSocketsMaxChange.bind(this);
@@ -157,37 +139,11 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
     this.onGreenSocketChange = this.onGreenSocketChange.bind(this);
     this.onWhiteSocketChange = this.onWhiteSocketChange.bind(this);
     this.onAbyssSocketChange = this.onAbyssSocketChange.bind(this);
-  }
-
-  private get mods(): ISearchDropdownLabel[] {
-    return [
-      ...totalModRegexes.map((val: IMod) => ({ label: `[Total] ${val.label}`, value: val })),
-      ...pseudoModRegexes.map((val: IMod) => ({ label: `[Pseudo] ${val.label}`, value: val })),
-      ...explicitModRegexes.map((val: IMod) => ({ label: `[Explicit] ${val.label}`, value: val })),
-      ...uniqueModRegexes.map((val: IMod) => ({ label: `[Unique] ${val.label}`, value: val })),
-      ...mapModRegexes.map((val: IMod) => ({ label: `[Map] ${val.label}`, value: val })),
-      ...abyssModRegexes.map((val: IMod) => ({ label: `[Abyss] ${val.label}`, value: val })),
-      ...bestiaryModRegexes.map((val: IMod) => ({ label: `[Beastiary] ${val.label}`, value: val })),
-      ...craftedModRegexes.map((val: IMod) => ({ label: `[Craft] ${val.label}`, value: val })),
-      ...enchantmentModRegexes.map((val: IMod) => ({
-        label: `[Enchantment] ${val.label}`,
-        value: val,
-      })),
-      ...fracturedModRegexes.map((val: IMod) => ({
-        label: `[Fractured] ${val.label}`,
-        value: val,
-      })),
-      ...implicitModRegexes.map((val: IMod) => ({ label: `[Implicit] ${val.label}`, value: val })),
-      ...leaguestoneModRegexes.map((val: IMod) => ({
-        label: `[Leaguestone] ${val.label}`,
-        value: val,
-      })),
-      ...organModRegexes.map((val: IMod) => ({ label: `[Organ] ${val.label}`, value: val })),
-      ...propheciesModRegexes.map((val: IMod) => ({
-        label: `[Prophecy] ${val.label}`,
-        value: val,
-      })),
-    ];
+    // mod search event listeners
+    this.updateMods = this.updateMods.bind(this);
+    this.updateModsMin = this.updateModsMin.bind(this);
+    this.updateModsMax = this.updateModsMax.bind(this);
+    this.removeItemMod = this.removeItemMod.bind(this);
   }
 
   private get itemCategories(): ISearchDropdownLabel[] {
@@ -357,53 +313,14 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
             Add mod
           </Button>
         </Grid>
-        {
-          this.state.mods.map((mod: ISearchDropdownLabel, index: number) => {
-            const key: string = `${index}-${new Date().getTime()}`;
-            return (
-              <Grid
-                container
-                item xs={12}
-                spacing={2}
-                key={key}
-                style={{ boxSizing: 'content-box' }}>
-                <Grid item xs={7}>
-                  <SearchDropdown
-                    options={this.mods}
-                    placeholder='Mod'
-                    value={mod}
-                    onChange={this.onModChange(index)} />
-                </Grid>
-                <Grid container item xs={2} spacing={0}>
-                  <Grid item xs={6}>
-                    <Input
-                      id={`mods-min-${index}`}
-                      placeholder='min'
-                      value={this.state.modsMin[index]}
-                      onChange={this.onModMinChange}
-                      style={{ marginRight: '8px' }} />
-                  </Grid>
-                  <Grid item xs={6}>
-                    <Input
-                      id={`mods-max-${index}`}
-                      placeholder='max'
-                      value={this.state.modsMax[index]}
-                      onChange={this.onModMaxChange}
-                      style={{ marginLeft: '8px' }} />
-                  </Grid>
-                </Grid>
-                <Grid container item xs={3} justify='flex-end'>
-                  <Button
-                    id={`mods-delete-${index}`}
-                    color='secondary'
-                    onClick={this.removeItemModElement}>
-                    Remove
-                    </Button>
-                </Grid>
-              </Grid>
-            );
-          })
-        }
+        <ModSearch
+          mods={this.state.mods}
+          modsMin={this.state.modsMin}
+          modsMax={this.state.modsMax}
+          updateMods={this.updateMods}
+          updateModsMin={this.updateModsMin}
+          updateModsMax={this.updateModsMax}
+          removeItemMod={this.removeItemMod}/>
         <Grid container item xs={6} spacing={2} alignContent='flex-start'>
           <Grid item xs={12} style={{ paddingBottom: 0 }}>
             <Typography variant='h6'>DPS</Typography>
@@ -531,23 +448,6 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
     return itemBases.map((val: IItemBase) => ({ label: val.base, value: val }));
   }
 
-  private removeItemModElement(event: React.MouseEvent<HTMLElement>): void {
-    const index: number = parseInt(event.currentTarget.id.split('-')[2], 10);
-    if (!isNaN(index)) {
-      const stateModsMin: string[] = this.state.modsMin;
-      const stateModsMax: string[] = this.state.modsMax;
-      const stateMods: ISearchDropdownLabel[] = this.state.mods;
-      stateModsMin.splice(index, 1);
-      stateModsMax.splice(index, 1);
-      stateMods.splice(index, 1);
-      this.setState({
-        mods: stateMods,
-        modsMax: stateModsMax,
-        modsMin: stateModsMin,
-      });
-    }
-  }
-
   private onTotalDpsMinChange(
     event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
   ): void {
@@ -588,28 +488,6 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
   ): void {
     const elementalDpsMax: string = event.target.value;
     this.setState({ elementalDpsMax });
-  }
-
-  private onModMinChange(event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>): void {
-    const elementId: string = event.target.id;
-    const index: number = parseInt(elementId.split('-')[2], 10);
-    const modsMin: string[] = this.state.modsMin;
-    const selectStart: number = event.target.selectionStart;
-    const selectEnd: number = event.target.selectionEnd;
-    modsMin[index] = event.target.value;
-    this.setState({ modsMin });
-    setTimeout(() => this.focusInputElement(elementId, selectStart, selectEnd));
-  }
-
-  private onModMaxChange(event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>): void {
-    const elementId: string = event.target.id;
-    const index: number = parseInt(elementId.split('-')[2], 10);
-    const modsMax: string[] = this.state.modsMax;
-    const selectStart: number = event.target.selectionStart;
-    const selectEnd: number = event.target.selectionEnd;
-    modsMax[index] = event.target.value;
-    this.setState({ modsMax });
-    setTimeout(() => this.focusInputElement(elementId, selectStart, selectEnd));
   }
 
   private onSocketsMinChange(
@@ -666,20 +544,6 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
 
     const abyssSockets: string = event.target.value;
     this.setState({ abyssSockets });
-  }
-
-  private focusInputElement(elementId: string, selectStart: number, selectEnd: number): void {
-    const inputEl: HTMLInputElement = document.getElementById(elementId) as HTMLInputElement;
-    inputEl.focus();
-    inputEl.setSelectionRange(selectStart, selectEnd);
-  }
-
-  private onModChange(index: number): (mod: ISearchDropdownLabel) => void {
-    return (mod: ISearchDropdownLabel): void => {
-      const stateMods: ISearchDropdownLabel[] = this.state.mods;
-      stateMods[index] = mod;
-      this.setState({ mods: stateMods });
-    };
   }
 
   private onAddModClick(): void {
@@ -771,6 +635,7 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
 
   private filterItemSockets(items: IBaseItem[]): IBaseItem[] {
     const socketFilterParams: ISocketFilterParams = {};
+    let shouldSearch: boolean = false;
     const minSockets: number = parseInt(this.state.socketsMin, 10);
     const maxSockets: number = parseInt(this.state.socketsMax, 10);
     const redSockets: number = parseInt(this.state.redSockets, 10);
@@ -779,15 +644,36 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
     const whiteSockets: number = parseInt(this.state.whiteSockets, 10);
     const abyssSockets: number = parseInt(this.state.abyssSockets, 10);
 
-    if (!isNaN(minSockets)) { socketFilterParams.minSockets = minSockets; }
-    if (!isNaN(maxSockets)) { socketFilterParams.maxSockets = maxSockets; }
-    if (!isNaN(redSockets)) { socketFilterParams.redSockets = redSockets; }
-    if (!isNaN(greenSockets)) { socketFilterParams.greenSockets = greenSockets; }
-    if (!isNaN(blueSockets)) { socketFilterParams.blueSockets = blueSockets; }
-    if (!isNaN(whiteSockets)) { socketFilterParams.whiteSockets = whiteSockets; }
-    if (!isNaN(abyssSockets)) { socketFilterParams.abyssSockets = abyssSockets; }
+    if (!isNaN(minSockets)) {
+      socketFilterParams.minSockets = minSockets;
+      shouldSearch = true;
+    }
+    if (!isNaN(maxSockets)) {
+      socketFilterParams.maxSockets = maxSockets;
+      shouldSearch = true;
+    }
+    if (!isNaN(redSockets)) {
+      socketFilterParams.redSockets = redSockets;
+      shouldSearch = true;
+    }
+    if (!isNaN(greenSockets)) {
+      socketFilterParams.greenSockets = greenSockets;
+      shouldSearch = true;
+    }
+    if (!isNaN(blueSockets)) {
+      socketFilterParams.blueSockets = blueSockets;
+      shouldSearch = true;
+    }
+    if (!isNaN(whiteSockets)) {
+      socketFilterParams.whiteSockets = whiteSockets;
+      shouldSearch = true;
+    }
+    if (!isNaN(abyssSockets)) {
+      socketFilterParams.abyssSockets = abyssSockets;
+      shouldSearch = true;
+    }
 
-    return this.socketFilter.filter(items, socketFilterParams);
+    return shouldSearch ? this.socketFilter.filter(items, socketFilterParams) : items;
   }
 
   private filterDps(items: IBaseItem[]): IBaseItem[] {
@@ -834,9 +720,40 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
 
   private onItemNameSuggestionValueChange(itemName: string): void {
     const itemNameSuggestions: string[] = itemNames
-      .filter((name: string) => name.indexOf(itemName));
+      .filter((name: string) => name.toLowerCase().indexOf(itemName.toLowerCase()) !== -1);
     this.setState({ itemName, itemNameSuggestions });
+  }
 
+  private updateMods(index: number, mod: ISearchDropdownLabel): void {
+    const stateMods: ISearchDropdownLabel[] = this.state.mods;
+    stateMods[index] = mod;
+    this.setState({ mods: stateMods });
+  }
+
+  private updateModsMin(index: number, value: string): void {
+    const modsMin: string[] = this.state.modsMin;
+    modsMin[index] = value;
+    this.setState({ modsMin });
+  }
+
+  private updateModsMax(index, value: string): void {
+    const modsMax: string[] = this.state.modsMax;
+    modsMax[index] = value;
+    this.setState({ modsMax });
+  }
+
+  private removeItemMod(index: number): void {
+    const stateModsMin: string[] = this.state.modsMin;
+    const stateModsMax: string[] = this.state.modsMax;
+    const stateMods: ISearchDropdownLabel[] = this.state.mods;
+    stateModsMin.splice(index, 1);
+    stateModsMax.splice(index, 1);
+    stateMods.splice(index, 1);
+    this.setState({
+      mods: stateMods,
+      modsMax: stateModsMax,
+      modsMin: stateModsMin,
+    });
   }
 }
 
