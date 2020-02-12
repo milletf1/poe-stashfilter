@@ -623,11 +623,9 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
         const mod: IModFilterParams = { mod: this.state.mods[i].value };
         const min: number = parseInt(this.state.modsMin[i], 10);
         const max: number = parseInt(this.state.modsMax[i], 10);
-        if (!isNaN(min)) { mod.min = min; }
+        mod.min = !isNaN(min) ? min : 1;
         if (!isNaN(max)) { mod.max = max; }
-        if (mod.min != null || mod.max != null || mod.mod.label.indexOf('#') === -1) {
-          modFilterParams.push(mod);
-        }
+        modFilterParams.push(mod);
       }
     }
     return modFilterParams.length > 0 ? this.modFilter.filter(items, modFilterParams) : items;

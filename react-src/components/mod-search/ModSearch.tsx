@@ -18,6 +18,8 @@ import { uniqueModRegexes } from '../../services/filter/filter-modules/mod-filte
 import { ISearchDropdownLabel } from '../search-dropdown/ISearchDropdownLabel';
 import SearchDropdown from '../search-dropdown/SearchDropdown';
 
+import './mod-search.scss';
+
 class ModSearch extends React.Component<any, any> {
   constructor(props) {
     super(props);
@@ -61,7 +63,7 @@ class ModSearch extends React.Component<any, any> {
 
   public render(): JSX.Element {
     return (
-      <Grid container item xs={12} spacing={0} style={{ boxSizing: 'content-box' }}>
+      <Grid container item xs={12} spacing={0} className='mod-search'>
         {
           this.props.mods.map((mod: ISearchDropdownLabel, index: number) => {
             const key: string = `${index}-${new Date().getTime()}`;
@@ -71,8 +73,8 @@ class ModSearch extends React.Component<any, any> {
                 item xs={12}
                 spacing={2}
                 key={key}
-                style={{ boxSizing: 'content-box' }}>
-                <Grid item xs={7}>
+                className='mod-row'>
+                <Grid item xs={7} className='input-container'>
                   <SearchDropdown
                     options={this.mods}
                     placeholder='Mod'
@@ -97,7 +99,7 @@ class ModSearch extends React.Component<any, any> {
                       style={{ marginLeft: '8px' }} />
                   </Grid>
                 </Grid>
-                <Grid container item xs={3} justify='flex-end'>
+                <Grid container item xs={3} className='button-container' justify='flex-end'>
                   <Button
                     id={`mods-delete-${index}`}
                     color='secondary'
