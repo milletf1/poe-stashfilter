@@ -1,0 +1,17 @@
+.mod-search {
+  // box-sizing: content-box;
+  padding: 0 0 8px 8px !important;
+
+  .mod-row {
+    box-sizing: content-box;
+    padding: 8px 0;
+
+    .input-container {
+      padding-right: 4px;
+    }
+
+    .button-container {
+      padding-right: 0;
+    }
+  }
+}

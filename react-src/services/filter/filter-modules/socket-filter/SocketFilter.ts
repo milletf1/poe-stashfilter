@@ -24,7 +24,6 @@ export default class SocketFilter implements IFilterModule<ISocketFilterParams> 
   private itemMeetsCondition(item: IBaseItem, condition: ISocketFilterParams): boolean {
     if (!isISocketableItem(item)) { return false; }
     let meetsCondition: boolean = true;
-
     if (condition.minSockets != null) {
       meetsCondition = item.sockets.length >= condition.minSockets;
     }
