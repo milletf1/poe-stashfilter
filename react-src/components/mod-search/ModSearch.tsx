@@ -81,14 +81,14 @@ class ModSearch extends React.Component<any, any> {
                     value={mod}
                     onChange={this.onModChange(index)} />
                 </Grid>
-                <Grid container item xs={2} spacing={0}>
+                <Grid container item xs={2} spacing={0} style={{ paddingRight: '2px' }}>
                   <Grid item xs={6}>
                     <Input
                       id={`mods-min-${index}`}
                       placeholder='min'
                       value={this.props.modsMin[index]}
                       onChange={this.onModMinChange}
-                      style={{ marginRight: '8px' }} />
+                      style={{ marginRight: '8px', marginLeft: '4px' }} />
                   </Grid>
                   <Grid item xs={6}>
                     <Input
