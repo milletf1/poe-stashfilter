@@ -1,2 +1,2 @@
 # poe-stashfilter
-Stash filtering app for Path of Exile
+Stash searching app for Path of Exile
