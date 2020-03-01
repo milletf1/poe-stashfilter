@@ -37,6 +37,7 @@ import ItemSockets from '../item-sockets/ItemSockets';
 import VaalGemItem from '../vaal-gem-item/VaalGemItem';
 import { IStashDisplayItemProps } from './IStashDisplayItemProps';
 import { IStashDisplayItemState } from './IStashDisplayItemState';
+import ITooltipPositionStyle from './ITooltipPositionStyle';
 import './stash-display-item.scss';
 
 class StashDisplayItem extends React.Component<IStashDisplayItemProps, IStashDisplayItemState> {
@@ -149,9 +150,7 @@ class StashDisplayItem extends React.Component<IStashDisplayItemProps, IStashDis
   }
 
   /** Returns inline style attributes for an tooltip element */
-  private get tooltipPositionStyle(
-  ): {left: number, top: number, zIndex: number, position: string} {
-    // TODO: create interface for return type
+  private get tooltipPositionStyle(): ITooltipPositionStyle {
     const tooltipWidth: number = this.state.tooltipWidth;
     const tooltipHeight: number = this.state.tooltipHeight;
     const itemLeft: number = this.state.imageLeft;

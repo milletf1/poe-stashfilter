@@ -2,7 +2,7 @@ import { ClassIds } from './ClassIds';
 import { ClassTypes } from './ClassTypes';
 
 export interface ICharacter {
-  ascendancyClass: number; // TODO: replace with enum
+  ascendancyClass: number;
   class: ClassTypes;
   classId: ClassIds;
   experience: number;

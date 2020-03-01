@@ -17,11 +17,12 @@ import { totalModRegexes } from '../../services/filter/filter-modules/mod-filter
 import { uniqueModRegexes } from '../../services/filter/filter-modules/mod-filter/mod-regexes/unique-mods';
 import { ISearchDropdownLabel } from '../search-dropdown/ISearchDropdownLabel';
 import SearchDropdown from '../search-dropdown/SearchDropdown';
+import IModSearchProps from './ModSearchProps';
 
 import './mod-search.scss';
 
 // TODO: create prop type interface
-class ModSearch extends React.Component<any, any> {
+class ModSearch extends React.Component<IModSearchProps, {}> {
   constructor(props) {
     super(props);
     // mod filter event listeners

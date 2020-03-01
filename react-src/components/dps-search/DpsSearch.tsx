@@ -1,7 +1,8 @@
 import { Grid, Input, Typography } from '@material-ui/core';
 import * as React from 'react';
+import IDpsSearchProps from './IDpsSearchProps';
 
-class DpsSearch extends React.Component<any, any> {
+class DpsSearch extends React.Component<IDpsSearchProps, {}> {
   constructor(props) {
     super(props);
   }

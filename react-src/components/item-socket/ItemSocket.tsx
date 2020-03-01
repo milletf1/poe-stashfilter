@@ -135,7 +135,6 @@ class ItemSocket extends React.Component<IItemSocketProps, IItemSocketState> {
   /** Mouse over event listener */
   private onMouseOverSocketedItem(): void {
     if (!this.props.socketItem) { return; }
-    // TODO: bounds check
     this.setState({ isHovered: true });
   }
 
