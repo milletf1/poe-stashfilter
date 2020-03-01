@@ -1,7 +1,8 @@
-import { Grid, Input, Typography } from '@material-ui/core';
+import { Grid, Input } from '@material-ui/core';
 import * as React from 'react';
+import ISocketSearchProps from './ISocketSearchProps';
 
-class SocketSearch extends React.Component<any, {}> {
+class SocketSearch extends React.Component<ISocketSearchProps, {}> {
 
   public render(): JSX.Element {
     return (

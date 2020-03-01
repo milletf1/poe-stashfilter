@@ -1,4 +1,4 @@
-import { ISearchDropdownLabel } from './../search-dropdown/ISearchDropdownLabel';
+import { ISearchDropdownLabel } from '../search-dropdown/ISearchDropdownLabel';
 
 export default interface IModSearchProps {
   mods: ISearchDropdownLabel[];

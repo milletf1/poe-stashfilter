@@ -17,7 +17,7 @@ import { totalModRegexes } from '../../services/filter/filter-modules/mod-filter
 import { uniqueModRegexes } from '../../services/filter/filter-modules/mod-filter/mod-regexes/unique-mods';
 import { ISearchDropdownLabel } from '../search-dropdown/ISearchDropdownLabel';
 import SearchDropdown from '../search-dropdown/SearchDropdown';
-import IModSearchProps from './ModSearchProps';
+import IModSearchProps from './IModSearchProps';
 
 import './mod-search.scss';
 

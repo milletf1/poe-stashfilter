@@ -341,19 +341,20 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
             <Typography variant='h6'>Sockets</Typography>
           </Grid>
           <SocketSearch
-          socketsMin={this.state.socketsMin}
-          onSocketsMinChange={this.onSocketsMinChange}
-          socketsMax={this.state.socketsMax}
-          redSockets={this.state.redSockets}
-          onRedSocketChange={this.onRedSocketChange}
-          greenSockets={this.state.greenSockets}
-          onGreenSocketChange={this.onGreenSocketChange}
-          blueSockets={this.state.blueSockets}
-          onBlueSocketChange={this.onBlueSocketChange}
-          whiteSockets={this.state.whiteSockets}
-          onWhiteSocketChange={this.onWhiteSocketChange}
-          abyssSockets={this.state.abyssSockets}
-          onAbyssSocketChange={this.onAbyssSocketChange} />
+            socketsMin={this.state.socketsMin}
+            onSocketsMinChange={this.onSocketsMinChange}
+            socketsMax={this.state.socketsMax}
+            onSocketsMaxChange={this.onSocketsMaxChange}
+            redSockets={this.state.redSockets}
+            onRedSocketChange={this.onRedSocketChange}
+            greenSockets={this.state.greenSockets}
+            onGreenSocketChange={this.onGreenSocketChange}
+            blueSockets={this.state.blueSockets}
+            onBlueSocketChange={this.onBlueSocketChange}
+            whiteSockets={this.state.whiteSockets}
+            onWhiteSocketChange={this.onWhiteSocketChange}
+            abyssSockets={this.state.abyssSockets}
+            onAbyssSocketChange={this.onAbyssSocketChange} />
         </Grid>
       </Grid>
     );
