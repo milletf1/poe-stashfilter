@@ -20,6 +20,7 @@ import SearchDropdown from '../search-dropdown/SearchDropdown';
 
 import './mod-search.scss';
 
+// TODO: create prop type interface
 class ModSearch extends React.Component<any, any> {
   constructor(props) {
     super(props);

@@ -23,6 +23,7 @@ import { ISocketFilterParams } from '../../services/filter/filter-modules/socket
 import SocketFilter from '../../services/filter/filter-modules/socket-filter/SocketFilter';
 import { accountActions } from '../../store/account/accountActions';
 import { IAppState } from '../../store/app/appState';
+import DpsSearch from '../dps-search/DpsSearch';
 import ModSearch from '../mod-search/ModSearch';
 import { ISearchFormProps } from './ISearchFormProps';
 import { ISearchFormState } from './ISearchFormState';
@@ -320,69 +321,20 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
           updateMods={this.updateMods}
           updateModsMin={this.updateModsMin}
           updateModsMax={this.updateModsMax}
-          removeItemMod={this.removeItemMod}/>
-        <Grid container item xs={6} spacing={2} alignContent='flex-start'>
-          <Grid item xs={12} style={{ paddingBottom: 0 }}>
-            <Typography variant='h6'>DPS</Typography>
-          </Grid>
-          <Grid container item xs={3} alignItems='center' style={{ paddingTop: 0 }}>
-            <Typography variant='body2'>Physical DPS</Typography>
-          </Grid>
-          <Grid container item xs={9} style={{ paddingTop: 0 }} spacing={0}>
-            <Grid item xs={6}>
-              <Input
-                placeholder='min'
-                value={this.state.physicalDpsMin}
-                onChange={this.onPhysicalDpsMinChange}
-                style={{ marginRight: '8px' }} />
-            </Grid>
-            <Grid item xs={6}>
-              <Input
-                placeholder='max'
-                value={this.state.physicalDpsMax}
-                onChange={this.onPhysicalDpsMaxChange}
-                style={{ marginLeft: '8px' }} />
-            </Grid>
-          </Grid>
-          <Grid container item xs={3} alignItems='center'>
-            <Typography variant='body2'>Elemental DPS</Typography>
-          </Grid>
-          <Grid container item xs={9} spacing={0}>
-            <Grid item xs={6}>
-              <Input
-                placeholder='min'
-                value={this.state.elementalDpsMin}
-                onChange={this.onElementalDpsMinChange}
-                style={{ marginRight: '8px' }} />
-            </Grid>
-            <Grid item xs={6}>
-              <Input
-                placeholder='max'
-                value={this.state.elementalDpsMax}
-                onChange={this.onElementalDpsMaxChange}
-                style={{ marginLeft: '8px' }} />
-            </Grid>
-          </Grid>
-          <Grid container item xs={3} alignItems='center'>
-            <Typography variant='body2'>Total DPS</Typography>
-          </Grid>
-          <Grid container item xs={9} spacing={0}>
-            <Grid item xs={6}>
-              <Input
-                placeholder='min'
-                value={this.state.totalDpsMin}
-                onChange={this.onTotalDpsMinChange}
-                style={{ marginRight: '8px' }} />
-            </Grid>
-            <Grid item xs={6}>
-              <Input
-                placeholder='max'
-                value={this.state.totalDpsMax}
-                onChange={this.onTotalDpsMaxChange}
-                style={{ marginLeft: '8px' }} />
-            </Grid>
-          </Grid>
-        </Grid>
+          removeItemMod={this.removeItemMod} />
+        <DpsSearch
+          physicalDpsMin={this.state.physicalDpsMin}
+          physicalDpsMax={this.state.physicalDpsMax}
+          elementalDpsMin={this.state.elementalDpsMin}
+          elementalDpsMax={this.state.elementalDpsMax}
+          totalDpsMin={this.state.totalDpsMin}
+          totalDpsMax={this.state.totalDpsMax}
+          onPhysicalDpsMinChange={this.onPhysicalDpsMinChange}
+          onPhysicalDpsMaxChange={this.onPhysicalDpsMaxChange}
+          onElementalDpsMinChange={this.onElementalDpsMinChange}
+          onElementalDpsMaxChange={this.onElementalDpsMaxChange}
+          onTotalDpsMinChange={this.onTotalDpsMinChange}
+          onTotalDpsMaxChange={this.onTotalDpsMaxChange} />
         <Grid container item xs={6} spacing={2} alignContent='flex-start'>
           <Grid item xs={12} style={{ paddingBottom: 0 }}>
             <Typography variant='h6'>Sockets</Typography>
@@ -439,7 +391,6 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
             </Grid>
           </Grid>
         </Grid>
-
       </Grid>
     );
   }
@@ -492,7 +443,7 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
 
   private onSocketsMinChange(
     event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
-    ): void {
+  ): void {
 
     const socketsMin: string = event.target.value;
     this.setState({ socketsMin });
@@ -500,7 +451,7 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
 
   private onSocketsMaxChange(
     event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
-    ): void {
+  ): void {
 
     const socketsMax: string = event.target.value;
     this.setState({ socketsMax });
@@ -508,7 +459,7 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
 
   private onRedSocketChange(
     event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
-    ): void {
+  ): void {
 
     const redSockets: string = event.target.value;
     this.setState({ redSockets });
@@ -516,7 +467,7 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
 
   private onBlueSocketChange(
     event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
-    ): void {
+  ): void {
 
     const blueSockets: string = event.target.value;
     this.setState({ blueSockets });
@@ -524,7 +475,7 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
 
   private onGreenSocketChange(
     event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
-    ): void {
+  ): void {
 
     const greenSockets: string = event.target.value;
     this.setState({ greenSockets });
@@ -532,7 +483,7 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
 
   private onWhiteSocketChange(
     event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
-    ): void {
+  ): void {
 
     const whiteSockets: string = event.target.value;
     this.setState({ whiteSockets });
@@ -540,7 +491,7 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
 
   private onAbyssSocketChange(
     event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
-    ): void {
+  ): void {
 
     const abyssSockets: string = event.target.value;
     this.setState({ abyssSockets });
