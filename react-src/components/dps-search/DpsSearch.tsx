@@ -3,9 +3,6 @@ import * as React from 'react';
 import IDpsSearchProps from './IDpsSearchProps';
 
 class DpsSearch extends React.Component<IDpsSearchProps, {}> {
-  constructor(props) {
-    super(props);
-  }
 
   public render(): JSX.Element {
     return (

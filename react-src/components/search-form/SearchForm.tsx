@@ -25,6 +25,7 @@ import { accountActions } from '../../store/account/accountActions';
 import { IAppState } from '../../store/app/appState';
 import DpsSearch from '../dps-search/DpsSearch';
 import ModSearch from '../mod-search/ModSearch';
+import SocketSearch from '../socket-search/SocketSearch';
 import { ISearchFormProps } from './ISearchFormProps';
 import { ISearchFormState } from './ISearchFormState';
 import { amuletBases } from './item-bases/amulet-bases';
@@ -339,57 +340,20 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
           <Grid item xs={12} style={{ paddingBottom: 0 }}>
             <Typography variant='h6'>Sockets</Typography>
           </Grid>
-          <Grid container item xs={12} style={{ paddingTop: 0 }} spacing={0}>
-            <Grid item xs={1}>
-              <Input
-                placeholder='min'
-                value={this.state.socketsMin}
-                onChange={this.onSocketsMinChange}
-                style={{ marginRight: '8px' }} />
-            </Grid>
-            <Grid item xs={1}>
-              <Input
-                placeholder='max'
-                value={this.state.socketsMax}
-                onChange={this.onSocketsMaxChange}
-                style={{ marginRight: '8px' }} />
-            </Grid>
-            <Grid item xs={1}>
-              <Input
-                placeholder='R'
-                value={this.state.redSockets}
-                onChange={this.onRedSocketChange}
-                style={{ marginRight: '8px' }} />
-            </Grid>
-            <Grid item xs={1}>
-              <Input
-                placeholder='G'
-                value={this.state.greenSockets}
-                onChange={this.onGreenSocketChange}
-                style={{ marginRight: '8px' }} />
-            </Grid>
-            <Grid item xs={1}>
-              <Input
-                placeholder='B'
-                value={this.state.blueSockets}
-                onChange={this.onBlueSocketChange}
-                style={{ marginRight: '8px' }} />
-            </Grid>
-            <Grid item xs={1}>
-              <Input
-                placeholder='W'
-                value={this.state.whiteSockets}
-                onChange={this.onWhiteSocketChange}
-                style={{ marginRight: '8px' }} />
-            </Grid>
-            <Grid item xs={1}>
-              <Input
-                placeholder='A'
-                value={this.state.abyssSockets}
-                onChange={this.onAbyssSocketChange}
-                style={{ marginRight: '8px' }} />
-            </Grid>
-          </Grid>
+          <SocketSearch
+          socketsMin={this.state.socketsMin}
+          onSocketsMinChange={this.onSocketsMinChange}
+          socketsMax={this.state.socketsMax}
+          redSockets={this.state.redSockets}
+          onRedSocketChange={this.onRedSocketChange}
+          greenSockets={this.state.greenSockets}
+          onGreenSocketChange={this.onGreenSocketChange}
+          blueSockets={this.state.blueSockets}
+          onBlueSocketChange={this.onBlueSocketChange}
+          whiteSockets={this.state.whiteSockets}
+          onWhiteSocketChange={this.onWhiteSocketChange}
+          abyssSockets={this.state.abyssSockets}
+          onAbyssSocketChange={this.onAbyssSocketChange} />
         </Grid>
       </Grid>
     );
