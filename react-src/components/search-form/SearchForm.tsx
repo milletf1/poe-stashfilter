@@ -11,22 +11,17 @@ import { IBaseItem } from '../../models/items/IBaseItem';
 import { ISearchResult } from '../../models/search/ISearchResult';
 import { IStashTabColour } from '../../models/stash-tabs/IStashTabMetadata';
 import { BrowseItemCategory } from '../../models/ui-state/BrowseItemCategory';
-import DpsFilter from '../../services/filter/filter-modules/dps-filter/DpsFilter';
 import { DpsType, IDpsFilterParams } from '../../services/filter/filter-modules/dps-filter/IDpsFilterParams';
 import { IItemBase } from '../../services/filter/filter-modules/item-type-filter/IItemBase';
 import { ItemType } from '../../services/filter/filter-modules/item-type-filter/ItemType';
-import ItemTypeFilter from '../../services/filter/filter-modules/item-type-filter/ItemTypeFilter';
 import { IModFilterParams } from '../../services/filter/filter-modules/mod-filter/IModFilterParams';
-import ModFilter from '../../services/filter/filter-modules/mod-filter/ModFilter';
-import NameFilter from '../../services/filter/filter-modules/name-filter/NameFilter';
 import { ISocketFilterParams } from '../../services/filter/filter-modules/socket-filter/ISocketFilterParams';
-import SocketFilter from '../../services/filter/filter-modules/socket-filter/SocketFilter';
 import { accountActions } from '../../store/account/accountActions';
 import { IAppState } from '../../store/app/appState';
 import DpsSearch from '../dps-search/DpsSearch';
 import ModSearch from '../mod-search/ModSearch';
 import SocketSearch from '../socket-search/SocketSearch';
-import { ISearchFormProps } from './ISearchFormProps';
+import ISearchFormProps from './ISearchFormProps';
 import { ISearchFormState } from './ISearchFormState';
 import { amuletBases } from './item-bases/amulet-bases';
 import { beltBases } from './item-bases/belt-bases';
@@ -75,18 +70,13 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators({
 }, dispatch);
 
 const mapStateToProps = (state: IAppState, props: any) => ({
+  ...props,
   leagueIndex: state.activeAccount.uiState.leagueIndex,
   leagues: state.activeAccount.leagues,
   searchResults: state.activeAccount.searchResults,
 });
 
 class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
-
-  private nameFilter: NameFilter;
-  private itemTypeFilter: ItemTypeFilter;
-  private modFilter: ModFilter;
-  private dpsFilter: DpsFilter;
-  private socketFilter: SocketFilter;
 
   constructor(props) {
     super(props);
@@ -115,12 +105,7 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
     };
     this.props.setSearchResults([]);
 
-    this.nameFilter = new NameFilter();
-    this.itemTypeFilter = new ItemTypeFilter();
-    this.modFilter = new ModFilter();
-    this.dpsFilter = new DpsFilter();
     // search form event listeners
-    this.socketFilter = new SocketFilter();
     this.onSearchClick = this.onSearchClick.bind(this);
     this.onAddModClick = this.onAddModClick.bind(this);
     this.onItemNameSuggestionValueChange = this.onItemNameSuggestionValueChange.bind(this);
@@ -519,15 +504,15 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
 
   private filterName(items: IBaseItem[]): IBaseItem[] {
     const itemName: string = this.state.itemName.trim();
-    return !!itemName ? this.nameFilter.filter(items, itemName) : items;
+    return !!itemName ? this.props.nameFilter.filter(items, itemName) : items;
   }
 
   private filterItemTypeAndBase(items: IBaseItem[]): IBaseItem[] {
     if (this.state.itemBase !== null) {
-      return this.itemTypeFilter.filter(items, [this.state.itemBase.value]);
+      return this.props.itemTypeFilter.filter(items, [this.state.itemBase.value]);
     }
     if (this.state.itemType !== null) {
-      return this.itemTypeFilter.filter(items, [this.state.itemType.value]);
+      return this.props.itemTypeFilter.filter(items, [this.state.itemType.value]);
     }
     return items;
   }
@@ -544,7 +529,7 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
         modFilterParams.push(mod);
       }
     }
-    return modFilterParams.length > 0 ? this.modFilter.filter(items, modFilterParams) : items;
+    return modFilterParams.length > 0 ? this.props.modFilter.filter(items, modFilterParams) : items;
   }
 
   private filterItemSockets(items: IBaseItem[]): IBaseItem[] {
@@ -587,7 +572,7 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
       shouldSearch = true;
     }
 
-    return shouldSearch ? this.socketFilter.filter(items, socketFilterParams) : items;
+    return shouldSearch ? this.props.socketFilter.filter(items, socketFilterParams) : items;
   }
 
   private filterDps(items: IBaseItem[]): IBaseItem[] {
@@ -618,7 +603,7 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
       dpsFilterParams.push(physicalParams);
     }
 
-    return dpsFilterParams.length > 0 ? this.dpsFilter.filter(items, dpsFilterParams) : items;
+    return dpsFilterParams.length > 0 ? this.props.dpsFilter.filter(items, dpsFilterParams) : items;
   }
 
   private onItemCategoryChange(itemType: ISearchDropdownLabel) {

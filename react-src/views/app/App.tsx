@@ -7,6 +7,11 @@ import * as ipcChannels from '../../../electron-src/ipc-channels';
 import NavigationBar from '../../components/navigation-bar/NavigationBar';
 import { ILeague } from '../../models/ILeague';
 import ElectronApi from '../../services/electron-api/ElectronApi';
+import DpsFilter from '../../services/filter/filter-modules/dps-filter/DpsFilter';
+import ItemTypeFilter from '../../services/filter/filter-modules/item-type-filter/ItemTypeFilter';
+import ModFilter from '../../services/filter/filter-modules/mod-filter/ModFilter';
+import NameFilter from '../../services/filter/filter-modules/name-filter/NameFilter';
+import SocketFilter from '../../services/filter/filter-modules/socket-filter/SocketFilter';
 import { accountActions } from '../../store/account/accountActions';
 import { IAccountState, initialState } from '../../store/account/accountState';
 import { IAppState } from '../../store/app/appState';
@@ -33,8 +38,20 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators({
 }, dispatch);
 
 class App extends React.Component<IAppProps, {}> {
+
+  private nameFilter: NameFilter;
+  private itemTypeFilter: ItemTypeFilter;
+  private modFilter: ModFilter;
+  private dpsFilter: DpsFilter;
+  private socketFilter: SocketFilter;
+
   constructor(props) {
     super(props);
+    this.nameFilter = new NameFilter();
+    this.itemTypeFilter = new ItemTypeFilter();
+    this.modFilter = new ModFilter();
+    this.dpsFilter = new DpsFilter();
+    this.socketFilter = new SocketFilter();
   }
 
   public render() {
@@ -42,10 +59,19 @@ class App extends React.Component<IAppProps, {}> {
       <HashRouter>
         <div className='app-container'>
           { this.props.authCredentials.isAuthorized && <NavigationBar /> }
-          <Route exact path='/' component={SplashPage} />
-          <Route path='/login' component={LoginForm} />
-          <Route path='/browse' component={InventoryBrowser} />
-          <Route path='/search' component={SearchPage} />
+          <Route exact path='/' render={(props) => <SplashPage {...props} />} />
+          <Route path='/login' render={(props) => <LoginForm {...props} />} />
+          <Route path='/browse' render={(props) => <InventoryBrowser {...props} />} />
+          <Route
+            path='/search'
+            render={(props) =>
+              <SearchPage {...props}
+                nameFilter={this.nameFilter}
+                itemTypeFilter={this.itemTypeFilter}
+                modFilter={this.modFilter}
+                dpsFilter={this.dpsFilter}
+                socketFilter={this.socketFilter}/>
+            } />
         </div>
       </HashRouter>
 

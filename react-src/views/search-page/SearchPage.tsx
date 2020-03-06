@@ -2,6 +2,7 @@ import { ExpansionPanel, ExpansionPanelDetails, ExpansionPanelSummary } from '@m
 import * as React from 'react';
 import SearchForm from '../../components/search-form/SearchForm';
 import SearchResults from '../../components/search-results/SearchResults';
+import ISearchPageProps from './ISearchPageProps';
 import './search-page.scss';
 
 const expansionPanelClasses = {
@@ -18,7 +19,7 @@ const expansionPanelDetailsClasses = {
   root: 'panel-details',
 };
 
-class SearchPage extends React.Component<any, any> {
+class SearchPage extends React.Component<ISearchPageProps, any> {
   constructor(props) {
     super(props);
     this.state = {
@@ -40,7 +41,12 @@ class SearchPage extends React.Component<any, any> {
           </ExpansionPanelSummary>
           <ExpansionPanelDetails classes={expansionPanelDetailsClasses}>
             <div className='search-view-container'>
-              <SearchForm />
+              <SearchForm
+                nameFilter={this.props.nameFilter}
+                itemTypeFilter={this.props.itemTypeFilter}
+                modFilter={this.props.modFilter}
+                dpsFilter={this.props.dpsFilter}
+                socketFilter={this.props.socketFilter}/>
             </div>
           </ExpansionPanelDetails>
         </ExpansionPanel>
