@@ -11,7 +11,6 @@ const toughCookie = require('tough-cookie');
 const COOKIE_KEY = 'https://pathofexile.com';
 const BASE_URL = 'https://www.pathofexile.com';
 const LOGIN = '/login';
-const LOGOUT = '/logout';
 const MY_ACCOUNT = '/my-account';
 const GET_CHARACTERS = '/character-window/get-characters';
 const GET_CHARACTER_ITEMS = '/character-window/get-items';
@@ -107,11 +106,11 @@ function setSessionCookie(cookies, sessionId) {
 
   if (!cookie) {
     cookie = new toughCookie.Cookie({
-      key: "POESESSID",
-      path: "/",
+      key: 'POESESSID',
+      path: '/',
       httpOnly: true,
       hostOnly: false,
-      domain: ".pathofexile.com"
+      domain: '.pathofexile.com'
     });
   }
   cookie.value = sessionId.trim();

@@ -221,6 +221,9 @@ function createEmptyAccount(accountName) {
       leagueIndex: 0,
       route: '/browse',
       searchIndex: null,
+      searchPageState: {
+        openSection: 'SEARCH'
+      }
     },
   };
 
