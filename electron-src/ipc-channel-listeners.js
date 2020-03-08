@@ -222,7 +222,8 @@ function createEmptyAccount(accountName) {
       route: '/browse',
       searchIndex: null,
       searchPageState: {
-        openSection: 'SEARCH'
+        openSection: 'SEARCH',
+        searchResults: []
       }
     },
   };

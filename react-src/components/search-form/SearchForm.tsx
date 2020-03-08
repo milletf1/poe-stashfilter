@@ -73,7 +73,7 @@ const mapStateToProps = (state: IAppState, props: any) => ({
   ...props,
   leagueIndex: state.activeAccount.uiState.leagueIndex,
   leagues: state.activeAccount.leagues,
-  searchResults: state.activeAccount.searchResults,
+  searchResults: state.activeAccount.uiState.searchPageState.searchResults,
 });
 
 class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {

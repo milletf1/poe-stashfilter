@@ -40,8 +40,16 @@ export function reducer(
         },
       };
     case AccountActionTypes.SET_SEARCH_RESULTS:
-      // TODO: move search results into searchPageState
-      return { ...state, searchResults: action.payload.searchResults };
+      return {
+        ...state,
+        uiState: {
+          ...state.uiState,
+          searchPageState: {
+            ...state.uiState.searchPageState,
+            searchResults: action.payload.searchResults,
+          },
+        },
+      };
     case AccountActionTypes.SET_SEARCH_PAGE_VISIBLE_SECTION:
       return {
         ...state,

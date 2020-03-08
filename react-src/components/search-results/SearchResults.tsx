@@ -9,7 +9,7 @@ import { ISearchResultsProps } from './ISearchResultsProps';
 import './search-results.scss';
 
 const mapStateToProps = (state: IAppState, props: any) => ({
-  searchResults: state.activeAccount.searchResults,
+  searchResults: state.activeAccount.uiState.searchPageState.searchResults,
 });
 
 class SearchResults extends React.Component<ISearchResultsProps, {}> {
