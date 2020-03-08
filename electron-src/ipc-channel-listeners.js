@@ -34,13 +34,13 @@ function setupChannels(store, appState) {
         event.sender.send(ipcChannels.LOGIN_RESPONSE, { loggedIn, error: 'Failed to login' });
       }
     })
-    .catch(err => {
-      log.warn(err.message);
-      event.sender.send(ipcChannels.LOGIN_RESPONSE, {
-        loggedIn: false,
-        error: err.message,
+      .catch(err => {
+        log.warn(err.message);
+        event.sender.send(ipcChannels.LOGIN_RESPONSE, {
+          loggedIn: false,
+          error: err.message,
+        });
       });
-    });
   });
 
   /** Set session id request listener */
@@ -71,13 +71,13 @@ function setupChannels(store, appState) {
         });
       }
     })
-    .catch(err => {
-      log.warn(err);
-      event.sender.send(ipcChannels.SET_SESSION_RESPONSE, {
-        loggedIn: false,
-        error: err,
-      });
-    })
+      .catch(err => {
+        log.warn(err);
+        event.sender.send(ipcChannels.SET_SESSION_RESPONSE, {
+          loggedIn: false,
+          error: err,
+        });
+      })
   });
 
   /** Save app state request listener */
@@ -122,13 +122,13 @@ function setupChannels(store, appState) {
     webApi.getAccountName().then(accountName => {
       event.sender.send(ipcChannels.GET_ACCOUNT_NAME_RESPONSE, { accountName });
     })
-    .catch(err => {
-      log.warn(err.message);
-      event.sender.send(ipcChannels.GET_ACCOUNT_NAME_RESPONSE, {
-        accountName: null,
-        error: err.message,
+      .catch(err => {
+        log.warn(err.message);
+        event.sender.send(ipcChannels.GET_ACCOUNT_NAME_RESPONSE, {
+          accountName: null,
+          error: err.message,
+        });
       });
-    });
   });
 
   /** Get leagues request listener */
@@ -137,13 +137,13 @@ function setupChannels(store, appState) {
       const leagues = mapCharactersToLeagues(characters);
       event.sender.send(ipcChannels.GET_LEAGUES_RESPONSE, { leagues });
     })
-    .catch(err => {
-      log.warn(err.message);
-      event.sender.send(ipcChannels.GET_LEAGUES_RESPONSE, {
-        leagues: null,
-        error: err.message,
+      .catch(err => {
+        log.warn(err.message);
+        event.sender.send(ipcChannels.GET_LEAGUES_RESPONSE, {
+          leagues: null,
+          error: err.message,
+        });
       });
-    });
   });
 
   /** Get characters request listener */
@@ -151,13 +151,13 @@ function setupChannels(store, appState) {
     webApi.getCharacters(args.accountName).then(characters => {
       event.sender.send(ipcChannels.GET_CHARACTERS_RESPONSE, { characters });
     })
-    .catch(err => {
-      log.warn(err.message);
-      event.sender.send(ipcChannels.GET_CHARACTERS_RESPONSE, {
-        characters: null,
-        error: err.message,
+      .catch(err => {
+        log.warn(err.message);
+        event.sender.send(ipcChannels.GET_CHARACTERS_RESPONSE, {
+          characters: null,
+          error: err.message,
+        });
       });
-    });
   });
 
   /** Get character items request listener */
@@ -165,28 +165,28 @@ function setupChannels(store, appState) {
     webApi.getCharacterItems(args.accountName, args.character).then(characterItems => {
       event.sender.send(ipcChannels.GET_CHAR_ITEMS_RESPONSE, { characterItems });
     })
-    .catch(err => {
-      log.warn(err.message);
-      event.sender.send(ipcChannels.GET_CHAR_ITEMS_RESPONSE, {
-        characterItems: null,
-        error: err.message,
+      .catch(err => {
+        log.warn(err.message);
+        event.sender.send(ipcChannels.GET_CHAR_ITEMS_RESPONSE, {
+          characterItems: null,
+          error: err.message,
+        });
       });
-    });
   });
 
   /** Get stash items request listener */
   ipcMain.on(ipcChannels.GET_STASH_TAB_REQUEST, (event, args) => {
     webApi.getStashTab(args.accountName, args.tabIndex, args.league, args.includeTabList)
-    .then(stashTab => {
-      event.sender.send(ipcChannels.GET_STASH_TAB_RESPONSE, { stashTab });
-    })
-    .catch(err => {
-      log.warn(err.message);
-      event.sender.send(ipcChannels.GET_STASH_TAB_RESPONSE, {
-        stashTab: null,
-        error: err.message
+      .then(stashTab => {
+        event.sender.send(ipcChannels.GET_STASH_TAB_RESPONSE, { stashTab });
+      })
+      .catch(err => {
+        log.warn(err.message);
+        event.sender.send(ipcChannels.GET_STASH_TAB_RESPONSE, {
+          stashTab: null,
+          error: err.message
+        });
       });
-    });
   });
 
   /** Logs a message */
@@ -225,7 +225,30 @@ function createEmptyAccount(accountName) {
       searchIndex: null,
       searchPageState: {
         openSection: 'SEARCH',
-        searchResults: []
+        searchResults: [],
+        searchFormState: {
+          abyssSockets: '',
+          blueSockets: '',
+          elementalDpsMax: '',
+          elementalDpsMin: '',
+          greenSockets: '',
+          itemBase: null,
+          itemName: '',
+          itemNameSuggestions: [],
+          itemType: null,
+          mods: [null],
+          modsMax: [''],
+          modsMin: [''],
+          physicalDpsMax: '',
+          physicalDpsMin: '',
+          redSockets: '',
+          searchButtonEnabled: true,
+          socketsMax: '',
+          socketsMin: '',
+          totalDpsMax: '',
+          totalDpsMin: '',
+          whiteSockets: '',
+        }
       }
     },
   };
@@ -234,10 +257,10 @@ function createEmptyAccount(accountName) {
     const leagues = mapCharactersToLeagues(characters);
     return { ...emptyAccount, leagues };
   })
-  .catch(err => {
-    log.warn(err.message);
-    return emptyAccount;
-  });
+    .catch(err => {
+      log.warn(err.message);
+      return emptyAccount;
+    });
 }
 
 /** 

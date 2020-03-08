@@ -1,4 +1,5 @@
 import { ISearchResult } from './../search/ISearchResult';
+import ISearchFormState from './ISearchFormState';
 import { SearchVisibleSection } from './SearchVisibleSection';
 
 export default interface ISearchPageState {
@@ -6,4 +7,6 @@ export default interface ISearchPageState {
   openSection: SearchVisibleSection;
   /** Results of a search */
   searchResults: ISearchResult[];
+  /** State of search form */
+  searchFormState: ISearchFormState;
 }

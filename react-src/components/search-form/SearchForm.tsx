@@ -22,7 +22,6 @@ import DpsSearch from '../dps-search/DpsSearch';
 import ModSearch from '../mod-search/ModSearch';
 import SocketSearch from '../socket-search/SocketSearch';
 import ISearchFormProps from './ISearchFormProps';
-import { ISearchFormState } from './ISearchFormState';
 import { amuletBases } from './item-bases/amulet-bases';
 import { beltBases } from './item-bases/belt-bases';
 import { bodyArmourBases } from './item-bases/body-armour-bases';
@@ -71,38 +70,38 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators({
 
 const mapStateToProps = (state: IAppState, props: any) => ({
   ...props,
+  abyssSockets: state.activeAccount.uiState.searchPageState.searchFormState.abyssSockets,
+  blueSockets: state.activeAccount.uiState.searchPageState.searchFormState.blueSockets,
+  elementalDpsMax: state.activeAccount.uiState.searchPageState.searchFormState.elementalDpsMax,
+  elementalDpsMin: state.activeAccount.uiState.searchPageState.searchFormState.elementalDpsMin,
+  greenSockets: state.activeAccount.uiState.searchPageState.searchFormState.greenSockets,
+  itemBase: state.activeAccount.uiState.searchPageState.searchFormState.itemBase,
+  itemName: state.activeAccount.uiState.searchPageState.searchFormState.itemName,
+  itemNameSuggestions:
+    state.activeAccount.uiState.searchPageState.searchFormState.itemNameSuggestions,
+  itemType: state.activeAccount.uiState.searchPageState.searchFormState.itemType,
   leagueIndex: state.activeAccount.uiState.leagueIndex,
   leagues: state.activeAccount.leagues,
+  mods: state.activeAccount.uiState.searchPageState.searchFormState.mods,
+  modsMax: state.activeAccount.uiState.searchPageState.searchFormState.modsMax,
+  modsMin: state.activeAccount.uiState.searchPageState.searchFormState.modsMin,
+  physicalDpsMax: state.activeAccount.uiState.searchPageState.searchFormState.physicalDpsMax,
+  physicalDpsMin: state.activeAccount.uiState.searchPageState.searchFormState.physicalDpsMin,
+  redSockets: state.activeAccount.uiState.searchPageState.searchFormState.redSockets,
+  searchButtonEnabled:
+    state.activeAccount.uiState.searchPageState.searchFormState.searchButtonEnabled,
   searchResults: state.activeAccount.uiState.searchPageState.searchResults,
+  socketsMax: state.activeAccount.uiState.searchPageState.searchFormState.socketsMax,
+  socketsMin: state.activeAccount.uiState.searchPageState.searchFormState.socketsMin,
+  totalDpsMax: state.activeAccount.uiState.searchPageState.searchFormState.totalDpsMax,
+  totalDpsMin: state.activeAccount.uiState.searchPageState.searchFormState.totalDpsMin,
+  whiteSockets: state.activeAccount.uiState.searchPageState.searchFormState.whiteSockets,
 });
 
-class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
+class SearchForm extends React.Component<ISearchFormProps, {}> {
 
   constructor(props) {
     super(props);
-    this.state = {
-      abyssSockets: '',
-      blueSockets: '',
-      elementalDpsMax: '',
-      elementalDpsMin: '',
-      greenSockets: '',
-      itemBase: null,
-      itemName: '',
-      itemNameSuggestions: [],
-      itemType: null,
-      mods: [null],
-      modsMax: [''],
-      modsMin: [''],
-      physicalDpsMax: '',
-      physicalDpsMin: '',
-      redSockets: '',
-      searchButtonEnabled: true,
-      socketsMax: '',
-      socketsMin: '',
-      totalDpsMax: '',
-      totalDpsMin: '',
-      whiteSockets: '',
-    };
     this.props.setSearchResults([]);
 
     // search form event listeners
@@ -141,9 +140,9 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
   }
 
   private get itemBases(): ISearchDropdownLabel[] {
-    if (this.state.itemType === null) { return []; }
+    if (this.props.itemType === null) { return []; }
 
-    switch (this.state.itemType.value) {
+    switch (this.props.itemType.value) {
       case ItemType.ONE_HAND_WEAPON:
         return this.convertIItemBasesToISearchDropdownLabel([
           ...oneHandAxeBases,
@@ -266,7 +265,7 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
       <Grid container spacing={2}>
         <Grid item xs={5}>
           <AutocompleteTextBox
-            suggestions={this.state.itemNameSuggestions}
+            suggestions={this.props.itemNameSuggestions}
             placeholder='Name'
             onChange={this.onItemNameSuggestionValueChange} />
         </Grid>
@@ -274,21 +273,21 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
           <SearchDropdown
             options={this.itemCategories}
             placeholder='Category'
-            value={this.state.itemType}
+            value={this.props.itemType}
             onChange={this.onItemCategoryChange} />
         </Grid>
         <Grid item xs={2}>
           <SearchDropdown
             options={this.itemBases}
             placeholder='Base'
-            value={this.state.itemBase}
+            value={this.props.itemBase}
             onChange={this.onItemBaseChange} />
         </Grid>
         <Grid container item xs={3} justify='flex-end'>
           <Button
             variant='contained'
             color='primary'
-            disabled={!this.state.searchButtonEnabled}
+            disabled={!this.props.searchButtonEnabled}
             onClick={this.onSearchClick}
             style={{ marginRight: '16px' }}>
             Search
@@ -301,20 +300,20 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
           </Button>
         </Grid>
         <ModSearch
-          mods={this.state.mods}
-          modsMin={this.state.modsMin}
-          modsMax={this.state.modsMax}
+          mods={this.props.mods}
+          modsMin={this.props.modsMin}
+          modsMax={this.props.modsMax}
           updateMods={this.updateMods}
           updateModsMin={this.updateModsMin}
           updateModsMax={this.updateModsMax}
           removeItemMod={this.removeItemMod} />
         <DpsSearch
-          physicalDpsMin={this.state.physicalDpsMin}
-          physicalDpsMax={this.state.physicalDpsMax}
-          elementalDpsMin={this.state.elementalDpsMin}
-          elementalDpsMax={this.state.elementalDpsMax}
-          totalDpsMin={this.state.totalDpsMin}
-          totalDpsMax={this.state.totalDpsMax}
+          physicalDpsMin={this.props.physicalDpsMin}
+          physicalDpsMax={this.props.physicalDpsMax}
+          elementalDpsMin={this.props.elementalDpsMin}
+          elementalDpsMax={this.props.elementalDpsMax}
+          totalDpsMin={this.props.totalDpsMin}
+          totalDpsMax={this.props.totalDpsMax}
           onPhysicalDpsMinChange={this.onPhysicalDpsMinChange}
           onPhysicalDpsMaxChange={this.onPhysicalDpsMaxChange}
           onElementalDpsMinChange={this.onElementalDpsMinChange}
@@ -326,19 +325,19 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
             <Typography variant='h6'>Sockets</Typography>
           </Grid>
           <SocketSearch
-            socketsMin={this.state.socketsMin}
+            socketsMin={this.props.socketsMin}
             onSocketsMinChange={this.onSocketsMinChange}
-            socketsMax={this.state.socketsMax}
+            socketsMax={this.props.socketsMax}
             onSocketsMaxChange={this.onSocketsMaxChange}
-            redSockets={this.state.redSockets}
+            redSockets={this.props.redSockets}
             onRedSocketChange={this.onRedSocketChange}
-            greenSockets={this.state.greenSockets}
+            greenSockets={this.props.greenSockets}
             onGreenSocketChange={this.onGreenSocketChange}
-            blueSockets={this.state.blueSockets}
+            blueSockets={this.props.blueSockets}
             onBlueSocketChange={this.onBlueSocketChange}
-            whiteSockets={this.state.whiteSockets}
+            whiteSockets={this.props.whiteSockets}
             onWhiteSocketChange={this.onWhiteSocketChange}
-            abyssSockets={this.state.abyssSockets}
+            abyssSockets={this.props.abyssSockets}
             onAbyssSocketChange={this.onAbyssSocketChange} />
         </Grid>
       </Grid>
@@ -448,9 +447,9 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
   }
 
   private onAddModClick(): void {
-    const stateMods: ISearchDropdownLabel[] = this.state.mods;
-    const stateModsMin: string[] = this.state.modsMin;
-    const stateModsMax: string[] = this.state.modsMax;
+    const stateMods: ISearchDropdownLabel[] = this.props.mods;
+    const stateModsMin: string[] = this.props.modsMin;
+    const stateModsMax: string[] = this.props.modsMax;
 
     stateMods.push(null);
     stateModsMin.push(undefined);
@@ -503,27 +502,27 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
   }
 
   private filterName(items: IBaseItem[]): IBaseItem[] {
-    const itemName: string = this.state.itemName.trim();
+    const itemName: string = this.props.itemName.trim();
     return !!itemName ? this.props.nameFilter.filter(items, itemName) : items;
   }
 
   private filterItemTypeAndBase(items: IBaseItem[]): IBaseItem[] {
-    if (this.state.itemBase !== null) {
-      return this.props.itemTypeFilter.filter(items, [this.state.itemBase.value]);
+    if (this.props.itemBase !== null) {
+      return this.props.itemTypeFilter.filter(items, [this.props.itemBase.value]);
     }
-    if (this.state.itemType !== null) {
-      return this.props.itemTypeFilter.filter(items, [this.state.itemType.value]);
+    if (this.props.itemType !== null) {
+      return this.props.itemTypeFilter.filter(items, [this.props.itemType.value]);
     }
     return items;
   }
 
   private filterItemMods(items: IBaseItem[]): IBaseItem[] {
     const modFilterParams: IModFilterParams[] = [];
-    for (let i = 0; i < this.state.mods.length; i++) {
-      if (this.state.mods[i] != null) {
-        const mod: IModFilterParams = { mod: this.state.mods[i].value };
-        const min: number = parseInt(this.state.modsMin[i], 10);
-        const max: number = parseInt(this.state.modsMax[i], 10);
+    for (let i = 0; i < this.props.mods.length; i++) {
+      if (this.props.mods[i] != null) {
+        const mod: IModFilterParams = { mod: this.props.mods[i].value };
+        const min: number = parseInt(this.props.modsMin[i], 10);
+        const max: number = parseInt(this.props.modsMax[i], 10);
         mod.min = !isNaN(min) ? min : 1;
         if (!isNaN(max)) { mod.max = max; }
         modFilterParams.push(mod);
@@ -535,13 +534,13 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
   private filterItemSockets(items: IBaseItem[]): IBaseItem[] {
     const socketFilterParams: ISocketFilterParams = {};
     let shouldSearch: boolean = false;
-    const minSockets: number = parseInt(this.state.socketsMin, 10);
-    const maxSockets: number = parseInt(this.state.socketsMax, 10);
-    const redSockets: number = parseInt(this.state.redSockets, 10);
-    const greenSockets: number = parseInt(this.state.greenSockets, 10);
-    const blueSockets: number = parseInt(this.state.blueSockets, 10);
-    const whiteSockets: number = parseInt(this.state.whiteSockets, 10);
-    const abyssSockets: number = parseInt(this.state.abyssSockets, 10);
+    const minSockets: number = parseInt(this.props.socketsMin, 10);
+    const maxSockets: number = parseInt(this.props.socketsMax, 10);
+    const redSockets: number = parseInt(this.props.redSockets, 10);
+    const greenSockets: number = parseInt(this.props.greenSockets, 10);
+    const blueSockets: number = parseInt(this.props.blueSockets, 10);
+    const whiteSockets: number = parseInt(this.props.whiteSockets, 10);
+    const abyssSockets: number = parseInt(this.props.abyssSockets, 10);
 
     if (!isNaN(minSockets)) {
       socketFilterParams.minSockets = minSockets;
@@ -577,12 +576,12 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
 
   private filterDps(items: IBaseItem[]): IBaseItem[] {
     const dpsFilterParams: IDpsFilterParams[] = [];
-    const minTotal: number = parseInt(this.state.totalDpsMin, 10);
-    const maxTotal: number = parseInt(this.state.totalDpsMax, 10);
-    const minElemental: number = parseInt(this.state.elementalDpsMin, 10);
-    const maxElemental: number = parseInt(this.state.elementalDpsMax, 10);
-    const minPhysical: number = parseInt(this.state.physicalDpsMin, 10);
-    const maxPhysical: number = parseInt(this.state.physicalDpsMax, 10);
+    const minTotal: number = parseInt(this.props.totalDpsMin, 10);
+    const maxTotal: number = parseInt(this.props.totalDpsMax, 10);
+    const minElemental: number = parseInt(this.props.elementalDpsMin, 10);
+    const maxElemental: number = parseInt(this.props.elementalDpsMax, 10);
+    const minPhysical: number = parseInt(this.props.physicalDpsMin, 10);
+    const maxPhysical: number = parseInt(this.props.physicalDpsMax, 10);
 
     if (!isNaN(minTotal) || !isNaN(maxTotal)) {
       const totalParams: IDpsFilterParams = { type: DpsType.ANY };
@@ -607,9 +606,9 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
   }
 
   private onItemCategoryChange(itemType: ISearchDropdownLabel) {
-    if (this.state.itemType !== null
+    if (this.props.itemType !== null
       && itemType !== null
-      && this.state.itemType.value === itemType.value) { return; }
+      && this.props.itemType.value === itemType.value) { return; }
     this.setState({ itemBase: null, itemType });
   }
 
@@ -624,27 +623,27 @@ class SearchForm extends React.Component<ISearchFormProps, ISearchFormState> {
   }
 
   private updateMods(index: number, mod: ISearchDropdownLabel): void {
-    const stateMods: ISearchDropdownLabel[] = this.state.mods;
+    const stateMods: ISearchDropdownLabel[] = this.props.mods;
     stateMods[index] = mod;
     this.setState({ mods: stateMods });
   }
 
   private updateModsMin(index: number, value: string): void {
-    const modsMin: string[] = this.state.modsMin;
+    const modsMin: string[] = this.props.modsMin;
     modsMin[index] = value;
     this.setState({ modsMin });
   }
 
   private updateModsMax(index, value: string): void {
-    const modsMax: string[] = this.state.modsMax;
+    const modsMax: string[] = this.props.modsMax;
     modsMax[index] = value;
     this.setState({ modsMax });
   }
 
   private removeItemMod(index: number): void {
-    const stateModsMin: string[] = this.state.modsMin;
-    const stateModsMax: string[] = this.state.modsMax;
-    const stateMods: ISearchDropdownLabel[] = this.state.mods;
+    const stateModsMin: string[] = this.props.modsMin;
+    const stateModsMax: string[] = this.props.modsMax;
+    const stateMods: ISearchDropdownLabel[] = this.props.mods;
     stateModsMin.splice(index, 1);
     stateModsMax.splice(index, 1);
     stateMods.splice(index, 1);
