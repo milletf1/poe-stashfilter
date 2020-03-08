@@ -1,4 +1,3 @@
-import { ChangeEvent } from 'react-autosuggest';
 
 export interface IAutocompleteTextboxProps {
   suggestions: string[];
