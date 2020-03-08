@@ -28,8 +28,8 @@ const QUAD_STASH_ITEM_SIZE: number = 22;
 const QUAD_STASH_DIVIDER_SIZE: number = 1.7;
 
 const mapStateToProps = (state: IAppState, props: any) => ({
-  browseCategory: state.activeAccount.uiState.browseCategory,
-  browseIndex: state.activeAccount.uiState.browseIndex,
+  browseCategory: state.activeAccount.uiState.browsePageState.browseCategory,
+  browseIndex: state.activeAccount.uiState.browsePageState.browseIndex,
   leagueIndex: state.activeAccount.uiState.leagueIndex,
   leagues: state.activeAccount.leagues,
 });

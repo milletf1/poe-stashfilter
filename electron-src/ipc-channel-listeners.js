@@ -216,8 +216,10 @@ function createEmptyAccount(accountName) {
     leagues: [],
     searches: [],
     uiState: {
-      browseCategory: null,
-      browseIndex: null,
+      browsePageState: {
+        browseCategory: null,
+        browseIndex: null,
+      },
       leagueIndex: 0,
       route: '/browse',
       searchIndex: null,

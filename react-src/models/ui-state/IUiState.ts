@@ -1,4 +1,4 @@
-import { BrowseItemCategory } from './BrowseItemCategory';
+import IBrowsePageState from './IBrowsePageState';
 import ISearchPageState from './ISearchPageState';
 
 export interface IUiState {
@@ -6,10 +6,8 @@ export interface IUiState {
   route: string;
   /** Selected league */
   leagueIndex: number;
-  /** index of selected browse item */
-  browseIndex: number;
-  /** type of selected browse item (character or stash tab) */
-  browseCategory: BrowseItemCategory;
   /** State of search page */
   searchPageState: ISearchPageState;
+  /** State of browse page */
+  browsePageState: IBrowsePageState;
 }

@@ -19,8 +19,10 @@ export const initialState: IAccountState = {
     },
   ],
   uiState: {
-    browseCategory: BrowseItemCategory.STASH_TAB,
-    browseIndex: 0,
+    browsePageState: {
+      browseCategory: BrowseItemCategory.STASH_TAB,
+      browseIndex: 0,
+    },
     leagueIndex: 0,
     route: '/browse',
     searchPageState: {

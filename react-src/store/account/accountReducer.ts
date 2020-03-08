@@ -35,8 +35,11 @@ export function reducer(
         ...state,
         uiState: {
           ...state.uiState,
-          browseCategory: action.payload.browseCategory,
-          browseIndex: action.payload.browseIndex,
+          browsePageState: {
+            ...state.uiState.browsePageState,
+            browseCategory: action.payload.browseCategory,
+            browseIndex: action.payload.browseIndex,
+          },
         },
       };
     case AccountActionTypes.SET_SEARCH_RESULTS:
