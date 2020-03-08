@@ -24,7 +24,7 @@ function login(email, password, rememberLogin) {
         apiRequest({
           jar,
           form: {
-            hash, 
+            hash,
             login: 'Login',
             login_email: email,
             login_password: password,
@@ -37,9 +37,9 @@ function login(email, password, rememberLogin) {
             getAccountName().then(accountName => {
               resolve({ loggedIn: true, accountName: accountName });
             })
-            .catch(err => {
-              resolve({ loggedIn : false })
-            });
+              .catch(err => {
+                resolve({ loggedIn: false })
+              });
           } else {
             resolve({ loggedIn: false });
           }
@@ -53,15 +53,8 @@ function login(email, password, rememberLogin) {
 
 function logout() {
   return new Promise((resolve, reject) => {
-    apiRequest({
-      jar,
-      url: BASE_URL + LOGOUT,
-    }, (err, res, body) => {
-      if (!res || res.statusCode !== 200) {
-        this.clearSession();
-      }
-      resolve();
-    });
+    this.clearSession();
+    resolve();
   });
 }
 
@@ -86,47 +79,51 @@ function getLoginHash() {
 function setSessionId(sessionId, rejectIfMissingCookie = false) {
   const cookies = jar.getCookies(COOKIE_KEY);
 
-  if (!cookies || !cookies.length === 0) {
+  if (!cookies || cookies.length === 0) {
     if (rejectIfMissingCookie) {
       return Promise.reject('Failed to get cookie from website');
     }
-    // get cookie from website if we don't already have one
+    // get cookies from website
     return new Promise((resolve, reject) => {
       apiRequest({ url: BASE_URL }, (err, res, body) => {
+        setSessionCookie(cookies, sessionId);
         setSessionId(sessionId, true)
           .then(result => resolve(result))
-          .catch(reject(err));
+          .catch(err => reject(err));
       });
     });
   }
 
   return new Promise((resolve, reject) => {
-    let cookie = cookies.find(cookie => cookie.key === 'POESESSID');
-
-    if (!cookie) {
-      cookie = new toughCookie.Cookie({
-        key: "POESESSID",
-        path: "/",
-        httpOnly: true,
-        hostOnly: false,
-        domain: "pathofexile.com"
-      });
-    }
-      cookie.value = sessionId.trim();
-      jar.setCookie(cookie, COOKIE_KEY);
-      getAccountName().then(accountName => {
-        resolve({ loggedIn: true, accountName: accountName });
-      })
+    setSessionCookie(cookies, sessionId);
+    getAccountName()
+      .then(accountName => resolve({ loggedIn: true, accountName: accountName }))
       .catch(err => reject(new Error('Invalid session id')));
   });
+}
+
+function setSessionCookie(cookies, sessionId) {
+  let cookie = cookies.find(cookie => cookie.key === 'POESESSID');
+
+  if (!cookie) {
+    cookie = new toughCookie.Cookie({
+      key: "POESESSID",
+      path: "/",
+      httpOnly: true,
+      hostOnly: false,
+      domain: ".pathofexile.com"
+    });
+  }
+  cookie.value = sessionId.trim();
+  jar.setCookie(cookie.toString(), COOKIE_KEY);
 }
 
 function clearSession() {
   const cookies = jar.getCookies(COOKIE_KEY);
 
-  if (cookies && cookies.length > 0){
+  if (cookies && cookies.length > 0) {
     cookies[0].value = 'deleted';
-    jar.setCookie(cookies[0], COOKIE_KEY);
+    jar.setCookie(cookies[0].toString(), COOKIE_KEY);
   }
 }
 

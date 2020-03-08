@@ -1,6 +1,5 @@
 'use strict';
 const { ipcMain } = require('electron');
-const Store = require('electron-store');
 const ipcChannels = require('./ipc-channels');
 const log = require('./logger');
 const webApi = require('./web-api');
@@ -73,10 +72,10 @@ function setupChannels(store, appState) {
       }
     })
     .catch(err => {
-      log.warn(err.message);
+      log.warn(err);
       event.sender.send(ipcChannels.SET_SESSION_RESPONSE, {
         loggedIn: false,
-        error: err.message,
+        error: err,
       });
     })
   });
