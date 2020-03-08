@@ -21,7 +21,6 @@ import IModSearchProps from './IModSearchProps';
 
 import './mod-search.scss';
 
-// TODO: create prop type interface
 class ModSearch extends React.Component<IModSearchProps, {}> {
   constructor(props) {
     super(props);

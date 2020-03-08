@@ -1,7 +1,12 @@
 import { ExpansionPanel, ExpansionPanelDetails, ExpansionPanelSummary } from '@material-ui/core';
 import * as React from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators, Dispatch } from 'redux';
 import SearchForm from '../../components/search-form/SearchForm';
 import SearchResults from '../../components/search-results/SearchResults';
+import { SearchVisibleSection } from '../../models/ui-state/SearchVisibleSection';
+import { accountActions } from '../../store/account/accountActions';
+import { IAppState } from '../../store/app/appState';
 import ISearchPageProps from './ISearchPageProps';
 import './search-page.scss';
 
@@ -19,12 +24,18 @@ const expansionPanelDetailsClasses = {
   root: 'panel-details',
 };
 
-class SearchPage extends React.Component<ISearchPageProps, any> {
+const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators({
+  setVisibleSection: accountActions.setSearchPageVisibleSection,
+}, dispatch);
+
+const mapStateToProps = (state: IAppState, props: any) => ({
+  ...props,
+  openSection: state.activeAccount.uiState.searchPageState.openSection,
+});
+
+class SearchPage extends React.Component<ISearchPageProps, {}> {
   constructor(props) {
     super(props);
-    this.state = {
-      expanded: 'search',
-    };
   }
 
   public render(): JSX.Element {
@@ -33,8 +44,8 @@ class SearchPage extends React.Component<ISearchPageProps, any> {
         <ExpansionPanel
           defaultExpanded
           square
-          expanded={this.state.expanded === 'search'}
-          onChange={this.changePanelFocus('search')}
+          expanded={this.props.openSection === SearchVisibleSection.SEARCH }
+          onChange={this.changePanelFocus(SearchVisibleSection.SEARCH)}
           classes={expansionPanelClasses}>
           <ExpansionPanelSummary classes={expansionPanelSummaryClasses}>
             Search
@@ -52,8 +63,8 @@ class SearchPage extends React.Component<ISearchPageProps, any> {
         </ExpansionPanel>
         <ExpansionPanel
           square
-          expanded={this.state.expanded === 'results'}
-          onChange={this.changePanelFocus('results')}
+          expanded={this.props.openSection === SearchVisibleSection.RESULT }
+          onChange={this.changePanelFocus(SearchVisibleSection.RESULT)}
           classes={expansionPanelClasses}>
           <ExpansionPanelSummary classes={expansionPanelSummaryClasses}>
             Results
@@ -68,13 +79,13 @@ class SearchPage extends React.Component<ISearchPageProps, any> {
     );
   }
 
-  private changePanelFocus(panel: string): (event: React.ChangeEvent, expanded: boolean) => void {
+  private changePanelFocus(
+    section: SearchVisibleSection,
+  ): (event: React.ChangeEvent, expanded: boolean) => void {
     return (event: React.ChangeEvent, expanded: boolean): void => {
-      this.setState({
-        expanded: expanded ? panel : false,
-      });
+      this.props.setVisibleSection(section);
     };
   }
 }
 
-export default SearchPage;
+export default connect(mapStateToProps, mapDispatchToProps)(SearchPage);

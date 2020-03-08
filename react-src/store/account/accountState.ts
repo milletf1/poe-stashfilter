@@ -1,7 +1,7 @@
 import { ILeague } from '../../models/ILeague';
 import { BrowseItemCategory } from '../../models/ui-state/BrowseItemCategory';
 import { IUiState } from '../../models/ui-state/IUiState';
-import { IBaseItem } from './../../models/items/IBaseItem';
+import { SearchVisibleSection } from '../../models/ui-state/SearchVisibleSection';
 import { ISearchResult } from './../../models/search/ISearchResult';
 
 export interface IAccountState {
@@ -26,6 +26,8 @@ export const initialState: IAccountState = {
     browseIndex: 0,
     leagueIndex: 0,
     route: '/browse',
-    searchIndex: 0,
+    searchPageState: {
+      openSection: SearchVisibleSection.SEARCH,
+    },
   },
 };

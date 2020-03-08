@@ -3,6 +3,7 @@ import { ILeague } from '../../models/ILeague';
 import { IStashTab } from '../../models/stash-tabs/IStashTab';
 import { BrowseItemCategory } from '../../models/ui-state/BrowseItemCategory';
 import { IUiState } from '../../models/ui-state/IUiState';
+import { SearchVisibleSection } from '../../models/ui-state/SearchVisibleSection';
 import { ActionsUnion } from '../util/actionsUnion';
 import { createAction } from '../util/createActionUtil';
 import { ISearchResult } from './../../models/search/ISearchResult';
@@ -26,6 +27,8 @@ export const enum AccountActionTypes {
   SET_SELECTED_TAB = 'SET_SELECTED_TAB',
   /** Sets search results */
   SET_SEARCH_RESULTS = 'SET_SEARCH_RESULTS',
+  /** Sets open section in search page */
+  SET_SEARCH_PAGE_VISIBLE_SECTION = 'SET_SEARCH_PAGE_VISIBLE_SECTION',
 }
 
 export const accountActions = {
@@ -39,6 +42,8 @@ export const accountActions = {
     createAction(AccountActionTypes.SET_LEAGUE_STASH_TABS, { leagueName, stashTabs }),
   setLeagues: (leagues: ILeague[]) =>
     createAction(AccountActionTypes.SET_LEAGUES, { leagues }),
+  setSearchPageVisibleSection: (section: SearchVisibleSection) =>
+    createAction(AccountActionTypes.SET_SEARCH_PAGE_VISIBLE_SECTION, { section }),
   setSearchResults: (searchResults: ISearchResult[]) =>
     createAction(AccountActionTypes.SET_SEARCH_RESULTS, { searchResults }),
   setSelectedLeague: (leagueIndex: number) =>
