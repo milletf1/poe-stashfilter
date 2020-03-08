@@ -53,15 +53,8 @@ function login(email, password, rememberLogin) {
 
 function logout() {
   return new Promise((resolve, reject) => {
-    apiRequest({
-      jar,
-      url: BASE_URL + LOGOUT,
-    }, (err, res, body) => {
-      if (!res || res.statusCode !== 200) {
-        this.clearSession();
-      }
-      resolve();
-    });
+    this.clearSession();
+    resolve();
   });
 }
 
