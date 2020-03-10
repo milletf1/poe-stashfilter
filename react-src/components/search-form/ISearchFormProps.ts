@@ -19,7 +19,6 @@ export default interface ISearchFormProps {
   modFilter: IFilterModule<IModFilterParams[]>;
   dpsFilter: IFilterModule<IDpsFilterParams | IDpsFilterParams[]>;
   socketFilter: IFilterModule<ISocketFilterParams>;
-  // ============================================================================ //
   /** Currently selected item base */
   itemBase: ISearchDropdownLabel | null;
   /** Search item name */
@@ -62,4 +61,25 @@ export default interface ISearchFormProps {
   whiteSockets: string; // number
   /** Total number of abyss sockets */
   abyssSockets: string; // number
+  setTotalDpsMin: (totalDpsMin: string) => void;
+  setTotalDpsMax: (totalDpsMax: string) => void;
+  setPhysicalDpsMin: (physicalDpsMin: string) => void;
+  setPhysicalDpsMax: (physicalDpsMax: string) => void;
+  setElementalDpsMin: (elementalDpsMin: string) => void;
+  setElementalDpsMax: (elementalDpsMax: string) => void;
+  setSocketsMin: (socketsMin: string) => void;
+  setSocketsMax: (socketsMax: string) => void;
+  setRedSockets: (redSockets: string) => void;
+  setBlueSockets: (blueSockets: string) => void;
+  setGreenSockets: (greenSockets: string) => void;
+  setWhiteSockets: (whiteSockets: string) => void;
+  setAbyssSockets: (abyssSockets: string) => void;
+  setModsMin: (modsMin: string[]) => void;
+  setModsMax: (modsMax: string[]) => void;
+  setMods: (mods: ISearchDropdownLabel[]) => void;
+  setSearchButtonEnabled: (enabled: boolean) => void;
+  setItemBase: (itemBase: ISearchDropdownLabel | null) => void;
+  setItemType: (itemType: ISearchDropdownLabel | null) => void;
+  setItemNameSuggestions: (itemNameSuggestions: string[]) => void;
+  setItemName: (itemName: string) => void;
 }

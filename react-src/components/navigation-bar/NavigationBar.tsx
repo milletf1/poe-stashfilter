@@ -50,7 +50,8 @@ class NavigationBar extends React.Component<INavigationBarProps, INavigationBarS
     const leagueSelectStyle: React.CSSProperties = { width: '100%' };
     const accountNameStyle: React.CSSProperties = { display: 'inline-block', marginRight: '8px' };
     const importItemsButtonStyle: React.CSSProperties = { marginLeft: '24px'};
-
+    // TODO: check props.league[props.leagueIndex] exists
+    // (it's possible that it won't when a league ends)
     return (
       <AppBar position='relative'>
         <Grid container>

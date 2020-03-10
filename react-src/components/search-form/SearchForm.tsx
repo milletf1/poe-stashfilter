@@ -65,7 +65,28 @@ import { wandBases } from './item-bases/wand-bases';
 import { itemNames } from './item-names';
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators({
+  setAbyssSockets: accountActions.setAbyssSockets,
+  setBlueSockets: accountActions.setBlueSockets,
+  setElementalDpsMax: accountActions.setElementalDpsMax,
+  setElementalDpsMin: accountActions.setElementalDpsMin,
+  setGreenSockets: accountActions.setGreenSockets,
+  setItemBase: accountActions.setItemBase,
+  setItemName: accountActions.setItemName,
+  setItemNameSuggestions: accountActions.setItemNameSuggestions,
+  setItemType: accountActions.setItemType,
+  setMods: accountActions.setMods,
+  setModsMax: accountActions.setModsMax,
+  setModsMin: accountActions.setModsMin,
+  setPhysicalDpsMax: accountActions.setPhysicalDpsMax,
+  setPhysicalDpsMin: accountActions.setPhysicalDpsMin,
+  setRedSockets: accountActions.setRedSockets,
+  setSearchButtonEnabled: accountActions.setSearchButtonEnabled,
   setSearchResults: accountActions.setSearchResults,
+  setSocketsMax: accountActions.setSocketsMax,
+  setSocketsMin: accountActions.setSocketsMin,
+  setTotalDpsMax: accountActions.setTotalDpsMax,
+  setTotalDpsMin: accountActions.setTotalDpsMin,
+  setWhiteSockets: accountActions.setWhiteSockets,
 }, dispatch);
 
 const mapStateToProps = (state: IAppState, props: any) => ({
@@ -352,118 +373,109 @@ class SearchForm extends React.Component<ISearchFormProps, {}> {
     event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
   ): void {
     const totalDpsMin: string = event.target.value;
-    this.setState({ totalDpsMin });
+    this.props.setTotalDpsMin(totalDpsMin);
   }
 
   private onTotalDpsMaxChange(
     event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
   ): void {
     const totalDpsMax: string = event.target.value;
-    this.setState({ totalDpsMax });
+    this.props.setTotalDpsMax(totalDpsMax);
   }
 
   private onPhysicalDpsMinChange(
     event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
   ): void {
     const physicalDpsMin: string = event.target.value;
-    this.setState({ physicalDpsMin });
+    this.props.setPhysicalDpsMin(physicalDpsMin);
   }
 
   private onPhysicalDpsMaxChange(
     event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
   ): void {
     const physicalDpsMax: string = event.target.value;
-    this.setState({ physicalDpsMax });
+    this.props.setPhysicalDpsMax(physicalDpsMax);
   }
 
   private onElementalDpsMinChange(
     event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
   ): void {
     const elementalDpsMin: string = event.target.value;
-    this.setState({ elementalDpsMin });
+    this.props.setElementalDpsMin(elementalDpsMin);
   }
 
   private onElementalDpsMaxChange(
     event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
   ): void {
     const elementalDpsMax: string = event.target.value;
-    this.setState({ elementalDpsMax });
+    this.props.setElementalDpsMax(elementalDpsMax);
   }
 
   private onSocketsMinChange(
     event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
   ): void {
-
     const socketsMin: string = event.target.value;
-    this.setState({ socketsMin });
+    this.props.setSocketsMin(socketsMin);
   }
 
   private onSocketsMaxChange(
     event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
   ): void {
-
     const socketsMax: string = event.target.value;
-    this.setState({ socketsMax });
+    this.props.setSocketsMax(socketsMax);
   }
 
   private onRedSocketChange(
     event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
   ): void {
-
     const redSockets: string = event.target.value;
-    this.setState({ redSockets });
+    this.props.setRedSockets(redSockets);
   }
 
   private onBlueSocketChange(
     event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
   ): void {
-
     const blueSockets: string = event.target.value;
-    this.setState({ blueSockets });
+    this.props.setBlueSockets(blueSockets);
   }
 
   private onGreenSocketChange(
     event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
   ): void {
-
     const greenSockets: string = event.target.value;
-    this.setState({ greenSockets });
+    this.props.setGreenSockets(greenSockets);
   }
 
   private onWhiteSocketChange(
     event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
   ): void {
-
     const whiteSockets: string = event.target.value;
-    this.setState({ whiteSockets });
+    this.props.setWhiteSockets(whiteSockets);
   }
 
   private onAbyssSocketChange(
     event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
   ): void {
-
     const abyssSockets: string = event.target.value;
-    this.setState({ abyssSockets });
+    this.props.setAbyssSockets(abyssSockets);
   }
 
   private onAddModClick(): void {
-    const stateMods: ISearchDropdownLabel[] = this.props.mods;
-    const stateModsMin: string[] = this.props.modsMin;
-    const stateModsMax: string[] = this.props.modsMax;
+    const mods: ISearchDropdownLabel[] = [...this.props.mods];
+    const modsMin: string[] = [...this.props.modsMin];
+    const modsMax: string[] = [...this.props.modsMax];
 
-    stateMods.push(null);
-    stateModsMin.push(undefined);
-    stateModsMax.push(undefined);
+    mods.push(null);
+    modsMin.push(undefined);
+    modsMax.push(undefined);
 
-    this.setState({
-      mods: stateMods,
-      modsMax: stateModsMax,
-      modsMin: stateModsMin,
-    });
+    this.props.setMods(mods);
+    this.props.setModsMin(modsMin);
+    this.props.setModsMax(modsMax);
   }
 
   private async onSearchClick(): Promise<void> {
-    this.setState({ searchButtonEnabled: false });
+    this.props.setSearchButtonEnabled(false);
     const league: ILeague = this.props.leagues[this.props.leagueIndex];
     const searchResults: ISearchResult[] = [];
 
@@ -487,8 +499,7 @@ class SearchForm extends React.Component<ISearchFormProps, {}> {
         stashName,
       })));
     }
-
-    this.setState({ searchButtonEnabled: true });
+    this.props.setSearchButtonEnabled(true);
     this.props.setSearchResults(searchResults);
   }
 
@@ -609,49 +620,51 @@ class SearchForm extends React.Component<ISearchFormProps, {}> {
     if (this.props.itemType !== null
       && itemType !== null
       && this.props.itemType.value === itemType.value) { return; }
-    this.setState({ itemBase: null, itemType });
+    this.props.setItemBase(null);
+    this.props.setItemType(itemType);
   }
 
   private onItemBaseChange(itemBase: ISearchDropdownLabel | null) {
-    this.setState({ itemBase });
+    this.props.setItemBase(itemBase);
   }
 
   private onItemNameSuggestionValueChange(itemName: string): void {
     const itemNameSuggestions: string[] = itemNames
       .filter((name: string) => name.toLowerCase().indexOf(itemName.toLowerCase()) !== -1);
-    this.setState({ itemName, itemNameSuggestions });
+    this.props.setItemName(itemName);
+    this.props.setItemNameSuggestions(itemNameSuggestions);
   }
 
   private updateMods(index: number, mod: ISearchDropdownLabel): void {
-    const stateMods: ISearchDropdownLabel[] = this.props.mods;
-    stateMods[index] = mod;
-    this.setState({ mods: stateMods });
+    const mods: ISearchDropdownLabel[] = [...this.props.mods];
+    mods[index] = mod;
+    this.props.setMods(mods);
   }
 
   private updateModsMin(index: number, value: string): void {
-    const modsMin: string[] = this.props.modsMin;
+    const modsMin: string[] = [...this.props.modsMin];
     modsMin[index] = value;
-    this.setState({ modsMin });
+    this.props.setModsMin(modsMin);
   }
 
   private updateModsMax(index, value: string): void {
-    const modsMax: string[] = this.props.modsMax;
+    const modsMax: string[] = [...this.props.modsMax];
     modsMax[index] = value;
-    this.setState({ modsMax });
+    this.props.setModsMax(modsMax);
   }
 
   private removeItemMod(index: number): void {
-    const stateModsMin: string[] = this.props.modsMin;
-    const stateModsMax: string[] = this.props.modsMax;
-    const stateMods: ISearchDropdownLabel[] = this.props.mods;
-    stateModsMin.splice(index, 1);
-    stateModsMax.splice(index, 1);
-    stateMods.splice(index, 1);
-    this.setState({
-      mods: stateMods,
-      modsMax: stateModsMax,
-      modsMin: stateModsMin,
-    });
+    const modsMin: string[] = [...this.props.modsMin];
+    const modsMax: string[] = [...this.props.modsMax];
+    const mods: ISearchDropdownLabel[] = [...this.props.mods];
+
+    modsMin.splice(index, 1);
+    modsMax.splice(index, 1);
+    mods.splice(index, 1);
+
+    this.props.setMods(mods);
+    this.props.setModsMin(modsMin);
+    this.props.setModsMax(modsMax);
   }
 }
 
