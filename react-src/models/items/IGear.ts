@@ -1,8 +1,6 @@
-import { IBaseItem } from './IBaseItem';
+import IInfluenceType from './IInfluenceType';
 import { IItemProperty } from './IItemProperty';
-import { ISocket } from './ISocket';
 import { ISocketableItem } from './ISocketableItem';
-import { ISocketItem } from './ISocketItem';
 
 export interface IGear extends ISocketableItem {
   /** Mirrored gear */
@@ -25,6 +23,8 @@ export interface IGear extends ISocketableItem {
   enchantMods?: string[];
   /** Incubated item */
   incubatedItem?: IIncubatedItem;
+  /** Influence type */
+  influences?: IInfluenceType;
 }
 
 export interface IIncubatedItem {

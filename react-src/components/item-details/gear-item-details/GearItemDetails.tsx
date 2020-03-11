@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { IGear } from '../../../models/items/IGear';
+import ItemInfluence from '../../item-influence/ItemInfluence';
 import ItemMods from '../../item-mods/ItemMods';
 import { ItemModThemeTypes } from '../../item-mods/ItemModThemeTypes';
 import ItemProperties from '../../item-properties/ItemProperties';
@@ -38,6 +39,9 @@ class GearItemDetails extends React.Component<IGearItemDetailsProps, {}> {
             mods={item.craftedMods}
             style={{marginTop: 0}}
             theme={ItemModThemeTypes.CRAFT_TEXT} />
+        }
+        {
+          item.influences && <ItemInfluence influences={item.influences} />
         }
         {
           item.corrupted &&

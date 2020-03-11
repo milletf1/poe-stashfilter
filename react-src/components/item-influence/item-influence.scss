@@ -1,0 +1,14 @@
+@import '../../sass/colors.scss';
+
+.influence {
+  margin: 0 auto;
+  text-align: center;
+  font-style: italic;
+
+  &.warlord { color: $warlord-influence-color; }
+  &.hunter { color: $hunter-influence-color; }
+  &.redeemer { color: $redeemer-influence-color; }
+  &.crusader { color: $crusader-influence-color; }
+  &.elder { color: $elder-influence-color; }
+  &.shaper { color: $shaper-influence-color; }
+}
