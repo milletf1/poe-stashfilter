@@ -14,13 +14,14 @@ class AutocompleteTextBox extends React.Component
   }
 
   public render(): JSX.Element {
-    return <Autocomplete
-        id='free-solo-demo'
-        freeSolo
-        options={this.props.suggestions}
-        onInputChange={this.onInputChange}
-        renderInput={this.renderInputComponent}
-      />;
+    return (
+      <Autocomplete
+         id='free-solo-demo'
+         freeSolo
+         options={this.props.suggestions}
+         onInputChange={this.onInputChange}
+         renderInput={this.renderInputComponent} />
+    );
   }
 
   private renderInputComponent(inputProps): JSX.Element {

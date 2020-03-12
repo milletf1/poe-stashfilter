@@ -128,6 +128,7 @@ class SearchForm extends React.Component<ISearchFormProps, {}> {
     // search form event listeners
     this.onSearchClick = this.onSearchClick.bind(this);
     this.onAddModClick = this.onAddModClick.bind(this);
+    this.onClearClick = this.onClearClick.bind(this);
     this.onItemNameSuggestionValueChange = this.onItemNameSuggestionValueChange.bind(this);
     this.onItemCategoryChange = this.onItemCategoryChange.bind(this);
     this.onItemBaseChange = this.onItemBaseChange.bind(this);
@@ -304,21 +305,29 @@ class SearchForm extends React.Component<ISearchFormProps, {}> {
             value={this.props.itemBase}
             onChange={this.onItemBaseChange} />
         </Grid>
-        <Grid container item xs={3} justify='flex-end'>
+        <Grid container item xs={3} justify='space-between'>
           <Button
+            size='small'
             variant='contained'
             color='primary'
             disabled={!this.props.searchButtonEnabled}
-            onClick={this.onSearchClick}
-            style={{ marginRight: '16px' }}>
+            onClick={this.onSearchClick}>
             Search
           </Button>
           <Button
-            variant='contained'
-            color='secondary'
+            size='small'
+            variant='outlined'
+            color='primary'
             onClick={this.onAddModClick}>
-            Add mod
+            Mod
           </Button>
+          <Button
+            size='small'
+            variant='outlined'
+            color='primary'
+            onClick={this.onClearClick}>
+            Clear
+            </Button>
         </Grid>
         <ModSearch
           mods={this.props.mods}
@@ -472,6 +481,32 @@ class SearchForm extends React.Component<ISearchFormProps, {}> {
     this.props.setMods(mods);
     this.props.setModsMin(modsMin);
     this.props.setModsMax(modsMax);
+  }
+
+  private onClearClick(): void {
+    this.props.setAbyssSockets('');
+    this.props.setBlueSockets('');
+    this.props.setElementalDpsMax('');
+    this.props.setElementalDpsMin('');
+    this.props.setGreenSockets('');
+    this.props.setItemBase(null);
+    // TODO: need to add a value prop to autocomplete textbox which gets passed down to
+    // its textfield (see https://material-ui.com/api/text-field/#textfield-api)
+    // this.props.setItemName(null);
+    this.props.setItemNameSuggestions([]);
+    this.props.setItemType(null);
+    this.props.setMods([null]);
+    this.props.setModsMax(['']);
+    this.props.setModsMin(['']);
+    this.props.setPhysicalDpsMax('');
+    this.props.setPhysicalDpsMin('');
+    this.props.setRedSockets('');
+    this.props.setSearchResults([]);
+    this.props.setSocketsMax('');
+    this.props.setSocketsMin('');
+    this.props.setTotalDpsMax('');
+    this.props.setTotalDpsMin('');
+    this.props.setWhiteSockets('');
   }
 
   private async onSearchClick(): Promise<void> {

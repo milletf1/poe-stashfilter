@@ -82,7 +82,7 @@ class ModSearch extends React.Component<IModSearchProps, {}> {
                     value={mod}
                     onChange={this.onModChange(index)} />
                 </Grid>
-                <Grid container item xs={2} spacing={0} style={{ paddingRight: '2px' }}>
+                <Grid container item xs={2} spacing={0} >
                   <Grid item xs={6}>
                     <Input
                       id={`mods-min-${index}`}
@@ -100,11 +100,13 @@ class ModSearch extends React.Component<IModSearchProps, {}> {
                       style={{ marginLeft: '8px' }} />
                   </Grid>
                 </Grid>
-                <Grid container item xs={3} className='button-container' justify='flex-end'>
+                <Grid container item xs={3} className='button-container'>
                   <Button
                     id={`mods-delete-${index}`}
+                    size='small'
                     color='secondary'
-                    onClick={this.removeItemModElement}>
+                    onClick={this.removeItemModElement}
+                    style={{ marginLeft: '8px' }}>
                     Remove
                     </Button>
                 </Grid>
