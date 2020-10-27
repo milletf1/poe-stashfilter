@@ -4,9 +4,13 @@ import { IItemPropertiesProps } from './IItemPropertiesProps';
 import './item-properties.scss';
 import { ItemPropertyValueTypes } from './ItemPropertyValueTypes';
 
+const UNMET_TAG_TEST_REGEX: RegExp = /<unmet>/;
 const ITEM_PROPERTY_SPLIT_REGEX: RegExp = /(<unmet>{[^}]*})/g;
 const UNMET_PROPERTY_TEST_REGEX: RegExp = /^<unmet>{[^}]*}$/;
 const GET_UNMET_PROPERTY_REGEX: RegExp = /(?<=<unmet>{)[^}]*(?=})/;
+const SPLIT_PROPERTY_NAME_REGEX: RegExp = /({\d+})/g;
+const INTERPOLATION_EXPRESSION_TEST_REGEX: RegExp = /^{\d+}$/;
+const EXTRACT_NUMBER_REGEX: RegExp = /\d+/;
 
 class ItemProperties extends React.Component<IItemPropertiesProps, {}> {
   public render(): JSX.Element {
@@ -29,8 +33,9 @@ class ItemProperties extends React.Component<IItemPropertiesProps, {}> {
    */
   private createItemPropertyElement(itemProperty: IItemProperty, key: number): JSX.Element {
     const hasPropertyValue: boolean = itemProperty.values[0] && itemProperty.values[0].length > 0;
-    if (/<unmet>/.test(itemProperty.name)) {
+    if (UNMET_TAG_TEST_REGEX.test(itemProperty.name)) {
       // property value contains an <unmet> tag (see resonators)
+      ITEM_PROPERTY_SPLIT_REGEX.lastIndex = 0;
       const tokens: string[] = itemProperty.name.split(ITEM_PROPERTY_SPLIT_REGEX);
       return (
         <div className='property' key={key}>
@@ -55,13 +60,14 @@ class ItemProperties extends React.Component<IItemPropertiesProps, {}> {
       );
     } else {
       // property value(s) are displayed within the property name (see flasks)
-      const tokens: string[] = itemProperty.name.split(/(%\d+)/g);
+      SPLIT_PROPERTY_NAME_REGEX.lastIndex = 0;
+      const tokens: string[] = itemProperty.name.split(SPLIT_PROPERTY_NAME_REGEX);
       return (
         <div className='property' key={key}>
           {
             tokens.map((token: string, index: number) => {
-              if (/^%\d+$/.test(token)) {
-                const valueIndex: string = /\d+/.exec(token)[0];
+              if (INTERPOLATION_EXPRESSION_TEST_REGEX.test(token)) {
+                const valueIndex: string = EXTRACT_NUMBER_REGEX.exec(token)[0];
                 const itemPropertyValue: [string, number] = itemProperty
                   .values[parseInt(valueIndex, 10)];
                 return (
