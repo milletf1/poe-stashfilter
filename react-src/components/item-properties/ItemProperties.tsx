@@ -118,6 +118,9 @@ class ItemProperties extends React.Component<IItemPropertiesProps, {}> {
       case ItemPropertyValueTypes.COLD: return 'value cold';
       case ItemPropertyValueTypes.LIGHTNING: return 'value lightning';
       case ItemPropertyValueTypes.CHAOS: return 'value chaos';
+      case ItemPropertyValueTypes.WILD: return 'value wild';
+      case ItemPropertyValueTypes.VIVID: return 'value vivid';
+      case ItemPropertyValueTypes.PRIMAL: return 'value primal';
       default: return 'value';
     }
   }

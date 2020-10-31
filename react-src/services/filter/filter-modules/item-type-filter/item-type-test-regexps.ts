@@ -102,3 +102,5 @@ export const CURRENCY_TEST_REGEX: RegExp = /.*\/2DItems\/Currency\/(?!Bestiary(O
 export const ORGAN_TEST_REGEX: RegExp = /.*\/2DItems\/Currency\/Metamorph/;
 /** Regex for checking oils */
 export const OIL_TEST_REGEX: RegExp = /.*\/2DItems\/Currency\/Oils/;
+/** Regex for checking harvest seeds */
+export const HARVEST_SEED_TEST_REGEX: RegExp = /.*\/2DItems\/Currency\/Harvest/;

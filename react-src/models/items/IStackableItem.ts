@@ -11,7 +11,9 @@ export interface IStackableItem extends IBaseItem {
   /** Item properties */
   properties: IItemProperty[];
   /** Explicit modifiers */
-  explicitMods: string[];
+  explicitMods?: string[];
+  /** Crafted modifiers */
+  craftedMods?: string[];
   /** Flavour text */
   flavourText?: string[];
 }

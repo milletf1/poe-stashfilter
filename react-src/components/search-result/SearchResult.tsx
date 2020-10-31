@@ -25,6 +25,7 @@ import { isIFossil } from '../../models/items/IFossil';
 import { isIFractured } from '../../models/items/IFractured';
 import { isIGear } from '../../models/items/IGear';
 import { isIGem } from '../../models/items/IGem';
+import { isIHarvestSeed } from '../../models/items/IHarvestSeed';
 import { isIJewel } from '../../models/items/IJewel';
 import { isILeagueStone } from '../../models/items/ILeagueStone';
 import { IMap, isIMap } from '../../models/items/IMap';
@@ -37,6 +38,7 @@ import { isIVaalGem } from '../../models/items/IVaalGem';
 import { ISearchResult } from '../../models/search/ISearchResult';
 import { IStashTabColour } from '../../models/stash-tabs/IStashTabMetadata';
 import { BREACHSTONE_TEST_REGEX, INCUBATOR_TEST_REGEX, MAP_FRAGMENT_TEST_REGEX, SCARAB_TEST_REGEX, SPLINTER_TEST_REGEX } from '../../services/filter/filter-modules/item-type-filter/item-type-test-regexps';
+import HarvestSeedItemDetails from '../item-details/harvest-seed-item-details/HarvestSeedItemDetails';
 import { ISearchResultProps } from './ISearchResultProps';
 import './search-result.scss';
 
@@ -106,6 +108,7 @@ class SearchResult extends React.Component<ISearchResultProps, {}> {
     if (isICard(item)) { return <Card card={item} />; }
     if (isIBeast(item)) { return <BeastItemDetails item={item} />; }
     if (isIOrgan(item)) { return <OrganItemDetails item={item} />; }
+    if (isIHarvestSeed(item)) { return <HarvestSeedItemDetails item={item} />; }
     return <CurrencyItemDetails item={item as ICurrency} />;
   }
 

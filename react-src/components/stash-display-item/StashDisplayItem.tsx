@@ -8,6 +8,7 @@ import { isIFossil } from '../../models/items/IFossil';
 import { isIFractured } from '../../models/items/IFractured';
 import { isIGear } from '../../models/items/IGear';
 import { isIGem } from '../../models/items/IGem';
+import { isIHarvestSeed } from '../../models/items/IHarvestSeed';
 import { isIJewel } from '../../models/items/IJewel';
 import { isILeagueStone } from '../../models/items/ILeagueStone';
 import { IMap, isIMap } from '../../models/items/IMap';
@@ -27,6 +28,7 @@ import FossilItemDetails from '../item-details/fossil-item-details/FossilItemDet
 import FracturedItemDetails from '../item-details/fractured-item-details/FracturedItemDetails';
 import GearItemDetails from '../item-details/gear-item-details/GearItemDetails';
 import GemItemDetails from '../item-details/gem-item-details/GemItemDetails';
+import HarvestSeedItemDetails from '../item-details/harvest-seed-item-details/HarvestSeedItemDetails';
 import JewelItemDetails from '../item-details/jewel-item-details/JewelItemDetails';
 import LeaguestoneItemDetails from '../item-details/leaguestone-item-details/LeaguestoneItemDetails';
 import MapItemDetails from '../item-details/map-item-details/MapItemDetails';
@@ -300,6 +302,15 @@ class StashDisplayItem extends React.Component<IStashDisplayItemProps, IStashDis
           elementRefCallback={this.onElementRefUpdate}/>
       );
     }
+    if (isIHarvestSeed(this.props.item)) {
+      return (
+        <HarvestSeedItemDetails
+          item={this.props.item}
+          style={style}
+          elementRefCallback={this.onElementRefUpdate}/>
+      );
+    }
+    // TODO: horticrafting station test
     return (
       <CurrencyItemDetails
         item={this.props.item as ICurrency}
