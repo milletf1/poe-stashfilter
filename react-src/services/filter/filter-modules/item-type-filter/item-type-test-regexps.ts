@@ -103,4 +103,6 @@ export const ORGAN_TEST_REGEX: RegExp = /.*\/2DItems\/Currency\/Metamorph/;
 /** Regex for checking oils */
 export const OIL_TEST_REGEX: RegExp = /.*\/2DItems\/Currency\/Oils/;
 /** Regex for checking harvest seeds */
-export const HARVEST_SEED_TEST_REGEX: RegExp = /.*\/2DItems\/Currency\/Harvest/;
+export const HARVEST_SEED_TEST_REGEX: RegExp = /.*\/2DItems\/Currency\/Harvest\/(Yellow|Red|Blue)Seed/;
+/** Regex for checking harvest structures (pylon, horticrafting station etc...) */
+export const HARVEST_STRUCTURE_TEST_REGEX: RegExp = /.*\/2DItems\/Currency\/Harvest\/Harvest/;

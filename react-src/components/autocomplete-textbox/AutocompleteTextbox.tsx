@@ -18,6 +18,7 @@ class AutocompleteTextBox extends React.Component
       <Autocomplete
          id='free-solo-demo'
          freeSolo
+         value={this.props.value || ''}
          options={this.props.suggestions}
          onInputChange={this.onInputChange}
          renderInput={this.renderInputComponent} />

@@ -177,17 +177,6 @@ class StashDisplayItem extends React.Component<IStashDisplayItemProps, IStashDis
   /** Creates and returns an onhover tooltip for the item prop */
   private createItemTooltipElement(): JSX.Element {
     const style: React.CSSProperties = (this.tooltipPositionStyle as React.CSSProperties);
-    if (isICurrency(this.props.item)
-      || INCUBATOR_TEST_REGEX.test(this.props.item.icon)
-      || SPLINTER_TEST_REGEX.test(this.props.item.icon)
-      || SCARAB_TEST_REGEX.test(this.props.item.icon)) {
-      return (
-        <CurrencyItemDetails
-          item={this.props.item as ICurrency}
-          style={style}
-          elementRefCallback={this.onElementRefUpdate}/>
-      );
-    }
     if (isIMap(this.props.item)
       || MAP_FRAGMENT_TEST_REGEX.test(this.props.item.icon)
       || BREACHSTONE_TEST_REGEX.test(this.props.item.icon)) {

@@ -18,6 +18,10 @@ class CurrencyItemDetails extends React.Component<ICurrencyItemDetailsProps, {}>
         <ItemProperties properties={item.properties} />
         {item.explicitMods && <ItemMods mods={item.explicitMods} />}
         {
+          item.craftedMods &&
+          <ItemMods mods={item.craftedMods} theme={ItemModThemeTypes.CRAFT_TEXT} />
+        }
+        {
           item.flavourText &&
           <ItemMods mods={item.flavourText} theme={ItemModThemeTypes.FLAVOUR_TEXT} />
         }

@@ -81,12 +81,6 @@ class SearchResult extends React.Component<ISearchResultProps, {}> {
   }
 
   private createItemElement(item: IBaseItem): JSX.Element {
-    if (isICurrency(item)
-      || INCUBATOR_TEST_REGEX.test(item.icon)
-      || SPLINTER_TEST_REGEX.test(item.icon)
-      || SCARAB_TEST_REGEX.test(item.icon)) {
-      return <CurrencyItemDetails item={item as ICurrency} />;
-    }
     if (isIMap(item)
       || MAP_FRAGMENT_TEST_REGEX.test(item.icon)
       || BREACHSTONE_TEST_REGEX.test(item.icon)) {

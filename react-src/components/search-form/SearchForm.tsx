@@ -1,4 +1,4 @@
-import { Button, Grid, Input, Typography, withTheme } from '@material-ui/core';
+import { Button, Grid, Typography, withTheme } from '@material-ui/core';
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
@@ -21,6 +21,7 @@ import { IAppState } from '../../store/app/appState';
 import DpsSearch from '../dps-search/DpsSearch';
 import ModSearch from '../mod-search/ModSearch';
 import SocketSearch from '../socket-search/SocketSearch';
+import { harvestSeedBases } from './harvest-seed-bases';
 import ISearchFormProps from './ISearchFormProps';
 import { amuletBases } from './item-bases/amulet-bases';
 import { beltBases } from './item-bases/belt-bases';
@@ -275,6 +276,8 @@ class SearchForm extends React.Component<ISearchFormProps, {}> {
         return this.convertIItemBasesToISearchDropdownLabel(oilBases);
       case ItemType.ORGAN:
         return this.convertIItemBasesToISearchDropdownLabel(organBases);
+      case ItemType.HARVEST_SEED:
+        return this.convertIItemBasesToISearchDropdownLabel(harvestSeedBases);
       case ItemType.BEAST:
       case ItemType.FISHING_ROD:
       default:
@@ -288,6 +291,7 @@ class SearchForm extends React.Component<ISearchFormProps, {}> {
         <Grid item xs={5}>
           <AutocompleteTextBox
             suggestions={this.props.itemNameSuggestions}
+            value={this.props.itemName}
             placeholder='Name'
             onChange={this.onItemNameSuggestionValueChange} />
         </Grid>
@@ -490,9 +494,7 @@ class SearchForm extends React.Component<ISearchFormProps, {}> {
     this.props.setElementalDpsMin('');
     this.props.setGreenSockets('');
     this.props.setItemBase(null);
-    // TODO: need to add a value prop to autocomplete textbox which gets passed down to
-    // its textfield (see https://material-ui.com/api/text-field/#textfield-api)
-    // this.props.setItemName(null);
+    this.props.setItemName('');
     this.props.setItemNameSuggestions([]);
     this.props.setItemType(null);
     this.props.setMods([null]);
