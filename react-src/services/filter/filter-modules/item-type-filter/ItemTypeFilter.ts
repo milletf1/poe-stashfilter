@@ -191,6 +191,10 @@ class ItemTypeFilter implements IFilterModule<ItemType[] | IItemBase[] | IItemFi
         return itemTypeTestRegExps.OIL_TEST_REGEX.test(item.icon);
       case ItemType.HARVEST_SEED:
         return itemTypeTestRegExps.HARVEST_SEED_TEST_REGEX.test(item.icon);
+      case ItemType.HARVEST_SEED_ENHANCER:
+        return itemTypeTestRegExps.HARVEST_SEED_ENHANCER_TEST_REGEX.test(item.icon);
+      case ItemType.HARVEST_EQUIPMENT:
+        return itemTypeTestRegExps.HARVEST_EQUIPMENT_TEST_REGEX.test(item.icon);
       default: return false;
     }
   }

@@ -1,7 +1,7 @@
-import { IItemBase } from './../../services/filter/filter-modules/item-type-filter/IItemBase';
-import { ItemType } from './../../services/filter/filter-modules/item-type-filter/ItemType';
+import { IItemBase } from '../../../services/filter/filter-modules/item-type-filter/IItemBase';
+import { ItemType } from '../../../services/filter/filter-modules/item-type-filter/ItemType';
 
-export const harvestSeedBases: IItemBase[] = [
+export const seedBases: IItemBase[] = [
   {
     base: 'Wild Ursaling Seed',
     type: ItemType.HARVEST_SEED,

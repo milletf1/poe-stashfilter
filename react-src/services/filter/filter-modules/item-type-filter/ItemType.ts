@@ -43,5 +43,7 @@ export enum ItemType {
   BREACHSTONE = 'Breachstone',
   OIL = 'Oil',
   ORGAN = 'Organ',
-  HARVEST_SEED = 'Harvest Seed',
+  HARVEST_SEED = 'Seed',
+  HARVEST_SEED_ENHANCER = 'Seed Enhancer',
+  HARVEST_EQUIPMENT = 'Harvest Equipment',
 }

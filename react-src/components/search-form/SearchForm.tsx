@@ -21,7 +21,6 @@ import { IAppState } from '../../store/app/appState';
 import DpsSearch from '../dps-search/DpsSearch';
 import ModSearch from '../mod-search/ModSearch';
 import SocketSearch from '../socket-search/SocketSearch';
-import { harvestSeedBases } from './harvest-seed-bases';
 import ISearchFormProps from './ISearchFormProps';
 import { amuletBases } from './item-bases/amulet-bases';
 import { beltBases } from './item-bases/belt-bases';
@@ -38,6 +37,7 @@ import { flaskBases } from './item-bases/flask-bases';
 import { fossilBases } from './item-bases/fossil-bases';
 import { gemBases } from './item-bases/gem-bases';
 import { gloveBases } from './item-bases/glove-bases';
+import { harvestEquipmentBases } from './item-bases/harvest-equipment-bases';
 import { helmetBases } from './item-bases/helmet-bases';
 import { incubatorBases } from './item-bases/incubator-bases';
 import { jewelBases } from './item-bases/jewel-bases';
@@ -56,6 +56,8 @@ import { resonatorBases } from './item-bases/resonator-bases';
 import { ringBases } from './item-bases/ring-bases';
 import { scarabBases } from './item-bases/scarab-bases';
 import { sceptreBases } from './item-bases/sceptre-bases';
+import { seedBases } from './item-bases/seed-bases';
+import { seedEnhancerBases } from './item-bases/seed-enhancer-bases';
 import { shieldBases } from './item-bases/shield-bases';
 import { splinterBases } from './item-bases/splinter-bases';
 import { staffBases } from './item-bases/staff-bases';
@@ -277,7 +279,11 @@ class SearchForm extends React.Component<ISearchFormProps, {}> {
       case ItemType.ORGAN:
         return this.convertIItemBasesToISearchDropdownLabel(organBases);
       case ItemType.HARVEST_SEED:
-        return this.convertIItemBasesToISearchDropdownLabel(harvestSeedBases);
+        return this.convertIItemBasesToISearchDropdownLabel(seedBases);
+      case ItemType.HARVEST_SEED_ENHANCER:
+        return this.convertIItemBasesToISearchDropdownLabel(seedEnhancerBases);
+      case ItemType.HARVEST_EQUIPMENT:
+        return this.convertIItemBasesToISearchDropdownLabel(harvestEquipmentBases);
       case ItemType.BEAST:
       case ItemType.FISHING_ROD:
       default:
