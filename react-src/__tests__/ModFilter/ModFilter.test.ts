@@ -1,5 +1,6 @@
 import { IMod, IModFilterParams } from '../../services/filter/filter-modules/mod-filter/IModFilterParams';
 import ModFilter from '../../services/filter/filter-modules/mod-filter/ModFilter';
+import harvestModJson from '../league-items/harvest-test-items.json';
 import { assertItemsFound, getTestItem } from '../utils';
 import { IBaseItem } from './../../models/items/IBaseItem';
 import { abyssModRegexes } from './../../services/filter/filter-modules/mod-filter/mod-regexes/abyss-mods';
@@ -8,6 +9,7 @@ import { craftedModRegexes } from './../../services/filter/filter-modules/mod-fi
 import { enchantmentModRegexes } from './../../services/filter/filter-modules/mod-filter/mod-regexes/enchantment-mods';
 import { explicitModRegexes } from './../../services/filter/filter-modules/mod-filter/mod-regexes/explicit-mods';
 import { fracturedModRegexes } from './../../services/filter/filter-modules/mod-filter/mod-regexes/fractured-mods';
+import { harvestSeedModRegexes } from './../../services/filter/filter-modules/mod-filter/mod-regexes/harvest-seed-mods';
 import { implicitModRegexes } from './../../services/filter/filter-modules/mod-filter/mod-regexes/implicit-mods';
 import { leaguestoneModRegexes } from './../../services/filter/filter-modules/mod-filter/mod-regexes/leaguestone-mods';
 import { mapModRegexes } from './../../services/filter/filter-modules/mod-filter/mod-regexes/map-mods';
@@ -726,6 +728,24 @@ describe('other mod tests', () => {
     }
     const filter: ModFilter = new ModFilter();
     const actual: IBaseItem[] = filter.filter(items, [{ mod: modFilterParams }]);
+
+    assertItemsFound(testItems, actual);
+  });
+
+  test('should return items with a harvest seed mod', () => {
+    const harvestItems: IBaseItem[] = (harvestModJson as IBaseItem[]);
+    const searchModString: string = 'Remove a random Defence modifier from an item and add a new Defence modifier';
+    const testItems: IBaseItem[] = harvestItems
+      .filter((item: IBaseItem) => item.typeLine === 'Horticrafting Station')
+      .filter((item: IBaseItem) => (item as any).craftedMods
+        ?.some((mod: string) => mod.indexOf(searchModString) !== -1));
+    const modFilterParams: IMod = harvestSeedModRegexes
+      .find((modRegex: IMod) => modRegex.label === searchModString);
+    if (!modFilterParams) {
+      throw new Error('Couldn\'t find "" harvest seed mod filter param');
+    }
+    const filter: ModFilter = new ModFilter();
+    const actual: IBaseItem[] = filter.filter(harvestItems, [{ mod: modFilterParams }]);
 
     assertItemsFound(testItems, actual);
   });

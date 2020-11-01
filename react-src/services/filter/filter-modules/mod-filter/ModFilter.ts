@@ -47,6 +47,7 @@ export default class ModFilter implements IFilterModule<IModFilterParams[]> {
       case ModFilterType.EXPLICIT:
         return this.checkExplicitMod(item, condition);
       case ModFilterType.CRAFTED:
+      case ModFilterType.HARVEST_SEED:
         return this.checkCraftedMod(item, condition);
       case ModFilterType.TOTAL:
         return this.checkTotalMod(item, condition);

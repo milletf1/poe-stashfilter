@@ -7,6 +7,7 @@ import { craftedModRegexes } from '../../services/filter/filter-modules/mod-filt
 import { enchantmentModRegexes } from '../../services/filter/filter-modules/mod-filter/mod-regexes/enchantment-mods';
 import { explicitModRegexes } from '../../services/filter/filter-modules/mod-filter/mod-regexes/explicit-mods';
 import { fracturedModRegexes } from '../../services/filter/filter-modules/mod-filter/mod-regexes/fractured-mods';
+import { harvestSeedModRegexes } from '../../services/filter/filter-modules/mod-filter/mod-regexes/harvest-seed-mods';
 import { implicitModRegexes } from '../../services/filter/filter-modules/mod-filter/mod-regexes/implicit-mods';
 import { leaguestoneModRegexes } from '../../services/filter/filter-modules/mod-filter/mod-regexes/leaguestone-mods';
 import { mapModRegexes } from '../../services/filter/filter-modules/mod-filter/mod-regexes/map-mods';
@@ -57,6 +58,10 @@ class ModSearch extends React.Component<IModSearchProps, {}> {
       ...organModRegexes.map((val: IMod) => ({ label: `[Organ] ${val.label}`, value: val })),
       ...propheciesModRegexes.map((val: IMod) => ({
         label: `[Prophecy] ${val.label}`,
+        value: val,
+      })),
+      ...harvestSeedModRegexes.map((val: IMod) => ({
+        label: `[Harvest] ${val.label}`,
         value: val,
       })),
     ];
