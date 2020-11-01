@@ -13,4 +13,5 @@ export const enum ModFilterType {
   PROPHECY,
   LEAGUESTONE,
   ORGAN,
+  HARVEST_SEED,
 }
