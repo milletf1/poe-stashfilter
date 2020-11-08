@@ -1,0 +1,715 @@
+[
+  {
+    "verified": false,
+    "w": 1,
+    "h": 2,
+    "icon": "https:\/\/web.poecdn.com\/gen\/image\/WzksMTQseyJmIjoiMkRJdGVtc1wvRmxhc2tzXC9MYXZpYW5nYXNPaWwiLCJ3IjoxLCJoIjoyLCJzY2FsZSI6dHJ1ZSwibGV2ZWwiOjF9XQ\/e34571acae\/Item.png",
+    "league": "Heist",
+    "id": "1aa6dfeb5d224284765e5a1ddd7839e46651abecbc9489d64e2d2d6491ef6d51",
+    "name": "Replica Lavianga's Spirit",
+    "typeLine": "Sanctified Mana Flask",
+    "identified": true,
+    "ilvl": 55,
+    "properties": [
+      {
+        "name": "Recovers {0} Mana over {1} Seconds",
+        "values": [
+          [
+            "1474",
+            1
+          ],
+          [
+            "13.00",
+            1
+          ]
+        ],
+        "displayMode": 3
+      },
+      {
+        "name": "Consumes {0} of {1} Charges on use",
+        "values": [
+          [
+            "7",
+            0
+          ],
+          [
+            "35",
+            0
+          ]
+        ],
+        "displayMode": 3
+      },
+      {
+        "name": "Currently has {0} Charges",
+        "values": [
+          [
+            "0",
+            0
+          ]
+        ],
+        "displayMode": 3
+      }
+    ],
+    "requirements": [
+      {
+        "name": "Level",
+        "values": [
+          [
+            "50",
+            0
+          ]
+        ],
+        "displayMode": 0
+      }
+    ],
+    "explicitMods": [
+      "34% increased Amount Recovered",
+      "50% reduced Recovery rate",
+      "10% increased Attack Speed during Flask effect",
+      "10% increased Cast Speed during Flask effect",
+      "10% increased Mana Cost of Skills during Flask Effect"
+    ],
+    "descrText": "Right click to drink. Can only hold charges while in belt. Refills as you kill monsters.",
+    "flavourText": [
+      "\"An intriguing paradox.\""
+    ],
+    "replica": true,
+    "frameType": 3,
+    "x": 8,
+    "y": 4,
+    "inventoryId": "Stash46"
+  },
+  {
+    "verified": false,
+    "w": 1,
+    "h": 1,
+    "icon": "https:\/\/web.poecdn.com\/image\/Art\/2DItems\/Currency\/Heist\/FoliateBrooch.png?v=f04f30de9e8de31206ee7ff50610fa44&w=1&h=1&scale=1",
+    "league": "Heist",
+    "id": "a8ebc832f118a2a603f1e9c8ddce32b2047021116cd1258bcce87096a25eee94",
+    "name": "Eagle Beads",
+    "typeLine": "Foliate Brooch",
+    "identified": true,
+    "ilvl": 69,
+    "properties": [
+      {
+        "name": "Any Heist member can equip this item.",
+        "values": [
+          [
+            "",
+            0
+          ]
+        ],
+        "displayMode": 3
+      }
+    ],
+    "requirements": [
+      {
+        "name": "Level {0} in {1}",
+        "values": [
+          [
+            "5",
+            0
+          ],
+          [
+            "Any Job",
+            0
+          ]
+        ],
+        "displayMode": 3
+      }
+    ],
+    "implicitMods": [
+      "30% increased Rarity of Items dropped in Heists"
+    ],
+    "explicitMods": [
+      "Heist Chests have a 9% chance to Duplicate contained Essences",
+      "Heist Chests have a 6% chance to Duplicate contained Scarabs",
+      "19% increased Rogue's Marker value of primary Heist Target",
+      "7% increased Quantity of Items dropped in Heists"
+    ],
+    "descrText": "Can only be equipped to Heist members.",
+    "frameType": 2,
+    "x": 8,
+    "y": 6,
+    "inventoryId": "Stash46"
+  },
+  {
+    "verified": false,
+    "w": 1,
+    "h": 1,
+    "icon": "https:\/\/web.poecdn.com\/image\/Art\/2DItems\/Currency\/Heist\/HeistCoinCurrency.png?v=91f470e219855da2a828fd553feb30f6&w=1&h=1&scale=1",
+    "stackSize": 1,
+    "maxStackSize": 50000,
+    "league": "Heist",
+    "id": "dc56db8e241bf9fc3b4fcef831c5a114eea2e52717337e9042839fccf7c5f36c",
+    "name": "",
+    "typeLine": "Rogue's Marker",
+    "identified": true,
+    "ilvl": 0,
+    "properties": [
+      {
+        "name": "Stack Size",
+        "values": [
+          [
+            "1\/50000",
+            0
+          ]
+        ],
+        "displayMode": 0,
+        "type": 32
+      }
+    ],
+    "explicitMods": [
+      "Creates a portal to the Rogue Harbour from a Town or Hideout\nUsed as Currency for services in the Rogue Harbour"
+    ],
+    "descrText": "Right click on this item while in a Town or Hideout to use it.",
+    "frameType": 5,
+    "x": 7,
+    "y": 5,
+    "inventoryId": "Stash46"
+  },
+  {
+    "verified": false,
+    "w": 1,
+    "h": 1,
+    "icon": "https:\/\/web.poecdn.com\/image\/Art\/2DItems\/Currency\/Heist\/ContractItem.png?v=8929128caf23379f12f7ef7b03ed233e&w=1&h=1&scale=1",
+    "league": "Heist",
+    "id": "600b0a2184f621acc6c60d0e365705fd65751e3c189075ab5990d1d4e7776b20",
+    "name": "Phoenix Writ",
+    "typeLine": "Contract: Bunker",
+    "identified": true,
+    "ilvl": 82,
+    "properties": [
+      {
+        "name": "Client",
+        "values": [
+          [
+            "Administrator Qotra",
+            0
+          ]
+        ],
+        "displayMode": 0
+      },
+      {
+        "name": "Heist Target: {0} ({1})",
+        "values": [
+          [
+            "Living Ice",
+            0
+          ],
+          [
+            "High Value",
+            0
+          ]
+        ],
+        "displayMode": 3,
+        "type": 47
+      },
+      {
+        "name": "Area Level",
+        "values": [
+          [
+            "82",
+            0
+          ]
+        ],
+        "displayMode": 0,
+        "type": 34
+      },
+      {
+        "name": "Requires {1} (Level {0})",
+        "values": [
+          [
+            "1",
+            0
+          ],
+          [
+            "Agility",
+            0
+          ]
+        ],
+        "displayMode": 3,
+        "type": 44
+      },
+      {
+        "name": "Item Quantity",
+        "values": [
+          [
+            "+49%",
+            1
+          ]
+        ],
+        "displayMode": 0,
+        "type": 2
+      },
+      {
+        "name": "Item Rarity",
+        "values": [
+          [
+            "+29%",
+            1
+          ]
+        ],
+        "displayMode": 0,
+        "type": 3
+      },
+      {
+        "name": "Alert Level Reduction",
+        "values": [
+          [
+            "+19%",
+            1
+          ]
+        ],
+        "displayMode": 0
+      },
+      {
+        "name": "Time Before Lockdown",
+        "values": [
+          [
+            "+19%",
+            1
+          ]
+        ],
+        "displayMode": 0
+      },
+      {
+        "name": "Maximum Alive Reinforcements",
+        "values": [
+          [
+            "+19%",
+            1
+          ]
+        ],
+        "displayMode": 0,
+        "type": 4
+      }
+    ],
+    "explicitMods": [
+      "Players have 8% less Evasion per 25% Alert Level",
+      "All Monster Damage from Hits always Ignites",
+      "Monsters have a 50% chance to avoid Poison, Blind, and Bleeding",
+      "Monsters have a 20% chance to cause Elemental Ailments on Hit"
+    ],
+    "descrText": "Give this Contract to Adiyah in the Rogue Harbour to embark on the Heist.",
+    "flavourText": [
+      "\"Are we the only ones who understand the danger? The fools! Living ice absorbs heat\r",
+      "and grows. We must control it properly, lest it spread across all of Wraeclast.\""
+    ],
+    "frameType": 2,
+    "x": 6,
+    "y": 5,
+    "inventoryId": "Stash46"
+  },
+  {
+    "verified": false,
+    "w": 2,
+    "h": 2,
+    "icon": "https:\/\/web.poecdn.com\/image\/Art\/2DItems\/Currency\/Heist\/TorchStd.png?v=e0ab8856bed87688b70359b1704b50b2&w=2&h=2&scale=1",
+    "league": "Heist",
+    "id": "859ec9fde0299be3df9746abaf01fe3143fd53cda76510cabfba0450dbedb0d4",
+    "name": "Doom Gear",
+    "typeLine": "Sulphur Blowtorch",
+    "identified": true,
+    "ilvl": 76,
+    "properties": [
+      {
+        "name": "This item can be equipped by:\n{0}",
+        "values": [
+          [
+            "Isla, the Engineer",
+            0
+          ]
+        ],
+        "displayMode": 3
+      }
+    ],
+    "requirements": [
+      {
+        "name": "Level {0} in {1}",
+        "values": [
+          [
+            "4",
+            0
+          ],
+          [
+            "Engineering",
+            0
+          ]
+        ],
+        "displayMode": 3,
+        "type": 46
+      }
+    ],
+    "implicitMods": [
+      "11% increased Engineering speed"
+    ],
+    "explicitMods": [
+      "3% increased Engineering Experience gained",
+      "15% chance to Avoid being Interrupted",
+      "4% chance to not generate Alert Level on opening a Chest using Engineering"
+    ],
+    "descrText": "Can only be equipped to Heist members.",
+    "frameType": 2,
+    "x": 5,
+    "y": 6,
+    "inventoryId": "Stash46"
+  },
+  {
+    "verified": false,
+    "w": 2,
+    "h": 2,
+    "icon": "https:\/\/web.poecdn.com\/image\/Art\/2DItems\/Currency\/Heist\/TatteredCloak.png?v=afdd5ecc49d693eb3a8b64462e7426f8&w=2&h=2&scale=1",
+    "league": "Heist",
+    "id": "0150a835ced82136da4e555c23763704166762628482dcf8f223740269e59311",
+    "name": "Spirit Cover",
+    "typeLine": "Tattered Cloak",
+    "identified": true,
+    "ilvl": 72,
+    "properties": [
+      {
+        "name": "Any Heist member can equip this item.",
+        "values": [
+          [
+            "",
+            0
+          ]
+        ],
+        "displayMode": 3
+      }
+    ],
+    "requirements": [
+      {
+        "name": "Level {0} in {1}",
+        "values": [
+          [
+            "3",
+            0
+          ],
+          [
+            "Any Job",
+            0
+          ]
+        ],
+        "displayMode": 3
+      }
+    ],
+    "implicitMods": [
+      "3% reduced raising of Alert Level"
+    ],
+    "explicitMods": [
+      "19% increased Critical Strike Chance while area is not in Lockdown\nPlayers have 19% increased Critical Strike Chance while area is not in Lockdown",
+      "4% reduced raising of Alert Level from opening Chests",
+      "14% increased Job speed"
+    ],
+    "descrText": "Can only be equipped to Heist members.",
+    "frameType": 2,
+    "x": 7,
+    "y": 7,
+    "inventoryId": "Stash46"
+  },
+  {
+    "verified": false,
+    "w": 1,
+    "h": 1,
+    "icon": "https:\/\/web.poecdn.com\/image\/Art\/2DItems\/Currency\/Heist\/BlueprintApproved.png?v=89b0f6de2a6122ac865d09e3b18f242f&w=1&h=1&scale=1",
+    "league": "Heist",
+    "id": "c9b838e657629447771a77c04e2a3e31bc3783db3e73991133a94c8c73a7ad00",
+    "name": "",
+    "typeLine": "Blueprint: Underbelly",
+    "identified": true,
+    "ilvl": 59,
+    "properties": [
+      {
+        "name": "Heist Target: {0}",
+        "values": [
+          [
+            "Thieves' Trinkets or Currency",
+            0
+          ]
+        ],
+        "displayMode": 3,
+        "type": 47
+      },
+      {
+        "name": "Area Level",
+        "values": [
+          [
+            "61",
+            0
+          ]
+        ],
+        "displayMode": 0,
+        "type": 34
+      },
+      {
+        "name": "Wings Revealed",
+        "values": [
+          [
+            "2\/2",
+            0
+          ]
+        ],
+        "displayMode": 0,
+        "type": 35
+      },
+      {
+        "name": "Escape Routes Revealed",
+        "values": [
+          [
+            "4\/4",
+            0
+          ]
+        ],
+        "displayMode": 0,
+        "type": 36
+      },
+      {
+        "name": "Reward Rooms Revealed",
+        "values": [
+          [
+            "6\/6",
+            0
+          ]
+        ],
+        "displayMode": 0,
+        "type": 37
+      },
+      {
+        "name": "Requires {1} (Level {0})",
+        "values": [
+          [
+            "2",
+            0
+          ],
+          [
+            "Brute Force",
+            0
+          ]
+        ],
+        "displayMode": 3,
+        "type": 39
+      },
+      {
+        "name": "Requires {1} (Level {0})",
+        "values": [
+          [
+            "2",
+            0
+          ],
+          [
+            "Demolition",
+            0
+          ]
+        ],
+        "displayMode": 3,
+        "type": 41
+      },
+      {
+        "name": "Requires {1} (Level {0})",
+        "values": [
+          [
+            "2",
+            0
+          ],
+          [
+            "Agility",
+            0
+          ]
+        ],
+        "displayMode": 3,
+        "type": 44
+      },
+      {
+        "name": "Requires {1} (Level {0})",
+        "values": [
+          [
+            "1",
+            0
+          ],
+          [
+            "Deception",
+            0
+          ]
+        ],
+        "displayMode": 3,
+        "type": 45
+      },
+      {
+        "name": "Requires {1} (Level {0})",
+        "values": [
+          [
+            "1",
+            0
+          ],
+          [
+            "Engineering",
+            0
+          ]
+        ],
+        "displayMode": 3,
+        "type": 46
+      }
+    ],
+    "descrText": "Use Intelligence to Reveal additional Wings and Rooms by talking to certain NPCs in the Rogue Harbour. Give this Blueprint to Adiyah to embark on the Grand Heist.",
+    "frameType": 0,
+    "x": 5,
+    "y": 5,
+    "inventoryId": "Stash46"
+  },
+  {
+    "verified": false,
+    "w": 1,
+    "h": 1,
+    "icon": "https:\/\/web.poecdn.com\/image\/Art\/2DItems\/Currency\/Heist\/BlueprintNotApproved.png?v=9fd35fc100b14580436bc0f4bf39a875&w=1&h=1&scale=1",
+    "league": "Heist",
+    "id": "fb5708967f3dd7860505db58a810d5e0dd5bbbaee03e6b3f4555fa7f72984460",
+    "name": "",
+    "typeLine": "Blueprint: Bunker of Drought",
+    "identified": true,
+    "ilvl": 70,
+    "properties": [
+      {
+        "name": "Heist Target: {0}",
+        "values": [
+          [
+            "Enchanted Armaments",
+            0
+          ]
+        ],
+        "displayMode": 3,
+        "type": 47
+      },
+      {
+        "name": "Area Level",
+        "values": [
+          [
+            "70",
+            0
+          ]
+        ],
+        "displayMode": 0,
+        "type": 34
+      },
+      {
+        "name": "Wings Revealed",
+        "values": [
+          [
+            "1\/2",
+            0
+          ]
+        ],
+        "displayMode": 0,
+        "type": 35
+      },
+      {
+        "name": "Escape Routes Revealed",
+        "values": [
+          [
+            "1\/4",
+            0
+          ]
+        ],
+        "displayMode": 0,
+        "type": 36
+      },
+      {
+        "name": "Reward Rooms Revealed",
+        "values": [
+          [
+            "4\/8",
+            0
+          ]
+        ],
+        "displayMode": 0,
+        "type": 37
+      },
+      {
+        "name": "Requires {1} (Level {0})",
+        "values": [
+          [
+            "3",
+            0
+          ],
+          [
+            "Lockpicking",
+            0
+          ]
+        ],
+        "displayMode": 3,
+        "type": 38
+      },
+      {
+        "name": "Requires {1} (Level {0})",
+        "values": [
+          [
+            "2",
+            0
+          ],
+          [
+            "Trap Disarmament",
+            0
+          ]
+        ],
+        "displayMode": 3,
+        "type": 43
+      },
+      {
+        "name": "Requires {1} (Level {0})",
+        "values": [
+          [
+            "2",
+            0
+          ],
+          [
+            "Agility",
+            0
+          ]
+        ],
+        "displayMode": 3,
+        "type": 44
+      },
+      {
+        "name": "Item Quantity",
+        "values": [
+          [
+            "+13%",
+            1
+          ]
+        ],
+        "displayMode": 0,
+        "type": 2
+      },
+      {
+        "name": "Item Rarity",
+        "values": [
+          [
+            "+8%",
+            1
+          ]
+        ],
+        "displayMode": 0,
+        "type": 3
+      },
+      {
+        "name": "Maximum Alive Reinforcements",
+        "values": [
+          [
+            "+5%",
+            1
+          ]
+        ],
+        "displayMode": 0,
+        "type": 4
+      }
+    ],
+    "explicitMods": [
+      "Players gain 30% reduced Flask Charges"
+    ],
+    "descrText": "Use Intelligence to Reveal additional Wings and Rooms by talking to certain NPCs in the Rogue Harbour. Give this Blueprint to Adiyah to embark on the Grand Heist.",
+    "frameType": 1,
+    "x": 7,
+    "y": 6,
+    "inventoryId": "Stash46"
+  }
+]

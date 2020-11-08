@@ -13,7 +13,7 @@ const path = require("path");
 
 
 /** Path to file that has items to summarise */
-const ITEMS_FILE_PATH = "/../league-items/harvest-test-items.json";
+const ITEMS_FILE_PATH = "/../league-items/heist-test-items.json";
 /** Name of file that the summary will be written to */
 const LOG_FILE_NAME = "item-summary";
 /** Extra item properties that should be included in the summary */

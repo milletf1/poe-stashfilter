@@ -299,7 +299,6 @@ class StashDisplayItem extends React.Component<IStashDisplayItemProps, IStashDis
           elementRefCallback={this.onElementRefUpdate}/>
       );
     }
-    // TODO: horticrafting station test
     return (
       <CurrencyItemDetails
         item={this.props.item as ICurrency}

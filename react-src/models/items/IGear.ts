@@ -25,6 +25,7 @@ export interface IGear extends ISocketableItem {
   incubatedItem?: IIncubatedItem;
   /** Influence type */
   influences?: IInfluenceType;
+  replica?: boolean;
 }
 
 export interface IIncubatedItem {
@@ -34,10 +35,13 @@ export interface IIncubatedItem {
   total: number;
 }
 
+const IGEAR_TYPE_GUARD_TEST: RegExp = /\/2DItems\/(Rings|Armours|Weapons|Amulets|Belts)/;
+
 /** IGear type guard */
 export function isIGear(o: any): o is IGear {
   return (o as IGear).icon !== undefined
-    && /\/2DItems\/(Rings|Armours|Weapons|Amulets|Belts)\//.test((o as IGear).icon);
+    && (IGEAR_TYPE_GUARD_TEST.test((o as IGear).icon)
+    || (o as IGear).replica);
 }
 
 /** Checks if an object is a weapon */
