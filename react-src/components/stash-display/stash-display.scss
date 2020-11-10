@@ -16,6 +16,8 @@ $images-path: "../../assets/images/stash";
     &.essence { background-image: url("#{$images-path}/EssenceStashPanelGrid.png"); }
     &.fragment { background-image: url("#{$images-path}/StashPanelFragment.png"); }
     &.delve { background-image: url("#{$images-path}/StashPanelDelve.png"); }
+    &.blight { background-image: url("#{$images-path}/BlightTabBackground.png"); }
+    &.delirium { background-image: url("#{$images-path}/DeliriumTabBackground.png"); }
 
     &.divination {
       background-image: unset;

@@ -7,4 +7,6 @@ export const enum StashTypes {
   CHARACTER,
   NORMAL,
   DELVE,
+  BLIGHT,
+  DELIRIUM,
 }

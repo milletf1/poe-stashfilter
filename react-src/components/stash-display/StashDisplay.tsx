@@ -1,7 +1,9 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { IBaseItem } from '../../models/items/IBaseItem';
+import { isIBlightTab } from '../../models/stash-tabs/IBlightTab';
 import { isICurrencyTab } from '../../models/stash-tabs/ICurrencyTab';
+import { isIDeliriumTab } from '../../models/stash-tabs/IDeliriumTab';
 import { isIDelveTab } from '../../models/stash-tabs/IDelveTab';
 import { isIDivinationTab } from '../../models/stash-tabs/IDivinationTab';
 import { isIEssenceTab } from '../../models/stash-tabs/IEssenceTab';
@@ -26,6 +28,8 @@ const NORMAL_STASH_ITEM_SIZE: number = 45;
 const NORMAL_STASH_DIVIDER_SIZE: number = 2.5;
 const QUAD_STASH_ITEM_SIZE: number = 22;
 const QUAD_STASH_DIVIDER_SIZE: number = 1.7;
+const DELVE_CELL_SIZE: number = 42;
+const BLIGHT_CELL_SIZE: number = 38;
 
 const mapStateToProps = (state: IAppState, props: any) => ({
   browseCategory: state.activeAccount.uiState.browsePageState.browseCategory,
@@ -83,6 +87,8 @@ class StashDisplay extends React.Component<IStashDisplayProps, {}> {
       case StashTypes.ESSENCE:
       case StashTypes.CURRENCY:
       case StashTypes.FRAGMENT:
+      case StashTypes.BLIGHT:
+      case StashTypes.DELIRIUM:
         const layout: ITabLayout = this.getStashTabLayout();
         const itemPosition: ITabLayoutItem = layout[item.x];
         left = itemPosition.x;
@@ -107,6 +113,10 @@ class StashDisplay extends React.Component<IStashDisplayProps, {}> {
       case StashTypes.ESSENCE:
       case StashTypes.CURRENCY:
         return OTHER_TAB_SIZE;
+      case StashTypes.DELVE:
+        return DELVE_CELL_SIZE;
+      case StashTypes.BLIGHT:
+        return BLIGHT_CELL_SIZE;
       case StashTypes.NORMAL:
       default:
         return CELL_SIZE;
@@ -121,6 +131,8 @@ class StashDisplay extends React.Component<IStashDisplayProps, {}> {
     if (isICurrencyTab(stashTab)) { return stashTab.currencyLayout; }
     if (isIFragmentTab(stashTab)) { return stashTab.fragmentLayout; }
     if (isIDelveTab(stashTab)) { return stashTab.delveLayout; }
+    if (isIBlightTab(stashTab)) { return stashTab.blightLayout; }
+    if (isIDeliriumTab(stashTab)) { return stashTab.deliriumLayout; }
     return null;
   }
 
@@ -155,6 +167,8 @@ class StashDisplay extends React.Component<IStashDisplayProps, {}> {
     if (isIEssenceTab(stashTab)) { return StashTypes.ESSENCE; }
     if (isIFragmentTab(stashTab)) { return StashTypes.FRAGMENT; }
     if (isIDelveTab(stashTab)) { return StashTypes.DELVE; }
+    if (isIBlightTab(stashTab)) { return StashTypes.BLIGHT; }
+    if (isIDeliriumTab(stashTab)) { return StashTypes.DELIRIUM; }
     return StashTypes.NORMAL;
   }
 
@@ -173,6 +187,10 @@ class StashDisplay extends React.Component<IStashDisplayProps, {}> {
         return 'tab fragment';
       case StashTypes.DELVE:
         return 'tab delve';
+      case StashTypes.BLIGHT:
+        return 'tab blight';
+      case StashTypes.DELIRIUM:
+        return 'tab delirium';
       case StashTypes.NORMAL:
       default:
         return 'tab';
