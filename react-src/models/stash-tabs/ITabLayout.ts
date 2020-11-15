@@ -7,4 +7,5 @@ export interface ITabLayoutItem {
   w: number;
   x: number;
   y: number;
+  scale?: number;
 }

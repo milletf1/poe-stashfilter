@@ -9,4 +9,5 @@ export const enum StashTypes {
   DELVE,
   BLIGHT,
   DELIRIUM,
+  METAMORPH,
 }
