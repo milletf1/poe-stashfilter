@@ -8,6 +8,7 @@ import { isIDelveTab } from '../../models/stash-tabs/IDelveTab';
 import { isIDivinationTab } from '../../models/stash-tabs/IDivinationTab';
 import { isIEssenceTab } from '../../models/stash-tabs/IEssenceTab';
 import { isIFragmentTab } from '../../models/stash-tabs/IFragmentTab';
+import { isIMetamorphTab } from '../../models/stash-tabs/IMetamorphTab';
 import { isIQuadTab } from '../../models/stash-tabs/IQuadTab';
 import { IStashTab } from '../../models/stash-tabs/IStashTab';
 import { ITabLayout, ITabLayoutItem } from '../../models/stash-tabs/ITabLayout';
@@ -15,6 +16,7 @@ import { StashTypes } from '../../models/stash-tabs/StashTypes';
 import { BrowseItemCategory } from '../../models/ui-state/BrowseItemCategory';
 import { IAppState } from '../../store/app/appState';
 import CharacterInventory from '../character-inventory/CharacterInventory';
+import MetamorphStashDisplay from '../metamorph-stash-display/MetamorphStashDisplay';
 import { IStashDisplayItemPositionStyle } from '../stash-display-item/IStashDisplayItemPositionStyle';
 import StashDisplayItem from '../stash-display-item/StashDisplayItem';
 import { IStashDisplayProps } from './IStashDisplayProps';
@@ -40,8 +42,12 @@ const mapStateToProps = (state: IAppState, props: any) => ({
 
 class StashDisplay extends React.Component<IStashDisplayProps, {}> {
   public render(): JSX.Element {
-    if (this.stashType === StashTypes.CHARACTER) {
+    const stashType: StashTypes = this.stashType;
+
+    if (stashType === StashTypes.CHARACTER) {
       return <CharacterInventory items={this.items} />;
+    } else if (stashType === StashTypes.METAMORPH) {
+      return <MetamorphStashDisplay />;
     }
     return (
       <div className={'stash-display ' + this.stashTypeClass}>
@@ -169,6 +175,7 @@ class StashDisplay extends React.Component<IStashDisplayProps, {}> {
     if (isIDelveTab(stashTab)) { return StashTypes.DELVE; }
     if (isIBlightTab(stashTab)) { return StashTypes.BLIGHT; }
     if (isIDeliriumTab(stashTab)) { return StashTypes.DELIRIUM; }
+    if (isIMetamorphTab(stashTab)) { return StashTypes.METAMORPH; }
     return StashTypes.NORMAL;
   }
 
