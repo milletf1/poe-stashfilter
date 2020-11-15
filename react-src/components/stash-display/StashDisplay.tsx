@@ -8,7 +8,7 @@ import { isIDelveTab } from '../../models/stash-tabs/IDelveTab';
 import { isIDivinationTab } from '../../models/stash-tabs/IDivinationTab';
 import { isIEssenceTab } from '../../models/stash-tabs/IEssenceTab';
 import { isIFragmentTab } from '../../models/stash-tabs/IFragmentTab';
-import { isIMetamorphTab } from '../../models/stash-tabs/IMetamorphTab';
+import { IMetamorphTab, isIMetamorphTab } from '../../models/stash-tabs/IMetamorphTab';
 import { isIQuadTab } from '../../models/stash-tabs/IQuadTab';
 import { IStashTab } from '../../models/stash-tabs/IStashTab';
 import { ITabLayout, ITabLayoutItem } from '../../models/stash-tabs/ITabLayout';
@@ -43,11 +43,15 @@ const mapStateToProps = (state: IAppState, props: any) => ({
 class StashDisplay extends React.Component<IStashDisplayProps, {}> {
   public render(): JSX.Element {
     const stashType: StashTypes = this.stashType;
+    const stashTab: IStashTab = this.props.leagues[this.props.leagueIndex]
+          .stashTabs[this.props.browseIndex];
 
     if (stashType === StashTypes.CHARACTER) {
       return <CharacterInventory items={this.items} />;
     } else if (stashType === StashTypes.METAMORPH) {
-      return <MetamorphStashDisplay />;
+      return (
+        <MetamorphStashDisplay sections={(stashTab as IMetamorphTab).metamorphLayout.sections} />
+      );
     }
     return (
       <div className={'stash-display ' + this.stashTypeClass}>

@@ -8,4 +8,92 @@ $images-path: "../../assets/images/stash/metamorph";
   width: 569px;
   height: 569px;
   margin: auto;
+
+  .section-selector {
+    position: absolute;
+    left: 140px;
+    top: 270px;
+
+    .button {
+      display: inline-block;
+
+      width: 58px;
+      height: 57px;
+
+      &.brain {
+        background-image: url("#{$images-path}/brain-normal.png");
+        background-repeat: no-repeat;
+        background-size: 58px 57px;
+
+        &:hover:not(.active) {
+          background-image: url("#{$images-path}/brain-hover.png");
+          cursor: pointer;
+        }
+
+        &.active {
+          background-image: url("#{$images-path}/brain-active.png");
+        }
+      }
+
+      &.eye {
+        background-image: url("#{$images-path}/eye-normal.png");
+        background-repeat: no-repeat;
+        background-size: 58px 57px;
+
+        &:hover:not(.active) {
+          background-image: url("#{$images-path}/eye-hover.png");
+          cursor: pointer;
+        }
+
+        &.active {
+          background-image: url("#{$images-path}/eye-active.png");
+        }
+      }
+
+      &.lung {
+        background-image: url("#{$images-path}/lung-normal.png");
+        background-repeat: no-repeat;
+        background-size: 58px 57px;
+
+        &:hover:not(.active) {
+          background-image: url("#{$images-path}/lung-hover.png");
+          cursor: pointer;
+        }
+
+        &.active {
+          background-image: url("#{$images-path}/lung-active.png");
+        }
+      }
+
+      &.heart {
+        background-image: url("#{$images-path}/heart-normal.png");
+        background-repeat: no-repeat;
+        background-size: 58px 57px;
+
+        &:hover:not(.active) {
+          background-image: url("#{$images-path}/heart-hover.png");
+          cursor: pointer;
+        }
+
+        &.active {
+          background-image: url("#{$images-path}/heart-active.png");
+        }
+      }
+
+      &.liver {
+        background-image: url("#{$images-path}/liver-normal.png");
+        background-repeat: no-repeat;
+        background-size: 58px 57px;
+
+        &:hover:not(.active) {
+          background-image: url("#{$images-path}/liver-hover.png");
+          cursor: pointer;
+        }
+
+        &.active {
+          background-image: url("#{$images-path}/liver-active.png");
+        }
+      }
+    }
+  }
 }
