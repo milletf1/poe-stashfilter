@@ -24,6 +24,7 @@ export default class MetamorphStashDisplay extends React.Component<any, any> {
             )
           }
         </div>
+        <div className={`section ${this.state.active}`} />
       </div>
     );
   }

@@ -13,6 +13,7 @@ $images-path: "../../assets/images/stash/metamorph";
     position: absolute;
     left: 140px;
     top: 270px;
+    z-index: 2;
 
     .button {
       display: inline-block;
@@ -94,6 +95,44 @@ $images-path: "../../assets/images/stash/metamorph";
           background-image: url("#{$images-path}/liver-active.png");
         }
       }
+    }
+  }
+
+  .section {
+    position: absolute;
+    display: inline-block;
+    width: 569px;
+    height: 276px;
+    top: 294px;
+
+    &.brain {
+      background-image: url("#{$images-path}/section-brain.png");
+      background-repeat: no-repeat;
+      background-size: 569px 276px;
+    }
+
+    &.eye {
+      background-image: url("#{$images-path}/section-eye.png");
+      background-repeat: no-repeat;
+      background-size: 569px 276px;
+    }
+
+    &.lung {
+      background-image: url("#{$images-path}/section-lung.png");
+      background-repeat: no-repeat;
+      background-size: 569px 276px;
+    }
+
+    &.heart {
+      background-image: url("#{$images-path}/section-heart.png");
+      background-repeat: no-repeat;
+      background-size: 569px 276px;
+    }
+
+    &.liver {
+      background-image: url("#{$images-path}/section-liver.png");
+      background-repeat: no-repeat;
+      background-size: 569px 276px;
     }
   }
 }
